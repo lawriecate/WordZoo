@@ -1,0 +1,269 @@
+ body,html {
+    	background: #ACD6FF;
+		background: -webkit-linear-gradient(#B7EEFF, #48A3DA); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#B7EEFF, #48A3DA); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#B7EEFF, #48A3DA); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#B7EEFF, #48A3DA); /* Standard syntax */
+    	margin:0;
+    	padding:0;
+    	font-family: 'Helvetica',arial,sans-serif;
+    	color: #fff;
+    	height: 100%;
+
+    }
+    .header {
+    	height: 7vh;
+		background: #22A4F3;
+		background: -webkit-linear-gradient(#22A4F3, #117BD1); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#22A4F3, #117BD1); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#22A4F3, #117BD1); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#22A4F3, #117BD1); /* Standard syntax */
+
+    }
+	.logo{
+		height: 80%;
+		padding:0%;
+	}
+	
+    .header img {
+    	float: left;
+    }
+    .header p {
+    	margin: 0;
+    	padding-left: 120px;
+    }
+	
+	.container {
+		background: #2894FF;
+		width: 66.7%;
+		margin:0 auto;
+		height: 100%;
+
+	}
+    .content {
+    	height: calc(100% - 100px);
+		position: relative;
+    }
+	
+	
+	.pullright {
+		float: right;
+		font-family: 'Helvetica',arial,sans-serif;
+    	color: #fff;
+ 	
+	}
+	
+	.class {
+		font-family: 'Helvetica',arial,sans-serif;
+    	color: #fff;
+    	font-size: 10vh;
+	}
+	
+	.titanic{
+		float: none;
+	
+	}
+/* General Sidebar and Page Layout for Portal*/		
+	.sidebar{
+		top: 0;
+		float: left;
+		width: 15vw;
+		position: absolute;
+		min-height: 100%;
+		background-size: 100% auto; 
+		background: #22A4F3;
+		background: -webkit-linear-gradient(#22A4F3, #117BD1); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#22A4F3, #117BD1); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#22A4F3, #117BD1); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#22A4F3, #117BD1); /* Standard syntax */
+	
+	}
+	
+	.col1{
+		background: #99e6ff;
+		min-height: 100%;
+		max-height: 100%;
+		overflow: scroll;
+		background-size: 100% auto; 
+		width: calc(100% - 15vw);
+		float: right;
+	}
+	
+	#sidebarButton {
+		width: 80%;
+		padding: 5%;
+	}
+/* Class Information */	
+	#scoreOverTime{
+		text-align: center;
+	
+	}
+	.controls{
+		height: 7vh;
+		background: #87CDEC;
+	
+	}
+	
+	.graph{
+        padding: 20px;
+	}
+	
+	.stats{
+		height: 24vh;
+		background: #87CDEC;
+	}
+	
+	.controls select {
+	   width: 15%;
+	   margin-left: 8%;
+	   padding: 1%;
+	   font-size: 2vh;
+	   color: #fff;
+	   font-weight: bold;
+	   line-height: 1;
+	   border: 0;
+	   border-radius: 0;
+	   height: 2%;
+	   overflow: hidden;
+	   background: url(img/new_arrow.png) no-repeat right #008CE1;
+	   -webkit-appearance: none;
+	   transform: translateY(25%);
+   }
+
+	#submit{
+		background: #008CE1;
+		padding: 1%;
+		margin-right: 5%;
+		font-size: 16px;
+		color: #fff;
+		font-weight: bold;
+		line-height: 1;
+		border: 0;
+		border-radius: 0;
+		height: 2%;
+		float: right;
+		transform: translateY(25%);
+	}
+	
+/* Add Students */
+	
+	.row1{
+		padding: 1vh;
+		
+		background: #87CDEC;
+		background: -webkit-linear-gradient(#87CDEC, #87ADE7); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#87CDEC, #87ADE7); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#87CDEC, #87ADE7); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#87CDEC, #87ADE7); /* Standard syntax */
+	}
+
+	.row2{
+		background: #87CDEC;
+		background: -webkit-linear-gradient(#87CDEC, #87ADE7); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#87CDEC, #87ADE7); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#87CDEC, #87ADE7); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#87CDEC, #87ADE7); /* Standard syntax */
+		padding-bottom: 1vh;
+	}
+	
+	
+	.row3{	
+		background: #87CDEC;
+		background: -webkit-linear-gradient(#87CDEC, #87ADE7); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#87CDEC, #87ADE7); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#87CDEC, #87ADE7); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#87CDEC, #87ADE7); /* Standard syntax */
+
+	}
+	
+	.row2 table{
+		border-color: #000;
+		width: 90%;
+		border-collapse: collapse;
+		background: #fff;
+		color: #000;
+	
+	}
+	
+	.row3  select {
+   width: 15%;
+	   margin-left: 8%;
+	   padding: 1%;
+	   font-size: 2vh;
+	   color: #fff;
+	   font-weight: bold;
+	   line-height: 1;
+	   border: 0;
+	   border-radius: 0;
+	   height: 2%;
+	   overflow: hidden;
+	   background: url(img/new_arrow.png) no-repeat right #008CE1;
+	   -webkit-appearance: none;
+	   transform: translateY(25%);
+   }
+   
+   input[type=text] {
+    width: 35%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	}
+	
+	input[type=button], input[type=submit], input[type=reset] {
+		background-color: #FFCE07;
+		background: -webkit-linear-gradient(#FFE168, #FFCE07); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#FFE168, #FFCE07); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#FFE168, #FFCE07); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#FFE168, #FFCE07); /* Standard syntax */
+		border: none;
+		color: #FF9933;
+		font-weight: bold;
+		font-size: 2vh;
+		border-radius: 1vh;
+		padding: 16px 32px;
+		text-decoration: none;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
+	
+	.row1 p{
+		font-size: 2vh;
+	
+	}
+	
+	.row2 button{
+		background-color: #FFCE07;
+		background: -webkit-linear-gradient(#FFE168, #FFCE07); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#FFE168, #FFCE07); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#FFE168, #FFCE07); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#FFE168, #FFCE07); /* Standard syntax */
+		border: none;
+		color: #FF9933;
+		font-weight: bold;
+		font-size: 2vh;
+		border-radius: 1vh;
+		text-decoration: none;
+		margin: 4px 2px;
+		cursor: pointer;
+		width: 30%; 
+		height: 4%;
+		padding: 10px;
+	}
+    
+    #pieChart-legend {
+        width: 200px;
+		float: right;
+        left: 820px;
+        top: 400px;
+    }
+	
+	
+	label { width: 100%; float: left; margin: 0 20px 0 0; }
+	span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
+	input { width: 100%; border: 1px solid #000; padding: 5px; }
+	
+	
+
+	
+
+	

@@ -1,0 +1,70 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+    <title>Zebra Game</title>
+    <link rel="stylesheet" href="../main.css" />
+	<script type="text/javascript" src="js/phaser.js"></script>
+	<script type="text/javascript" src="js/states/boot.js"></script>
+	<script type="text/javascript" src="js/states/gameover.js"></script>
+	<script type="text/javascript" src="js/states/menu.js"></script>
+	<script type="text/javascript" src="js/states/play.js"></script>
+	<script type="text/javascript" src="js/states/preload.js"></script>
+	<script type="text/javascript" src="js/states/difficulty.js"></script>
+	<script type="text/javascript" src="js/states/rules.js"></script>
+	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body style="height: 100%; background-color: #ACD6FF;" onresize="visibilityCheck()" onload="visibilityCheck()">
+         
+	<?php if (login_check($mysqli) == true) : ?>
+			<script type="text/javascript" src="js/main.js" ></script>
+			<script>
+				$(window).on('unload', function () {
+    			$.ajax({
+				  method: 'get',
+				  async: false, 
+				  url: 'php/connection.php',
+				  data: {
+				'score': score,
+				'difficulty': difficulty,
+				'chosen1': "null",
+				'chosen2': "null1",
+				'chosen3': "null2",
+				'failed1': "failed1",
+				'failed2': "failed2",
+				'failed3': "failed3",
+				'time': timeTaken,
+				    'ajax': true
+				  },
+				  success: function(data) {
+				    console.log("Bolaji can't code for shit");
+				    $('#data').text(data);
+				  }   
+				});
+
+				// var x = 200;
+				// var a = (new Date()).getTime() + x;
+
+				// // -----------
+				 
+				// // browser will hold with unloading your page for X miliseconds, letting
+				// // your ajax call to finish
+				// while ((new Date()).getTime() < a) {}
+				// }, false),
+				
+			</script>
+
+	<?php else : ?>
+                <p>
+                        <span class="error">You are not authorized to access this page.</span> Please <a href="../index.php">login</a>.
+                </p>
+        <?php endif; ?>
+
+</body>
+</html>

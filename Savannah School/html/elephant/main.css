@@ -1,0 +1,85 @@
+ body,html {
+    	background: #ACD6FF;
+		background: -webkit-linear-gradient(#B7EEFF, #48A3DA); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#B7EEFF, #48A3DA); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#B7EEFF, #48A3DA); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#B7EEFF, #48A3DA); /* Standard syntax */
+    	margin:0;
+    	padding:0;
+    	font-family: 'Helvetica',arial,sans-serif;
+    	color: #fff;
+    	height: 100%;
+
+    }
+    .header {
+    	height: 7vh;
+		background: #22A4F3;
+		background: -webkit-linear-gradient(#22A4F3, #117BD1); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(#22A4F3, #117BD1); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(#22A4F3, #117BD1); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(#22A4F3, #117BD1); /* Standard syntax */
+
+    }
+	.logo{
+		height: 80%;
+		padding:0%;
+	}
+	
+    .header img {
+    	float: left;
+    }
+    .header p {
+    	margin: 0;
+    	padding-left: 120px;
+    }
+	
+	.username {
+		text-align: center;
+		font-size: 3vh;
+		margin: 0;
+		padding: 0%;
+	}
+	.container {
+		background: #2894FF;
+		width: 66.7%;
+		margin:0 auto;
+		height: 100%;
+
+	}
+    .content {
+    	background: url("../img/background.png");
+    	background-repeat: no-repeat;
+    	background-size: cover;
+    	height: calc(100% - 100px);
+    	display: block;
+    }
+	
+	#game{
+		width: 100px;
+		height: 100px;
+		
+	}
+	
+	.pullright {
+		float: right;
+		font-family: 'Helvetica',arial,sans-serif;
+    	color: #fff;
+ 	
+	}
+	
+	.class {
+		font-family: 'Helvetica',arial,sans-serif;
+    	color: #fff;
+    	font-size: 10vh;
+	}
+	
+	.titanic{
+		float: none;
+	
+	}
+	
+	.fullscreen{
+		top:1vh;
+	}
+	
+  
