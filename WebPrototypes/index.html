@@ -2,15 +2,69 @@
 <html>
     <head>
         <title>WordZoo</title>
-        <link rel="stylesheet" href="uikit/dist/css/uikit.min.css" />
+        <link rel="stylesheet" href="css/uikit.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="uikit/dist/js/uikit.min.js"></script>
-        <script src="uikit/dist/js/uikit-icons.min.js"></script>
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
     </head>
     <body>
       <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
-        <h1>WordZoo</h1>
-        <h2>Coming soon...</h2>
+        <h1 class="uk-text-center uk-hidden">WordZoo</h1>
+        <img src="res/logo.png" width="500" alt="WordZoo" class="uk-align-center" />
+        <ul uk-tab uk-switcher class="uk-flex-center">
+            <li class="uk-active"><a href="#">Student</a></li>
+            <li><a href="#">Teacher</a></li>
+
+        </ul>
+        <ul class="uk-switcher">
+          <li class="uk-flex uk-flex-center">
+            <div>
+              <form class="uk-form-stacked">
+                <div class="uk-margin">
+                     <label class="uk-form-label" for="signincode">Code</label>
+                     <div class="uk-form-controls">
+                         <input class="uk-input uk-form-large" id="signincode" type="text" placeholder="Enter code">
+                     </div>
+                 </div>
+                  <div>
+                      <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1 ">Sign In</button>
+                  </div>
+              </form>
+            </div>
+          </li>
+          <li class="uk-flex uk-flex-center">
+
+            <div >
+
+              <form class="uk-form-stacked">
+                <div class="uk-margin">
+                     <label class="uk-form-label" for="email">Email</label>
+                     <div class="uk-form-controls uk-inline">
+
+                          <span class="uk-form-icon" uk-icon="icon: user"></span>
+                          <input class="uk-input" id="email" type="text" placeholder="Enter email">
+
+                     </div>
+                 </div>
+                 <div class="uk-margin">
+                      <label class="uk-form-label" for="password">Password</label>
+                      <div class="uk-form-controls uk-inline">
+
+                          <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                          <input class="uk-input " id="password" type="password" placeholder="Enter password">
+
+                      </div>
+                  </div>
+                  <div>
+                      <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1 ">Sign In</button>
+                  </div>
+              </form>
+              <p>
+              <a href="#" class="uk-link uk-link-muted">Forget password?</a>
+            </p>
+            </div>
+          </li>
+        </ul>
       </div>
     </body>
 </html>
