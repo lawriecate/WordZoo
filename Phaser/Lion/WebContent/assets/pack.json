@@ -1,0 +1,43 @@
+{
+  "startScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/1 StartScreen/MainMenu.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayButton",
+      "url": "assets/1 StartScreen/play.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "RulesButton",
+      "url": "assets/1 StartScreen/rules.png",
+      "overwrite": false
+    }
+  ],
+  "RulesScreen": [
+    {
+      "type": "image",
+      "key": "okButton",
+      "url": "assets/2 Rules/ok.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "rulesMenu",
+      "url": "assets/2 Rules/rulesMenu.png",
+      "overwrite": false
+    }
+  ],
+  "meta": {
+    "generated": "1508345250094",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}
