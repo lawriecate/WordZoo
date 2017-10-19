@@ -37,22 +37,22 @@ StartScreen.prototype.preload = function () {
 
 StartScreen.prototype.create = function () {
 	var _background = this.add.tileSprite(-2, -2, 1280, 720, 'background', null);
-	_background.scale.setTo(1.535, 1.51);
+	_background.scale.setTo(1.51, 1.51);
 	
-	var _playButton = this.add.button(150, 550, 'PlayButton', onClickPlay, this, null, null, null, null);
+	var _playButton = this.add.button(160, 480, 'PlayButton', onClickPlay, this, null, null, null, null);
 	_playButton.name = 'playButton';
-	_playButton.scale.setTo(1.75, 1.75);
+	_playButton.scale.setTo(1.5, 1.5);
 	
-	var _rulesButton = this.add.button(150, 750, 'RulesButton', onClickRules, this, null, null, null, null);
+	var _rulesButton = this.add.button(160, 672, 'RulesButton', onClickRules, this, null, null, null, null);
 	_rulesButton.name = 'rulesButton';
-	_rulesButton.scale.setTo(1.75, 1.75);
+	_rulesButton.scale.setTo(1.5, 1.5);
 	
 	
 	// on click play button, proceed to play screen
 	function onClickPlay () {
-	//	game.state.start('play');
+		this.state.start('play');
 	}
-
+		
 	// on click rules button, proceed to rules screen
 	function onClickRules () {
 		this.state.start('rules');

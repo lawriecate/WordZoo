@@ -2,7 +2,7 @@
   "canvas-version": 2,
   "settings": {
     "className": "RulesScreen",
-    "sceneWidth": 1960,
+    "sceneWidth": 1920,
     "sceneHeight": 1080,
     "generateOnSave": true,
     "enableStepping": false,
@@ -47,7 +47,9 @@
           "asset": "0",
           "info": {
             "editorName": "rulesMenu",
-            "scale.x": 1.54,
+            "x": -1,
+            "y": -1,
+            "scale.x": 1.51,
             "scale.y": 1.51
           }
         },

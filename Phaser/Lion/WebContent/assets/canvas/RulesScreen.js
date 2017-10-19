@@ -36,8 +36,8 @@ RulesScreen.prototype.preload = function () {
 };
 
 RulesScreen.prototype.create = function () {
-	var _rulesMenu = this.add.sprite(0, 0, 'rulesMenu');
-	_rulesMenu.scale.setTo(1.54, 1.51);
+	var _rulesMenu = this.add.sprite(-1, -1, 'rulesMenu');
+	_rulesMenu.scale.setTo(1.51, 1.51);
 	
 	var _okButton = this.add.button(800, 865, 'okButton', onClickOK, this, null, null, null, null);
 	_okButton.scale.setTo(1.75, 1.75);

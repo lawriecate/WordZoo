@@ -2,10 +2,10 @@
   "canvas-version": 2,
   "settings": {
     "className": "StartScreen",
-    "sceneWidth": 1960,
+    "sceneWidth": 1920,
     "sceneHeight": 1080,
     "generateOnSave": true,
-    "enableStepping": false,
+    "enableStepping": true,
     "lang": "JAVA_SCRIPT",
     "baseClass": "Phaser.State",
     "backgroundColor": [
@@ -18,8 +18,8 @@
       200,
       200
     ],
-    "showGrid": true,
-    "create_after": "// on click play button, proceed to play screen\nfunction onClickPlay () {\n//\tgame.state.start('play');\n}\n\t\n// on click rules button, proceed to rules screen\nfunction onClickRules () {\n\tthis.state.start('rules');\n}"
+    "showGrid": false,
+    "create_after": "// on click play button, proceed to play screen\nfunction onClickPlay () {\n\tthis.state.start('play');\n}\n\t\n// on click rules button, proceed to rules screen\nfunction onClickRules () {\n\tthis.state.start('rules');\n}"
   },
   "stateSettings": {
     "scaleMode": "SHOW_ALL",
@@ -49,7 +49,7 @@
             "editorName": "background",
             "x": -2,
             "y": -2,
-            "scale.x": 1.535,
+            "scale.x": 1.51,
             "scale.y": 1.51,
             "width": 1280,
             "height": 720
@@ -62,10 +62,10 @@
           "info": {
             "editorName": "playButton",
             "name": "playButton",
-            "x": 150,
-            "y": 550,
-            "scale.x": 1.75,
-            "scale.y": 1.75,
+            "x": 160,
+            "y": 480,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
             "callback": "onClickPlay"
           }
         },
@@ -76,10 +76,10 @@
           "info": {
             "editorName": "rulesButton",
             "name": "rulesButton",
-            "x": 150,
-            "y": 750,
-            "scale.x": 1.75,
-            "scale.y": 1.75,
+            "x": 160,
+            "y": 672,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
             "callback": "onClickRules"
           }
         }

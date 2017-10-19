@@ -1,0 +1,281 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "PlayScreen",
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
+    "generateOnSave": true,
+    "enableStepping": true,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": false,
+    "create_before": "var score = 0;\nvar time = 0;\n\nvar alphabet = [\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\n\t\t\t\t\"g\",\"h\",\"i\",\"j\",\"k\",\"l\",\n\t\t\t\t\"m\",\"n\",\"o\",\"p\",\"q\",\"r\",\n\t\t\t\t\"s\",\"t\",\"u\",\"v\",\"w\",\"x\",\n\t\t\t\t\"y\",\"z\"];\n\nvar words = \t[\"apple\",\"bear\",\"car\",\"day\",\"eye\",\"fox\",\n\t\t\t\t\"golf\",\"hotel\",\"igloo\",\"jam\",\"kite\",\"lolly\",\n\t\t\t\t\"moose\",\"nose\",\"o\",\"pot\",\"quest\",\"rice\",\n\t\t\t\t\"seat\",\"table\",\"unicorn\",\"violin\",\"wax\",\"x\",\n\t\t\t\t\"yellow\",\"zebra\"];\n"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "8533e6bc-66b6-4859-affa-1562c115cb57",
+          "asset": "0",
+          "info": {
+            "editorName": "Background",
+            "scale.x": 1.51,
+            "scale.y": 1.51
+          }
+        },
+        {
+          "type": "image",
+          "id": "c861a039-b874-4b4e-bb92-d319a8c39b54",
+          "asset": "1",
+          "info": {
+            "editorName": "goalkeeper_center",
+            "editorShow": false,
+            "x": 768,
+            "y": 320,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "e0c98d17-eec2-48f6-b896-a8d768631f39",
+          "asset": "2",
+          "info": {
+            "editorName": "Score",
+            "x": 32,
+            "y": 32,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "8b33738c-46cc-40eb-b80a-972a1b578a20",
+          "asset": "2",
+          "info": {
+            "editorName": "Time",
+            "x": 1664,
+            "y": 32,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "button",
+          "id": "cfa52030-2741-4af4-a724-67a8769d3373",
+          "asset": "2",
+          "info": {
+            "editorName": "TopLeft",
+            "editorShow": false,
+            "x": 544,
+            "y": 128,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "button",
+          "id": "0b0e62f2-c904-4ffe-954d-3c6404695296",
+          "asset": "2",
+          "info": {
+            "editorName": "TopRight",
+            "editorShow": false,
+            "x": 1184,
+            "y": 128,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "button",
+          "id": "68520017-e116-405f-97cd-2541cc3f6dca",
+          "asset": "2",
+          "info": {
+            "editorName": "BottomLeft",
+            "editorShow": false,
+            "x": 544,
+            "y": 576,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "button",
+          "id": "b674d77f-99d5-4cfa-a092-4d1ddc2b2185",
+          "asset": "2",
+          "info": {
+            "editorName": "BottomRight",
+            "editorShow": false,
+            "x": 1184,
+            "y": 576,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "2e40e15f-33ad-43fc-8af5-42796fc42fef",
+          "asset": "3",
+          "info": {
+            "editorName": "bottom_left_dive",
+            "editorShow": false,
+            "x": 416,
+            "y": 288,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
+            "animations": [{
+              "name": "bottomLeftDive",
+              "frameRate": 8,
+              "killOnComplete": true,
+              "frames": [
+                "2",
+                "1",
+                "0"
+              ]
+            }]
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "b8fd199d-f16e-4786-83da-bd5a7191bdef",
+          "asset": "4",
+          "info": {
+            "editorName": "bottom_right_dive",
+            "editorShow": false,
+            "x": 800,
+            "y": 288,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
+            "animations": [{
+              "name": "bottomRightDive",
+              "frameRate": 8,
+              "killOnComplete": true,
+              "frames": [
+                "0",
+                "1",
+                "2"
+              ]
+            }]
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "f9a9ea42-afec-4612-bf2f-82115ce6181e",
+          "asset": "5",
+          "info": {
+            "editorName": "top_left_dive",
+            "editorShow": false,
+            "x": 480,
+            "y": 256,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
+            "animations": [{
+              "name": "topLeftDive",
+              "frameRate": 8,
+              "killOnComplete": true,
+              "frames": [
+                "0",
+                "1",
+                "2"
+              ]
+            }]
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "b6ac9fa8-6724-490f-b700-bed887de8fbd",
+          "asset": "6",
+          "info": {
+            "editorName": "top_right_dive",
+            "editorShow": false,
+            "x": 736,
+            "y": 256,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
+            "animations": [{
+              "name": "topRightDive",
+              "frameRate": 8,
+              "killOnComplete": true,
+              "frames": [
+                "0",
+                "1",
+                "2"
+              ]
+            }]
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "Background"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "goalkeeper_center"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "ScoreBackground"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "bottom_left_dive",
+      "sprite": "2"
+    },
+    "4": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "bottom_right_dive",
+      "sprite": "0"
+    },
+    "5": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "top_left_dive",
+      "sprite": "0"
+    },
+    "6": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "top_right_dive",
+      "sprite": "0"
+    }
+  },
+  "prefab-table": {}
+}
