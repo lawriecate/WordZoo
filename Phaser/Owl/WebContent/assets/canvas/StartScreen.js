@@ -46,12 +46,21 @@ StartScreen.prototype.create = function () {
 	_rulesButton.name = 'rulesButton';
 	
 	
+<<<<<<< HEAD
 	// Start button
 	_playButton.inputEnable;
 	_playButton.events.onInputDown.onClickStart();
 		
 	// Rules button
 	_rulesButton.inputEnable;
+=======
+	// Start button
+	_playButton.inputEnable;
+	_playButton.events.onInputDown.onClickStart();
+		
+	// Rules button
+	_rulesButton.inputEnable;
+>>>>>>> 27bc3bf968c98962106b6b9eae607ed6b3108524
 	_rulesButton.events.onInputDown.onClickRules();
 	
 };
