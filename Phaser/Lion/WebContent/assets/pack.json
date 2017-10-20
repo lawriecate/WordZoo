@@ -1,0 +1,155 @@
+{
+  "startScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/1 StartScreen/MainMenu.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayButton",
+      "url": "assets/1 StartScreen/play.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "RulesButton",
+      "url": "assets/1 StartScreen/rules.png",
+      "overwrite": false
+    }
+  ],
+  "RulesScreen": [
+    {
+      "type": "image",
+      "key": "okButton",
+      "url": "assets/2 Rules/ok.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "rulesMenu",
+      "url": "assets/2 Rules/rulesMenu.png",
+      "overwrite": false
+    }
+  ],
+  "FinishScreen": [
+    {
+      "type": "image",
+      "key": "FinishBackgroun",
+      "url": "assets/4 EndScreen/endBackGround.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Unlucky",
+      "url": "assets/4 EndScreen/unlucky.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayAgain",
+      "url": "assets/4 EndScreen/playAgain.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "MoreGames",
+      "url": "assets/4 EndScreen/moreGames.png",
+      "overwrite": false
+    }
+  ],
+  "PlayScreen": [
+    {
+      "type": "image",
+      "key": "Background",
+      "url": "assets/3 Play/football_Background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Score",
+      "url": "assets/3 Play/score.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ScoreBackground",
+      "url": "assets/3 Play/score_background.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/3 Play/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": 4,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "bottom_left_dive",
+      "url": "assets/3 Play/bottom_left_dive.png",
+      "frameWidth": 480,
+      "frameHeight": 300,
+      "frameMax": 3,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "bottom_right_dive",
+      "url": "assets/3 Play/bottom_right_dive.png",
+      "frameWidth": 480,
+      "frameHeight": 300,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "goalkeeper_center",
+      "url": "assets/3 Play/goalkeeper_center.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "top_left_dive",
+      "url": "assets/3 Play/top_left_dive.png",
+      "frameWidth": 480,
+      "frameHeight": 300,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "top_right_dive",
+      "url": "assets/3 Play/top_right_dive.png",
+      "frameWidth": 480,
+      "frameHeight": 300,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "soccer_ball",
+      "url": "assets/3 Play/soccer_ball.png",
+      "frameWidth": 100,
+      "frameHeight": 100,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
+  "meta": {
+    "generated": "1508436176888",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}
