@@ -1,4 +1,3 @@
-
 // -- user code here --
 
 /* --- start generated code --- */
@@ -43,27 +42,14 @@ RulesScreen.prototype.create = function () {
 	_okButton.scale.setTo(1.75, 1.75);
 	
 	
-<<<<<<< HEAD
 	// On click OK button, return to start screen
 	function onClickOK () {
 		this.state.start('start');
-=======
-	// On click OK button, return to start screen
-	function onClickOK () {
-		this.state.start('start');
->>>>>>> 27bc3bf968c98962106b6b9eae607ed6b3108524
 	}
 	
 };
 
 /* --- end generated code --- */
-
-// onClickStart
-RulesScreen.prototype.onClickStart = function() 
-{
-	//game.state.start("Start");
-};
-
 
 
 

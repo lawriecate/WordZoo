@@ -42,22 +42,22 @@ FinishScreen.prototype.create = function () {
 	var _Unlucky = this.add.sprite(576, 96, 'Unlucky');
 	_Unlucky.scale.setTo(1.5, 1.5);
 	
-	var _PlayAgain = this.add.button(672, 384, 'PlayAgain', onClickPlay, this, null, null, null, null);
+	var _PlayAgain = this.add.button(672, 384, 'PlayAgain', null, this, null, null, null, null);
 	_PlayAgain.scale.setTo(1.5, 1.5);
 	
-	var _MoreGames = this.add.button(672, 576, 'MoreGames', onClickMore, this, null, null, null, null);
+	var _MoreGames = this.add.button(672, 576, 'MoreGames', null, this, null, null, null, null);
 	_MoreGames.scale.setTo(1.5, 1.5);
 	
 	
 	// on click play again, proceed to play screen
-	function onClickPlay () {
+	//function onClickPlay () {
 	//	game.state.start('play');
-	}
+	//}
 		
 	// on click more games, proceed to game selection screen
-	function onClickMore () {
+	//function onClickMore () {
 	// To be added
-	}
+	//}
 	
 };
 

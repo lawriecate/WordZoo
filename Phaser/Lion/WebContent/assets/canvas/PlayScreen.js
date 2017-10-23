@@ -1,5 +1,7 @@
 
 // -- user code here --
+var lion = lion || {};
+
 
 /* --- start generated code --- */
 
@@ -36,21 +38,7 @@ PlayScreen.prototype.preload = function () {
 };
 
 PlayScreen.prototype.create = function () {
-	
-	var score = 0;
-	var time = 0;
-	
-	var alphabet = ["a","b","c","d","e","f",
-					"g","h","i","j","k","l",
-					"m","n","o","p","q","r",
-					"s","t","u","v","w","x",
-					"y","z"];
-	
-	var words = 	["apple","bear","car","day","eye","fox",
-					"golf","hotel","igloo","jam","kite","lolly",
-					"moose","nose","o","pot","quest","rice",
-					"seat","table","unicorn","violin","wax","x",
-					"yellow","zebra"];
+	console.log("PS Create");
 	
 	var _Background = this.add.sprite(0, 0, 'Background');
 	_Background.scale.setTo(1.51, 1.51);
@@ -64,46 +52,262 @@ PlayScreen.prototype.create = function () {
 	var _Time = this.add.sprite(1664, 32, 'ScoreBackground');
 	_Time.scale.setTo(1.5, 1.5);
 	
-	var _TopLeft = this.add.button(544, 128, 'ScoreBackground', null, this, null, null, null, null);
-	_TopLeft.scale.setTo(1.5, 1.5);
+	topLeft = this.add.button(544, 128, 'ScoreBackground', null, this, null, null, null, null);
+	topLeft.scale.setTo(1.5, 1.5);
 	
-	var _TopRight = this.add.button(1184, 128, 'ScoreBackground', null, this, null, null, null, null);
-	_TopRight.scale.setTo(1.5, 1.5);
+	topRight = this.add.button(1184, 128, 'ScoreBackground', this.clickTR, this, null, null, null, null);
+	topRight.scale.setTo(1.5, 1.5);
 	
-	var _BottomLeft = this.add.button(544, 576, 'ScoreBackground', null, this, null, null, null, null);
-	_BottomLeft.scale.setTo(1.5, 1.5);
+	bottomLeft = this.add.button(544, 576, 'ScoreBackground', null, this, null, null, null, null);
+	bottomLeft.scale.setTo(1.5, 1.5);
 	
-	var _BottomRight = this.add.button(1184, 576, 'ScoreBackground', null, this, null, null, null, null);
-	_BottomRight.scale.setTo(1.5, 1.5);
+	bottomRight = this.add.button(1184, 576, 'ScoreBackground', null, this, null, null, null, null);
+	bottomRight.scale.setTo(1.5, 1.5);
 	
-	var _bottom_left_dive = this.add.sprite(416, 288, 'bottom_left_dive', 2);
-	_bottom_left_dive.scale.setTo(1.5, 1.5);
-	var _bottom_left_dive_bottomLeftDive = _bottom_left_dive.animations.add('bottomLeftDive', [2, 1, 0], 8, false);
-	_bottom_left_dive_bottomLeftDive.killOnComplete = true;
+	var _soccer_ball = this.add.sprite(-160, 864, 'soccer_ball', 0);
+	_soccer_ball.scale.setTo(1.5, 1.5);
 	
-	var _bottom_right_dive = this.add.sprite(800, 288, 'bottom_right_dive', 0);
-	_bottom_right_dive.scale.setTo(1.5, 1.5);
-	var _bottom_right_dive_bottomRightDive = _bottom_right_dive.animations.add('bottomRightDive', [0, 1, 2], 8, false);
-	_bottom_right_dive_bottomRightDive.killOnComplete = true;
 	
-	var _top_left_dive = this.add.sprite(480, 256, 'top_left_dive', 0);
-	_top_left_dive.scale.setTo(1.5, 1.5);
-	var _top_left_dive_topLeftDive = _top_left_dive.animations.add('topLeftDive', [0, 1, 2], 8, false);
-	_top_left_dive_topLeftDive.killOnComplete = true;
 	
-	var _top_right_dive = this.add.sprite(736, 256, 'top_right_dive', 0);
-	_top_right_dive.scale.setTo(1.5, 1.5);
-	var _top_right_dive_topRightDive = _top_right_dive.animations.add('topRightDive', [0, 1, 2], 8, false);
-	_top_right_dive_topRightDive.killOnComplete = true;
+	console.log("PS Score");
 	
-	_bottom_right_dive_bottomRightDive.play();
-	_top_right_dive_topRightDive.play();
-	_bottom_left_dive_bottomLeftDive.play();
-	_top_left_dive_topLeftDive.play();
+	// Add score
+	scoreText = this.add.text(90, 75, "Score: "+score);
+		
+	// Add time
+	timeText = this.add.text(1720, 75, "Time: "+time);
 	
+	console.log("PS TL/TR");
+	
+	// TL text
+	TLtext = this.add.text(640, 170, "TL");
+	// TR text
+	TRtext = this.add.text(1280, 170, "TR");
+	// BL text
+	BLtext = this.add.text(640, 620, "BL");
+	// BR text
+	BRtext = this.add.text(1280, 620, "BR");
+	
+	
+	console.log("PS Visible");
+	
+	// Make all buttons visible
+	topLeft.visible = true;
+	topRight.visible = true;
+	bottomLeft.visible = true;
+	bottomRight.visible = true;
+	
+	
+	
+	// Time
+	timer = this.time.create(false);
+	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
+	timer.start();
+	
+	
+	console.log("PS Bottom");
+	
+	// Set words
+	this.setWords();
 };
 
 /* --- end generated code --- */
+
+
+
+// display current time to screen (with --)
+PlayScreen.prototype.updateTime = function ()
+{	
+	// If no time remaining, game finished
+	if(time <= 0){
+		this.endGame();
+	}
+	
+	// Show time remaining
+	timeText.setText("Time: "+(--time), true);	
+};
+
+
+// display current score to screen
+PlayScreen.prototype.updateScore = function ()
+{	
+	// Show current score
+	scoreText.setText("Score: "+score, true);	
+};
+
+
+
+
+
+// hide/display word display buttons (boolean)
+PlayScreen.prototype.showButtons = function (isVisible)
+{
+	console.log("showButtom: "+isVisible);
+	
+	TLtext.visible = isVisible;
+	TRtext.visible = isVisible;
+	BRtext.visible = isVisible;
+	BLtext.visible = isVisible;
+	
+	topLeft.visible = isVisible;
+	topRight.visible = isVisible;
+	bottomLeft.visible = isVisible;
+	bottomRight.visible = isVisible;
+};
+
+
+
+
+
+
+// onClick top right button
+PlayScreen.prototype.clickTR = function ()
+{			
+	// hide all buttons
+	this.showButtons(false);
+	
+	// check if answer is correct
+	if(correctLocation == "TR"){
+		// Keeper BL
+		// Ball TR score
+		score++;
+	}else{
+		// Keeper TR
+		// Ball TR save
+		lives--;
+	}
+	
+	// on animation complete -> 
+	this.reset();
+};
+
+
+
+
+//Reset after word selection
+PlayScreen.prototype.reset = function ()
+{	
+	// update score
+	this.updateScore();
+	
+	// update lives
+	
+	// show buttons
+	this.showButtons(true);
+	
+	// Wipe previous data from buttons
+	TLtext.setText("");
+	TRtext.setText("");
+	BLtext.setText("");
+	TRtext.setText("");
+	
+	// hide all animations
+	// show goal keeper
+	// ball roll in (on complete, allow button click)
+	
+	// setWord
+	this.setWords();
+};
+
+
+
+
+// setWords
+PlayScreen.prototype.setWords = function ()
+{	
+	console.log("setWords");
+	
+	
+	// show all buttons
+	this.showButtons(true);
+	
+	// get the next word from word bank
+	correctWord = words[index++ % words.length];
+
+	// Random number between 1 and 4 for position of correct
+	//	*** For testing, hard code to TR ***
+	var random = 1;	//Math.floor((Math.random() * 4) + 0);
+	switch(random){
+		case 0: correctLocation = "TL";
+				TLtext.setText(correctWord);
+				TRtext.setText(this.genIncorrect());
+				BLtext.setText(this.genIncorrect());
+				BRtext.setText(this.genIncorrect());
+				break;
+				
+		case 1: correctLocation = "TR";
+				TLtext.setText(this.genIncorrect());
+				TRtext.setText(correctWord);
+				BLtext.setText(this.genIncorrect());
+				BRtext.setText(this.genIncorrect());
+				break;
+		
+		case 2: correctLocation = "BL";
+				TLtext.setText(this.genIncorrect());
+				TRtext.setText(this.genIncorrect());
+				BLtext.setText(correctWord);
+				BRtext.setText(this.genIncorrect());
+				break;
+				
+		case 3: correctLocation = "BR";
+				TLtext.setText(this.genIncorrect());
+				TRtext.setText(this.genIncorrect());
+				BLtext.setText(this.genIncorrect());
+				BRtext.setText(correctWord);
+				break;
+	}
+};
+
+
+// set wrong words to other buttons
+// *** Not unique ***
+PlayScreen.prototype.genIncorrect = function ()
+{	
+	// Random positions to add incorrect letter into correct word
+	var positionIndex = Math.floor(Math.random() * correctWord.length);
+	
+	// Random positions to add incorrect letter into correct word
+	var letterIndex = Math.floor(Math.random() * letters.length);
+
+	// Return word with incorrect letter replacing 
+	var newWord = correctWord.substr(0,positionIndex)
+		+ letters[letterIndex]
+		+ correctWord.substr((positionIndex + 1), (correctWord.length - 1));
+
+	
+	// If changes haven't changed spelling or same wrong spelling -> retry, else return
+	if(newWord == correctWord){
+		return this.genIncorrect();
+	}else if(newWord == TLtext || newWord == TRtext || newWord == BLtext || newWord == BRtext){
+		return this.genIncorrect();
+	}
+	
+	// Return unique incorrect word
+	return newWord;
+};
+
+
+// Check lives, if 0 -> finish game
+PlayScreen.prototype.checkLives = function() 
+{
+	if(lives <= 0){
+		this.endGame();
+	}
+};
+
+
+
+
+
+
+// Game has finished, move to finish state
+PlayScreen.prototype.endGame = function() 
+{
+	this.state.start('finish');
+};
+
+
+
 
 
 // HelloWorld for *Testing*

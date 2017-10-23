@@ -50,7 +50,8 @@ StartScreen.prototype.create = function () {
 	
 	// on click play button, proceed to play screen
 	function onClickPlay () {
-		this.state.start('play');
+		this.state.start('play', true, false, {scoreIn: 0}, {timeIn: 60});
+		//this.state.start('play');
 	}
 		
 	// on click rules button, proceed to rules screen

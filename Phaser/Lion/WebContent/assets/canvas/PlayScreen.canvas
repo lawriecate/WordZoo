@@ -19,7 +19,7 @@
       200
     ],
     "showGrid": false,
-    "create_before": "var score = 0;\nvar time = 0;\n\nvar alphabet = [\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\n\t\t\t\t\"g\",\"h\",\"i\",\"j\",\"k\",\"l\",\n\t\t\t\t\"m\",\"n\",\"o\",\"p\",\"q\",\"r\",\n\t\t\t\t\"s\",\"t\",\"u\",\"v\",\"w\",\"x\",\n\t\t\t\t\"y\",\"z\"];\n\nvar words = \t[\"apple\",\"bear\",\"car\",\"day\",\"eye\",\"fox\",\n\t\t\t\t\"golf\",\"hotel\",\"igloo\",\"jam\",\"kite\",\"lolly\",\n\t\t\t\t\"moose\",\"nose\",\"o\",\"pot\",\"quest\",\"rice\",\n\t\t\t\t\"seat\",\"table\",\"unicorn\",\"violin\",\"wax\",\"x\",\n\t\t\t\t\"yellow\",\"zebra\"];\n"
+    "create_after": "// Add score\nscoreText = this.add.text(90, 75, \"Score: \"+score);\n\t\n// Add time\ntimeText = this.add.text(1720, 75, \"Time: \"+time);\n\n\t\n// Time\n// *** Called only once ***\ntimer = this.time.create(false);\ntimer.loop(1000, this.updateTime(), this);\ntimer.start(0);"
   },
   "stateSettings": {
     "scaleMode": "SHOW_ALL",
@@ -94,7 +94,6 @@
           "asset": "2",
           "info": {
             "editorName": "TopLeft",
-            "editorShow": false,
             "x": 544,
             "y": 128,
             "scale.x": 1.5,
@@ -107,11 +106,11 @@
           "asset": "2",
           "info": {
             "editorName": "TopRight",
-            "editorShow": false,
             "x": 1184,
             "y": 128,
             "scale.x": 1.5,
-            "scale.y": 1.5
+            "scale.y": 1.5,
+            "callback": ""
           }
         },
         {
@@ -120,7 +119,6 @@
           "asset": "2",
           "info": {
             "editorName": "BottomLeft",
-            "editorShow": false,
             "x": 544,
             "y": 576,
             "scale.x": 1.5,
@@ -133,7 +131,6 @@
           "asset": "2",
           "info": {
             "editorName": "BottomRight",
-            "editorShow": false,
             "x": 1184,
             "y": 576,
             "scale.x": 1.5,
@@ -142,94 +139,14 @@
         },
         {
           "type": "spritesheet",
-          "id": "2e40e15f-33ad-43fc-8af5-42796fc42fef",
+          "id": "3ccb8558-a7c6-449b-a1d1-c97d901c85e1",
           "asset": "3",
           "info": {
-            "editorName": "bottom_left_dive",
-            "editorShow": false,
-            "x": 416,
-            "y": 288,
+            "editorName": "soccer_ball",
+            "x": -160,
+            "y": 864,
             "scale.x": 1.5,
-            "scale.y": 1.5,
-            "animations": [{
-              "name": "bottomLeftDive",
-              "frameRate": 8,
-              "killOnComplete": true,
-              "frames": [
-                "2",
-                "1",
-                "0"
-              ]
-            }]
-          }
-        },
-        {
-          "type": "spritesheet",
-          "id": "b8fd199d-f16e-4786-83da-bd5a7191bdef",
-          "asset": "4",
-          "info": {
-            "editorName": "bottom_right_dive",
-            "editorShow": false,
-            "x": 800,
-            "y": 288,
-            "scale.x": 1.5,
-            "scale.y": 1.5,
-            "animations": [{
-              "name": "bottomRightDive",
-              "frameRate": 8,
-              "killOnComplete": true,
-              "frames": [
-                "0",
-                "1",
-                "2"
-              ]
-            }]
-          }
-        },
-        {
-          "type": "spritesheet",
-          "id": "f9a9ea42-afec-4612-bf2f-82115ce6181e",
-          "asset": "5",
-          "info": {
-            "editorName": "top_left_dive",
-            "editorShow": false,
-            "x": 480,
-            "y": 256,
-            "scale.x": 1.5,
-            "scale.y": 1.5,
-            "animations": [{
-              "name": "topLeftDive",
-              "frameRate": 8,
-              "killOnComplete": true,
-              "frames": [
-                "0",
-                "1",
-                "2"
-              ]
-            }]
-          }
-        },
-        {
-          "type": "spritesheet",
-          "id": "b6ac9fa8-6724-490f-b700-bed887de8fbd",
-          "asset": "6",
-          "info": {
-            "editorName": "top_right_dive",
-            "editorShow": false,
-            "x": 736,
-            "y": 256,
-            "scale.x": 1.5,
-            "scale.y": 1.5,
-            "animations": [{
-              "name": "topRightDive",
-              "frameRate": 8,
-              "killOnComplete": true,
-              "frames": [
-                "0",
-                "1",
-                "2"
-              ]
-            }]
+            "scale.y": 1.5
           }
         }
       ]
@@ -255,25 +172,7 @@
     "3": {
       "file": "WebContent/assets/pack.json",
       "section": "PlayScreen",
-      "asset": "bottom_left_dive",
-      "sprite": "2"
-    },
-    "4": {
-      "file": "WebContent/assets/pack.json",
-      "section": "PlayScreen",
-      "asset": "bottom_right_dive",
-      "sprite": "0"
-    },
-    "5": {
-      "file": "WebContent/assets/pack.json",
-      "section": "PlayScreen",
-      "asset": "top_left_dive",
-      "sprite": "0"
-    },
-    "6": {
-      "file": "WebContent/assets/pack.json",
-      "section": "PlayScreen",
-      "asset": "top_right_dive",
+      "asset": "soccer_ball",
       "sprite": "0"
     }
   },
