@@ -20,6 +20,44 @@ var Level_proto = Object.create(Phaser.State.prototype);
 Level.prototype = Level_proto;
 Level.prototype.constructor = Level;
 
+var keyboard; //Keyboard Group
+var targetWord;
+var input; //The Inputted Word
+var text;
+var numberInputted = 0;
+var lengthOfWord = 6;
+//Global reference of this
+var game;
+var clock;
+var initialTime = 60;
+var timeAllowed = 60;
+
+//Spawn the Clock and Keyboard
+var keyBoardSpawned = false;
+
+//Microstates - Mini states of animations
+var microStateUserInput = true; //Asking the User to Enter a word
+var microStateSpellAnimation = false; //The result, Either firing that object or the failed animation
+var microStateopponentsTurn = false;  //Opponents go and then their subsequent animation
+
+//Selectedable words (0-4) are Player, (5-9) Are the Opponent
+var words;
+
+//Spell Options
+var asset0;
+var asset1;
+var asset2;
+var asset3;
+var asset4;
+var asset5;
+var asset6;
+var asset7;
+var asset8;
+var asset9;
+
+var _goodOwlArm;
+var _badOwlArm;
+
 Level.prototype.init = function () {
 	
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -32,25 +70,40 @@ Level.prototype.init = function () {
 Level.prototype.preload = function () {
 	
 	this.load.pack('PlayState', 'assets/pack.json');
+	//Load the Assets
+	this.load.image('Apple','assets/testAssets/Apple.png');
+	this.load.image('Bear' ,'assets/testAssets/Bear.png');
+	this.load.image('Bird' ,'assets/testAssets/Bird.png' );
+	this.load.image('Boat' ,'assets/testAssets/Boat.png');
+	this.load.image('Book' ,'assets/testAssets/Book.png');
+	this.load.image('Car' ,'assets/testAssets/Car.png');
+	this.load.image('Cheese' ,'assets/testAssets/Cheese.png');
+	this.load.image('Cone' ,'assets/testAssets/Cone.png');
+	this.load.image('Dog' ,'assets/testAssets/Dog.png');
+	this.load.image('Hat' ,'assets/testAssets/Hat.png')
 	
 };
 
+
+
 Level.prototype.create = function () {
+	//Create global reference of this
+	game = this;
+	//Load Assets
 	this.add.sprite(0, 0, 'background');
 	
-	this.add.sprite(1546, 1, 'scroll2');
-	
-	this.add.sprite(2, 1, 'scroll');
-	
+
 	this.add.sprite(413, 390, 'goodOwlBody');
 	
 	this.add.sprite(1295, 391, 'badOwlBody');
 	
-	var _goodOwlArm = this.add.sprite(524, 811, 'goodOwlArm');
-	_goodOwlArm.angle = -119.99999999999999;
+	_goodOwlArm = this.add.sprite(496, 668, 'goodOwlArm');
+	_goodOwlArm.angle = -90;
+	_goodOwlArm.anchor.set(0.6,0.1);
 	
-	var _badOwlArm = this.add.sprite(1469, 687, 'badOwlArm');
-	_badOwlArm.angle = 119.99999999999999;
+	_badOwlArm = this.add.sprite(1440, 668, 'badOwlArm');
+	_badOwlArm.angle = 90;
+	_badOwlArm.anchor.set(0.3,0.1);
 	
 	this.add.sprite(635, 69, 'chosenWord');
 	
@@ -58,111 +111,461 @@ Level.prototype.create = function () {
 	
 	this.add.sprite(388, 870, 'YouHealth');
 	
-	var _group = this.add.group();
-	_group.position.setTo(341, -614);
+	this.add.sprite(1546, 1, 'scroll2');
 	
-	this.add.sprite(61, 1776, 'KeyBoardBackground', null, _group);
+	this.add.sprite(2, 1, 'scroll');
 	
-	var _a = this.add.sprite(151, 1875, 'KeyBoard', 'a', _group);
-	_a.anchor.setTo(0.5, 0.5);
+	//Keyboard
+	keyboard = this.add.group();
+	keyboard.position.setTo(350, 0);
 	
-	var _B = this.add.sprite(301, 1875, 'KeyBoard', 'B', _group);
+	this.add.sprite(61, 1776, 'KeyBoardBackground', null, keyboard);
+	
+	var _A = this.add.sprite(151, 1875, 'KeyBoard', 'a', keyboard);
+	_A.anchor.setTo(0.5, 0.5);
+	
+	var _B = this.add.sprite(301, 1875, 'KeyBoard', 'B', keyboard);
 	_B.anchor.setTo(0.5, 0.5);
 	
-	var _C = this.add.sprite(451, 1875, 'KeyBoard', 'C', _group);
+	var _C = this.add.sprite(451, 1875, 'KeyBoard', 'C', keyboard);
 	_C.anchor.setTo(0.5, 0.5);
 	
-	var _D = this.add.sprite(601, 1875, 'KeyBoard', 'D', _group);
+	var _D = this.add.sprite(601, 1875, 'KeyBoard', 'D', keyboard);
 	_D.anchor.setTo(0.5, 0.5);
 	
-	var _E = this.add.sprite(751, 1875, 'KeyBoard', 'E', _group);
+	var _E = this.add.sprite(751, 1875, 'KeyBoard', 'E', keyboard);
 	_E.anchor.setTo(0.5, 0.5);
 	
-	var _F = this.add.sprite(901, 1875, 'KeyBoard', 'F', _group);
+	var _F = this.add.sprite(901, 1875, 'KeyBoard', 'F', keyboard);
 	_F.anchor.setTo(0.5, 0.5);
 	
-	var _G = this.add.sprite(1051, 1875, 'KeyBoard', 'G', _group);
+	var _G = this.add.sprite(1051, 1875, 'KeyBoard', 'G', keyboard);
 	_G.anchor.setTo(0.5, 0.5);
 	
-	var _H = this.add.sprite(151, 2025, 'KeyBoard', 'H', _group);
+	var _H = this.add.sprite(151, 2025, 'KeyBoard', 'H', keyboard);
 	_H.anchor.setTo(0.5, 0.5);
 	
-	var _I = this.add.sprite(301, 2025, 'KeyBoard', 'I', _group);
+	var _I = this.add.sprite(301, 2025, 'KeyBoard', 'I', keyboard);
 	_I.anchor.setTo(0.5, 0.5);
 	
-	var _J = this.add.sprite(451, 2025, 'KeyBoard', 'J', _group);
+	var _J = this.add.sprite(451, 2025, 'KeyBoard', 'J', keyboard);
 	_J.anchor.setTo(0.5, 0.5);
 	
-	var _K = this.add.sprite(601, 2025, 'KeyBoard', 'K', _group);
+	var _K = this.add.sprite(601, 2025, 'KeyBoard', 'K', keyboard);
 	_K.anchor.setTo(0.5, 0.5);
 	
-	var _L = this.add.sprite(751, 2025, 'KeyBoard', 'L', _group);
+	var _L = this.add.sprite(751, 2025, 'KeyBoard', 'L', keyboard);
 	_L.anchor.setTo(0.5, 0.5);
 	
-	var _M = this.add.sprite(901, 2025, 'KeyBoard', 'M', _group);
+	var _M = this.add.sprite(901, 2025, 'KeyBoard', 'M', keyboard);
 	_M.anchor.setTo(0.5, 0.5);
 	
-	var _N = this.add.sprite(1051, 2025, 'KeyBoard', 'N', _group);
+	var _N = this.add.sprite(1051, 2025, 'KeyBoard', 'N', keyboard);
 	_N.anchor.setTo(0.5, 0.5);
 	
-	var _O = this.add.sprite(151, 2175, 'KeyBoard', 'O', _group);
+	var _O = this.add.sprite(151, 2175, 'KeyBoard', 'O', keyboard);
 	_O.anchor.setTo(0.5, 0.5);
 	
-	var _P = this.add.sprite(301, 2175, 'KeyBoard', 'P', _group);
+	var _P = this.add.sprite(301, 2175, 'KeyBoard', 'P', keyboard);
 	_P.anchor.setTo(0.5, 0.5);
 	
-	var _Q = this.add.sprite(451, 2175, 'KeyBoard', 'Q', _group);
+	var _Q = this.add.sprite(451, 2175, 'KeyBoard', 'Q', keyboard);
 	_Q.anchor.setTo(0.5, 0.5);
 	
-	var _R = this.add.sprite(601, 2175, 'KeyBoard', 'R', _group);
+	var _R = this.add.sprite(601, 2175, 'KeyBoard', 'R', keyboard);
 	_R.anchor.setTo(0.5, 0.5);
 	
-	var _S = this.add.sprite(751, 2175, 'KeyBoard', 'S', _group);
+	var _S = this.add.sprite(751, 2175, 'KeyBoard', 'S', keyboard);
 	_S.anchor.setTo(0.5, 0.5);
 	
-	var _t = this.add.sprite(901, 2175, 'KeyBoard', 't', _group);
-	_t.anchor.setTo(0.5, 0.5);
+	var _T = this.add.sprite(901, 2175, 'KeyBoard', 't', keyboard);
+	_T.anchor.setTo(0.5, 0.5);
 	
-	var _U = this.add.sprite(1051, 2175, 'KeyBoard', 'U', _group);
+	var _U = this.add.sprite(1051, 2175, 'KeyBoard', 'U', keyboard);
 	_U.anchor.setTo(0.5, 0.5);
 	
-	var _V = this.add.sprite(301, 2325, 'KeyBoard', 'V', _group);
+	var _V = this.add.sprite(301, 2325, 'KeyBoard', 'V', keyboard);
 	_V.anchor.setTo(0.5, 0.5);
 	
-	var _W = this.add.sprite(451, 2325, 'KeyBoard', 'W', _group);
+	var _W = this.add.sprite(451, 2325, 'KeyBoard', 'W', keyboard);
 	_W.anchor.setTo(0.5, 0.5);
 	
-	var _X = this.add.sprite(601, 2325, 'KeyBoard', 'X', _group);
+	var _X = this.add.sprite(601, 2325, 'KeyBoard', 'X', keyboard);
 	_X.anchor.setTo(0.5, 0.5);
 	
-	var _Y = this.add.sprite(751, 2325, 'KeyBoard', 'Y', _group);
+	var _Y = this.add.sprite(751, 2325, 'KeyBoard', 'Y', keyboard);
 	_Y.anchor.setTo(0.5, 0.5);
 	
-	var _Z = this.add.sprite(901, 2325, 'KeyBoard', 'Z', _group);
+	var _Z = this.add.sprite(901, 2325, 'KeyBoard', 'Z', keyboard);
 	_Z.anchor.setTo(0.5, 0.5);
 	
-	var _Space = this.add.sprite(601, 2475, 'KeyBoard', 'Space', _group);
+	var _Space = this.add.sprite(601, 2475, 'KeyBoard', 'Space', keyboard);
 	_Space.anchor.setTo(0.5, 0.5);
 	
-	var _Enter = this.add.sprite(1392, 1786, 'KeyBoard', 'Enter1');
-	_Enter.anchor.setTo(0.5, 0.5);
-	
-	var _Enter1 = this.add.sprite(1258, 1858, 'KeyBoard', 'Enter2');
+	var _Enter1 = this.add.sprite(1051, 2325+75, 'KeyBoard', 'Enter1',keyboard);
 	_Enter1.anchor.setTo(0.5, 0.5);
 	
-	var _Delete = this.add.sprite(493, 1784, 'KeyBoard', 'Delete1');
-	_Delete.anchor.setTo(0.5, 0.5);
+	var _Enter2 = this.add.sprite(916, 2325+147, 'KeyBoard', 'Enter2',keyboard);
+	_Enter2.anchor.setTo(0.5, 0.5);
 	
-	var _Delete1 = this.add.sprite(627, 1856, 'KeyBoard', 'Delete2');
+	var _Delete1 = this.add.sprite(151, 2325+75, 'KeyBoard', 'Delete1',keyboard);
 	_Delete1.anchor.setTo(0.5, 0.5);
 	
+	var _Delete2 = this.add.sprite(301-16, 2325+147, 'KeyBoard', 'Delete2',keyboard);
+	_Delete2.anchor.setTo(0.5, 0.5);
 	
+	//Enabled Inputs
+	_A.inputEnabled = true;
+	_B.inputEnabled = true;
+	_C.inputEnabled = true;
+	_D.inputEnabled = true;
+	_E.inputEnabled = true;
+	_F.inputEnabled = true;
+	_G.inputEnabled = true;
+	_H.inputEnabled = true;
+	_I.inputEnabled = true;
+	_J.inputEnabled = true;
+	_K.inputEnabled = true;
+	_L.inputEnabled = true;
+	_M.inputEnabled = true;
+	_N.inputEnabled = true;
+	_O.inputEnabled = true;
+	_P.inputEnabled = true;
+	_Q.inputEnabled = true;
+	_R.inputEnabled = true;
+	_S.inputEnabled = true;
+	_T.inputEnabled = true;
+	_U.inputEnabled = true;
+	_V.inputEnabled = true;
+	_W.inputEnabled = true;
+	_X.inputEnabled = true;
+	_Y.inputEnabled = true;
+	_Z.inputEnabled = true;
+	_Delete1.inputEnabled = true;
+	_Delete2.inputEnabled = true;
+	_Enter1.inputEnabled = true;
+	_Enter2.inputEnabled = true;
+	_Space.inputEnabled = true;
 	
-	// public fields
+	//Initialise the Text Field with formatting
+	var style = {font: "90px Arial", fill: '#FF9933', align: "center", fontWeight: 'bold'};
+	text = this.add.text(this.game.world.centerX,170,"",style);
+	text.anchor.x = 0.5;
+	text.anchor.y = 0.5;
 	
-	this.fSpace = _Space;
+	//Clock Spawning
+	style = {font: "50px Arial", fill: '#FFFFFF', align: "center", fontWeight: 'bold'};
+	clock = this.add.text(this.game.world.centerX,40,"Timer: ",style);
+	clock.anchor.x = 0.5;
+	clock.anchor.y = 0.5;
+	
+	//Add Triggers for the keyboard
+    _A.events.onInputDown.add(addLetter,{keyPressed : 'A', button: _A});
+	_B.events.onInputDown.add(addLetter,{keyPressed : 'B', button: _B});
+	_C.events.onInputDown.add(addLetter,{keyPressed : 'C', button: _C});
+	_D.events.onInputDown.add(addLetter,{keyPressed : 'D', button: _D});
+	_E.events.onInputDown.add(addLetter,{keyPressed : 'E', button: _E});
+	_F.events.onInputDown.add(addLetter,{keyPressed : 'F', button: _F});
+	_G.events.onInputDown.add(addLetter,{keyPressed : 'G', button: _G});
+	_H.events.onInputDown.add(addLetter,{keyPressed : 'H', button: _H});
+	_I.events.onInputDown.add(addLetter,{keyPressed : 'I', button: _I});
+	_J.events.onInputDown.add(addLetter,{keyPressed : 'J', button: _J});
+	_K.events.onInputDown.add(addLetter,{keyPressed : 'K', button: _K});
+	_L.events.onInputDown.add(addLetter,{keyPressed : 'L', button: _L});
+	_M.events.onInputDown.add(addLetter,{keyPressed : 'M', button: _M});
+	_N.events.onInputDown.add(addLetter,{keyPressed : 'N', button: _N});
+	_O.events.onInputDown.add(addLetter,{keyPressed : 'O', button: _O});
+	_P.events.onInputDown.add(addLetter,{keyPressed : 'P', button: _P});
+	_Q.events.onInputDown.add(addLetter,{keyPressed : 'Q', button: _Q});
+	_R.events.onInputDown.add(addLetter,{keyPressed : 'R', button: _R});
+	_S.events.onInputDown.add(addLetter,{keyPressed : 'S', button: _S});
+	_T.events.onInputDown.add(addLetter,{keyPressed : 'T', button: _T});
+	_U.events.onInputDown.add(addLetter,{keyPressed : 'U', button: _U});
+	_V.events.onInputDown.add(addLetter,{keyPressed : 'V', button: _V});
+	_W.events.onInputDown.add(addLetter,{keyPressed : 'W', button: _W});
+	_X.events.onInputDown.add(addLetter,{keyPressed : 'X', button: _X});
+	_Y.events.onInputDown.add(addLetter,{keyPressed : 'Y', button: _Y});
+	_Z.events.onInputDown.add(addLetter,{keyPressed : 'Z', button: _Z});
+	_Space.events.onInputDown.add(addLetter,{keyPressed : ' ', button: _Space});
+	_Delete1.events.onInputDown.add(clearLetters,{button: _Delete1, button2: _Delete2});
+	_Delete2.events.onInputDown.add(clearLetters,{button: _Delete1, button2: _Delete2});
+	_Enter1.events.onInputDown.add(enterAnswer,{button: _Enter1 , button2: _Enter2});
+	_Enter2.events.onInputDown.add(enterAnswer,{button: _Enter1 , button2: _Enter2});
+	
+	//Load the Assets and Words
+	//TODO - These will be pulled from a server eventually, but for now are local and hardcoded
+	words = new Array();
+	//Player
+	words[0] = "Apple";
+	words[1] = "Bear";
+	words[2] = "Car";
+	words[3] = "Boat";
+	words[4] = "Cheese";
+	words[5] = "Bird";
+	words[6] = "Book";
+	words[7] = "Cone";
+	words[8] = "Dog";
+	words[9] = "Hat";
+	
+	//Load Images
+	//game.load.image('Apple','assets/testAssets/Apple.png');
+	//this.add.sprite(500,500,'Apple');
+	asset0 = this.add.sprite(180,196+30,'Apple');
+	asset0.anchor.setTo(0.5,0.5);
+	asset1 = this.add.sprite(180,196+160+50,'Bear');
+	asset1.anchor.setTo(0.5,0.5);
+	asset2 = this.add.sprite(180,196+160+160+50,'Car');
+	asset2.anchor.setTo(0.5,0.5);
+	asset3 = this.add.sprite(180,196+160+160+160+50,'Boat');
+	asset3.anchor.setTo(0.5,0.5);
+	asset4 = this.add.sprite(180,196+160+160+160+160+50,'Cheese');
+	asset4.anchor.setTo(0.5,0.5);
+	asset5 = this.add.sprite(1730,196+30,'Bird');
+	asset5.anchor.setTo(0.5,0.5);
+	asset6 = this.add.sprite(1730,196+160+50,'Book');
+	asset6.anchor.setTo(0.5,0.5);
+	asset7 = this.add.sprite(1730,196+160+160+50,'Cone');
+	asset7.anchor.setTo(0.5,0.5);
+	asset8 = this.add.sprite(1730,196+160+160+160+50,'Dog');
+	asset8.anchor.setTo(0.5,0.5);
+	asset9 = this.add.sprite(1730,196+160+160+160+160+50,'Hat');
+	asset9.anchor.setTo(0.5,0.5);
+	//Enabled Inputs
+	asset0.inputEnabled = true;
+	asset1.inputEnabled = true;
+	asset2.inputEnabled = true;
+	asset3.inputEnabled = true;
+	asset4.inputEnabled = true;
+	asset5.inputEnabled = true;
+	asset6.inputEnabled = true;
+	asset7.inputEnabled = true;
+	asset8.inputEnabled = true;
+	asset9.inputEnabled = true;
+	//selectSpell
+	//	_Z.events.onInputDown.add(addLetter,{keyPressed : 'Z', button: _Z});
+	asset0.events.onInputDown.add(selectSpell,{button: asset0, selected:0});
+	asset1.events.onInputDown.add(selectSpell,{button: asset1, selected:1});
+	asset2.events.onInputDown.add(selectSpell,{button: asset2, selected:2});
+	asset3.events.onInputDown.add(selectSpell,{button: asset3, selected:3});
+	asset4.events.onInputDown.add(selectSpell,{button: asset4, selected:4});
+	asset5.events.onInputDown.add(selectSpell,{button: asset5, selected:5});
+	asset6.events.onInputDown.add(selectSpell,{button: asset6, selected:6});
+	asset7.events.onInputDown.add(selectSpell,{button: asset7, selected:7});
+	asset8.events.onInputDown.add(selectSpell,{button: asset8, selected:8});
+	asset9.events.onInputDown.add(selectSpell,{button: asset9, selected:9});
+
+	
+	//Scale Up
+	asset0.scale.setTo(2,2);
+	asset1.scale.setTo(2,2);
+	asset2.scale.setTo(2,2);
+	asset3.scale.setTo(2,2);
+	asset4.scale.setTo(2,2);
+	asset5.scale.setTo(2,2);
+	asset6.scale.setTo(2,2);
+	asset7.scale.setTo(2,2);
+	asset8.scale.setTo(2,2);
+	asset9.scale.setTo(2,2);
+
+	//Intialise Array
+	input = new Array();
+	//Set it as a blank word
+	clearLetters();
+	spawnClock();
+	
+	//Small Delay at the start to show the scene, and then add the keyboard
+	setTimeout(moveKeyBoardUp,1000);
+
 	
 };
 
-/* --- end generated code --- */
-// -- user code here --
+/**
+ * Updates the Text field to add the letter that is pressed
+ */
+function addLetter(){	
+	//Makes Key expand, When completes, reset's to the original Size
+	var tween1 = game.add.tween(this.button.scale).to({x:2 , y:2},70,"Linear",true);
+	tween1.onComplete.add(resetObjectSize,{button: this.button});
+	
+	//Set the inputted letter to that selection, making sure not to input more than the length of the word
+	if(numberInputted != lengthOfWord){
+		input[numberInputted] = this.keyPressed;
+		numberInputted++;	
+	}
+	//Create a string, and because it's an array, remove the commas and replace it with spaces
+	var temp = "" + input;
+	text.text = temp.replace(/\,/g," ");
+	
+}
+
+
+
+/**
+ * Whatever object is passed here, will return to it's normal size
+ */
+function resetObjectSize(){
+	game.add.tween(this.button.scale).to({x:1 , y:1},70,"Linear",true);
+}
+
+/**
+ * Reset the button to it's original size
+ */
+function resetButtonSize(){
+	game.add.tween(this.button.scale).to({x:2 , y:2},70,"Linear",true);
+}
+
+/**
+ * Select the Spell 
+ */
+function selectSpell(){
+	//Animation for selecting button
+	var tween1 = game.add.tween(this.button.scale).to({x:4 , y:4},70,"Linear",true);
+	tween1.onComplete.add(resetButtonSize,{button: this.button});
+	//Change the word to this
+	console.log(this.selected);
+	targetWord = "" + words[this.selected];
+	lengthOfWord = targetWord.length;
+	console.log(targetWord);
+	clearLetters();
+}
+
+
+/**
+ * Updates the text field to blank dashes
+ */
+function clearLetters(){
+	//Create blank Strings
+	input = new Array();
+	for(var i = 0; i < lengthOfWord; i++){
+		input[i] = "_"; 
+	}
+	
+	//Create a string, and because it's an array, remove the commas and replace it with spaces
+	var temp = "" + input;
+	text.text = temp.replace(/\,/g," ");	
+	
+	numberInputted = 0;
+}
+
+/**
+ * Checks if the answer is correct
+ * Then goes to the appropiate state
+ */
+function enterAnswer(){
+	moveKeyBoardDown();
+	//Check if the Word is correct
+	if(input == targetWord){
+		playerGoodSpell();
+	} else {
+		playerBadSpell();
+	}
+}
+
+/**
+ * Moves the Keyboard onto screen
+ */
+function moveKeyBoardUp(){
+	//Move Keyboard onto Screen
+	for(var i = 0 ; i < keyboard.countLiving() ; i++){
+		//keyboard.getAt(i).position.y -= 1500;
+		game.add.tween(keyboard.getAt(i)).to({y: (keyboard.getAt(i).y - 1500)},1500, "Linear", true);
+	}
+	keyBoardSpawned = true;
+}
+
+/**
+ * Moves the Keyboard off the Screen
+ */
+function moveKeyBoardDown(){
+	//Move Keyboard onto Screen
+	for(var i = 0 ; i < keyboard.countLiving() ; i++){
+		game.add.tween(keyboard.getAt(i)).to({y: (keyboard.getAt(i).y + 1500)},1500, "Linear", true);
+	}
+	keyBoardSpawned = false;
+}
+
+/**
+ * Highlight the error
+ * Play the animation
+ * Signal It is the opponent's Turn
+ */
+function playerBadSpell(){
+	//	game.camera.shake(0.02, 250);
+}
+
+/**
+ * Highlight the error
+ * Play the animation
+ * Signal It is the Player's Turn
+ */
+function opponentBadSpell(){
+	
+}
+
+/**
+ * Play the Animation
+ * Update Health
+ * Signal it is the Opponent's Turn
+ */
+function playerGoodSpell(){
+
+}
+
+/**
+ * Play the Animation
+ * Update Health
+ * Signal it is the Player's Turn
+ */
+function opponentGoodSpell(){
+	
+}
+
+/**
+ * Determine if the answer given is correct or not. 
+ * It will then go to the Good or Bad Spell Function as appropiate 
+ */
+function decideCorrectness(){
+	
+}
+
+//Spawns the Clock which forces the User to input spells
+function spawnClock(){
+  initialTime = Math.floor(this.game.time.time / 1000);
+  clockSpawned = true;
+}
+
+
+
+/**
+ * Update Function, Called Every Frame
+ */
+Level.prototype.update = function(){
+	
+	//User Input
+		//If All elements are spawned Spawned, check time -> If <= 0 , then failed animation , else Spawn a new Clock
+		//Make Sure Keyboard is Up
+		//Enabled Buttons for the selection of words
+	if(microStateUserInput){
+		// Clock
+		var timeRemaining = Math.floor((timeAllowed - ((this.game.time.time / 1000) - initialTime)));
+		//If Clock is less than 0, then go to failed animation
+		if(timeRemaining <= 0){
+			clock.text = "";
+		} else {
+			clock.text = "Time: " + timeRemaining;
+		}
+	}
+		
+	//Spell Animation
+		//Complete Animation
+	
+	//Opponents turn
+		//Attempt word on Probability
+		//Set Animation to true
+	
+}
+
+
+
+
+
