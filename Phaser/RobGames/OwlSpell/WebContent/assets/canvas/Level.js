@@ -25,7 +25,7 @@ var targetWord;
 var input; //The Inputted Word
 var text;
 var numberInputted = 0;
-var lengthOfWord = 6;
+var lengthOfWord;
 //Global reference of this
 var game;
 var clock;
@@ -40,26 +40,18 @@ var microStateUserInput = true; //Asking the User to Enter a word
 var microStateSpellAnimation = false; //The result, Either firing that object or the failed animation
 var microStateopponentsTurn = false;  //Opponents go and then their subsequent animation
 
-//Selectedable words (0-4) are Player, (5-9) Are the Opponent
-var words;
-
-//Spell Options
-var asset0;
-var asset1;
-var asset2;
-var asset3;
-var asset4;
-var asset5;
-var asset6;
-var asset7;
-var asset8;
-var asset9;
-
 var _goodOwlArm;
 var _badOwlArm;
 
+//Words, Sprites and enabled
+var assets;
+var selectedSpell;
+var previousPlayerSpell;
+var previousOpponentSpell;
+var highLightCircle;
+
 Level.prototype.init = function () {
-	
+		
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
@@ -68,8 +60,14 @@ Level.prototype.init = function () {
 };
 
 Level.prototype.preload = function () {
-	
+	//Load JSON Images
 	this.load.pack('PlayState', 'assets/pack.json');
+	assets = new Array();
+	//Creates the asset array of blank objects
+	for(var i = 0; i < 10; i++){
+		assets[i] = new Object();
+	}
+	
 	//Load the Assets
 	this.load.image('Apple','assets/testAssets/Apple.png');
 	this.load.image('Bear' ,'assets/testAssets/Bear.png');
@@ -81,10 +79,10 @@ Level.prototype.preload = function () {
 	this.load.image('Cone' ,'assets/testAssets/Cone.png');
 	this.load.image('Dog' ,'assets/testAssets/Dog.png');
 	this.load.image('Hat' ,'assets/testAssets/Hat.png')
+	this.load.image('highLightCircle','assets/highlightCircle.png');
+    this.load.spritesheet('explosion', 'assets/explosionFull.png', 256, 256, 32);
 	
 };
-
-
 
 Level.prototype.create = function () {
 	//Create global reference of this
@@ -96,6 +94,7 @@ Level.prototype.create = function () {
 	this.add.sprite(413, 390, 'goodOwlBody');
 	
 	this.add.sprite(1295, 391, 'badOwlBody');
+
 	
 	_goodOwlArm = this.add.sprite(496, 668, 'goodOwlArm');
 	_goodOwlArm.angle = -90;
@@ -115,6 +114,10 @@ Level.prototype.create = function () {
 	
 	this.add.sprite(2, 1, 'scroll');
 	
+	highLightCircle = this.add.sprite(-500,-500,'highLightCircle');
+	highLightCircle.scale.setTo(1.2,1.2);
+	highLightCircle.anchor.set(0.5,0.5);
+		
 	//Keyboard
 	keyboard = this.add.group();
 	keyboard.position.setTo(350, 0);
@@ -214,6 +217,7 @@ Level.prototype.create = function () {
 	var _Delete2 = this.add.sprite(301-16, 2325+147, 'KeyBoard', 'Delete2',keyboard);
 	_Delete2.anchor.setTo(0.5, 0.5);
 	
+	
 	//Enabled Inputs
 	_A.inputEnabled = true;
 	_B.inputEnabled = true;
@@ -294,89 +298,61 @@ Level.prototype.create = function () {
 	
 	//Load the Assets and Words
 	//TODO - These will be pulled from a server eventually, but for now are local and hardcoded
-	words = new Array();
 	//Player
-	words[0] = "Apple";
-	words[1] = "Bear";
-	words[2] = "Car";
-	words[3] = "Boat";
-	words[4] = "Cheese";
-	words[5] = "Bird";
-	words[6] = "Book";
-	words[7] = "Cone";
-	words[8] = "Dog";
-	words[9] = "Hat";
-	
+	assets[0].word = "Apple";
+	assets[1].word = "Bear";
+	assets[2].word = "Car";
+	assets[3].word = "Boat";
+	assets[4].word = "Cheese";
+	assets[5].word = "Bird";
+	assets[6].word = "Book";
+	assets[7].word = "Cone";
+	assets[8].word = "Dog";
+	assets[9].word = "Hat";
+
 	//Load Images
 	//game.load.image('Apple','assets/testAssets/Apple.png');
 	//this.add.sprite(500,500,'Apple');
-	asset0 = this.add.sprite(180,196+30,'Apple');
-	asset0.anchor.setTo(0.5,0.5);
-	asset1 = this.add.sprite(180,196+160+50,'Bear');
-	asset1.anchor.setTo(0.5,0.5);
-	asset2 = this.add.sprite(180,196+160+160+50,'Car');
-	asset2.anchor.setTo(0.5,0.5);
-	asset3 = this.add.sprite(180,196+160+160+160+50,'Boat');
-	asset3.anchor.setTo(0.5,0.5);
-	asset4 = this.add.sprite(180,196+160+160+160+160+50,'Cheese');
-	asset4.anchor.setTo(0.5,0.5);
-	asset5 = this.add.sprite(1730,196+30,'Bird');
-	asset5.anchor.setTo(0.5,0.5);
-	asset6 = this.add.sprite(1730,196+160+50,'Book');
-	asset6.anchor.setTo(0.5,0.5);
-	asset7 = this.add.sprite(1730,196+160+160+50,'Cone');
-	asset7.anchor.setTo(0.5,0.5);
-	asset8 = this.add.sprite(1730,196+160+160+160+50,'Dog');
-	asset8.anchor.setTo(0.5,0.5);
-	asset9 = this.add.sprite(1730,196+160+160+160+160+50,'Hat');
-	asset9.anchor.setTo(0.5,0.5);
-	//Enabled Inputs
-	asset0.inputEnabled = true;
-	asset1.inputEnabled = true;
-	asset2.inputEnabled = true;
-	asset3.inputEnabled = true;
-	asset4.inputEnabled = true;
-	asset5.inputEnabled = true;
-	asset6.inputEnabled = true;
-	asset7.inputEnabled = true;
-	asset8.inputEnabled = true;
-	asset9.inputEnabled = true;
-	//selectSpell
-	//	_Z.events.onInputDown.add(addLetter,{keyPressed : 'Z', button: _Z});
-	asset0.events.onInputDown.add(selectSpell,{button: asset0, selected:0});
-	asset1.events.onInputDown.add(selectSpell,{button: asset1, selected:1});
-	asset2.events.onInputDown.add(selectSpell,{button: asset2, selected:2});
-	asset3.events.onInputDown.add(selectSpell,{button: asset3, selected:3});
-	asset4.events.onInputDown.add(selectSpell,{button: asset4, selected:4});
-	asset5.events.onInputDown.add(selectSpell,{button: asset5, selected:5});
-	asset6.events.onInputDown.add(selectSpell,{button: asset6, selected:6});
-	asset7.events.onInputDown.add(selectSpell,{button: asset7, selected:7});
-	asset8.events.onInputDown.add(selectSpell,{button: asset8, selected:8});
-	asset9.events.onInputDown.add(selectSpell,{button: asset9, selected:9});
-
+	assets[0].sprite = this.add.sprite(180,246,'Apple');
+	assets[0].sprite.anchor.setTo(0.5,0.5);
+	assets[1].sprite = this.add.sprite(180,196+160+50,'Bear');
+	assets[1].sprite.anchor.setTo(0.5,0.5);
+	assets[2].sprite = this.add.sprite(180,196+160+160+50,'Car');
+	assets[2].sprite.anchor.setTo(0.5,0.5);
+	assets[3].sprite = this.add.sprite(180,196+160+160+160+50,'Boat');
+	assets[3].sprite.anchor.setTo(0.5,0.5);
+	assets[4].sprite = this.add.sprite(180,196+160+160+160+160+50,'Cheese');
+	assets[4].sprite.anchor.setTo(0.5,0.5);
+	assets[5].sprite = this.add.sprite(1730,196+50,'Bird');
+	assets[5].sprite.anchor.setTo(0.5,0.5);
+	assets[6].sprite = this.add.sprite(1730,196+160+50,'Book');
+	assets[6].sprite.anchor.setTo(0.5,0.5);
+	assets[7].sprite = this.add.sprite(1730,196+160+160+50,'Cone');
+	assets[7].sprite.anchor.setTo(0.5,0.5);
+	assets[8].sprite = this.add.sprite(1730,196+160+160+160+50,'Dog');
+	assets[8].sprite.anchor.setTo(0.5,0.5);
+	assets[9].sprite = this.add.sprite(1730,196+160+160+160+160+50,'Hat');
+	assets[9].sprite.anchor.setTo(0.5,0.5);	
 	
-	//Scale Up
-	asset0.scale.setTo(2,2);
-	asset1.scale.setTo(2,2);
-	asset2.scale.setTo(2,2);
-	asset3.scale.setTo(2,2);
-	asset4.scale.setTo(2,2);
-	asset5.scale.setTo(2,2);
-	asset6.scale.setTo(2,2);
-	asset7.scale.setTo(2,2);
-	asset8.scale.setTo(2,2);
-	asset9.scale.setTo(2,2);
+	//Enabled Inputs
+	for(var i = 0; i < 10; i++){
+		assets[i].sprite.inputEnabled = true;
+		assets[i].sprite.events.onInputDown.add(selectSpell,{button: assets[i].sprite, selected: i});
+		assets[i].sprite.scale.setTo(2,2);
+	}
 
 	//Intialise Array
 	input = new Array();
 	//Set it as a blank word
+	selectInitialSpell(assets[0].sprite,0);
 	clearLetters();
 	spawnClock();
 	
 	//Small Delay at the start to show the scene, and then add the keyboard
-	setTimeout(moveKeyBoardUp,1000);
-
+	setTimeout(moveKeyBoardUp,500);
 	
+	previousPlayerSpell = assets[0].sprite;
+	previousOpponentSpell = assets[0].sprite;	
 };
 
 /**
@@ -398,8 +374,6 @@ function addLetter(){
 	
 }
 
-
-
 /**
  * Whatever object is passed here, will return to it's normal size
  */
@@ -414,6 +388,21 @@ function resetButtonSize(){
 	game.add.tween(this.button.scale).to({x:2 , y:2},70,"Linear",true);
 }
 
+
+/**
+ * Selects the spell to initially start the game
+ */
+function selectInitialSpell(button,selected){
+	var tween1 = game.add.tween(button.scale).to({x:4 , y:4},70,"Linear",true);
+	tween1.onComplete.add(resetButtonSize,{button: button});
+	//Change the word to this
+	selectedSpell = assets[selected];
+	highLightSpell(button);
+	targetWord = "" + assets[selected].word;
+	lengthOfWord = targetWord.length;
+	clearLetters();
+}
+
 /**
  * Select the Spell 
  */
@@ -422,11 +411,21 @@ function selectSpell(){
 	var tween1 = game.add.tween(this.button.scale).to({x:4 , y:4},70,"Linear",true);
 	tween1.onComplete.add(resetButtonSize,{button: this.button});
 	//Change the word to this
-	console.log(this.selected);
-	targetWord = "" + words[this.selected];
+	selectedSpell = assets[this.selected];
+	highLightSpell(this.button);
+	targetWord = "" + assets[this.selected].word;
 	lengthOfWord = targetWord.length;
-	console.log(targetWord);
 	clearLetters();
+}
+
+/**
+ * Draws the circle around the selected spell and saves the variable
+ * 
+ */
+function highLightSpell(button){
+	var x = button.position.x;
+	var y = button.position.y;
+	highLightCircle.position.set(x,y);
 }
 
 
@@ -453,11 +452,55 @@ function clearLetters(){
  */
 function enterAnswer(){
 	moveKeyBoardDown();
-	//Check if the Word is correct
-	if(input == targetWord){
+		
+	//Disable all inputs
+	disableAssetInputs();
+	
+	//Remove Commas and spaces
+	var answer = "" + text.text.replace(/\,/g,"");
+	answer = "" + answer.replace(/\s/g, "");
+	//Make the Input and target all caps too
+	var target = targetWord.toUpperCase();
+	//If the Answer equals target
+	
+	highLightCircle.position.setTo(-1000,-1000);
+	
+	if(answer == target){
+		//Blur out the bottoms
+		previousPlayerSpell.alpha = 1.0;
+		previousPlayerSpell = selectedSpell.sprite;
+		previousPlayerSpell.alpha = 0.2;
 		playerGoodSpell();
+		text.addColor('#21AA1E',0);
 	} else {
+		//Create the sting with the spaces for comparison
+		var temp = "";
+		for(var i = 0; i < target.length ; i++){
+			temp = temp + target[i] + " ";
+		}
+		
+		//Highlight the incorrect letters
+		for(var i = 0; i < text.text.length; i++){
+			if(text.text[i] == temp[i]){
+				//If the Letters are correct, turn it to green
+				text.addColor('#21AA1E',i);
+				text.addColor('FF9933',i+1);
+			} else {
+				//Else, turn it to red
+				text.addColor('#AA0000',i);	
+				text.addColor('FF9933',i+1);
+			}
+		}
 		playerBadSpell();
+	}
+}
+
+/**
+ * Disables all Asset inputs
+ */
+function disableAssetInputs(){
+	for(var i = 0; i < 10; i++){
+		assets[i].sprite.inputEnabled = false;
 	}
 }
 
@@ -468,7 +511,7 @@ function moveKeyBoardUp(){
 	//Move Keyboard onto Screen
 	for(var i = 0 ; i < keyboard.countLiving() ; i++){
 		//keyboard.getAt(i).position.y -= 1500;
-		game.add.tween(keyboard.getAt(i)).to({y: (keyboard.getAt(i).y - 1500)},1500, "Linear", true);
+		game.add.tween(keyboard.getAt(i)).to({y: (keyboard.getAt(i).y - 1500)},1000, "Linear", true);
 	}
 	keyBoardSpawned = true;
 }
@@ -508,7 +551,93 @@ function opponentBadSpell(){
  * Signal it is the Opponent's Turn
  */
 function playerGoodSpell(){
+	//Wand Flick back animation
+    var tween = game.add.tween(_goodOwlArm).to( { angle: -80 }, 800, Phaser.Easing.Linear.None, true);
+    tween.onComplete.add(function(){
+    	    tween = game.add.tween(_goodOwlArm).to( { angle: -230 }, 1000, Phaser.Easing.Linear.None, true);
+    	    tween.onComplete.add(function(){
+        	    tween = game.add.tween(_goodOwlArm).to( { angle: 260 }, 800, Phaser.Easing.Linear.None, true);
+        	    tween.onComplete.add(function(){
+        	    	//Spawn Items
+    	    		var projectile0 = game.add.sprite(877,533,selectedSpell.word); 
+    	    		projectile0.anchor.set(0.5,0.5);
+    	    		projectile0.scale.set(0.0);
+    	    		var projectile1 = game.add.sprite(877,533,selectedSpell.word); 
+    	    		projectile1.anchor.set(0.5,0.5);
+    	    		projectile1.scale.set(0.0);
+    	    		var projectile2 = game.add.sprite(877,533,selectedSpell.word); 
+    	    		projectile2.anchor.set(0.5,0.5);
+    	    		projectile2.scale.set(0.0);
+    	    		var projectile3 = game.add.sprite(877,533,selectedSpell.word);
+    	    		projectile3.anchor.set(0.5,0.5);
+    	    		projectile3.scale.set(0.0);
 
+    	    		
+    	    		//Manifest Larger
+    	    		game.add.tween(projectile0.scale).to({x:1, y:1},70,"Linear",true);
+    	    		game.add.tween(projectile1.scale).to({x:1, y:1},70,"Linear",true);
+    	    		game.add.tween(projectile2.scale).to({x:1, y:1},70,"Linear",true);
+    	    		game.add.tween(projectile3.scale).to({x:1, y:1},70,"Linear",true);
+    	    		
+    	    		//Spin in the Air and throw at player
+    	    		var project0 = game.add.tween(projectile0).to({angle: 270 ,x: 1360, y: 413},2000,"Linear",true);
+    	    		var project1 = game.add.tween(projectile1).to({angle: 270 ,x: 1336, y: 470},2000,"Linear",true);
+    	    		var project2 = game.add.tween(projectile2).to({angle: 270 ,x: 1315, y: 507},2000,"Linear",true);
+    	    		var project3 = game.add.tween(projectile3).to({angle: 270 ,x: 1311, y: 540},2000,"Linear",true);
+    	    		
+    	    		
+    	    		//Exposions on impact
+    	    		//this.add.sprite(1516, 1140, 'explosion', 0);
+    	    		project0.onComplete.add(function(){
+    	    			var explosion = game.add.sprite(projectile0.position.x, projectile0.position.y, 'explosion', 0);
+    	    			explosion.anchor.setTo(0.5,0.5);
+    	    			var animation = explosion.animations.add('explode');
+    	    			explosion.animations.play('explode',30,false);
+	    				projectile0.destroy();
+    	    			animation.onComplete.add(function(){
+        	    			explosion.destroy();
+    	    			});	
+    	    		});
+    	    		
+    	    		
+    	    		project1.onComplete.add(function(){
+    	    			var explosion = game.add.sprite(projectile1.position.x, projectile1.position.y, 'explosion', 0);
+    	    			explosion.anchor.setTo(0.5,0.5);
+    	    			var animation = explosion.animations.add('explode');
+    	    			explosion.animations.play('explode',30,false);
+	    				projectile1.destroy();
+    	    			animation.onComplete.add(function(){
+        	    			explosion.destroy();
+    	    			});	
+    	    		});
+    	    		
+    	    		project2.onComplete.add(function(){
+    	    			var explosion = game.add.sprite(projectile2.position.x, projectile2.position.y, 'explosion', 0);
+    	    			explosion.anchor.setTo(0.5,0.5);
+    	    			var animation = explosion.animations.add('explode');
+    	    			explosion.animations.play('explode',30,false);
+	    				projectile2.destroy();
+    	    			animation.onComplete.add(function(){
+        	    			explosion.destroy();
+    	    			});	
+    	    		});
+    	    		
+    	    		project3.onComplete.add(function(){
+    	    			var explosion = game.add.sprite(projectile3.position.x, projectile3.position.y, 'explosion', 0);
+    	    			explosion.anchor.setTo(0.5,0.5);
+    	    			var animation = explosion.animations.add('explode');
+    	    			explosion.animations.play('explode',30,false);
+	    				projectile3.destroy();
+    	    			animation.onComplete.add(function(){
+        	    			explosion.destroy();
+    	    			});	
+    	    		});
+    	    		
+    	    		
+        	    });
+    	    });
+    });
+   	
 }
 
 /**
@@ -563,7 +692,7 @@ Level.prototype.update = function(){
 		//Attempt word on Probability
 		//Set Animation to true
 	
-}
+};
 
 
 

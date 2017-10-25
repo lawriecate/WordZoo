@@ -72,10 +72,16 @@
       "key": "KeyBoardBackground",
       "url": "assets/keyboardBackground.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "highLightCircle",
+      "url": "assets/highlightCircle.png",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1508768390062",
+    "generated": "1508942451986",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
