@@ -29,8 +29,8 @@ var lengthOfWord;
 //Global reference of this
 var game;
 var clock;
-var initialTime = 60;
-var timeAllowed = 60;
+var initialTime = 25;
+var timeAllowed = 25;
 
 //Spawn the Clock and Keyboard
 var keyBoardSpawned = false;
@@ -49,6 +49,13 @@ var selectedSpell;
 var previousPlayerSpell;
 var previousOpponentSpell;
 var highLightCircle;
+
+//Player Health
+var playerHealth = 1;
+var opponentHealth = 1;
+var playerHealthText;
+var opponentHealthText;
+
 
 Level.prototype.init = function () {
 		
@@ -81,6 +88,7 @@ Level.prototype.preload = function () {
 	this.load.image('Hat' ,'assets/testAssets/Hat.png')
 	this.load.image('highLightCircle','assets/highlightCircle.png');
     this.load.spritesheet('explosion', 'assets/explosionFull.png', 256, 256, 32);
+    this.load.spritesheet('deathExplosion','assets/deathExplosion.png',250,317,26);
 	
 };
 
@@ -117,6 +125,13 @@ Level.prototype.create = function () {
 	highLightCircle = this.add.sprite(-500,-500,'highLightCircle');
 	highLightCircle.scale.setTo(1.2,1.2);
 	highLightCircle.anchor.set(0.5,0.5);
+	
+	//Health
+	style = {font: "90px Arial", fill: '#FFFFFF', align: "center", fontWeight: 'bold'};
+	playerHealthText = this.add.text(650,1020,playerHealth,style);
+	playerHealthText.anchor.setTo(0.5,0.5);
+	opponentHealthText = this.add.text(1300,1020,opponentHealth,style);
+	opponentHealthText.anchor.setTo(0.5,0.5);
 		
 	//Keyboard
 	keyboard = this.add.group();
@@ -263,6 +278,7 @@ Level.prototype.create = function () {
 	clock.anchor.x = 0.5;
 	clock.anchor.y = 0.5;
 	
+	
 	//Add Triggers for the keyboard
     _A.events.onInputDown.add(addLetter,{keyPressed : 'A', button: _A});
 	_B.events.onInputDown.add(addLetter,{keyPressed : 'B', button: _B});
@@ -333,7 +349,7 @@ Level.prototype.create = function () {
 	assets[8].sprite.anchor.setTo(0.5,0.5);
 	assets[9].sprite = this.add.sprite(1730,196+160+160+160+160+50,'Hat');
 	assets[9].sprite.anchor.setTo(0.5,0.5);	
-	
+		
 	//Enabled Inputs
 	for(var i = 0; i < 10; i++){
 		assets[i].sprite.inputEnabled = true;
@@ -436,6 +452,8 @@ function clearLetters(){
 	//Create blank Strings
 	input = new Array();
 	for(var i = 0; i < lengthOfWord; i++){
+		//Reset the Colour
+		text.addColor('#FF9933',i);	
 		input[i] = "_"; 
 	}
 	
@@ -467,7 +485,6 @@ function enterAnswer(){
 	
 	if(answer == target){
 		//Blur out the bottoms
-		previousPlayerSpell.alpha = 1.0;
 		previousPlayerSpell = selectedSpell.sprite;
 		previousPlayerSpell.alpha = 0.2;
 		playerGoodSpell();
@@ -491,6 +508,8 @@ function enterAnswer(){
 				text.addColor('FF9933',i+1);
 			}
 		}
+		
+		//Call the Animation 
 		playerBadSpell();
 	}
 }
@@ -503,6 +522,18 @@ function disableAssetInputs(){
 		assets[i].sprite.inputEnabled = false;
 	}
 }
+
+/**
+ * Enables all Asset Inputs
+ */
+function enableAssetInputs(){
+	for(var i = 0; i < 10; i++){
+		if(assets[i].sprite.alpha != 0.2){
+			assets[i].sprite.inputEnabled = true;
+		}
+	}
+}
+
 
 /**
  * Moves the Keyboard onto screen
@@ -533,7 +564,25 @@ function moveKeyBoardDown(){
  * Signal It is the opponent's Turn
  */
 function playerBadSpell(){
-	//	game.camera.shake(0.02, 250);
+	var tween = game.add.tween(_goodOwlArm).to( { angle: -80 }, 800, Phaser.Easing.Linear.None, true);
+    tween.onComplete.add(function(){
+    	    tween = game.add.tween(_goodOwlArm).to( { angle: -230 }, 800, Phaser.Easing.Linear.None, true);
+    	    tween.onComplete.add(function(){
+        	    tween = game.add.tween(_goodOwlArm).to( { angle: 260 }, 600, Phaser.Easing.Linear.None, true);
+        	    tween.onComplete.add(function(){
+					var explosion = game.add.sprite(877, 533, 'explosion', 0);
+					explosion.anchor.setTo(0.5,0.5);
+					var animation = explosion.animations.add('explode');
+					explosion.animations.play('explode',30,false);
+				    game.camera.shake(0.01, 200);
+					animation.onComplete.add(function(){
+						explosion.destroy();
+    	    			//Call Opponents Response
+    	    			opponentResponse();
+					});	
+        	    });
+    	 });
+    });
 }
 
 /**
@@ -542,7 +591,25 @@ function playerBadSpell(){
  * Signal It is the Player's Turn
  */
 function opponentBadSpell(){
-	
+	var tween = game.add.tween(_badOwlArm).to( { angle: 80 }, 800, Phaser.Easing.Linear.None, true);
+    tween.onComplete.add(function(){
+    	    tween = game.add.tween(_badOwlArm).to( { angle: 230 }, 800, Phaser.Easing.Linear.None, true);
+    	    tween.onComplete.add(function(){
+        	    tween = game.add.tween(_badOwlArm).to( { angle: -260 }, 600, Phaser.Easing.Linear.None, true);
+        	    tween.onComplete.add(function(){
+					var explosion = game.add.sprite(1063, 550, 'explosion', 0);
+					explosion.anchor.setTo(0.5,0.5);
+					var animation = explosion.animations.add('explode');
+					explosion.animations.play('explode',30,false);
+				    game.camera.shake(0.01, 200);
+					animation.onComplete.add(function(){
+						explosion.destroy();
+    	    			//Call Opponents Response
+    	    			playerResponse();
+					});	
+        	    });
+    	 });
+    });
 }
 
 /**
@@ -554,9 +621,9 @@ function playerGoodSpell(){
 	//Wand Flick back animation
     var tween = game.add.tween(_goodOwlArm).to( { angle: -80 }, 800, Phaser.Easing.Linear.None, true);
     tween.onComplete.add(function(){
-    	    tween = game.add.tween(_goodOwlArm).to( { angle: -230 }, 1000, Phaser.Easing.Linear.None, true);
+    	    tween = game.add.tween(_goodOwlArm).to( { angle: -230 }, 800, Phaser.Easing.Linear.None, true);
     	    tween.onComplete.add(function(){
-        	    tween = game.add.tween(_goodOwlArm).to( { angle: 260 }, 800, Phaser.Easing.Linear.None, true);
+        	    tween = game.add.tween(_goodOwlArm).to( { angle: 260 }, 600, Phaser.Easing.Linear.None, true);
         	    tween.onComplete.add(function(){
         	    	//Spawn Items
     	    		var projectile0 = game.add.sprite(877,533,selectedSpell.word); 
@@ -580,10 +647,10 @@ function playerGoodSpell(){
     	    		game.add.tween(projectile3.scale).to({x:1, y:1},70,"Linear",true);
     	    		
     	    		//Spin in the Air and throw at player
-    	    		var project0 = game.add.tween(projectile0).to({angle: 270 ,x: 1360, y: 413},2000,"Linear",true);
-    	    		var project1 = game.add.tween(projectile1).to({angle: 270 ,x: 1336, y: 470},2000,"Linear",true);
-    	    		var project2 = game.add.tween(projectile2).to({angle: 270 ,x: 1315, y: 507},2000,"Linear",true);
-    	    		var project3 = game.add.tween(projectile3).to({angle: 270 ,x: 1311, y: 540},2000,"Linear",true);
+    	    		var project0 = game.add.tween(projectile0).to({angle: 340 ,x: 1360, y: 413},1400,"Linear",true);
+    	    		var project1 = game.add.tween(projectile1).to({angle: 250 ,x: 1336, y: 470},1000,"Linear",true);
+    	    		var project2 = game.add.tween(projectile2).to({angle: 390 ,x: 1315, y: 507},1200,"Linear",true);
+    	    		var project3 = game.add.tween(projectile3).to({angle: 310 ,x: 1311, y: 540},800,"Linear",true);
     	    		
     	    		
     	    		//Exposions on impact
@@ -594,6 +661,7 @@ function playerGoodSpell(){
     	    			var animation = explosion.animations.add('explode');
     	    			explosion.animations.play('explode',30,false);
 	    				projectile0.destroy();
+	    			    game.camera.shake(0.01, 200);
     	    			animation.onComplete.add(function(){
         	    			explosion.destroy();
     	    			});	
@@ -606,6 +674,7 @@ function playerGoodSpell(){
     	    			var animation = explosion.animations.add('explode');
     	    			explosion.animations.play('explode',30,false);
 	    				projectile1.destroy();
+	    			    game.camera.shake(0.01, 200);
     	    			animation.onComplete.add(function(){
         	    			explosion.destroy();
     	    			});	
@@ -617,6 +686,7 @@ function playerGoodSpell(){
     	    			var animation = explosion.animations.add('explode');
     	    			explosion.animations.play('explode',30,false);
 	    				projectile2.destroy();
+	    			    game.camera.shake(0.01, 200);
     	    			animation.onComplete.add(function(){
         	    			explosion.destroy();
     	    			});	
@@ -628,8 +698,13 @@ function playerGoodSpell(){
     	    			var animation = explosion.animations.add('explode');
     	    			explosion.animations.play('explode',30,false);
 	    				projectile3.destroy();
+	    			    game.camera.shake(0.01, 200);
     	    			animation.onComplete.add(function(){
         	    			explosion.destroy();
+        	    			//Once Complete, then go to the next players turn
+        	    			decreaseOpponentHealth();
+        	    			//Call Opponents Response
+        	    			opponentResponse();
     	    			});	
     	    		});
     	    		
@@ -640,6 +715,146 @@ function playerGoodSpell(){
    	
 }
 
+function decreaseOpponentHealth(){
+	opponentHealth--;
+	opponentHealthText.text = opponentHealth;
+	if(opponentHealth <= 0){
+		//End Game
+		var explosion = game.add.sprite(877, 533, 'deathExplosion', 0);
+		explosion.anchor.setTo(0.5,0.5);
+		var animation = explosion.animations.add('explode');
+		explosion.animations.play('explode',30,false);
+	    game.camera.shake(0.01, 200);
+		animation.onComplete.add(function(){
+			explosion.destroy();
+		});	
+		
+	}
+}
+
+function decreasePlayerHealth(){
+	playerHealth--;
+	playerHealthText.text = playerHealth;
+	if(playerHealth <= 0){
+		var explosion = game.add.sprite(877, 533, 'deathExplosion', 0);
+		explosion.anchor.setTo(0.5,0.5);
+		var animation = explosion.animations.add('explode');
+		explosion.animations.play('explode',30,false);
+	    game.camera.shake(0.01, 200);
+		animation.onComplete.add(function(){
+			explosion.destroy();
+		});	
+	}
+}
+
+/**
+ * Called once the player has done a spell.
+ * Decides which word it want's to attempt. Check it's chance, and then fire's that spell.
+ * Then Switches to the other Player
+ */
+function opponentResponse(){
+	//Disable Opponents Turn
+	microStateUserInput = false;
+	//Select a word that is not disabled
+	//Selects a Number between 1 and 9
+	var randomChoice = Math.floor((Math.random() * 9));
+	//Select an object that is not greyed out as the previous user did it
+	if(assets[randomChoice].sprite.alpha == 0.2){
+		randomChoice++;
+		randomChoice = randomChoice % 10;
+	}
+	selectInitialSpell(assets[randomChoice].sprite,randomChoice);
+	
+	//50-50 Chance It will get the spell right
+	var correct = Math.floor(Math.random() * 100);
+	var answer;
+	
+	
+	//Colour the Text
+	//Make the Input and target all caps too
+	var target = targetWord.toUpperCase();
+	//If the Answer equals target
+	
+	if(correct <= 50){
+		//Enter the Text
+		//Add Spaces
+		var temp = "";
+		for(var i = 0; i < target.length; i++ ){
+			temp = temp + target[i] + " ";
+		}
+		text.text = temp;
+		answer = target;
+	} else {
+		//Enter Incorrect Answer
+		answer = "";
+	}
+	
+	
+	highLightCircle.position.setTo(-1000,-1000);
+	
+	if(answer == target){
+		//Blur out the bottoms
+		previousPlayerSpell = selectedSpell.sprite;
+		previousPlayerSpell.alpha = 0.2;
+		opponentGoodSpell();
+		text.addColor('#21AA1E',0);
+	} else {
+		//Create the sting with the spaces for comparison
+		var temp = "";
+		for(var i = 0; i < target.length ; i++){
+			temp = temp + target[i] + " ";
+		}
+		
+		//Highlight the incorrect letters
+		for(var i = 0; i < text.text.length; i++){
+			if(text.text[i] == temp[i]){
+				//If the Letters are correct, turn it to green
+				text.addColor('#21AA1E',i);
+				text.addColor('FF9933',i+1);
+			} else {
+				//Else, turn it to red
+				text.addColor('#AA0000',i);	
+				text.addColor('FF9933',i+1);
+			}
+		}
+		
+		//Call the Animation 
+		opponentBadSpell();
+	}
+	
+}
+
+/**
+ * Switching the game to the player's options
+ */
+function playerResponse(){
+//If Correct, grey out this choice and disable it
+	var randomChoice = Math.floor((Math.random() * 9));
+	//Select an object that is not greyed out as the previous user did it
+	if(assets[randomChoice].sprite.alpha == 0.2){
+		randomChoice++;
+		randomChoice = randomChoice % 10;
+	}
+	selectInitialSpell(assets[randomChoice].sprite,randomChoice);
+	highLightSpell(assets[randomChoice].sprite);
+	
+	
+	//Clear the Text
+	clearLetters();
+	//Move Keyboard Up
+	moveKeyBoardUp();
+	//Enabled State UserInput
+	microStateUserInput = true;
+	//Reset clock
+	spawnClock();
+	//Enable Input
+	enableAssetInputs();
+	//Raise Keyboard
+	
+}
+
+
+
 /**
  * Play the Animation
  * Update Health
@@ -649,18 +864,10 @@ function opponentGoodSpell(){
 	
 }
 
-/**
- * Determine if the answer given is correct or not. 
- * It will then go to the Good or Bad Spell Function as appropiate 
- */
-function decideCorrectness(){
-	
-}
 
 //Spawns the Clock which forces the User to input spells
 function spawnClock(){
   initialTime = Math.floor(this.game.time.time / 1000);
-  clockSpawned = true;
 }
 
 
@@ -680,17 +887,16 @@ Level.prototype.update = function(){
 		//If Clock is less than 0, then go to failed animation
 		if(timeRemaining <= 0){
 			clock.text = "";
+			moveKeyBoardDown();
+			//Disable all inputs
+			disableAssetInputs();			
+			highLightCircle.position.setTo(-1000,-1000);
+			opponentResponse();
 		} else {
 			clock.text = "Time: " + timeRemaining;
 		}
 	}
 		
-	//Spell Animation
-		//Complete Animation
-	
-	//Opponents turn
-		//Attempt word on Probability
-		//Set Animation to true
 	
 };
 
