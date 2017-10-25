@@ -15,19 +15,22 @@
 	var correctWord;
 	var correctLocation = "";
 	
-	// lives
-	var lives = 3;
-	
 	// score
 	var score = 0;
 	var scoreText = "";
 	
+	// lives
+	var livesBox;
+	
 	// time
-	var time = 60;
+	var time = 10;
 	var timeText = "";
 
 	// timer
 	var timer;
+	
+	// Text styles
+	 var style = {font: "bold 28px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	
 	// buttons
 	var topLeft;
@@ -41,6 +44,22 @@
 	var BLtext;
 	var BRtext;
 	
+	// goal keepers
+	var GK_Mid;
+	var GK_TL;
+	var GK_TR;
+	var GK_BL;
+	var GK_BR;
+	
+	// goal keeper dives
+	var GK_TL_Dive;
+	var GK_TR_Dive;
+	var GK_BL_Dive;
+	var GK_BR_Dive;
+
+	// football + animation
+	var football;
+	var footballRollIn;
 	
 	
 window.onload = function() {

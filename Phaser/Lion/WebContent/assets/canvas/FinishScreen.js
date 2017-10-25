@@ -1,5 +1,7 @@
 
 // -- user code here --
+var lion = lion || {};
+
 
 /* --- start generated code --- */
 
@@ -26,7 +28,6 @@ FinishScreen.prototype.init = function () {
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
 	this.stage.backgroundColor = '#ffffff';
-	
 };
 
 FinishScreen.prototype.preload = function () {
@@ -42,23 +43,19 @@ FinishScreen.prototype.create = function () {
 	var _Unlucky = this.add.sprite(576, 96, 'Unlucky');
 	_Unlucky.scale.setTo(1.5, 1.5);
 	
-	var _PlayAgain = this.add.button(672, 384, 'PlayAgain', null, this, null, null, null, null);
+	
+	var _Score = this.add.sprite(32, 32, 'ScoreBackground');
+	_Score.scale.setTo(1.5, 1.5);
+		
+	// Add score
+	scoreText = this.add.text(90, 75, "Score: "+score, style);
+	
+	
+	var _PlayAgain = this.add.button(672, 384, 'PlayAgain', this.playAgain, this, null, null, null, null);
 	_PlayAgain.scale.setTo(1.5, 1.5);
 	
 	var _MoreGames = this.add.button(672, 576, 'MoreGames', null, this, null, null, null, null);
 	_MoreGames.scale.setTo(1.5, 1.5);
-	
-	
-	// on click play again, proceed to play screen
-	//function onClickPlay () {
-	//	game.state.start('play');
-	//}
-		
-	// on click more games, proceed to game selection screen
-	//function onClickMore () {
-	// To be added
-	//}
-	
 };
 
 /* --- end generated code --- */
@@ -68,6 +65,12 @@ FinishScreen.prototype.create = function () {
 // More Games Button
 
 
+
+//on click play again, proceed to play screen
+FinishScreen.prototype.playAgain = function() 
+{
+	this.state.start('start');
+};
 
 
 
