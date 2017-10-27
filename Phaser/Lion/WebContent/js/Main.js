@@ -1,8 +1,10 @@
 	//global variables
 	var lion = lion|| {}; 
 
+	// --------------------------------------------
+	// *** To be pulled from server not static ***
+	// --------------------------------------------
 	//word bank
-	var index = 0;
 	var words = 	["apple","bear","car","day","eye","fox",
 	            	"golf","hotel","igloo","jam","kite","lolly",
 	            	"moose","nose","octopus","pot","quest","rice",
@@ -23,7 +25,7 @@
 	var livesBox;
 	
 	// time
-	var time = 10;
+	var time = 60;
 	var timeText = "";
 
 	// timer
@@ -44,6 +46,11 @@
 	var BLtext;
 	var BRtext;
 	
+	// preSet
+	var preSetNum = 0;
+	var preSet1 = "";
+	var preSet2 = "";
+	
 	// goal keepers
 	var GK_Mid;
 	var GK_TL;
@@ -57,16 +64,26 @@
 	var GK_BL_Dive;
 	var GK_BR_Dive;
 
-	// football + animation
+	// football + animations
 	var football;
+	var footballSpin;
 	var footballRollIn;
+
+	// football tween
+	var footballTL1;
+	var footballTL2;
+	var footballTR1;
+	var footballTR2;
+	var footballBL1;
+	var footballBL2;
+	var footballBR1;
+	var footballBR2;
 	
 	
-window.onload = function() {
-	
+window.onload = function() 
+{	
 	// Create game
 	var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
-
 	
 	// Add states
 	game.state.add('start', StartScreen);
