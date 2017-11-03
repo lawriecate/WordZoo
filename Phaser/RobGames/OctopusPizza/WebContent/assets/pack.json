@@ -1,0 +1,35 @@
+{
+  "Main": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pizza",
+      "url": "assets/pizza.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "selectItem",
+      "url": "assets/selectItem.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "strikeThrough",
+      "url": "assets/strikeThrough.png",
+      "overwrite": false
+    }
+  ],
+  "meta": {
+    "generated": "1509748020246",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}
