@@ -1,0 +1,61 @@
+{
+  "main": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "gui",
+      "url": "assets/gui.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "mainSheep",
+      "url": "assets/mainSheep.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "penBack",
+      "url": "assets/penBack.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "penFront",
+      "url": "assets/penFront.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "sheepPen",
+      "url": "assets/sheepPen.png",
+      "frameWidth": 570,
+      "frameHeight": 320,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "sheepWobble",
+      "url": "assets/sheepWobble.png",
+      "frameWidth": 700,
+      "frameHeight": 700,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
+  "meta": {
+    "generated": "1509822182184",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}
