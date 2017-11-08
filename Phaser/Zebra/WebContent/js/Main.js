@@ -21,35 +21,33 @@
 
 	//Define lane variables 
 	var itemLanePositions = [525, 675, 825];
-	//var takenItems;
-	//var itemWinnerLane;
 	var playerLanePositions = [412, 562, 712];
 	var currentLane = 0;
-	var chosenWords = ['', '', ''];
-	var failedWords = ['', '', ''];
-	
 	
 	//Define arrow buttons
 	var upArrow;
 	var downArrow;
 	var rightArrow;
-
+	var upArrowText;
+	var downArrowText;
+	var rightArrowText;
 
 	//Define winner variables
 	var correctLane;
 	var correctName;
 	var correctItemText;
-	var incorrectItem1;
-	var incorrectItem2;
 
 	//Define difficulty variables
-	var speed;
+	var speed = 5;
+	var normalSpeed;
+	var currentSpeed;
 	
 	// score
 	var score;
 	var scoreText = "";
 	
 	// lives
+	var startingLives = 3;
 	var livesLeft;
 	var livesBox;
 	
@@ -61,8 +59,9 @@
 	var timer;
 	
 	// Text styles
-	 var style = {font: "bold 28px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-
+	var smallStyle = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+	var medStyle = {font: "bold 38px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+	var bigStyle = {font: "bold 45px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	
 	
 window.onload = function() 

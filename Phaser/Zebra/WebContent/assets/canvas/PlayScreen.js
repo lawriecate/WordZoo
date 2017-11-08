@@ -1,7 +1,5 @@
 // Global variables
 var zebra = zebra|| {}; 
-var timeLeft;
-var livesLeft = 3;
 
 
 function PlayScreen() 
@@ -33,8 +31,6 @@ PlayScreen.prototype.create = function ()
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
 	background.scale.setTo(1.51, 1.51);
 	
-	// Background scroll
-	
 	// Add zebra + walking animation
 	zebra = this.game.add.sprite(50, playerLanePositions[0], 'zebra');
 	zebra.scale.setTo(1.5, 1.5);
@@ -42,24 +38,24 @@ PlayScreen.prototype.create = function ()
     zebraWalk.play(10,true);
 	
 
-	
-
-
+    //	Correct item text box
+	var correctBox = this.add.sprite(740, 100, 'ScoreBackground');
+	correctBox.scale.setTo(3, 1.5);
 	
 	// Correct item text
-	correctItemText = this.game.add.text(960, 125, "", style);
+	correctItemText = this.game.add.text(960, 160, "", bigStyle);
     correctItemText.anchor.setTo(0.5);
 	 
 
 	// Add Score box + score value
 	var scoreBox = this.add.sprite(1664, 182, 'ScoreBackground');
 	scoreBox.scale.setTo(1.5, 1.5);
-	scoreText = this.add.text(1720, 225, "Score: "+score, style);
+	scoreText = this.add.text(1720, 225, "Score: "+score, smallStyle);
 	
 	// Add Time box + time value
 	var timeBox = this.add.sprite(1664, 32, 'ScoreBackground');
 	timeBox.scale.setTo(1.5, 1.5);
-	timeText = this.add.text(1720, 75, "Time: "+time, style);
+	timeText = this.add.text(1720, 75, "Time: "+time, smallStyle);
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
@@ -73,25 +69,25 @@ PlayScreen.prototype.create = function ()
 	
 
 	// Add arrow controls
-	upArrow = this.add.button(1650, 750, 'ScoreBackground', this.moveUp, this, null, null, null, null);
-	upArrow.scale.setTo(0.8, 1.5);
-	upArrow = this.add.text(1690, 790, "Up", style);
+	upArrow = this.add.button(200, 950, 'ScoreBackground', this.moveUp, this, null, null, null, null);
+	upArrow.scale.setTo(3, 1.5);
+	upArrowText = this.add.text(400, 985, "Up", medStyle);
 
-	downArrow = this.add.button(1650, 900, 'ScoreBackground', this.moveDown, this, null, null, null, null);
-	downArrow.scale.setTo(0.8, 1.5);
-	downArrow = this.add.text(1670, 940, "Down", style);
+	downArrow = this.add.button(740, 950, 'ScoreBackground', this.moveDown, this, null, null, null, null);
+	downArrow.scale.setTo(3, 1.5);
+	downArrowText = this.add.text(920, 985, "Down", medStyle);
 	
-	rightArrow = this.add.button(1790, 825, 'ScoreBackground', this.moveRight, this, null, null, null, null);
-	rightArrow.scale.setTo(0.8, 1.5);
-	rightArrow = this.add.text(1820, 865, "Right", style);
+	rightArrow = this.add.button(1290, 950, 'ScoreBackground', this.moveRight, this, null, null, null, null);
+	rightArrow.scale.setTo(3, 1.5);
+	rightArrowText = this.add.text(1460, 985, "Boost", medStyle);
 
 
 
-
-	// Set starting values
-	speed = 5;
+	// Reset starting values for each playthrough
+	normalSpeed = speed;
+	currentSpeed = normalSpeed;
 	score = 0;
-	livesLeft = 3;
+	livesLeft = startingLives;
 	
 	// Start game
 	this.spawnItems();
@@ -118,7 +114,6 @@ PlayScreen.prototype.updateScore = function ()
 {	
 	scoreText.setText("Score: "+score, true);
 };
-
 
 
 
@@ -156,12 +151,16 @@ PlayScreen.prototype.moveDown = function ()
 // Move Zebra right
 PlayScreen.prototype.moveRight = function ()
 {	
-	// Skip Zebra to object
-	return;
+	// move screen at 20 speed or double playspeed, which ever is higher
+	if(normalSpeed < 10)
+	{
+		currentSpeed = 20;
+	}
+	else
+	{
+		currentSpeed = normalSpeed * 2;
+	}
 };
-
-
-
 
 
 
@@ -174,8 +173,8 @@ PlayScreen.prototype.spawnItems = function ()
 
 	// random indexs for words
 	correctName = words[Math.floor(Math.random() * words.length)];
-	incorrectItem1 = words[Math.floor(Math.random() * words.length)];
-	incorrectItem2 = words[Math.floor(Math.random() * words.length)];
+	var incorrectItem1 = words[Math.floor(Math.random() * words.length)];
+	var incorrectItem2 = words[Math.floor(Math.random() * words.length)];
 
 	// While 2 are the same, reset util you get unique
 	while(correctName == incorrectItem1 || correctName == incorrectItem2 || incorrectItem1 == incorrectItem2)
@@ -198,10 +197,20 @@ PlayScreen.prototype.spawnItems = function ()
     item2 = this.add.sprite(1920, itemLanePositions[(correctLane+2) % 3], incorrectItem2);
 	item2.scale.setTo(1.5, 1.5);
 
-	// Put arrows on top of items
+
+
+	// ----------------------------------------
+	// Maybe not needed?, put arrows on top of items
+	// ----------------------------------------
 	upArrow.bringToTop();
 	downArrow.bringToTop();
 	rightArrow.bringToTop();
+	upArrowText.bringToTop();
+	downArrowText.bringToTop();
+	rightArrowText.bringToTop();
+
+
+	
 
     //This ensures the player never goes behind the objects once they are spawned
     this.world.bringToTop(zebra);
@@ -217,9 +226,12 @@ PlayScreen.prototype.update = function ()
     	// if correct
     	if(correctLane == currentLane)
     	{
-    		// increase score + speed
+    		// increase score + normalSpeed
     		score++;
-    		speed++;
+    		normalSpeed++;
+
+    		// update current speed
+    		currentSpeed = normalSpeed;
 
     		// reset items
     		item0.kill();
@@ -233,6 +245,9 @@ PlayScreen.prototype.update = function ()
     		// lose a life
     		livesLeft--;
     		this.checkLives();
+
+    		// update current speed
+    		currentSpeed = normalSpeed;
 
     		// reset items
     		item0.kill();
@@ -250,24 +265,16 @@ PlayScreen.prototype.update = function ()
         item2.kill();
         this.spawnItems();
     }
-    
-    //Moves item across screen at given speed
-    background.tilePosition.x -= (2*speed)/3;
-    item0.x -= speed;
-    item1.x -= speed;
-    item2.x -= speed;
+
+    //Moves item across screen at currentSpeed
+    background.tilePosition.x -= (currentSpeed*2)/3;
+    item0.x -= currentSpeed;
+    item1.x -= currentSpeed;
+    item2.x -= currentSpeed;
 
     //check score
     this.updateScore();
 }
-
-
-
-
-
-
-
-
 
 
 
