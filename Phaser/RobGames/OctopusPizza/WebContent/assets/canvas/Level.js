@@ -114,7 +114,7 @@ Level.prototype.create = function () {
 	var style = { font: "60px Arial", fill: "#000000", align: "left"};
     orderText = game.add.text(115, 200, "• item1 \n• item2 \n• item3 \n• item4 \n• item5\n", style);
 
-    style = { font: "70px Arial", fill: "#FF0000", align: "left" , fontWeight: "bold"}
+    style = { font: "70px Arial", fill: "#FF0000", align: "left" , fontWeight: "bold"};
     game.add.text(190,120, "ORDER",style);
     
     //The Strike throughs
