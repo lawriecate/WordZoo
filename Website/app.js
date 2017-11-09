@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var manager = require('./routes/manager');
+var teacher = require('./routes/teacher');
+var games = require('./routes/games');
+var signup = require('./routes/signup');
 
 var app = express();
 
@@ -22,7 +26,31 @@ app.use(logger('dev'));
 
 var flash    = require('connect-flash');
 var crypto   = require('crypto');
-var connection     = require('./lib/dbconn');
+
+//var require('./lib/sequelize_conn');
+
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('testdb', 'root', 'mysqlpw', {
+  host: 'localhost',
+  dialect: 'mysql',
+
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  },
+
+});
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 var sess  = require('express-session');
 var Store = require('express-session').Store;
