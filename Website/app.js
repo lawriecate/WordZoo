@@ -51,6 +51,9 @@ app.use(passport.session());
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/signup', signup);
+app.use('/manager', manager);
+app.use('/teacher', teacher);
 
 
 
