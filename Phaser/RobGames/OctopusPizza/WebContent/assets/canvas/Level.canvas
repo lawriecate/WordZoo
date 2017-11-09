@@ -1,0 +1,200 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Level",
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "// to change this code: Canvas editor > Configuration > Editor > userCode > Create\r\nthis.addHelloWorldText();\r\n\r\n"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "55d73664-e8a9-4480-bc70-a699a59efa0a",
+          "asset": "0",
+          "info": {
+            "editorName": "background",
+            "x": 960,
+            "y": 540,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "308fd20e-75e3-4fa2-b783-568630506f83",
+          "asset": "1",
+          "info": {
+            "editorName": "pizza",
+            "x": 1530,
+            "y": 825,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "70dc61c6-c68c-4777-89aa-7d148a9d06a1",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem",
+            "x": 718,
+            "y": 262,
+            "alpha": 0
+          }
+        },
+        {
+          "type": "image",
+          "id": "b0a67917-cacc-4c5e-a5c8-df8717d5cbba",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem1",
+            "x": 1050,
+            "y": 263,
+            "alpha": 0
+          }
+        },
+        {
+          "type": "image",
+          "id": "2d764de0-89d9-47c0-8ef6-a668cf81eefa",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem2",
+            "x": 1380,
+            "y": 265,
+            "alpha": 0
+          }
+        },
+        {
+          "type": "image",
+          "id": "417b19b5-8344-4a16-a43a-a38dea10ba36",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem3",
+            "x": 1708,
+            "y": 261,
+            "alpha": 0
+          }
+        },
+        {
+          "type": "image",
+          "id": "cb6a261b-83f0-4436-b0b6-b7a0010f4872",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem4",
+            "x": 1630,
+            "y": 493,
+            "alpha": 0
+          }
+        },
+        {
+          "type": "image",
+          "id": "2c7f7190-c212-4b1c-a31a-e30fa5d6ec97",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem5",
+            "x": 1298,
+            "y": 492,
+            "alpha": 0
+          }
+        },
+        {
+          "type": "image",
+          "id": "ccee6e88-8b8f-47fa-98f9-cad83bd7bea2",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem6",
+            "x": 969,
+            "y": 492,
+            "alpha": 0
+          }
+        },
+        {
+          "type": "image",
+          "id": "c74b01f3-ee95-4680-bbb1-e9d77b306b7a",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem7",
+            "x": 637,
+            "y": 491,
+            "alpha": 0
+          }
+        },
+        {
+          "type": "image",
+          "id": "6216f30d-37fc-4908-a751-ff91f50096c7",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem8",
+            "x": 558,
+            "y": 718,
+            "alpha": 0
+          }
+        },
+        {
+          "type": "image",
+          "id": "c4a7d6dd-f6d1-4af5-a32a-26d04ec14fc6",
+          "asset": "2",
+          "info": {
+            "editorName": "selectItem9",
+            "x": 887,
+            "y": 723,
+            "alpha": 0
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Main",
+      "asset": "background"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Main",
+      "asset": "pizza"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Main",
+      "asset": "selectItem"
+    }
+  },
+  "prefab-table": {}
+}

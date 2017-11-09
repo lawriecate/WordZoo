@@ -1,0 +1,261 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Level",
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "// to change this code: Canvas editor > Configuration > Editor > userCode > Create\r\nthis.addHelloWorldText();\r\n\r\n"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "5d31ac1b-8397-4965-a6bd-9f8c5beb2e57",
+          "asset": "0",
+          "info": {"editorName": "background"}
+        },
+        {
+          "type": "image",
+          "id": "b47f0e13-e58f-42de-a39d-7ac3e2a6c9d3",
+          "asset": "1",
+          "info": {
+            "editorName": "penBack",
+            "x": 374,
+            "y": 387,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "d9037512-b86b-442f-972e-cec3ab251dff",
+          "asset": "1",
+          "info": {
+            "editorName": "penBack1",
+            "x": 1581,
+            "y": 381,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "e921750b-2f70-4a68-bb79-b5e3b2a3d226",
+          "asset": "1",
+          "info": {
+            "editorName": "penBack2",
+            "x": 383,
+            "y": 871,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "5560496c-4a9f-4c3a-84ec-c24ce845b06c",
+          "asset": "1",
+          "info": {
+            "editorName": "penBack3",
+            "x": 1592,
+            "y": 868,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "36b9e9d8-0163-4071-8810-7c0dc7690993",
+          "asset": "2",
+          "info": {
+            "editorName": "sheepPen",
+            "x": 68,
+            "y": 210
+          }
+        },
+        {
+          "type": "image",
+          "id": "8dedcde0-9f3c-44b0-87f0-6426e4f07607",
+          "asset": "3",
+          "info": {
+            "editorName": "penFront",
+            "x": 374,
+            "y": 387,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "8c9e901f-fbd3-4792-95cc-80eeba94d924",
+          "asset": "2",
+          "info": {
+            "editorName": "sheepPen1",
+            "x": 1273,
+            "y": 198
+          }
+        },
+        {
+          "type": "image",
+          "id": "21ddb1ad-5135-4220-b933-49639ce0d34e",
+          "asset": "3",
+          "info": {
+            "editorName": "penFront1",
+            "x": 1581,
+            "y": 381,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "54519173-72a3-4b1b-b9ba-1fa377ae1f6a",
+          "asset": "2",
+          "info": {
+            "editorName": "sheepPen2",
+            "x": 75,
+            "y": 697
+          }
+        },
+        {
+          "type": "image",
+          "id": "ed2fd6c1-7ef7-483e-a68a-7b8522f98640",
+          "asset": "3",
+          "info": {
+            "editorName": "penFront2",
+            "x": 383,
+            "y": 871,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "de61b0d3-9b4b-4331-9b6b-2f4707e2a78e",
+          "asset": "2",
+          "info": {
+            "editorName": "sheepPen3",
+            "x": 1266,
+            "y": 709
+          }
+        },
+        {
+          "type": "image",
+          "id": "58f559f0-ca71-4e57-aa39-5bd26ffafd82",
+          "asset": "3",
+          "info": {
+            "editorName": "penFront3",
+            "x": 1592,
+            "y": 868,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "9f9f883b-6730-4bc3-8600-74934f58c42e",
+          "asset": "4",
+          "info": {
+            "editorName": "sheepWobble",
+            "x": 948,
+            "y": 560,
+            "alpha": 0,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "824d6b80-b44b-4fc4-b932-061bc47347da",
+          "asset": "5",
+          "info": {
+            "editorName": "mainSheep",
+            "x": 943,
+            "y": 527,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "13f61e2c-2162-4c6b-b98f-7d1861b446e7",
+          "asset": "6",
+          "info": {"editorName": "gui"}
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "background"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "penBack"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "sheepPen",
+      "sprite": "11"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "penFront"
+    },
+    "4": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "sheepWobble",
+      "sprite": "0"
+    },
+    "5": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "mainSheep"
+    },
+    "6": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "gui"
+    }
+  },
+  "prefab-table": {}
+}
