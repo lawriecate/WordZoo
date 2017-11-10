@@ -138,6 +138,11 @@ PlayScreen.prototype.create = function ()
 
 
 
+	// Keyboard controls
+	this.game.input.keyboard.addKey(Phaser.Keyboard.UP).onDown.add(this.giraffeUp, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN).onDown.add(this.giraffeDown, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT).onDown.add(this.giraffeRight, this);
+
 
 	// Add Score value
 	scoreText = this.add.text(1645, 30, "Score: "+score, smallStyle);
@@ -159,6 +164,7 @@ PlayScreen.prototype.create = function ()
 	backgroundScroll = false;
 	backgroundDistance = 0;
 	currentColoumn = 0;
+	currentLane = 0;
 	score = 0;
 	this.updateScore();
 	livesLeft = startingLives;
@@ -265,6 +271,126 @@ PlayScreen.prototype.moveGiraffe = function (posX, posY)
 
 	giraffeWalk.x = posX + 150;
 	giraffeWalk.y = posY;
+};
+
+// Move giraffe up one lane
+PlayScreen.prototype.giraffeUp = function ()
+{	
+	// if scrolling background, reject inputs
+	if(backgroundScroll)
+	{
+		return;
+	}
+
+
+	// if already in top lane, return
+	if(currentLane == 0)
+	{
+		return;
+	}
+
+	// move giraffe
+	this.moveGiraffe(playerLanePositionsX[currentColoumn * 2], playerLanePositionsY[currentLane - 1]);
+
+	// record lane change
+	currentLane -= 1;
+};
+
+// Move giraffe down one lane
+PlayScreen.prototype.giraffeDown = function ()
+{	
+	// if scrolling background, reject inputs
+	if(backgroundScroll)
+	{
+		return;
+	}
+
+
+	// if already in top lane, return
+	if(currentLane == 3)
+	{
+		return;
+	}
+
+	// move giraffe
+	this.moveGiraffe(playerLanePositionsX[currentColoumn * 2], playerLanePositionsY[currentLane + 1]);
+
+	// record lane change
+	currentLane += 1;
+};
+
+// Move giraffe right
+PlayScreen.prototype.giraffeRight = function ()
+{	
+	// if scrolling background, reject inputs
+	if(backgroundScroll)
+	{
+		return;
+	}
+
+
+	// first stones
+	if(currentColoumn == 0)
+	{
+		if(currentLane == 0)
+		{
+			this.clickA0();
+		}
+		else if(currentLane == 1)
+		{
+			this.clickA1();
+		}
+		else if(currentLane == 2)
+		{
+			this.clickA2();
+		}
+		else if(currentLane == 3)
+		{
+			this.clickA3();
+		}
+	}
+
+	// second stones
+	else if(currentColoumn == 1)
+	{
+		if(currentLane == 0)
+		{
+			this.clickB0();
+		}
+		else if(currentLane == 1)
+		{
+			this.clickB1();
+		}
+		else if(currentLane == 2)
+		{
+			this.clickB2();
+		}
+		else if(currentLane == 3)
+		{
+			this.clickB3();
+		}
+	}
+
+	// third stones
+	else if(currentColoumn == 2)
+	{
+		if(currentLane == 0)
+		{
+			this.clickC0();
+		}
+		else if(currentLane == 1)
+		{
+			this.clickC1();
+		}
+		else if(currentLane == 2)
+		{
+			this.clickC2();
+		}
+		else if(currentLane == 3)
+		{
+			this.clickC3();
+		}
+	}
 };
 
 // select the correct giraffeWalk animation
@@ -589,8 +715,6 @@ PlayScreen.prototype.validate = function (lane, coloumn)
 	// if valid choice, decide of true
 	if(correctLane[coloumn/2] == lane)
 	{
-		console.log("IF "+livesLeft);
-
 		// update score
 		score++
 		this.updateScore();
@@ -603,8 +727,6 @@ PlayScreen.prototype.validate = function (lane, coloumn)
 	}
 	else
 	{
-		console.log("ELSE "+livesLeft);
-
 		// update lives
 		livesLeft--;
 
