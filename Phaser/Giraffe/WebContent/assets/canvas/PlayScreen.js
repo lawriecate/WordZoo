@@ -1,6 +1,6 @@
 // Global variables
 var giraffe = giraffe|| {}; 
-
+var giraffeFalling;
 
 
 function PlayScreen() 
@@ -31,53 +31,38 @@ PlayScreen.prototype.create = function ()
 	// Add background
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
 	background.scale.setTo(1.51, 1.51);
-	
-	// Add giraffe
-	giraffe = this.game.add.sprite(playerLanePositionsX[0], playerLanePositionsY[0], 'GiraffeAnimation', 0);
-	giraffe.scale.setTo(1.5, 1.5);
-
-	// giraffe animations
-    giraffeFall = giraffe.animations.add('fall', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 10);
-    giraffeFall.onComplete.add(function () { giraffe.frame = 0; this.leaveStone(); }, this);
-	giraffeWalk0 = this.game.add.tween(giraffe).to({x: '+290'}, 800, Phaser.Easing.Linear.None, false);
-	giraffeWalk0.onComplete.add(function (){currentColoumn++;}, this);
-	giraffeWalk1 = this.game.add.tween(giraffe).to({x: '+290'}, 800, Phaser.Easing.Linear.None, false);
-	giraffeWalk1.onComplete.add(function (){currentColoumn++;}, this);
-	giraffeWalk2 = this.game.add.tween(giraffe).to({x: '+290'}, 800, Phaser.Easing.Linear.None, false);
-	giraffeWalk2.onComplete.add(function (){this.reset();}, this);
-
 
     // Add word headings
     titleA = this.add.sprite(260, 110, 'wordDisplay');
     titleA.scale.setTo(1.5, 1.5);
-    titleTextA = this.add.text(410, 150, "Word", bigStyle);
+    titleTextA = this.add.text(410, 150, "", bigStyle);
 
     titleB = this.add.sprite(860, 110, 'wordDisplay');
     titleB.scale.setTo(1.5, 1.5);
-    titleTextB = this.add.text(1010, 150, "Word", bigStyle);
+    titleTextB = this.add.text(1010, 150, "", bigStyle);
     
     titleC = this.add.sprite(1480, 110, 'wordDisplay');
     titleC.scale.setTo(1.5, 1.5);
-    titleTextC = this.add.text(1630, 150, "Word", bigStyle);
+    titleTextC = this.add.text(1630, 150, "", bigStyle);
 
 
     // First stones word text
-    wordA0 = this.add.text(410, 360, "Word", medStyle);
-	wordA1 = this.add.text(410, 550, "Word", medStyle);
-    wordA2 = this.add.text(410, 750, "Word", medStyle);
-    wordA3 = this.add.text(410, 950, "Word", medStyle);
+    wordA0 = this.add.text(410, 360, "", medStyle);
+	wordA1 = this.add.text(410, 550, "", medStyle);
+    wordA2 = this.add.text(410, 750, "", medStyle);
+    wordA3 = this.add.text(410, 950, "", medStyle);
 
     // Second stones word text
-    wordB0 = this.add.text(1020, 360, "Word", medStyle);
-	wordB1 = this.add.text(1020, 560, "Word", medStyle);
-    wordB2 = this.add.text(1020, 770, "Word", medStyle);
-    wordB3 = this.add.text(1020, 960, "Word", medStyle);
+    wordB0 = this.add.text(1020, 360, "", medStyle);
+	wordB1 = this.add.text(1020, 560, "", medStyle);
+    wordB2 = this.add.text(1020, 770, "", medStyle);
+    wordB3 = this.add.text(1020, 960, "", medStyle);
 
     // Third stones word text
-    wordC0 = this.add.text(1630, 360, "Word", medStyle);
-	wordC1 = this.add.text(1630, 560, "Word", medStyle);
-    wordC2 = this.add.text(1630, 770, "Word", medStyle);
-    wordC3 = this.add.text(1630, 960, "Word", medStyle);
+    wordC0 = this.add.text(1630, 360, "", medStyle);
+	wordC1 = this.add.text(1630, 560, "", medStyle);
+    wordC2 = this.add.text(1630, 770, "", medStyle);
+    wordC3 = this.add.text(1630, 960, "", medStyle);
 
 
 	// Buttons behind frist stones
@@ -111,23 +96,68 @@ PlayScreen.prototype.create = function ()
 	buttonC3.scale.setTo(2, 2);
 
 
+	
+	// Add giraffe walking sprites
+	giraffeWalk = this.game.add.sprite(0, playerLanePositionsY[0], 'giraffeWalking', 1);
+	giraffeWalk.scale.setTo(0.5, 0.5);
+
+	// Add giraffe walking sprite
+	giraffe = this.game.add.sprite(playerLanePositionsX[0], playerLanePositionsY[0], 'GiraffeAnimation', 0);
+	giraffe.scale.setTo(1.5, 1.5);
+
+
+	// giraffe fall animation
+    giraffeFalling = giraffe.animations.add('fall', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 10);
+    giraffeFalling.onComplete.add(function () {console.log("onComplete3");}, this);
+   // giraffeFall.onComplete.add(function () {
+		//giraffe.frame = 0; this.checkLives(); this.leaveStone(); console.log("onComplete");}, this);		 // 				*** FIX ***
+
+
+    // giraffe walking animation + hide
+    giraffeWalking = giraffeWalk.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10);
+    giraffeWalk.visible = false;
+
+
+    // giraffe tween off stone 0
+	giraffeMove0 = this.game.add.tween(giraffeWalk).to({x: '+290'}, 800, Phaser.Easing.Linear.None, false);
+	giraffeMove0.onComplete.add(function (){
+		currentColoumn++; this.moveGiraffe(playerLanePositionsX[(currentColoumn * 2)], playerLanePositionsY[currentLane]);
+		giraffeWalking.stop(); giraffeWalk.visible = false; giraffe.visible = true;}, this);
+
+    // giraffe tween off stone 1
+	giraffeMove1 = this.game.add.tween(giraffeWalk).to({x: '+290'}, 800, Phaser.Easing.Linear.None, false);
+	giraffeMove1.onComplete.add(function (){
+		currentColoumn++; this.moveGiraffe(playerLanePositionsX[(currentColoumn * 2)], playerLanePositionsY[currentLane]);
+		giraffeWalking.stop(); giraffeWalk.visible = false; giraffe.visible = true;}, this);
+	
+	    // giraffe tween off stone 2
+	giraffeMove2 = this.game.add.tween(giraffeWalk).to({x: '+290'}, 800, Phaser.Easing.Linear.None, false);
+	giraffeMove2.onComplete.add(function (){
+		giraffeWalking.stop(); this.moveGiraffe(playerLanePositionsX[6], playerLanePositionsY[currentLane]);
+		giraffeWalk.visible = false; giraffe.visible = true; this.reset();}, this);
+
+
+
+
 	// Add Score value
 	scoreText = this.add.text(1645, 30, "Score: "+score, smallStyle);
 	
 	// Add Time value
-	timeText = this.add.text(980, 30, "Time: "+time, smallStyle);
+	timeText = this.add.text(980, 30, "Time: "+(timeCounter / backgroundScrollSpeed), smallStyle);
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
 	
 	// Time
-	timeLeft = time;
+	timeLeft = timeCounter;
 	timer = this.time.create(false);
-	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
+	timer.loop(Phaser.Timer.SECOND/backgroundScrollSpeed, this.updateTime, this);
 	timer.start();
 
 
 	// Set starting values
+	backgroundScroll = false;
+	backgroundDistance = 0;
 	currentColoumn = 0;
 	score = 0;
 	this.updateScore();
@@ -143,12 +173,45 @@ PlayScreen.prototype.create = function ()
 // display current time to screen (with --)
 PlayScreen.prototype.updateTime = function ()
 {	
+	// if scrolling background, move background + giraffe
+	if(backgroundScroll == true)
+	{
+		background.tilePosition.x -= 10;
+		giraffe.x -= 14.7;
+		backgroundDistance += 10;
+	}
+
+	// check if scrolled enough
+	if(backgroundDistance >= 1280)
+	{
+		backgroundScroll = false;
+		backgroundDistance = 0;
+
+		// Spawn new words
+		this.spawnWords();
+
+		// Show words
+		this.showWords(true);
+
+		// Reset current coloumn, to allow player to click stones
+		currentColoumn = 0;
+	}
+
+
 	// If no time remaining, game finished
 	if(timeLeft <= 0){
 		this.endGame();
 	}
 	
-	timeText.setText("Time: "+(--timeLeft), true);	
+	// show current time
+	timeText.setText("Time: "+(Math.floor(timeLeft/backgroundScrollSpeed)), true);	
+
+	// recrease time remaining
+	--timeLeft;
+
+
+	// check lives remaining
+	this.checkLives();
 };
 
 
@@ -199,22 +262,29 @@ PlayScreen.prototype.moveGiraffe = function (posX, posY)
 {	
 	giraffe.x = posX;
 	giraffe.y = posY;
+
+	giraffeWalk.x = posX + 150;
+	giraffeWalk.y = posY;
 };
 
 // select the correct giraffeWalk animation
 PlayScreen.prototype.leaveStone = function ()
 {	
+	// Start giraffe walking animation
+	giraffeWalking.play(10, true);
+
+	// find which stone to move off
 	if(currentColoumn == 0)
 	{
-		giraffeWalk0.start();
+		giraffeMove0.start();
 	}
 	else if(currentColoumn == 1)
 	{
-		giraffeWalk1.start();
+		giraffeMove1.start();
 	}
 	else if(currentColoumn == 2)
 	{
-		giraffeWalk2.start();
+		giraffeMove2.start();
 	}
 };
 
@@ -435,20 +505,10 @@ PlayScreen.prototype.reset = function ()
 	// Hide all words
 	this.showWords(false);
 
-	// Move background
+//	this.moveGiraffe(playerLanePositionsX[(currentColoumn*2)+1], playerLanePositionsY[currentLane]);
 
-
-	// Move giraffe (tween with background)
-	this.moveGiraffe(playerLanePositionsX[0], playerLanePositionsY[currentLane]);
-
-	// Spawn new words
-	this.spawnWords();
-
-	// Show words
-	this.showWords(true);
-
-	// Reset current coloumn, to allow player to click stones
-	currentColoumn = 0;
+	// Move background 	
+	backgroundScroll = true;
 };
 
 
@@ -521,8 +581,16 @@ PlayScreen.prototype.validate = function (lane, coloumn)
 		return;
 	}
 
+	// Swap giraffe sprites
+	giraffe.visible = false;
+	giraffeWalk.visible = true;
+
+
+	// if valid choice, decide of true
 	if(correctLane[coloumn/2] == lane)
 	{
+		console.log("IF "+livesLeft);
+
 		// update score
 		score++
 		this.updateScore();
@@ -535,15 +603,18 @@ PlayScreen.prototype.validate = function (lane, coloumn)
 	}
 	else
 	{
+		console.log("ELSE "+livesLeft);
+
 		// update lives
 		livesLeft--;
-		this.checkLives();
 
 		// move giraffe to current location
 		this.moveGiraffe(playerLanePositionsX[coloumn+1], playerLanePositionsY[lane]);
 
 		// drowning animations
-		giraffeFall.play(10);
+		//console.log(giraffeFalling.play());
+		//giraffeFalling.play();																								*** FIX ***
+		this.leaveStone();
 	}
 };
 

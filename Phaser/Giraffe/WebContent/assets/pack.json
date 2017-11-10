@@ -119,10 +119,20 @@
       "key": "Empty",
       "url": "assets/3 Play/Empty.png",
       "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "giraffeWalking",
+      "url": "assets/3 Play/giraffeWalking.png",
+      "frameWidth": 550,
+      "frameHeight": 550,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
     }
   ],
   "meta": {
-    "generated": "1510256357995",
+    "generated": "1510340591958",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

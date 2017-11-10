@@ -12,11 +12,17 @@
 	            		"Feather","Fireman","Flag","Football","Grape","Guitar",
 	         			"Heart","Island","Jumper","Mouse","Notebook","Owl",
 	         			"Pear","Police","Rabbit","Rake","Soap","Squirrel"];
-	
+
+	// background scroll
+	var backgroundScroll;
+	var backgroundDistance;
+	var backgroundScrollSpeed = 50;
+
 	//giraffe walking
 	var background;
 	var giraffe;
-	var giraffeFall;
+	//var giraffeFalling;
+	var giraffeWalking;
 	var giraffeWalk0, giraffeWalk1, giraffeWalk2;
 
 	//current coloumn of play
@@ -60,7 +66,7 @@
 	var livesBox;
 	
 	// time
-	var time = 60;
+	var timeCounter = 3000; // 60 seconds * backgroundScrollSpeed
 	var timeLeft;
 	var timeText = "";
 
