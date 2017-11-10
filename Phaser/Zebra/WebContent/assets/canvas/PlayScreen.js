@@ -66,20 +66,31 @@ PlayScreen.prototype.create = function ()
 	timer = this.time.create(false);
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timer.start();
-	
 
-	// Add arrow controls
-	upArrow = this.add.button(200, 950, 'ScoreBackground', this.moveUp, this, null, null, null, null);
-	upArrow.scale.setTo(3, 1.5);
-	upArrowText = this.add.text(400, 985, "Up", medStyle);
 
-	downArrow = this.add.button(740, 950, 'ScoreBackground', this.moveDown, this, null, null, null, null);
-	downArrow.scale.setTo(3, 1.5);
-	downArrowText = this.add.text(920, 985, "Down", medStyle);
-	
-	rightArrow = this.add.button(1290, 950, 'ScoreBackground', this.moveRight, this, null, null, null, null);
-	rightArrow.scale.setTo(3, 1.5);
-	rightArrowText = this.add.text(1460, 985, "Boost", medStyle);
+	// Keyboard controls
+	this.game.input.keyboard.addKey(Phaser.Keyboard.UP).onDown.add(this.moveUp, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN).onDown.add(this.moveDown, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT).onDown.add(this.moveRight, this);
+
+    // touchscreen controls
+    this.game.input.onDown.add(function(touchStart) { startPoint = touchStart.clientY;}, this);
+    this.game.input.onUp.add(function(touchEnd) { endPointY = touchEnd.clientY; endPointX = touchEnd.clientX;
+	    if((startPoint - endPointY) > 100) 
+	    {
+	    	this.moveUp();
+	    } 
+	    else if((endPointY - startPoint) > 100) 
+	    {
+	    	this.moveDown();
+	    } 
+	    else if((endPointX - startPoint) > 10) 
+	    {
+	    	this.moveRight();
+	    }
+  	}, this);
+
+
 
 
 
@@ -196,20 +207,6 @@ PlayScreen.prototype.spawnItems = function ()
     // Set item2 (incorrectItem2)
     item2 = this.add.sprite(1920, itemLanePositions[(correctLane+2) % 3], incorrectItem2);
 	item2.scale.setTo(1.5, 1.5);
-
-
-
-	// ----------------------------------------
-	// Maybe not needed?, put arrows on top of items
-	// ----------------------------------------
-	upArrow.bringToTop();
-	downArrow.bringToTop();
-	rightArrow.bringToTop();
-	upArrowText.bringToTop();
-	downArrowText.bringToTop();
-	rightArrowText.bringToTop();
-
-
 	
 
     //This ensures the player never goes behind the objects once they are spawned
@@ -246,8 +243,20 @@ PlayScreen.prototype.update = function ()
     		livesLeft--;
     		this.checkLives();
 
+
+    		// speed reduction
+    		if(normalSpeed >= 7 && normalSpeed <= 12)
+    		{
+    			normalSpeed -= 2;
+    		}
+    		else if(normalSpeed > 12)
+    		{
+    			normalSpeed -5;
+    		}
+
     		// update current speed
     		currentSpeed = normalSpeed;
+
 
     		// reset items
     		item0.kill();

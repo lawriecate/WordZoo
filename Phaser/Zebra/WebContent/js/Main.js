@@ -23,14 +23,6 @@
 	var itemLanePositions = [525, 675, 825];
 	var playerLanePositions = [412, 562, 712];
 	var currentLane = 0;
-	
-	//Define arrow buttons
-	var upArrow;
-	var downArrow;
-	var rightArrow;
-	var upArrowText;
-	var downArrowText;
-	var rightArrowText;
 
 	//Define winner variables
 	var correctLane;
