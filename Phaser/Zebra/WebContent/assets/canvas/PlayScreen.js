@@ -50,16 +50,15 @@ PlayScreen.prototype.create = function ()
 	// Add Score box + score value
 	var scoreBox = this.add.sprite(1664, 182, 'ScoreBackground');
 	scoreBox.scale.setTo(1.5, 1.5);
-	scoreText = this.add.text(1720, 225, "Score: "+score, smallStyle);
+	scoreText = this.add.text(1700, 225, "Score: "+score, smallStyle);
 	
 	// Add Time box + time value
 	var timeBox = this.add.sprite(1664, 32, 'ScoreBackground');
 	timeBox.scale.setTo(1.5, 1.5);
-	timeText = this.add.text(1720, 75, "Time: "+time, smallStyle);
+	timeText = this.add.text(1700, 75, "Time: "+time, smallStyle);
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
-	livesBox.scale.setTo(1.5, 1.5);
 	
 	// Time
 	timeLeft = time;
@@ -89,9 +88,7 @@ PlayScreen.prototype.create = function ()
 	    	this.moveRight();
 	    }
   	}, this);
-
-
-
+  	
 
 
 	// Reset starting values for each playthrough
@@ -294,18 +291,15 @@ PlayScreen.prototype.checkLives = function()
 	if(livesLeft <= 0)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
-		livesBox.scale.setTo(1.5, 1.5);
 		this.endGame();
 	}
 	else if(livesLeft == 1)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 2);
-		livesBox.scale.setTo(1.5, 1.5);
 	}
 	else if(livesLeft == 2)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 1);
-		livesBox.scale.setTo(1.5, 1.5);
 	}
 };
 

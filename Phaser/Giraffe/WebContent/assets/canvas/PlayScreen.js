@@ -35,35 +35,49 @@ PlayScreen.prototype.create = function ()
     // Add word headings
     titleA = this.add.sprite(260, 110, 'wordDisplay');
     titleA.scale.setTo(1.5, 1.5);
-    titleTextA = this.add.text(410, 150, "", bigStyle);
-
+    titleTextA = this.add.text(460, 180, "", bigStyle);
+    titleTextA.anchor.setTo(0.5);
+    
     titleB = this.add.sprite(860, 110, 'wordDisplay');
     titleB.scale.setTo(1.5, 1.5);
-    titleTextB = this.add.text(1010, 150, "", bigStyle);
+    titleTextB = this.add.text(1060, 180, "", bigStyle);
+    titleTextB.anchor.setTo(0.5);
     
     titleC = this.add.sprite(1480, 110, 'wordDisplay');
     titleC.scale.setTo(1.5, 1.5);
-    titleTextC = this.add.text(1630, 150, "", bigStyle);
-
+    titleTextC = this.add.text(1680, 180, "", bigStyle);
+    titleTextC.anchor.setTo(0.5);
 
     // First stones word text
-    wordA0 = this.add.text(410, 360, "", medStyle);
-	wordA1 = this.add.text(410, 550, "", medStyle);
-    wordA2 = this.add.text(410, 750, "", medStyle);
-    wordA3 = this.add.text(410, 950, "", medStyle);
-
+    wordA0 = this.add.text(460, 370, "", medStyle);
+    wordA0.anchor.setTo(0.5);
+	wordA1 = this.add.text(460, 570, "", medStyle);
+    wordA1.anchor.setTo(0.5);
+	wordA2 = this.add.text(460, 770, "", medStyle);
+    wordA2.anchor.setTo(0.5);
+	wordA3 = this.add.text(460, 960, "", medStyle);
+    wordA3.anchor.setTo(0.5);
+	
     // Second stones word text
-    wordB0 = this.add.text(1020, 360, "", medStyle);
-	wordB1 = this.add.text(1020, 560, "", medStyle);
-    wordB2 = this.add.text(1020, 770, "", medStyle);
-    wordB3 = this.add.text(1020, 960, "", medStyle);
-
+    wordB0 = this.add.text(1060, 370, "", medStyle);
+    wordB0.anchor.setTo(0.5);
+	wordB1 = this.add.text(1060, 580, "", medStyle);
+    wordB1.anchor.setTo(0.5);
+	wordB2 = this.add.text(1060, 780, "", medStyle);
+    wordB2.anchor.setTo(0.5);
+	wordB3 = this.add.text(1060, 980, "", medStyle);
+    wordB3.anchor.setTo(0.5);
+	
     // Third stones word text
-    wordC0 = this.add.text(1630, 360, "", medStyle);
-	wordC1 = this.add.text(1630, 560, "", medStyle);
-    wordC2 = this.add.text(1630, 770, "", medStyle);
-    wordC3 = this.add.text(1630, 960, "", medStyle);
-
+    wordC0 = this.add.text(1680, 370, "", medStyle);
+    wordC0.anchor.setTo(0.5);
+    wordC1 = this.add.text(1680, 580, "", medStyle);
+    wordC1.anchor.setTo(0.5);
+    wordC2 = this.add.text(1680, 780, "", medStyle);
+    wordC2.anchor.setTo(0.5);
+    wordC3 = this.add.text(1680, 980, "", medStyle);
+    wordC3.anchor.setTo(0.5);
+    
 
 	// Buttons behind frist stones
 	buttonA0 = this.add.button(300, 300, 'Empty', this.clickA0, this, null, null, null, null);
@@ -143,15 +157,18 @@ PlayScreen.prototype.create = function ()
   	this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN).onDown.add(this.giraffeDown, this);
   	this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT).onDown.add(this.giraffeRight, this);
 
-
-	// Add Score value
-	scoreText = this.add.text(1645, 30, "Score: "+score, smallStyle);
-	
-	// Add Time value
-	timeText = this.add.text(980, 30, "Time: "+(timeCounter / backgroundScrollSpeed), smallStyle);
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
+	
+	// Add Time value
+	timeText = this.add.text(1040, 40, "Time: "+(timeCounter / backgroundScrollSpeed), smallStyle);
+	timeText.anchor.setTo(0.5);
+
+	// Add Score value
+	scoreText = this.add.text(1700, 40, "Score: "+score, smallStyle);
+	scoreText.anchor.setTo(0.5);
+	
 	
 	// Time
 	timeLeft = timeCounter;

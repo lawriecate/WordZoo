@@ -31,7 +31,6 @@ PlayScreen.prototype.create = function ()
 {	
 	// Add background
 	var background = this.add.sprite(0, 0, 'Background');
-	background.scale.setTo(1.51, 1.51);
 	
 	// Add normal (no-diving) goal keeper
 	GK_Mid = this.add.sprite(790, 320, 'goalkeeper_center');
@@ -60,13 +59,17 @@ PlayScreen.prototype.create = function ()
 	bottomRight.visible = false;
 	
 	// TL text
-	TLtext = this.add.text(620, 170, "", style);
+	TLtext = this.add.text(660, 190, "", style);
+	TLtext.anchor.setTo(0.5);
 	// TR text
-	TRtext = this.add.text(1260, 170, "", style);
+	TRtext = this.add.text(1300, 190, "", style);
+	TRtext.anchor.setTo(0.5);
 	// BL text
-	BLtext = this.add.text(620, 620, "", style);
+	BLtext = this.add.text(660, 640, "", style);
+	BLtext.anchor.setTo(0.5);
 	// BR text
-	BRtext = this.add.text(1260, 620, "", style);
+	BRtext = this.add.text(1300, 640, "", style);
+	BRtext.anchor.setTo(0.5);
 	
 
 	// Add TopLeft diving goal keeper + hide
@@ -141,19 +144,16 @@ PlayScreen.prototype.create = function ()
 	footballBR2.onComplete.add(function (){footballSpin.stop(0); this.reset();} , this);
 
 	
-	// Add Score box + score value
-	var scoreBox = this.add.sprite(1664, 182, 'ScoreBackground');
-	scoreBox.scale.setTo(1.5, 1.5);
-	scoreText = this.add.text(1720, 225, "Score: "+score, style);
+	// Add score value
+	scoreText = this.add.text(1720, 40, "Score: "+score, style);
+	scoreText.anchor.setTo(0.5);
 	
-	// Add Time box + time value
-	var timeBox = this.add.sprite(1664, 32, 'ScoreBackground');
-	timeBox.scale.setTo(1.5, 1.5);
-	timeText = this.add.text(1720, 75, "Time: "+time, style);
+	// Add time value
+	timeText = this.add.text(960, 40, "Time: "+time, style);
+	timeText.anchor.setTo(0.5);
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
-	livesBox.scale.setTo(1.5, 1.5);
 			
 	
 	// Time
@@ -526,18 +526,15 @@ PlayScreen.prototype.checkLives = function()
 	if(livesLeft <= 0)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
-		livesBox.scale.setTo(1.5, 1.5);
 		this.endGame();
 	}
 	else if(livesLeft == 1)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 2);
-		livesBox.scale.setTo(1.5, 1.5);
 	}
 	else if(livesLeft == 2)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 1);
-		livesBox.scale.setTo(1.5, 1.5);
 	}
 };
 
