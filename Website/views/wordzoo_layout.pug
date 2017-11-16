@@ -4,37 +4,36 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/uikit.min.css')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    script(src='javascripts/uikit.min.js')
-    script(src='javascripts/uikit-icons.min.js')
+    script(src='/javascripts/uikit.min.js')
+    script(src='/javascripts/uikit-icons.min.js')
   body
     nav(class='uk-navbar-container uk-margin-bottom', uk-navbar)
       div(class='uk-navbar-center')
-      a(class='uk-navbar-item uk-logo', href='#')
-        img(src='images/logo.png', alt='WordZoo', width='200', height='43')
-
-      ul(class='uk-navbar-nav')
-        li(class='uk-active')
-          a(href='#') Home
-        li
-          a(href='#') About Wordzoo
-          div(class='uk-navbar-dropdown')
-            ul(class='uk-nav uk-navbar-dropdown-nav')
-              li(class='uk-active')
-                a(href='#') Item 1
-              li
-                a(href='#') Item 2
-              li
-                a(href='#') Item 3
-        li
-          a(href='/signin') Teacher Sign-In
-          div(class='uk-navbar-dropdown')
-            ul(class='uk-nav uk-navbar-dropdown-nav')
-              li(class='uk-active')
-                a(href='/games/menu') Games
-              li
-                a(href='#') Item 2
-              li
-                a(href='#') Item 3
+        a(class='uk-navbar-item uk-logo', href='/')
+          img(src='/images/logo.png', alt='WordZoo', width='200', height='43')
+        ul(class='uk-navbar-nav')
+          li(class='uk-active')
+            a(href='/') Home
+          li
+            a(href='#') About Wordzoo
+            div(class='uk-navbar-dropdown')
+              ul(class='uk-nav uk-navbar-dropdown-nav')
+                li(class='uk-active')
+                  a(href='#') Item 1
+                li
+                  a(href='#') Item 2
+                li
+                  a(href='#') Item 3
+          li
+            a(href='/signin') Teacher Sign-In
+            div(class='uk-navbar-dropdown')
+              ul(class='uk-nav uk-navbar-dropdown-nav')
+                li(class='uk-active')
+                  a(href='/games/menu') Games
+                li
+                  a(href='/teacher/home') Teacher Home
+                li
+                  a(href='/teacher/pupilstart') Select Pupil
           li
             a(href='#') Item 3
     div(class='uk-container uk-container-center')

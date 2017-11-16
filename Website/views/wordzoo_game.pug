@@ -7,17 +7,18 @@ html
     script(src='/javascripts/uikit.min.js')
     script(src='/javascripts/uikit-icons.min.js')
 
-
+    script(src='/games/OwlSpell/WebContent/lib/phaser.js')
+    script(src='/games/OwlSpell/WebContent/js/Main.js')
+    script(src='/games/OwlSpell/WebContent/assets/canvas/Level.js')
   body
     nav(class='uk-navbar-container uk-margin-bottom', uk-navbar)
       div(class='uk-navbar-center')
-      a(class='uk-navbar-item uk-logo', href='/')
+      a(class='uk-navbar-item uk-logo', href='#')
         img(src='/images/logo.png', alt='WordZoo', width='200', height='43')
 
       ul(class='uk-navbar-nav')
         li(class='uk-active')
-          a(href='/') Home
-
+          a(href='/games/menu') Menu
 
     div(class='uk-container uk-container-center')
       block content

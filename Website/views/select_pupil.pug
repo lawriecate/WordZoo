@@ -1,0 +1,14 @@
+extends wordzoo_layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 Start Pupil Session
+
+        form(action='/games/menu')
+          select
+            option Pupil 1
+            option Pupil 2
+            option Pupil 3
+          input(value='Start','type'='submit')

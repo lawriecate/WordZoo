@@ -1,0 +1,784 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Level",
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "\r\n"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "1e4ad876-b357-4590-88e0-7a7450e2af5c",
+          "asset": "0",
+          "info": {"editorName": "background"}
+        },
+        {
+          "type": "image",
+          "id": "46d1885c-1139-4ad9-8ba2-5a1f698bac62",
+          "asset": "1",
+          "info": {
+            "editorName": "scroll1",
+            "x": 1546,
+            "y": 0.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "c26afe0e-5dd6-4a32-8ad3-11abfd7cc1bb",
+          "asset": "2",
+          "info": {
+            "editorName": "scroll",
+            "x": 2.25,
+            "y": 0.5999999999999996
+          }
+        },
+        {
+          "type": "image",
+          "id": "4d3d438f-b3db-4b1c-8e70-94dda8156860",
+          "asset": "3",
+          "info": {
+            "editorName": "goodOwlBody",
+            "x": 413,
+            "y": 390
+          }
+        },
+        {
+          "type": "image",
+          "id": "baadeba8-adec-4675-9f23-d57de7903567",
+          "asset": "4",
+          "info": {
+            "editorName": "badOwlBody",
+            "x": 1295,
+            "y": 391
+          }
+        },
+        {
+          "type": "image",
+          "id": "5bde952d-e0fa-4a2b-b3b5-081f0d07cf4f",
+          "asset": "5",
+          "info": {
+            "editorName": "goodOwlArm",
+            "x": 409,
+            "y": 629
+          }
+        },
+        {
+          "type": "image",
+          "id": "ac05c07a-cbae-4180-af93-a7c7938c6772",
+          "asset": "6",
+          "info": {
+            "editorName": "badOwlArm",
+            "x": 1469,
+            "y": 687,
+            "rotation": 2.0943951023931953
+          }
+        },
+        {
+          "type": "image",
+          "id": "ca279cd6-dcf2-41b6-a560-3926712a1562",
+          "asset": "7",
+          "info": {
+            "editorName": "chosenWord",
+            "x": 634.5001220703125,
+            "y": 68.9
+          }
+        },
+        {
+          "type": "image",
+          "id": "0d9f6366-4cfe-4d5d-93a6-4c0c46374ec7",
+          "asset": "8",
+          "info": {
+            "editorName": "OpponentHealth",
+            "x": 1050,
+            "y": 870
+          }
+        },
+        {
+          "type": "image",
+          "id": "d3fbc1c6-2541-4add-a750-3297b6c0c1cc",
+          "asset": "9",
+          "info": {
+            "editorName": "YouHealth",
+            "x": 388,
+            "y": 870
+          }
+        },
+        {
+          "type": "group",
+          "id": "cbef1d2e-a5fe-48a0-bd2c-ee09e2c403bd",
+          "info": {
+            "editorName": "group",
+            "x": 341,
+            "y": -614,
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "793d0154-f11f-492e-bf72-d62d11f4657f",
+                "asset": "10",
+                "info": {
+                  "editorName": "KeyBoardBackground",
+                  "x": 60.5001220703125,
+                  "y": 1776
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "ef91181a-a1dd-40ef-bbb5-d34ab7e2a158",
+                "asset": "11",
+                "info": {
+                  "editorName": "a",
+                  "x": 151,
+                  "y": 1875,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "0cdd847b-e68c-4921-96f9-100b931cefd9",
+                "asset": "12",
+                "info": {
+                  "editorName": "B",
+                  "x": 301,
+                  "y": 1875,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "3d7ada35-c4a4-4a0d-bbc7-8f1a324b3d37",
+                "asset": "13",
+                "info": {
+                  "editorName": "C",
+                  "x": 451,
+                  "y": 1875,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "998b5320-7abb-4b98-b65e-fd1acb6c0751",
+                "asset": "14",
+                "info": {
+                  "editorName": "D",
+                  "x": 601,
+                  "y": 1875,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "900bfaba-976b-44e6-809d-11aa08596200",
+                "asset": "15",
+                "info": {
+                  "editorName": "E",
+                  "x": 751,
+                  "y": 1875,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "3f38547f-65b0-4524-aa1c-c03c54773ceb",
+                "asset": "16",
+                "info": {
+                  "editorName": "F",
+                  "x": 901,
+                  "y": 1875,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "645419d5-e6d4-488c-81b2-56a2a75c1455",
+                "asset": "17",
+                "info": {
+                  "editorName": "G",
+                  "x": 1051,
+                  "y": 1875,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "04330746-78e2-4459-b5a8-2faf380ca7dd",
+                "asset": "18",
+                "info": {
+                  "editorName": "H",
+                  "x": 151,
+                  "y": 2025,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "777d218c-48e2-403d-ae12-b4758d874a3f",
+                "asset": "19",
+                "info": {
+                  "editorName": "I",
+                  "x": 301,
+                  "y": 2025,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "434361bf-0312-46ff-b735-129a235e4b9a",
+                "asset": "20",
+                "info": {
+                  "editorName": "J",
+                  "x": 451,
+                  "y": 2025,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "cb530fc5-c439-49c4-afb2-962e221edb0f",
+                "asset": "21",
+                "info": {
+                  "editorName": "K",
+                  "x": 601,
+                  "y": 2025,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "c3a6c140-0088-4bbf-9a37-3220620aa718",
+                "asset": "22",
+                "info": {
+                  "editorName": "L",
+                  "x": 751,
+                  "y": 2025,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "5b7d5c65-da79-4fc6-8e43-d61b46c05ee0",
+                "asset": "23",
+                "info": {
+                  "editorName": "M",
+                  "x": 901,
+                  "y": 2025,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "555d6c70-36d9-4a66-9bcb-7410076a48d3",
+                "asset": "24",
+                "info": {
+                  "editorName": "N",
+                  "x": 1051,
+                  "y": 2025,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "eb9be6ae-e25c-46cc-a5bf-175cb793935e",
+                "asset": "25",
+                "info": {
+                  "editorName": "O",
+                  "x": 151,
+                  "y": 2175,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "4e4db306-1d36-404a-bd3a-8d3f6d5e7b47",
+                "asset": "26",
+                "info": {
+                  "editorName": "P",
+                  "x": 301,
+                  "y": 2175,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "2d493993-23b8-4af1-8e0a-099866f3426d",
+                "asset": "27",
+                "info": {
+                  "editorName": "Q",
+                  "x": 451,
+                  "y": 2175,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "e0dde9dc-a96d-40a8-a8c7-c61fec82f412",
+                "asset": "28",
+                "info": {
+                  "editorName": "R",
+                  "x": 601,
+                  "y": 2175,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "febcd4f8-4e42-4dbf-8bc2-54b6e4eacc05",
+                "asset": "29",
+                "info": {
+                  "editorName": "S",
+                  "x": 751,
+                  "y": 2175,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "45bc297c-6b6c-41b0-b5b0-4a9337f17dc3",
+                "asset": "30",
+                "info": {
+                  "editorName": "t",
+                  "x": 901,
+                  "y": 2175,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "84d6e91d-d933-451c-9d83-c5ce74d60c7c",
+                "asset": "31",
+                "info": {
+                  "editorName": "U",
+                  "x": 1051,
+                  "y": 2175,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "c093370d-b375-4bc4-b9f8-0fdf4ff78e01",
+                "asset": "32",
+                "info": {
+                  "editorName": "V",
+                  "x": 301,
+                  "y": 2325,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "6cbfb079-08bc-40e4-be8d-58fe50cf5d85",
+                "asset": "33",
+                "info": {
+                  "editorName": "W",
+                  "x": 451,
+                  "y": 2325,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "da9c52ab-93b7-45ac-9161-7adddc628e5e",
+                "asset": "34",
+                "info": {
+                  "editorName": "X",
+                  "x": 601,
+                  "y": 2325,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "aa6fa40c-718d-4c38-865f-922f16e67a74",
+                "asset": "35",
+                "info": {
+                  "editorName": "Y",
+                  "x": 751,
+                  "y": 2325,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "5ba33b47-f184-4e6d-9e3c-ee69fc67252e",
+                "asset": "36",
+                "info": {
+                  "editorName": "Z",
+                  "x": 901,
+                  "y": 2325,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "b46a6c14-82d0-4ef6-ac59-d8bbd78befa6",
+                "asset": "37",
+                "info": {
+                  "editorName": "Space",
+                  "editorPublic": true,
+                  "x": 601,
+                  "y": 2475,
+                  "anchor.x": 0.5,
+                  "anchor.y": 0.5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "a0ef6a8d-54a0-4fc3-9cf9-7e643aeba480",
+          "asset": "38",
+          "info": {
+            "editorName": "Enter",
+            "x": 1391.5,
+            "y": 1785.5,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "28a3a1f4-830b-43ff-9dd1-d104075e157e",
+          "asset": "39",
+          "info": {
+            "editorName": "Enter1",
+            "x": 1257.5,
+            "y": 1858,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "d6b14a32-dbee-46ab-86ac-a503e93a99e2",
+          "asset": "40",
+          "info": {
+            "editorName": "Delete",
+            "x": 492.5,
+            "y": 1783.5,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        },
+        {
+          "type": "atlas-sprite",
+          "id": "55e65943-13db-4c16-bcf3-0cee32d46492",
+          "asset": "41",
+          "info": {
+            "editorName": "Delete1",
+            "x": 627,
+            "y": 1855.5,
+            "anchor.x": 0.5,
+            "anchor.y": 0.5
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "background"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "scroll2"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "scroll"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "goodOwlBody"
+    },
+    "4": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "badOwlBody"
+    },
+    "5": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "goodOwlArm"
+    },
+    "6": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "badOwlArm"
+    },
+    "7": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "chosenWord"
+    },
+    "8": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "OpponentHealth"
+    },
+    "9": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "YouHealth"
+    },
+    "10": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoardBackground"
+    },
+    "11": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "a"
+    },
+    "12": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "B"
+    },
+    "13": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "C"
+    },
+    "14": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "D"
+    },
+    "15": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "E"
+    },
+    "16": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "F"
+    },
+    "17": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "G"
+    },
+    "18": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "H"
+    },
+    "19": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "I"
+    },
+    "20": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "J"
+    },
+    "21": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "K"
+    },
+    "22": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "L"
+    },
+    "23": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "M"
+    },
+    "24": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "N"
+    },
+    "25": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "O"
+    },
+    "26": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "P"
+    },
+    "27": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "Q"
+    },
+    "28": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "R"
+    },
+    "29": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "S"
+    },
+    "30": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "t"
+    },
+    "31": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "U"
+    },
+    "32": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "V"
+    },
+    "33": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "W"
+    },
+    "34": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "X"
+    },
+    "35": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "Y"
+    },
+    "36": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "Z"
+    },
+    "37": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "Space"
+    },
+    "38": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "Enter1"
+    },
+    "39": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "Enter2"
+    },
+    "40": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "Delete1"
+    },
+    "41": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayState",
+      "asset": "KeyBoard",
+      "sprite": "Delete2"
+    }
+  },
+  "prefab-table": {}
+}
