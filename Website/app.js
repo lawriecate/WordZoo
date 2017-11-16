@@ -47,10 +47,34 @@ sequelize
   .authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
+    const User = sequelize.define('user', {
+      name: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      }
+    });
+
+    // force: true will drop the table if it already exists
+    User.sync({force: true}).then(() => {
+      // Table created
+      return User.create({
+        name: 'Lawrie',
+        email: 'lawrie@catefamily.co.uk',
+        password: 'blanketyblank'
+      });
+    });
+
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+
+
 
 var sess  = require('express-session');
 var Store = require('express-session').Store;
@@ -82,7 +106,7 @@ app.use('/users', users);
 app.use('/signup', signup);
 app.use('/manager', manager);
 app.use('/teacher', teacher);
-
+app.use('/games', games);
 
 
 passport.use(new LocalStrategy({

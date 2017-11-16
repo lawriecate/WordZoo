@@ -4,8 +4,12 @@ var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
 /* GET users listing. */
-router.get('/games', function(req, res, next) {
-  res.render('index', { title: 'Games' });
+router.get('/menu', function(req, res, next) {
+  res.render('games', { title: 'Games' });
+});
+
+router.get('/game1', function(req, res, next) {
+  res.render('play', { title: 'Games' });
 });
 
 
