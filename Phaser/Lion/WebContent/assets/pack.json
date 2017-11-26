@@ -28,8 +28,76 @@
     },
     {
       "type": "image",
-      "key": "rulesMenu",
-      "url": "assets/2 Rules/rulesMenu.png",
+      "key": "goalkeeper_center",
+      "url": "assets/2 Rules/goalkeeper_center.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "highlightCircle",
+      "url": "assets/2 Rules/highlightCircle.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/2 Rules/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Hand",
+      "url": "assets/2 Rules/Red.png",
+      "frameWidth": 313,
+      "frameHeight": 474,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "bottom_right_dive",
+      "url": "assets/2 Rules/bottom_right_dive.png",
+      "frameWidth": 480,
+      "frameHeight": 300,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "Background",
+      "url": "assets/2 Rules/football_Background.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "soccer_ball",
+      "url": "assets/2 Rules/soccer_ball.png",
+      "frameWidth": 110,
+      "frameHeight": 100,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "top_left_dive",
+      "url": "assets/2 Rules/top_left_dive.png",
+      "frameWidth": 480,
+      "frameHeight": 300,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "ScoreBackground",
+      "url": "assets/2 Rules/score_background.png",
       "overwrite": false
     }
   ],
@@ -64,12 +132,6 @@
       "type": "image",
       "key": "Background",
       "url": "assets/3 Play/football_Background.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Score",
-      "url": "assets/3 Play/score.png",
       "overwrite": false
     },
     {
@@ -146,7 +208,7 @@
     }
   ],
   "meta": {
-    "generated": "1508759379483",
+    "generated": "1511657515733",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
