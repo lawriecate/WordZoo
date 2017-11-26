@@ -28,8 +28,110 @@
     },
     {
       "type": "image",
-      "key": "rulesMenu",
-      "url": "assets/2 Rules/rulesMenu.png",
+      "key": "Background",
+      "url": "assets/2 Rules/Background.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Hand",
+      "url": "assets/2 Rules/Red.png",
+      "frameWidth": 312,
+      "frameHeight": 474,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Zebra",
+      "url": "assets/2 Rules/zebraSprite.png",
+      "frameWidth": 157,
+      "frameHeight": 130,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/2 Rules/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "Brain",
+      "url": "assets/2 Rules/Brain.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Cage",
+      "url": "assets/2 Rules/Cage.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Cannon",
+      "url": "assets/2 Rules/Cannon.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Clock",
+      "url": "assets/2 Rules/Clock.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Desk",
+      "url": "assets/2 Rules/Desk.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Feather",
+      "url": "assets/2 Rules/Feather.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Flag",
+      "url": "assets/2 Rules/Flag.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Mouse",
+      "url": "assets/2 Rules/Mouse.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Table",
+      "url": "assets/2 Rules/Table.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "highlightCircle",
+      "url": "assets/2 Rules/highlightCircle.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "score",
+      "url": "assets/2 Rules/score.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "score_background",
+      "url": "assets/2 Rules/score_background.png",
       "overwrite": false
     }
   ],
@@ -316,7 +418,7 @@
     }
   ],
   "meta": {
-    "generated": "1509903374841",
+    "generated": "1511713918958",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
