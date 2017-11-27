@@ -28,9 +28,71 @@
     },
     {
       "type": "image",
-      "key": "rulesMenu",
-      "url": "assets/2 Rules/rulesMenu.png",
+      "key": "Background",
+      "url": "assets/2 Rules/Background.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "circle",
+      "url": "assets/2 Rules/highlightCircle.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "wordDisplay",
+      "url": "assets/2 Rules/wordDisplay.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "GiraffeAnimation",
+      "url": "assets/2 Rules/GiraffeFailAnimation.png",
+      "frameWidth": 375,
+      "frameHeight": 190,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/2 Rules/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Red",
+      "url": "assets/2 Rules/Red.png",
+      "frameWidth": 312,
+      "frameHeight": 474,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "giraffeSprite",
+      "url": "assets/2 Rules/giraffeSprite.png",
+      "frameWidth": 0,
+      "frameHeight": 0,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "giraffeWalking",
+      "url": "assets/2 Rules/giraffeWalking.png",
+      "frameWidth": 550,
+      "frameHeight": 550,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
     }
   ],
   "FinishScreen": [
@@ -132,7 +194,7 @@
     }
   ],
   "meta": {
-    "generated": "1510340591958",
+    "generated": "1511797438652",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
