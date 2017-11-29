@@ -28,9 +28,91 @@
     },
     {
       "type": "image",
-      "key": "rulesMenu",
-      "url": "assets/2 Rules/rulesMenu.png",
+      "key": "Background",
+      "url": "assets/2 Rules/Background.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Soap",
+      "url": "assets/2 Rules/Soap.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Flag",
+      "url": "assets/2 Rules/Flag.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "gui",
+      "url": "assets/2 Rules/gui.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "penFront",
+      "url": "assets/2 Rules/penFront.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "penBack",
+      "url": "assets/2 Rules/penBack.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "mainSheep",
+      "url": "assets/2 Rules/mainSheep.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/2 Rules/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Red",
+      "url": "assets/2 Rules/Red.png",
+      "frameWidth": 312,
+      "frameHeight": 474,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "highlightCircle",
+      "url": "assets/2 Rules/highlightCircle.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "sheepPen",
+      "url": "assets/2 Rules/sheepPen.png",
+      "frameWidth": 570,
+      "frameHeight": 320,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "sheepWobble",
+      "url": "assets/2 Rules/sheepWobble.png",
+      "frameWidth": 700,
+      "frameHeight": 700,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
     }
   ],
   "FinishScreen": [
@@ -344,7 +426,7 @@
     }
   ],
   "meta": {
-    "generated": "1510593434449",
+    "generated": "1511917527172",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
