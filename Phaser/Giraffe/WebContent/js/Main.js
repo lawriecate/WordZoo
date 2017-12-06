@@ -61,7 +61,8 @@
 
 	//Define lane variables 
 	var itemLanePositions = [378,573,775,970];
-	var playerLanePositionsX = [-150,180,475,790,1100,1410,1725];
+//	var playerLanePositionsX = [-150,180,475,790,1100,1410,1725];
+	var playerLanePositionsX = [0,330,625,940,1250,1560,1875];
 	var playerLanePositionsY = [135,338,540,743];
 	
 

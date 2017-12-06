@@ -116,8 +116,8 @@ PlayScreen.prototype.create = function ()
 	giraffeWalk.scale.setTo(0.5, 0.5);
 
 	// Add giraffe walking sprite
-	giraffe = this.game.add.sprite(playerLanePositionsX[0], playerLanePositionsY[0], 'GiraffeAnimation', 0);
-	giraffe.scale.setTo(1.5, 1.5);
+	giraffe = this.game.add.sprite(playerLanePositionsX[0], playerLanePositionsY[0], 'giraffeWalking', 0);
+	giraffe.scale.setTo(0.5, 0.5);
 
 
 	// giraffe fall animation
@@ -301,7 +301,7 @@ PlayScreen.prototype.moveGiraffe = function (posX, posY)
 	giraffe.x = posX;
 	giraffe.y = posY;
 
-	giraffeWalk.x = posX + 150;
+	giraffeWalk.x = posX;
 	giraffeWalk.y = posY;
 };
 
