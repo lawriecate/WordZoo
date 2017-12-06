@@ -5,16 +5,32 @@
 	// *** To be pulled from server not static ***
 	// --------------------------------------------
 	//word bank
-	var matchingWords = [["Hat","Hat"],["Boat","Boat"],["Cheese","Cheese"]];
+	var matchingWords = [['Hat','Hat'],['Boat','Boat'],['Cheese','Cheese']];
 	var randomWords = ["Apple","Bear","Bird","Book","Car","Cone","Dog"];
 
 	// define items
 	var easel1, easel2, easel3;
 
+	// correct word vales
 	var winningLane;
 	var winnerItemText;
+	var winnerText;
+	var item0Text;
+	var item1Text;
+	var item2Text;
 
-
+	// Record word answers
+		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+	var wordHistory = [];
+	var numWordHistory;
+	var startTime;
+	
+	// Record click history
+		// [(int) x, (int) y, (UTCString) timeStamp]
+	var clickHistory = [];
+	var numClickHistory;
+	var gameStartTime;
+	
 	// score
 	var score;
 	var scoreText = "";

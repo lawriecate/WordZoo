@@ -40,11 +40,6 @@ PlayScreen.prototype.create = function ()
     easel2.scale.setTo(1.35, 1.3);
     easel3.scale.setTo(1.35, 1.3);
 
-    //Setup touchscreen/keyboard controls
-    //easel1.input.useHandCursor = true;
-    //easel2.input.useHandCursor = true;
-    //easel3.input.useHandCursor = true;
-
 
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
@@ -66,19 +61,29 @@ PlayScreen.prototype.create = function ()
     timeText.anchor.setTo(0.5);
 
 
-    //If user closes window, score is still recorded
-    window.onbeforeunload = function() {
-        this.gameOver();
-    }
+    //If user closes window, record data
+    window.onbeforeunload = function() 
+    {
+        this.recordData();
+    };
+    
+    // Record screen clicks
+    this.game.input.onDown.add(function(touchStart) { 
+    		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
+    	}, this);
 
-    // Start game
+    // Record Game Start Time
+    var time = new Date();
+    gameStartTime = time.toUTCString();
+
+    // Start Game
     livesLeft = startingLives;
     score = 0;
+    numWordHistory = 0;
+    numClickHistory = 0;
 	this.reset();
 	timer.start();
 };
-
-
 
 
 // onClick any stones
@@ -90,7 +95,7 @@ PlayScreen.prototype.reset = function (clickedLane)
 
 	// Get random position to put pair on
 	var position = Math.floor((Math.random() * 3) + 0);
-
+	
 	// Which word to show in text vs show in picture
 	var binary = Math.floor((Math.random() * 1) + 0);
 
@@ -106,70 +111,78 @@ PlayScreen.prototype.reset = function (clickedLane)
 	}
 
 
-
 	// Set pics/text
 	switch(position){
 		case 0: position == 0;
-
+			
 			// Set correct
 			winningLane = 0;
 			if(binary == 0)
 			{
 				winnerItemText.setText(matchingPair[0]);
+				winnerText = matchingPair[0];
 				item0 = this.game.add.sprite(120, 250, matchingPair[1]);
 			}
 			else
 			{
 				winnerItemText.setText(matchingPair[1]);
+				winnerText = matchingPair[1];
 				item0 = this.game.add.sprite(120, 250, matchingPair[0]);
-
 			}		
 
 			// Set incorrect
 			item1 = this.game.add.sprite(555, 250, randomWords[RandomA]);
 			item2 = this.game.add.sprite(998, 250, randomWords[RandomB]);
+			item1Text = randomWords[RandomA];
+			item2Text = randomWords[RandomB];
 			break;
 
 		case 1: position == 1;
-
+		
 			// Set correct
 			winningLane = 1;
 			if(binary == 0)
 			{
 				winnerItemText.setText(matchingPair[0]);
-				item1 = this.game.add.sprite(120, 250, matchingPair[1]);
+				winnerText = matchingPair[0];
+				item1 = this.game.add.sprite(555, 250, matchingPair[1]);
 			}
 			else
 			{
 				winnerItemText.setText(matchingPair[1]);
-				item1 = this.game.add.sprite(120, 250, matchingPair[0]);
-
+				winnerText = matchingPair[1];
+				item1 = this.game.add.sprite(555, 250, matchingPair[0]);
 			}		
 
 			// Set incorrect
-			item0 = this.game.add.sprite(555, 250, randomWords[RandomA]);
+			item0 = this.game.add.sprite(120, 250, randomWords[RandomA]);
 			item2 = this.game.add.sprite(998, 250, randomWords[RandomB]);
+			item0Text = randomWords[RandomA];
+			item2Text = randomWords[RandomB];
 			break;
 
 		case 2: position == 2;
-
+		
 			// Set correct
 			winningLane = 2;
 			if(binary == 0)
 			{
 				winnerItemText.setText(matchingPair[0]);
-				item2 = this.game.add.sprite(120, 250, matchingPair[1]);
+				winnerText = matchingPair[0];
+				item2 = this.game.add.sprite(998, 250, matchingPair[1]);
 			}
 			else
 			{
 				winnerItemText.setText(matchingPair[1]);
-				item2 = this.game.add.sprite(120, 250, matchingPair[0]);
-
+				winnerText = matchingPair[1];
+				item2 = this.game.add.sprite(998, 250, matchingPair[0]);
 			}		
 
 			// Set incorrect
-			item0 = this.game.add.sprite(555, 250, randomWords[RandomA]);
-			item1 = this.game.add.sprite(998, 250, randomWords[RandomB]);
+			item0 = this.game.add.sprite(120, 250, randomWords[RandomA]);
+			item1 = this.game.add.sprite(555, 250, randomWords[RandomB]);
+			item0Text = randomWords[RandomA];
+			item1Text = randomWords[RandomB];
 			break;
 	}
 
@@ -177,9 +190,11 @@ PlayScreen.prototype.reset = function (clickedLane)
     item0.scale.setTo(3, 3);
     item1.scale.setTo(3, 3);
     item2.scale.setTo(3, 3);
+    
+    
+    // Set timer for time taken to answer
+    startTime = Math.floor(Date.now());
 };
-
-
 
 
 
@@ -214,6 +229,11 @@ PlayScreen.prototype.validate = function (clickedLane)
 		score++;
 		this.updateScore();
 
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [winnerText, null, true, finishTime - startTime];
+		numWordHistory++;
+		
 		// reset
 		this.reset();
 	}
@@ -222,6 +242,25 @@ PlayScreen.prototype.validate = function (clickedLane)
 		// lose a life
 		livesLeft--;
 		this.checkLives();
+		
+		// record word answers
+		var clickedItemText;
+		if(clickedLane == 0)
+		{
+			clickedItemText = item0Text;
+		}
+		else if(clickedLane == 1)
+		{
+			clickedItemText = item1Text;
+		}
+		else
+		{
+			clickedItemText = item2Text;
+		}
+		
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [winnerText, clickedItemText, false, finishTime - startTime];		
+		numWordHistory++;
 
 		// reset
 		this.reset();
@@ -260,6 +299,9 @@ PlayScreen.prototype.checkLives = function()
 	if(livesLeft <= 0)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
+		
+		// Record Data + Exit
+		this.recordData();
 		this.endGame();
 	}
 	else if(livesLeft == 1)
@@ -270,6 +312,29 @@ PlayScreen.prototype.checkLives = function()
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 1);
 	}
+};
+
+
+// Record screen clicks
+PlayScreen.prototype.recordScreenPress = function(x, y) 
+{
+	// Get current time
+	var timeStamp = new Date(); 
+	timeStamp.toUTCString();
+
+	// Add to records
+	clickHistory[numClickHistory++] = [x, y, timeStamp];
+};
+
+// Record statistical data from game
+PlayScreen.prototype.recordData = function() 
+{
+	// Save gameStartTime
+	// Save score
+	// Save timeLeft
+	// Save livesLeft
+	// Save wordHistory
+	// Save clickHistory 
 };
 
 
