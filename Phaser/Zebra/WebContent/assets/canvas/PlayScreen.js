@@ -55,7 +55,7 @@ PlayScreen.prototype.create = function ()
 	// Add Time box + time value
 	var timeBox = this.add.sprite(1664, 32, 'ScoreBackground');
 	timeBox.scale.setTo(1.5, 1.5);
-	timeText = this.add.text(1700, 75, "Time: "+time, smallStyle);
+	timeText = this.add.text(1700, 75, "Time: "+startingTime, smallStyle);
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
@@ -73,7 +73,9 @@ PlayScreen.prototype.create = function ()
   	this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT).onDown.add(this.moveRight, this);
 
     // touchscreen controls
-    this.game.input.onDown.add(function(touchStart) { startPoint = touchStart.clientY;}, this);
+    this.game.input.onDown.add(function(touchStart) { 
+    	startPoint = touchStart.clientY; this.recordScreenPress(touchStart.clientX, touchStart.clientY);
+    }, this);
     this.game.input.onUp.add(function(touchEnd) { endPointY = touchEnd.clientY; endPointX = touchEnd.clientX;
 	    if((startPoint - endPointY) > 100) 
 	    {
@@ -90,10 +92,21 @@ PlayScreen.prototype.create = function ()
   	}, this);
   	
 
+    //If user closes window, record data
+    window.onbeforeunload = function() 
+    {
+        this.recordData();
+    };
+   
+    // Record Game Start Time
+    var time = new Date();
+    gameStartTime = time.toUTCString();
+
 
 	// Reset starting values for each playthrough
 	normalSpeed = speed;
 	currentSpeed = normalSpeed;
+	timeLeft = startingTime;
 	score = 0;
 	livesLeft = startingLives;
 	
@@ -191,20 +204,48 @@ PlayScreen.prototype.spawnItems = function ()
 		incorrectItem2 = words[Math.floor(Math.random() * words.length)];
 	}
 
-
-	// Set item0 (correctItem)
+	// Set text values
     correctItemText.text = correctName;
-    item0 = this.game.add.sprite(1920, itemLanePositions[correctLane], correctName);
+	if(correctLane == 0)
+	{
+    	item0 = this.game.add.sprite(1920, itemLanePositions[0], correctName);
+    	TOPraw = correctName;
+
+		item1 = this.add.sprite(1920, itemLanePositions[1], incorrectItem1);
+		MIDraw = incorrectItem1;
+
+		item2 = this.add.sprite(1920, itemLanePositions[2], incorrectItem2);
+		BOTraw = incorrectItem2;
+	}
+	else if(correctLane == 1)
+	{
+		item0 = this.game.add.sprite(1920, itemLanePositions[0], incorrectItem1);
+    	TOPraw = incorrectItem1;
+
+		item1 = this.add.sprite(1920, itemLanePositions[1], correctName);
+		MIDraw = correctName;
+
+		item2 = this.add.sprite(1920, itemLanePositions[2], incorrectItem2);
+		BOTraw = incorrectItem2;
+	}
+	else
+	{
+		item0 = this.game.add.sprite(1920, itemLanePositions[0], incorrectItem1);
+    	TOPraw = incorrectItem1;
+
+		item1 = this.add.sprite(1920, itemLanePositions[1], incorrectItem2);
+		MIDraw = incorrectItem2;
+
+		item2 = this.add.sprite(1920, itemLanePositions[2], correctName);
+		BOTraw = correctName;
+	}
+
+
+	// Set scales
 	item0.scale.setTo(1.5, 1.5);
-
-    // Set item1 (incorrectItem1)
-    item1 = this.add.sprite(1920, itemLanePositions[(correctLane+1) % 3], incorrectItem1);
 	item1.scale.setTo(1.5, 1.5);
-
-    // Set item2 (incorrectItem2)
-    item2 = this.add.sprite(1920, itemLanePositions[(correctLane+2) % 3], incorrectItem2);
 	item2.scale.setTo(1.5, 1.5);
-	
+
 
     //This ensures the player never goes behind the objects once they are spawned
     this.world.bringToTop(zebra);
@@ -220,6 +261,10 @@ PlayScreen.prototype.update = function ()
     	// if correct
     	if(correctLane == currentLane)
     	{
+    		// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctName, null, true, finishTime - startTime];
+
     		// increase score + normalSpeed
     		score++;
     		normalSpeed++;
@@ -236,6 +281,23 @@ PlayScreen.prototype.update = function ()
     	// if incorrect
     	else
     	{
+    		// record word answers
+    		var actualWord;
+    		if(currentLane == 0)
+    		{
+    			actualWord = TOPraw;
+    		}
+    		else if(currentLane == 1)
+    		{
+    			actualWord = MIDraw;
+    		}
+    		else
+    		{
+    			actualWord = BOTraw;
+    		}
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctName, actualWord, false, finishTime - startTime];
+
     		// lose a life
     		livesLeft--;
     		this.checkLives();
@@ -283,6 +345,27 @@ PlayScreen.prototype.update = function ()
 }
 
 
+// Record screen clicks
+PlayScreen.prototype.recordScreenPress = function(x, y) 
+{
+	// Get current time
+	var timeStamp = new Date(); 
+	timeStamp.toUTCString();
+
+	// Add to records
+	clickHistory[numClickHistory++] = [x, y, timeStamp];
+};
+
+// Record statistical data from game
+PlayScreen.prototype.recordData = function() 
+{
+	// Save gameStartTime
+	// Save score
+	// Save timeLeft
+	// Save livesLeft
+	// Save wordHistory
+	// Save clickHistory 
+};
 
 
 // Check how many lives remaining, show correct frame
@@ -291,6 +374,7 @@ PlayScreen.prototype.checkLives = function()
 	if(livesLeft <= 0)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
+		this.recordData();
 		this.endGame();
 	}
 	else if(livesLeft == 1)

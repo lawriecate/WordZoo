@@ -11,11 +11,31 @@
 	         		"Heart","Island","Jumper","Mouse","Notebook","Owl",
 	         		"Pear","Police","Rabbit","Rake","Soap","Squirrel"];
 	
+	// Record word answers
+		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+	var wordHistory = [];
+	var numWordHistory;
+	var startTime;
+
+	// Record text values
+	var TOPraw;
+	var MIDraw;
+	var BOTraw;
+
+	// Record click history
+		// [(int) x, (int) y, (UTCString) timeStamp]
+	var clickHistory = [];
+	var numClickHistory;
+	var gameStartTime;
+
+
 	//zebra walking
 	var background;
 	var zebraWalk;
 
-	
+	//touchscreen controls
+	var startPoint;
+
 	//define items
 	var item0, item1, item2;
 
@@ -44,7 +64,8 @@
 	var livesBox;
 	
 	// time
-	var time = 60;
+	var startingTime = 60;
+	var timeLeft;
 	var timeText = "";
 
 	// timer
