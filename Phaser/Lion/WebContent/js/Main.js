@@ -10,6 +10,26 @@
 	            	"moose","nose","octopus","pot","quest","rice",
 	         	"seat","table","unicorn","violin","wax"];
 	
+	// Record word answers
+		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+	var wordHistory = [];
+	var numWordHistory;
+	var startTime;
+
+	// raw text of each button
+	var TLraw;
+	var TRraw;
+	var BLraw;
+	var BRraw;
+
+	
+	// Record click history
+		// [(int) x, (int) y, (UTCString) timeStamp]
+	var clickHistory = [];
+	var numClickHistory;
+	var gameStartTime;
+
+
 	// letters to add
 	var letters = ['a','e','i','o','u'];
 	

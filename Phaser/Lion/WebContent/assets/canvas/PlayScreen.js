@@ -154,7 +154,23 @@ PlayScreen.prototype.create = function ()
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
-			
+		
+
+    //If user closes window, record data
+    window.onbeforeunload = function() 
+    {
+        this.recordData();
+    };
+    
+    // Record screen clicks
+    this.game.input.onDown.add(function(touchStart) { 
+    		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
+    	}, this);
+
+    // Record Game Start Time
+    var time = new Date();
+    gameStartTime = time.toUTCString();
+
 	
 	// Time
 	timeLeft = time;
@@ -163,7 +179,7 @@ PlayScreen.prototype.create = function ()
 	timer.start();
 	
 	
-	// Football roll in
+	// Football roll in -> Start
 	this.ballRollIn();
 };
 
@@ -269,31 +285,67 @@ PlayScreen.prototype.setWords = function ()
 	var random = Math.floor((Math.random() * 4) + 0);
 	switch(random){
 		case 0: correctLocation = "TL";
+				var incorrect0 = this.genIncorrect(0);
+				var incorrect1 = this.genIncorrect(1);
+				var incorrect2 = this.genIncorrect(2);
+
 				TLtext.setText(correctWord);
-				TRtext.setText(this.genIncorrect(0));
-				BLtext.setText(this.genIncorrect(1));
-				BRtext.setText(this.genIncorrect(2));
+				TRtext.setText(incorrect0);
+				BLtext.setText(incorrect1);
+				BRtext.setText(incorrect2);
+
+				TLraw = correctWord;
+				TRraw = incorrect0;
+				BLraw = incorrect1;
+				BRraw = incorrect2;
 				break;
 				
 		case 1: correctLocation = "TR";
-				TLtext.setText(this.genIncorrect(0));
+				var incorrect0 = this.genIncorrect(0);
+				var incorrect1 = this.genIncorrect(1);
+				var incorrect2 = this.genIncorrect(2);
+
+				TLtext.setText(incorrect0);
 				TRtext.setText(correctWord);
-				BLtext.setText(this.genIncorrect(1));
-				BRtext.setText(this.genIncorrect(2));
+				BLtext.setText(incorrect1);
+				BRtext.setText(incorrect2);
+
+				TLraw = incorrect0;
+				TRraw = correctWord;
+				BLraw = incorrect1;
+				BRraw = incorrect2;
 				break;
 		
 		case 2: correctLocation = "BL";
-				TLtext.setText(this.genIncorrect(0));
-				TRtext.setText(this.genIncorrect(1));
+				var incorrect0 = this.genIncorrect(0);
+				var incorrect1 = this.genIncorrect(1);
+				var incorrect2 = this.genIncorrect(2);
+
+				TLtext.setText(incorrect0);
+				TRtext.setText(incorrect1);
 				BLtext.setText(correctWord);
-				BRtext.setText(this.genIncorrect(2));
+				BRtext.setText(incorrect2);
+
+				TLraw = incorrect0;
+				TRraw = incorrect1;
+				BLraw = correctWord;
+				BRraw = incorrect2;
 				break;
 				
 		case 3: correctLocation = "BR";
-				TLtext.setText(this.genIncorrect(0));
-				TRtext.setText(this.genIncorrect(1));
-				BLtext.setText(this.genIncorrect(2));
+				var incorrect0 = this.genIncorrect(0);
+				var incorrect1 = this.genIncorrect(1);
+				var incorrect2 = this.genIncorrect(2);
+
+				TLtext.setText(incorrect0);
+				TRtext.setText(incorrect1);
+				BLtext.setText(incorrect2);
 				BRtext.setText(correctWord);
+
+				TLraw = incorrect0;
+				TRraw = incorrect1;
+				BLraw = incorrect2;
+				BRraw = correctWord;
 				break;
 	}
 };
@@ -310,7 +362,13 @@ PlayScreen.prototype.clickTL = function ()
 	
 	// check if answer is correct
 	if(correctLocation == "TL")
-{		
+	{		
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [TLraw, null, true, finishTime - startTime];	
+		numWordHistory++;
+
+
 		// correct answer, increase score
 		score++;
 		
@@ -324,6 +382,11 @@ PlayScreen.prototype.clickTL = function ()
 	}
 	else
 	{	
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [correctWord, TLraw, true, finishTime - startTime];		
+		numWordHistory++;
+
 		// incorrect answer, loose a life
 		livesLeft--;
 		
@@ -348,6 +411,11 @@ PlayScreen.prototype.clickTR = function ()
 	// check if answer is correct
 	if(correctLocation == "TR")
 	{	
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [TRraw, null, true, finishTime - startTime];		
+		numWordHistory++;
+
 		// correct answer, increase score
 		score++;
 		
@@ -361,6 +429,11 @@ PlayScreen.prototype.clickTR = function ()
 	}
 	else
 	{
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [correctWord, TRraw, true, finishTime - startTime];		
+		numWordHistory++;
+
 		// incorrect answer, loose a life
 		livesLeft--;
 		
@@ -385,7 +458,11 @@ PlayScreen.prototype.clickBL = function ()
 	// check if answer is correct
 	if(correctLocation == "BL")
 	{
-		
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [BLraw, null, true, finishTime - startTime];		
+		numWordHistory++;
+
 		// correct answer, increase score
 		score++;
 		
@@ -399,6 +476,11 @@ PlayScreen.prototype.clickBL = function ()
 	}
 	else
 	{
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [correctWord, BLraw, true, finishTime - startTime];		
+		numWordHistory++;
+
 		// incorrect answer, loose a life
 		livesLeft--;
 		
@@ -414,6 +496,11 @@ PlayScreen.prototype.clickBL = function ()
 //onClick bottom right button
 PlayScreen.prototype.clickBR = function ()
 {			
+	// record word answers
+	var finishTime = Math.floor(Date.now());
+	wordHistory[numWordHistory] = [BRraw, null, true, finishTime - startTime];		
+	numWordHistory++;
+
 	// hide all selection buttons
 	this.showButtons(false);
 	
@@ -436,6 +523,11 @@ PlayScreen.prototype.clickBR = function ()
 	}
 	else
 	{
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [correctWord, BRraw, true, finishTime - startTime];		
+		numWordHistory++;
+
 		// incorrect answer, loose a life
 		livesLeft--;
 		
@@ -480,9 +572,6 @@ PlayScreen.prototype.reset = function ()
 
 
 // Generate an incorrect word
-// ------------------------------------
-// *** First shouldn't be incorrect ***
-// ------------------------------------
 PlayScreen.prototype.genIncorrect = function (preSetNum)
 {	
 	// Random index to add incorrect letter
@@ -520,12 +609,36 @@ PlayScreen.prototype.genIncorrect = function (preSetNum)
 };
 
 
+// Record screen clicks
+PlayScreen.prototype.recordScreenPress = function(x, y) 
+{
+	// Get current time
+	var timeStamp = new Date(); 
+	timeStamp.toUTCString();
+
+	// Add to records
+	clickHistory[numClickHistory++] = [x, y, timeStamp];
+};
+
+// Record statistical data from game
+PlayScreen.prototype.recordData = function() 
+{
+	// Save gameStartTime
+	// Save score
+	// Save timeLeft
+	// Save livesLeft
+	// Save wordHistory
+	// Save clickHistory 
+};
+
+
 // Check how many lives remaining, show correct frame
 PlayScreen.prototype.checkLives = function() 
 {
 	if(livesLeft <= 0)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
+		this.recordData();
 		this.endGame();
 	}
 	else if(livesLeft == 1)
@@ -537,7 +650,6 @@ PlayScreen.prototype.checkLives = function()
 		livesBox = this.add.sprite(0, 0, 'Lives', 1);
 	}
 };
-
 
 // Game has finished, move to finish state
 PlayScreen.prototype.endGame = function() 
