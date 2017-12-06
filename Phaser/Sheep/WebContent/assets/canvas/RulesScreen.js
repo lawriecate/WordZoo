@@ -43,7 +43,6 @@ RulesScreen.prototype.create = function ()
 {
 // Add background
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
-	background.scale.setTo(1.51, 1.51);
 
 
 	// Add back to pens
@@ -301,7 +300,7 @@ RulesScreen.prototype.updateTime = function ()
 			sheepTween = this.game.add.tween(sheepWobble).to({x: '+300', y: '-150'}, 300, Phaser.Easing.Linear.None, false);
 
 			handTween.onComplete.add(function () { 	pens[1].back.scale.setTo(1,1); pens[1].front.scale.setTo(1,1); 
-				sheepWobble.visible = false; mainSheep.visible = true; hand.animations.frame = 0; pens[1].sheep.frame = 11;
+				sheepWobble.visible = false; mainSheep.visible = true; hand.animations.frame = 0;
 			}, this);
 			handTween.start(); 
 			sheepTween.start(); 

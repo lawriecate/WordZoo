@@ -29,7 +29,6 @@ FinishScreen.prototype.create = function ()
 {
 	// Add background
 	var _FinishBackgroun = this.add.sprite(-1, -1, 'FinishBackgroun');
-	_FinishBackgroun.scale.setTo(1.51, 1.51);
 
 	// *** Change text? ***
 	// Add 'unlucky text'

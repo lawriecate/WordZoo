@@ -37,7 +37,6 @@ PlayScreen.prototype.create = function ()
 
 	// Add background
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
-	background.scale.setTo(1.51, 1.51);
 
 
 	// Add back to pens
@@ -98,7 +97,7 @@ PlayScreen.prototype.create = function ()
 	scoreText.anchor.setTo(0.5, 0.5);
 
 	// Add time value
-	timeText = this.add.text(520, 40, "Time: "+time, smallStyle);
+	timeText = this.add.text(520, 40, "Time: "+startingTime, smallStyle);
 	timeText.anchor.setTo(0.5, 0.5);
 
 	// Add Lives box
@@ -119,14 +118,30 @@ PlayScreen.prototype.create = function ()
 	mainSheep.inputEnabled = true;
 	mainSheep.events.onInputDown.add(this.dragSheep);
 
+
+    //If user closes window, record data
+    window.onbeforeunload = function() 
+    {
+        this.recordData();
+    };
+    
+    // Record screen clicks
+    this.game.input.onDown.add(function(touchStart) { 
+    		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
+    	}, this);
+
+    // Record Game Start Time
+    var time = new Date();
+    gameStartTime = time.toUTCString();
+
 	
 	// Time
-	timeLeft = time;
 	timer = this.time.create(false);
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timer.start();
 
 	// starting values
+	timeLeft = startingTime;
 	livesLeft = startingLives;
 	score = 0;
 
@@ -145,6 +160,7 @@ PlayScreen.prototype.updateTime = function ()
 
 	// If no time remaining, game finished
 	if(timeLeft <= 0){
+		this.recordData();
 		this.endGame();
 	}
 	
@@ -183,6 +199,10 @@ PlayScreen.prototype.dropSheep = function ()
 		{
 			this.addSheepToPen(0);
 
+			// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctWordB, null, true, finishTime - startTime];
+
 			// Increase score
 			score++;
 			this.updateScore();
@@ -192,6 +212,10 @@ PlayScreen.prototype.dropSheep = function ()
 		}
 		else 
 		{
+			// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctWordB, TLraw, false, finishTime - startTime];
+
 			// Lose a life
 			livesLeft--;
 			this.checkLives();
@@ -206,6 +230,10 @@ PlayScreen.prototype.dropSheep = function ()
 	{
 		if(correctPen == 1)
 		{
+			// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctWordB, null, true, finishTime - startTime];
+
 			this.addSheepToPen(1);
 
 			// Increase score
@@ -217,6 +245,10 @@ PlayScreen.prototype.dropSheep = function ()
 		}
 		else 
 		{
+			// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctWordB, TRraw, false, finishTime - startTime];
+
 			// Lose a life
 			livesLeft--;
 			this.checkLives();
@@ -231,6 +263,10 @@ PlayScreen.prototype.dropSheep = function ()
 	{
 		if(correctPen == 2)
 		{
+			// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctWordB, null, true, finishTime - startTime];
+
 			this.addSheepToPen(2);
 
 			// Increase score
@@ -242,6 +278,10 @@ PlayScreen.prototype.dropSheep = function ()
 		}
 		else 
 		{
+			// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctWordB, BLraw, false, finishTime - startTime];
+
 			// Lose a life
 			livesLeft--;
 			this.checkLives();
@@ -256,6 +296,10 @@ PlayScreen.prototype.dropSheep = function ()
 	{
 		if(correctPen == 3)
 		{
+			// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctWordB, null, true, finishTime - startTime];
+
 			this.addSheepToPen(3);
 
 			// Increase score
@@ -267,6 +311,10 @@ PlayScreen.prototype.dropSheep = function ()
 		}
 		else 
 		{
+			// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory++] = [correctWordB, BRraw, false, finishTime - startTime];
+
 			// Lose a life
 			livesLeft--;
 			this.checkLives();
@@ -410,6 +458,11 @@ PlayScreen.prototype.spawnItems = function ()
 				TRtext.setText(incorrectWord1);
 				BLtext.setText(incorrectWord2);
 				BRtext.setText(incorrectWord3);
+
+				TLraw = correctWordB;
+				TRraw = incorrectWord1;
+				BLraw = incorrectWord2;
+				BRraw = incorrectWord3;
 				break;
 
 		case 1: correctLocation = 1;
@@ -417,6 +470,11 @@ PlayScreen.prototype.spawnItems = function ()
 				TRtext.setText(correctWordB);
 				BLtext.setText(incorrectWord2);
 				BRtext.setText(incorrectWord3);
+
+				TLraw = incorrectWord1;
+				TRraw = correctWordB;
+				BLraw = incorrectWord2;
+				BRraw = incorrectWord3;
 				break;
 		
 		case 2: correctLocation = 2;
@@ -424,6 +482,11 @@ PlayScreen.prototype.spawnItems = function ()
 				TRtext.setText(incorrectWord2);
 				BLtext.setText(correctWordB);
 				BRtext.setText(incorrectWord3);
+
+				TLraw = incorrectWord1;
+				TRraw = correctWordB;
+				BLraw = incorrectWord2;
+				BRraw = incorrectWord3;
 				break;
 				
 		case 3: correctLocation = 3;
@@ -431,8 +494,16 @@ PlayScreen.prototype.spawnItems = function ()
 				TRtext.setText(incorrectWord2);
 				BLtext.setText(incorrectWord3);
 				BRtext.setText(correctWordB);
+
+				TLraw = incorrectWord1;
+				TRraw = incorrectWord2;
+				BLraw = incorrectWord3;
+				BRraw = correctWordB;
 				break;
 	}
+
+	// Set timer for time taken to answer
+    startTime = Math.floor(Date.now());
 }
 
 
@@ -444,6 +515,7 @@ PlayScreen.prototype.checkLives = function()
 	if(livesLeft <= 0)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
+		this.recordData();
 		this.endGame();
 	}
 	else if(livesLeft == 1)
@@ -454,6 +526,29 @@ PlayScreen.prototype.checkLives = function()
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 1);
 	}
+};
+
+
+// Record screen clicks
+PlayScreen.prototype.recordScreenPress = function(x, y) 
+{
+	// Get current time
+	var timeStamp = new Date(); 
+	timeStamp.toUTCString();
+
+	// Add to records
+	clickHistory[numClickHistory++] = [x, y, timeStamp];
+};
+
+// Record statistical data from game
+PlayScreen.prototype.recordData = function() 
+{
+	// Save gameStartTime
+	// Save score
+	// Save timeLeft
+	// Save livesLeft
+	// Save wordHistory
+	// Save clickHistory 
 };
 
 

@@ -20,6 +20,26 @@
 	         			"Heart","Island","Jumper","Mouse","Notebook","Owl",
 	         			"Pear","Police","Rabbit","Rake","Soap","Squirrel"];
 
+	// Record word answers
+		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+	var wordHistory = [];
+	var numWordHistory;
+	var startTime;
+	
+	// Correct word vales
+	var TLraw;
+	var TRraw;
+	var BLraw;
+	var BRraw;
+
+
+	// Record click history
+		// [(int) x, (int) y, (UTCString) timeStamp]
+	var clickHistory = [];
+	var numClickHistory;
+	var gameStartTime;
+	var startTime;
+
 
 	// sheep + onDrag animation
 	var mainSheep;
@@ -59,7 +79,8 @@
 	var livesBox;
 	
 	// time
-	var time = 60;
+	var timeLeft;
+	var startingTime = 60;
 	var timeText = "";
 
 	// timer

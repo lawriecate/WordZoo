@@ -24,8 +24,7 @@ StartScreen.prototype.preload = function ()
 StartScreen.prototype.create = function () 
 {
 	// Add background
-	var _background = this.add.tileSprite(-2, -2, 1280, 720, 'background', null);
-	_background.scale.setTo(1.51, 1.51);
+	var _background = this.add.tileSprite(0, 0, 1920, 1080, 'background', null);
 
 	// Add play button
 	var _playButton = this.add.button(160, 480, 'PlayButton', this.onClickPlay, this, null, null, null, null);
