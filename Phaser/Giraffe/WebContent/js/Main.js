@@ -13,6 +13,20 @@
 	         			"Heart","Island","Jumper","Mouse","Notebook","Owl",
 	         			"Pear","Police","Rabbit","Rake","Soap","Squirrel"];
 
+	
+	// Record word answers
+		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+	var wordHistory = [];
+	var numWordHistory;
+	var startTime;
+
+	// Record click history
+		// [(int) x, (int) y, (UTCString) timeStamp]
+	var clickHistory = [];
+	var numClickHistory;
+	var gameStartTime;
+	
+	
 	// background scroll
 	var backgroundScroll;
 	var backgroundDistance;
@@ -55,6 +69,9 @@
 	var correctLane = [0, 0, 0];
 	var currentLane;
 
+	var wordsOnStones = [['0,0', '0,1', '0,2', '0,3'],['1,0', '1,1', '1,2', '1,3'],['2,0', '2,1', '2,2', '0,3']];
+	var setwords;
+	var clickedWord;
 	
 	// score
 	var score;

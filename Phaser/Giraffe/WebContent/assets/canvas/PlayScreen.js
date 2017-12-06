@@ -151,12 +151,23 @@ PlayScreen.prototype.create = function ()
 		giraffeWalk.visible = false; giraffe.visible = true; this.reset();}, this);
 
 
-
 	// Keyboard controls
 	this.game.input.keyboard.addKey(Phaser.Keyboard.UP).onDown.add(this.giraffeUp, this);
   	this.game.input.keyboard.addKey(Phaser.Keyboard.DOWN).onDown.add(this.giraffeDown, this);
   	this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT).onDown.add(this.giraffeRight, this);
 
+  	
+    //If user closes window, record data
+    window.onbeforeunload = function() 
+    {
+        this.recordData();
+    };
+  	
+    // Record screen clicks
+    this.game.input.onDown.add(function(touchStart) { 
+    		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
+    	}, this);
+  	
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
@@ -176,6 +187,10 @@ PlayScreen.prototype.create = function ()
 	timer.loop(Phaser.Timer.SECOND/backgroundScrollSpeed, this.updateTime, this);
 	timer.start();
 
+	
+    // Record Game Start Time
+    var time = new Date();
+    gameStartTime = time.toUTCString();
 
 	// Set starting values
 	backgroundScroll = false;
@@ -186,8 +201,8 @@ PlayScreen.prototype.create = function ()
 	this.updateScore();
 	livesLeft = startingLives;
 
-
-	// Fill words to start game
+	
+	// Fill words -> Start game
 	this.spawnWords();
 };
 
@@ -501,6 +516,9 @@ PlayScreen.prototype.spawnWords = function ()
 	// Get incorrect words to fill other stones
 	var incorrectWords = this.genIncorrect();
 
+	// Set wordsOnStones
+	var setWords = wordsOnStones[0];
+	
 	// Generate and set at random position
 	var randomPosition = Math.floor((Math.random() * 4) + 0);
 	switch(randomPosition){
@@ -509,6 +527,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordA1.setText(incorrectWords[0]);
 			wordA2.setText(incorrectWords[1]);
 			wordA3.setText(incorrectWords[2]);
+
+			setWords[0] = pair[1];
+			setWords[1] = incorrectWords[0];
+			setWords[2] = incorrectWords[1];
+			setWords[3] = incorrectWords[2];
+
 			correctLane[0] = 0;
 			break;
 
@@ -517,6 +541,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordA1.setText(pair[1]);
 			wordA2.setText(incorrectWords[1]);
 			wordA3.setText(incorrectWords[2]);
+			
+			setWords[0] = incorrectWords[0];
+			setWords[1] = pair[1];
+			setWords[2] = incorrectWords[1];
+			setWords[3] = incorrectWords[2];
+
 			correctLane[0] = 1;
 			break;
 
@@ -525,6 +555,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordA1.setText(incorrectWords[1]);
 			wordA2.setText(pair[1]);
 			wordA3.setText(incorrectWords[2]);
+			
+			setWords[0] = incorrectWords[0];
+			setWords[1] = incorrectWords[1];
+			setWords[2] = pair[1];
+			setWords[3] = incorrectWords[2];
+			
 			correctLane[0] = 2;
 			break;
 
@@ -533,6 +569,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordA1.setText(incorrectWords[1]);
 			wordA2.setText(incorrectWords[2]);
 			wordA3.setText(pair[1]);
+			
+			setWords[0] = incorrectWords[0];
+			setWords[1] = incorrectWords[1];
+			setWords[2] = incorrectWords[2];
+			setWords[3] = pair[1];
+
 			correctLane[0] = 3;
 			break;
 	}
@@ -551,6 +593,9 @@ PlayScreen.prototype.spawnWords = function ()
 
 	// Get incorrect words to fill other stones
 	incorrectWords = this.genIncorrect();
+	
+	// Set wordsOnStones
+	setWords = wordsOnStones[1];
 
 	// Generate and set at random position
 	randomPosition = Math.floor((Math.random() * 4) + 0);
@@ -560,6 +605,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordB1.setText(incorrectWords[0]);
 			wordB2.setText(incorrectWords[1]);
 			wordB3.setText(incorrectWords[2]);
+			
+			setWords[0] = pair[1];
+			setWords[1] = incorrectWords[0];
+			setWords[2] = incorrectWords[1];
+			setWords[3] = incorrectWords[2];
+			
 			correctLane[1] = 0;
 			break;
 
@@ -568,6 +619,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordB1.setText(pair[1]);
 			wordB2.setText(incorrectWords[1]);
 			wordB3.setText(incorrectWords[2]);
+			
+			setWords[0] = incorrectWords[0];
+			setWords[1] = pair[1];
+			setWords[2] = incorrectWords[1];
+			setWords[3] = incorrectWords[2];
+			
 			correctLane[1] = 1;
 			break;
 
@@ -576,6 +633,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordB1.setText(incorrectWords[1]);
 			wordB2.setText(pair[1]);
 			wordB3.setText(incorrectWords[2]);
+			
+			setWords[0] = incorrectWords[0];
+			setWords[1] = incorrectWords[1];
+			setWords[2] = pair[1];
+			setWords[3] = incorrectWords[2];
+			
 			correctLane[1] = 2;
 			break;
 
@@ -584,6 +647,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordB1.setText(incorrectWords[1]);
 			wordB2.setText(incorrectWords[2]);
 			wordB3.setText(pair[1]);
+			
+			setWords[0] = incorrectWords[0];
+			setWords[1] = incorrectWords[1];
+			setWords[2] = incorrectWords[2];
+			setWords[3] = pair[1];
+			
 			correctLane[1] = 3;
 			break;
 	}
@@ -603,6 +672,9 @@ PlayScreen.prototype.spawnWords = function ()
 	// Get incorrect words to fill other stones
 	incorrectWords = this.genIncorrect();
 
+	// Set wordsOnStones
+	setWords = wordsOnStones[2];
+	
 	// Generate and set at random position
 	randomPosition = Math.floor((Math.random() * 4) + 0);
 	switch(randomPosition){
@@ -611,6 +683,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordC1.setText(incorrectWords[0]);
 			wordC2.setText(incorrectWords[1]);
 			wordC3.setText(incorrectWords[2]);
+			
+			setWords[0] = pair[1];
+			setWords[1] = incorrectWords[0];
+			setWords[2] = incorrectWords[1];
+			setWords[3] = incorrectWords[2];
+			
 			correctLane[2] = 0;
 			break;
 
@@ -619,6 +697,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordC1.setText(pair[1]);
 			wordC2.setText(incorrectWords[1]);
 			wordC3.setText(incorrectWords[2]);
+			
+			setWords[0] = incorrectWords[0];
+			setWords[1] = pair[1];
+			setWords[2] = incorrectWords[1];
+			setWords[3] = incorrectWords[2];
+			
 			correctLane[2] = 1;
 			break;
 
@@ -627,6 +711,12 @@ PlayScreen.prototype.spawnWords = function ()
 			wordC1.setText(incorrectWords[1]);
 			wordC2.setText(pair[1]);
 			wordC3.setText(incorrectWords[2]);
+			
+			setWords[0] = incorrectWords[0];
+			setWords[1] = incorrectWords[1];
+			setWords[2] = pair[1];
+			setWords[3] = incorrectWords[2];
+			
 			correctLane[2] = 2;
 			break;
 
@@ -635,10 +725,19 @@ PlayScreen.prototype.spawnWords = function ()
 			wordC1.setText(incorrectWords[1]);
 			wordC2.setText(incorrectWords[2]);
 			wordC3.setText(pair[1]);
+			
+			setWords[0] = incorrectWords[0];
+			setWords[1] = incorrectWords[1];
+			setWords[2] = incorrectWords[2];
+			setWords[3] = pair[1];
+			
 			correctLane[2] = 3;
 			break;
 	}
-}
+	
+    // Set timer for time taken to answer
+    startTime = Math.floor(Date.now());
+};
 
 
 
@@ -659,54 +758,90 @@ PlayScreen.prototype.reset = function ()
 // onClick functions for First Stones
 PlayScreen.prototype.clickA0 = function ()
 {	
+	setWords = wordsOnStones[0];
+	clickedWord = setWords[0];	
+	
 	this.validate(0, 0);
 };
 PlayScreen.prototype.clickA1 = function ()
 {	
+	setWords = wordsOnStones[0];
+	clickedWord = setWords[1];
+	
 	this.validate(1, 0);
 };
 PlayScreen.prototype.clickA2 = function ()
 {	
+	setWords = wordsOnStones[0];
+	clickedWord = setWords[2];
+	
 	this.validate(2, 0);
 };
 PlayScreen.prototype.clickA3 = function ()
 {	
+	setWords = wordsOnStones[0];
+	clickedWord = setWords[3];
+	
 	this.validate(3, 0);
 };
 
 // onClick functions for Second Stones
 PlayScreen.prototype.clickB0 = function ()
 {	
+	setWords = wordsOnStones[1];
+	clickedWord = setWords[0];
+	
 	this.validate(0, 2);
 };
 PlayScreen.prototype.clickB1 = function ()
 {	
+	setWords = wordsOnStones[1];
+	clickedWord = setWords[1];
+	
 	this.validate(1, 2);
 };
 PlayScreen.prototype.clickB2 = function ()
 {	
+	setWords = wordsOnStones[1];
+	clickedWord = setWords[2];
+	
 	this.validate(2, 2);
 };
 PlayScreen.prototype.clickB3 = function ()
 {	
+	setWords = wordsOnStones[2];
+	clickedWord = setWords[3];
+	
 	this.validate(3, 2);
 };
 
 // onClick functions for Third Stones
 PlayScreen.prototype.clickC0 = function ()
 {
+	setWords = wordsOnStones[2];
+	clickedWord = setWords[0];
+	
 	this.validate(0, 4);
 };
 PlayScreen.prototype.clickC1 = function ()
 {	
+	setWords = wordsOnStones[2];
+	clickedWord = setWords[1];
+	
 	this.validate(1, 4);
 };
 PlayScreen.prototype.clickC2 = function ()
 {	
+	setWords = wordsOnStones[2];
+	clickedWord = setWords[2];
+	
 	this.validate(2, 4);
 };
 PlayScreen.prototype.clickC3 = function ()
 {	
+	setWords = wordsOnStones[2];
+	clickedWord = setWords[3];
+	
 	this.validate(3, 4);
 };
 
@@ -732,10 +867,14 @@ PlayScreen.prototype.validate = function (lane, coloumn)
 	// if valid choice, decide of true
 	if(correctLane[coloumn/2] == lane)
 	{
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [setWords[lane], null, true, finishTime - startTime];
+		
 		// update score
-		score++
+		score++;
 		this.updateScore();
-
+		
 		// move giraffe to current location
 		this.moveGiraffe(playerLanePositionsX[coloumn+1], playerLanePositionsY[lane]);
 
@@ -744,6 +883,10 @@ PlayScreen.prototype.validate = function (lane, coloumn)
 	}
 	else
 	{
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [setWords[correctLane[coloumn/2]], setWords[lane], false, finishTime - startTime];
+		
 		// update lives
 		livesLeft--;
 
@@ -765,6 +908,7 @@ PlayScreen.prototype.checkLives = function()
 	if(livesLeft <= 0)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
+		this.recordData();
 		this.endGame();
 	}
 	else if(livesLeft == 1)
@@ -777,6 +921,27 @@ PlayScreen.prototype.checkLives = function()
 	}
 };
 
+//Record screen clicks
+PlayScreen.prototype.recordScreenPress = function(x, y) 
+{
+	// Get current time
+	var timeStamp = new Date(); 
+	timeStamp.toUTCString();
+
+	// Add to records
+	clickHistory[numClickHistory++] = [x, y, timeStamp];
+};
+
+// Record statistical data from game
+PlayScreen.prototype.recordData = function() 
+{
+	// Save gameStartTime
+	// Save score
+	// Save timeLeft
+	// Save livesLeft
+	// Save wordHistory
+	// Save clickHistory 
+};
 
 // Game has finished, move to finish state
 PlayScreen.prototype.endGame = function() 
