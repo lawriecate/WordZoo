@@ -276,6 +276,7 @@ PlayScreen.prototype.updateTime = function ()
 {	
 	// If no time remaining, game finished
 	if(timeLeft <= 0){
+		this.recordData();
 		this.endGame();
 	}
 	

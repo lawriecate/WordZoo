@@ -188,7 +188,9 @@ PlayScreen.prototype.create = function ()
 PlayScreen.prototype.updateTime = function ()
 {	
 	// If no time remaining, game finished
-	if(timeLeft <= 0){
+	if(timeLeft <= 0)
+	{
+		this.recordData();
 		this.endGame();
 	}
 	
@@ -348,6 +350,9 @@ PlayScreen.prototype.setWords = function ()
 				BRraw = correctWord;
 				break;
 	}
+
+	// Set timer for time taken to answer
+    startTime = Math.floor(Date.now());
 };
 
 

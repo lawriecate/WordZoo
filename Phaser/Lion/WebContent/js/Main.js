@@ -27,6 +27,7 @@
 		// [(int) x, (int) y, (UTCString) timeStamp]
 	var clickHistory = [];
 	var numClickHistory;
+	var startTime;
 	var gameStartTime;
 
 

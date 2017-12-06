@@ -122,7 +122,9 @@ PlayScreen.prototype.updateTime = function ()
 	this.update();
 
 	// If no time remaining, game finished
-	if(timeLeft <= 0){
+	if(timeLeft <= 0)
+	{
+		this.recordData();
 		this.endGame();
 	}
 	
@@ -246,9 +248,11 @@ PlayScreen.prototype.spawnItems = function ()
 	item1.scale.setTo(1.5, 1.5);
 	item2.scale.setTo(1.5, 1.5);
 
-
     //This ensures the player never goes behind the objects once they are spawned
     this.world.bringToTop(zebra);
+
+    // Set timer for time taken to answer
+    startTime = Math.floor(Date.now());
 }
 
 
