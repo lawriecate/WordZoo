@@ -37,16 +37,19 @@ PlayScreen.prototype.create = function ()
     titleA.scale.setTo(1.5, 1.5);
     titleTextA = this.add.text(460, 180, "", bigStyle);
     titleTextA.anchor.setTo(0.5);
+    titleTextA.addColor('#FF9933', 0);
     
     titleB = this.add.sprite(860, 110, 'wordDisplay');
     titleB.scale.setTo(1.5, 1.5);
     titleTextB = this.add.text(1060, 180, "", bigStyle);
     titleTextB.anchor.setTo(0.5);
-    
+    titleTextB.addColor('#FF9933', 0);
+
     titleC = this.add.sprite(1480, 110, 'wordDisplay');
     titleC.scale.setTo(1.5, 1.5);
     titleTextC = this.add.text(1680, 180, "", bigStyle);
     titleTextC.anchor.setTo(0.5);
+	titleTextC.addColor('#FF9933', 0);
 
     // First stones word text
     wordA0 = this.add.text(460, 370, "", medStyle);

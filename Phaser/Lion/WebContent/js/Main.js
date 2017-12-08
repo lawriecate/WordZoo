@@ -46,14 +46,15 @@
 	var livesBox;
 	
 	// time
-	var time = 60;
+	var startingTime = 60;
+	var timeLeft;
 	var timeText = "";
 
 	// timer
 	var timer;
 	
 	// Text styles
-	 var style = {font: "bold 28px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+	 var style = {font: "bold 40px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	
 	// buttons
 	var topLeft;

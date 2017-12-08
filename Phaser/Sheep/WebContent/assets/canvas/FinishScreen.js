@@ -37,8 +37,10 @@ FinishScreen.prototype.create = function ()
 	
 	
 	// Add score + score text
+	var _Score = this.add.sprite(32, 20, 'score_background');
+	_Score.scale.setTo(2, 1.5);
 	scoreText = this.add.text(90, 50, "Score: "+score, medStyle);
-	
+	scoreText.addColor('#FF9933', 0);
 	
 	// Play again button
 	var _PlayAgain = this.add.button(672, 384, 'PlayAgain', this.playAgain, this, null, null, null, null);

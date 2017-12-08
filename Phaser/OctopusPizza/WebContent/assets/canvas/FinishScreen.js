@@ -37,6 +37,12 @@ FinishScreen.prototype.create = function ()
 	_Unlucky.scale.setTo(1.5, 1.5);	
 	
 	
+	// Add score + score text
+	var _Score = this.add.sprite(32, 32, 'ScoreBackground');
+	_Score.scale.setTo(1.5, 1.5);
+	scoreText = this.add.text(90, 75, "Score: "+score, style);
+	scoreText.addColor('#FF9933', 0);
+
 	// Play again button
 	var _PlayAgain = this.add.button(672, 384, 'playAgain', this.playAgain, this, null, null, null, null);
 	_PlayAgain.scale.setTo(1.5, 1.5);

@@ -61,15 +61,19 @@ PlayScreen.prototype.create = function ()
 	// TL text
 	TLtext = this.add.text(660, 190, "", style);
 	TLtext.anchor.setTo(0.5);
+	TLtext.addColor('#FF9933', 0);	
 	// TR text
 	TRtext = this.add.text(1300, 190, "", style);
 	TRtext.anchor.setTo(0.5);
+	TRtext.addColor('#FF9933', 0);	
 	// BL text
 	BLtext = this.add.text(660, 640, "", style);
 	BLtext.anchor.setTo(0.5);
+	BLtext.addColor('#FF9933', 0);	
 	// BR text
 	BRtext = this.add.text(1300, 640, "", style);
 	BRtext.anchor.setTo(0.5);
+	BRtext.addColor('#FF9933', 0);	
 	
 
 	// Add TopLeft diving goal keeper + hide
@@ -145,11 +149,12 @@ PlayScreen.prototype.create = function ()
 
 	
 	// Add score value
-	scoreText = this.add.text(1720, 40, "Score: "+score, style);
+	score = 0;
+	scoreText = this.add.text(1720, 30, "Score: "+score, style);
 	scoreText.anchor.setTo(0.5);
 	
 	// Add time value
-	timeText = this.add.text(960, 40, "Time: "+time, style);
+	timeText = this.add.text(960, 30, "Time: "+startingTime, style);
 	timeText.anchor.setTo(0.5);
 	
 	// Add Lives box
@@ -173,12 +178,14 @@ PlayScreen.prototype.create = function ()
 
 	
 	// Time
-	timeLeft = time;
+	timeLeft = startingTime;
 	timer = this.time.create(false);
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timer.start();
 	
-	
+
+
+
 	// Football roll in -> Start
 	this.ballRollIn();
 };
@@ -186,7 +193,7 @@ PlayScreen.prototype.create = function ()
 
 // display current time to screen (with --)
 PlayScreen.prototype.updateTime = function ()
-{	
+{		
 	// If no time remaining, game finished
 	if(timeLeft <= 0)
 	{

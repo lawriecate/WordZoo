@@ -45,23 +45,26 @@ PlayScreen.prototype.create = function ()
 	// Correct item text
 	correctItemText = this.game.add.text(960, 160, "", bigStyle);
     correctItemText.anchor.setTo(0.5);
+    correctItemText.addColor('#FF9933', 0);
 	 
 
 	// Add Score box + score value
 	var scoreBox = this.add.sprite(1664, 182, 'ScoreBackground');
 	scoreBox.scale.setTo(1.5, 1.5);
-	scoreText = this.add.text(1700, 225, "Score: "+score, smallStyle);
+	scoreText = this.add.text(1710, 225, "Score: "+score, smallStyle);
+	scoreText.addColor('#FF9933', 0);
 	
 	// Add Time box + time value
 	var timeBox = this.add.sprite(1664, 32, 'ScoreBackground');
 	timeBox.scale.setTo(1.5, 1.5);
-	timeText = this.add.text(1700, 75, "Time: "+startingTime, smallStyle);
-	
+	timeText = this.add.text(1710, 75, "Time: "+startingTime, smallStyle);
+	timeText.addColor('#FF9933', 0);
+
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
 	
 	// Time
-	timeLeft = time;
+	timeLeft = startingTime;
 	timer = this.time.create(false);
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timer.start();
@@ -128,7 +131,7 @@ PlayScreen.prototype.updateTime = function ()
 		this.endGame();
 	}
 	
-	timeText.setText("Time: "+(--timeLeft), true);	
+	timeText.setText("Time: "+ --timeLeft, true);	
 };
 
 

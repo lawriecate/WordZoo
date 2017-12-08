@@ -16,13 +16,15 @@ var input; //The Inputted Word
 var text;
 var numberInputted = 0;
 var lengthOfWord;
+
 //Global reference of this
 var game;
 var clock;
-var initialTime = 25;
-var timeAllowed = 25;
+var startingTime = 20;
+var timeLeft;
 
 //Spawn the Clock and Keyboard
+var inputLock = false;
 var keyBoardSpawned = false;
 
 //Microstates - Mini states of animations
@@ -43,8 +45,9 @@ var previousOpponentSpell;
 var highLightCircle;
 
 //Player Health
-var playerHealth = 5;
-var opponentHealth = 5;
+var startingHealth = 5;
+var playerHealth;
+var opponentHealth;
 var playerHealthText;
 var opponentHealthText;
 
@@ -53,7 +56,7 @@ Level.prototype.init = function ()
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#ffffff';	
+	this.stage.backgroundColor = '#000000';	
 };
 
 Level.prototype.preload = function () 
@@ -267,9 +270,10 @@ Level.prototype.create = function ()
 	
 	//Clock Spawning
 	style = {font: "50px Arial", fill: '#FFFFFF', align: "center", fontWeight: 'bold'};
-	clock = this.add.text(this.game.world.centerX,40,"Timer: ",style);
+	clock = this.add.text(this.game.world.centerX,40,"Time: "+startingTime,style);
 	clock.anchor.x = 0.5;
 	clock.anchor.y = 0.5;
+	clock.visible = false;
 	
 	
 	//Add Triggers for the keyboard
@@ -305,6 +309,40 @@ Level.prototype.create = function ()
 	_Enter1.events.onInputDown.add(enterAnswer,{button: _Enter1 , button2: _Enter2});
 	_Enter2.events.onInputDown.add(enterAnswer,{button: _Enter1 , button2: _Enter2});
 	
+	// Keyboard controls
+	this.game.input.keyboard.addKey(Phaser.Keyboard.A).onDown.add(addLetter,{keyPressed : 'A', button: _A}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.B).onDown.add(addLetter,{keyPressed : 'B', button: _B}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.C).onDown.add(addLetter,{keyPressed : 'C', button: _C}, this);
+	this.game.input.keyboard.addKey(Phaser.Keyboard.D).onDown.add(addLetter,{keyPressed : 'D', button: _D}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.E).onDown.add(addLetter,{keyPressed : 'E', button: _E}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.F).onDown.add(addLetter,{keyPressed : 'F', button: _F}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.G).onDown.add(addLetter,{keyPressed : 'G', button: _G}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.H).onDown.add(addLetter,{keyPressed : 'H', button: _H}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.I).onDown.add(addLetter,{keyPressed : 'I', button: _I}, this);	
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.J).onDown.add(addLetter,{keyPressed : 'J', button: _J}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.K).onDown.add(addLetter,{keyPressed : 'K', button: _K}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.L).onDown.add(addLetter,{keyPressed : 'L', button: _L}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.M).onDown.add(addLetter,{keyPressed : 'M', button: _M}, this);
+ 	this.game.input.keyboard.addKey(Phaser.Keyboard.N).onDown.add(addLetter,{keyPressed : 'N', button: _N}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.O).onDown.add(addLetter,{keyPressed : 'O', button: _O}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(addLetter,{keyPressed : 'P', button: _P}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.Q).onDown.add(addLetter,{keyPressed : 'Q', button: _Q}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.R).onDown.add(addLetter,{keyPressed : 'R', button: _R}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.S).onDown.add(addLetter,{keyPressed : 'S', button: _S}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.T).onDown.add(addLetter,{keyPressed : 'T', button: _T}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.U).onDown.add(addLetter,{keyPressed : 'U', button: _U}, this);
+    this.game.input.keyboard.addKey(Phaser.Keyboard.V).onDown.add(addLetter,{keyPressed : 'V', button: _V}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.W).onDown.add(addLetter,{keyPressed : 'W', button: _W}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.X).onDown.add(addLetter,{keyPressed : 'X', button: _X}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.Y).onDown.add(addLetter,{keyPressed : 'Y', button: _Y}, this);
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.Z).onDown.add(addLetter,{keyPressed : 'Z', button: _Z}, this);
+
+  	this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.add(addLetter,{keyPressed : ' ', button: _Space}, this);
+	this.game.input.keyboard.addKey(Phaser.Keyboard.BACKSPACE).onDown.add(clearLetters,{button: _Delete1, button2: _Delete2}, this);
+	this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.add(enterAnswer,{button: _Enter1 , button2: _Enter2}, this);
+
+
+
 	//Load the Assets and Words
 	//TODO - These will be pulled from a server eventually, but for now are local and hardcoded
 	//Player
@@ -343,6 +381,18 @@ Level.prototype.create = function ()
 	assets[9].sprite = this.add.sprite(1730,196+160+160+160+160+50,'Hat');
 	assets[9].sprite.anchor.setTo(0.5,0.5);	
 		
+	// Time
+	timeLeft = startingTime;
+	timer = this.time.create(false);
+	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
+	timer.start();
+
+	// Starting values
+	playerHealth = startingHealth;
+	opponentHealth = startingHealth;
+	inputLock = true;
+
+
 	//Enabled Inputs
 	for(var i = 0; i < 10; i++)
 	{
@@ -356,10 +406,9 @@ Level.prototype.create = function ()
 	//Set it as a blank word
 	selectInitialSpell(assets[0].sprite,0);
 	clearLetters();
-	spawnClock();
 	
 	//Small Delay at the start to show the scene, and then add the keyboard
-	setTimeout(moveKeyBoardUp,500);
+	setTimeout(moveKeyBoardUp, 500);
 	
 	previousPlayerSpell = assets[0].sprite;
 	previousOpponentSpell = assets[0].sprite;	
@@ -370,6 +419,13 @@ Level.prototype.create = function ()
  */
 function addLetter()
 {	
+	// If input lock is on, don't allow letters to be added
+	if(inputLock)
+	{
+		console.log("addLetter");
+		return;
+	}
+
 	//Makes Key expand, When completes, reset's to the original Size
 	var tween1 = game.add.tween(this.button.scale).to({x:2 , y:2},70,"Linear",true);
 	tween1.onComplete.add(resetObjectSize,{button: this.button});
@@ -416,6 +472,12 @@ function selectInitialSpell(button,selected)
 	targetWord = "" + assets[selected].word;
 	lengthOfWord = targetWord.length;
 	clearLetters();
+
+	// Reset word colour
+	for(var i=0; i < lengthOfWord; i++)
+	{		
+		text.addColor('#FF9933', (2*i));
+	}
 }
 
 /**
@@ -432,6 +494,12 @@ function selectSpell()
 	targetWord = "" + assets[this.selected].word;
 	lengthOfWord = targetWord.length;
 	clearLetters();
+
+	// Reset word colour
+	for(var i=0; i < lengthOfWord; i++)
+	{		
+		text.addColor('#FF9933', (2*i));
+	}
 }
 
 /**
@@ -473,6 +541,13 @@ function clearLetters()
  */
 function enterAnswer()
 {
+	// If input lock is on, don't allow letters to be added
+	if(inputLock)
+	{
+		return;
+	}
+
+
 	moveKeyBoardDown();
 		
 	//Disable all inputs
@@ -481,43 +556,41 @@ function enterAnswer()
 	//Remove Commas and spaces
 	var answer = "" + text.text.replace(/\,/g,"");
 	answer = "" + answer.replace(/\s/g, "");
+
 	//Make the Input and target all caps too
 	var target = targetWord.toUpperCase();
+	
 	//If the Answer equals target
-	
 	highLightCircle.position.setTo(-1000,-1000);
-	
 	if(answer == target)
 	{
 		//Blur out the bottoms
 		previousPlayerSpell = selectedSpell.sprite;
 		previousPlayerSpell.alpha = 0.2;
+		
+		// Colour word - Green
+		for(var i=0; i < lengthOfWord; i++)
+		{	
+			text.addColor('#21AA1E', (2*i));
+		}
+
+		// Call animation
 		playerGoodSpell();
-		text.addColor('#21AA1E',0);
 	} 
 	else 
-	{
-		//Create the sting with the spaces for comparison
-		var temp = "";
-		for(var i = 0; i < target.length ; i++)
-		{
-			temp = temp + target[i] + " ";
-		}
-		
+	{		
 		//Highlight the incorrect letters
-		for(var i = 0; i < text.length; i++)
+		for(var i = 0; i < lengthOfWord; i++)
 		{
-			if(text[i] == temp[i])
+			if(answer[i] == target[i])
 			{
-				//If the Letters are correct, turn it to green
-				text.addColor('#21AA1E',i);
-				text.addColor('FF9933',i+1);
+				//If the Letter is correct, turn it to green
+				text.addColor('#21AA1E',(2*i));
 			} 
 			else 
 			{
 				//Else, turn it to red
-				text.addColor('#AA0000',i);	
-				text.addColor('FF9933',i+1);
+				text.addColor('#AA0000',(2*i));	
 			}
 		}
 		
@@ -525,6 +598,17 @@ function enterAnswer()
 		playerBadSpell();
 	}
 }
+
+
+/**
+ * Switch input lock
+ */
+function switchInputLock()
+{
+	inputLock = !inputLock;
+	console.log("IL: "+inputLock);
+}
+
 
 /**
  * Disables all Asset inputs
@@ -556,13 +640,22 @@ function enableAssetInputs()
  */
 function moveKeyBoardUp()
 {
+	// Set + open clock
+	timeLeft = startingTime;
+	clock.setText("Time: "+startingTime, true);	
+	clock.visible = true;
+
 	//Move Keyboard onto Screen
+	var tween;
 	for(var i = 0 ; i < keyboard.countLiving() ; i++)
 	{
 		//keyboard.getAt(i).position.y -= 1500;
-		game.add.tween(keyboard.getAt(i)).to({y: (keyboard.getAt(i).y - 1500)},1000, "Linear", true);
+		tween = game.add.tween(keyboard.getAt(i)).to({y: (keyboard.getAt(i).y - 1500)},1000, "Linear", true);
 	}
 	keyBoardSpawned = true;
+
+	// Disable input lock
+	tween.onComplete.add(function(){this.switchInputLock();}, this);
 }
 
 /**
@@ -570,12 +663,19 @@ function moveKeyBoardUp()
  */
 function moveKeyBoardDown()
 {
+	// Stop + hide clock
+	timeLeft = (startingTime*2);
+	clock.visible = false;
+
 	//Move Keyboard onto Screen
 	for(var i = 0 ; i < keyboard.countLiving() ; i++)
 	{
 		game.add.tween(keyboard.getAt(i)).to({y: (keyboard.getAt(i).y + 1500)},1500, "Linear", true);
 	}
 	keyBoardSpawned = false;
+
+	// Enable input lock
+	this.switchInputLock();
 }
 
 /**
@@ -605,12 +705,6 @@ function playerBadSpell()
         			//Call Opponents Response
    	    			opponentResponse();
 				});	
-
-				// Reset colour of text (Yellow)
-				for(var i = 0; i < text.length; i++)
-				{
-					text.addColor('#FFFFFF',i);
-				} 
         	});
     	});
     });
@@ -643,12 +737,6 @@ function opponentBadSpell()
         			//Call Opponents Response
     	    		playerResponse();
 				});	
-
-				// Reset colour of text (Yellow)
-				for(var i = 0; i < text.length; i++)
-				{
-					text.addColor('#FFFFFF',i);
-				} 
        	    });
     	 });
     });
@@ -760,13 +848,14 @@ function playerGoodSpell()
        	   				//Once Complete, then go to the next players turn
            				decreaseOpponentHealth();
     	    		});	
-    	    	});	
 
-    	    	// Reset colour of text (Yellow)
-				for(var i = 0; i < text.length; i++)
-				{
-					text.addColor('#FFFFFF',i);
-				} 
+
+    	    		// Reset word colour
+					for(var i=0; i < lengthOfWord; i++)
+					{		
+						text.addColor('#FF9933', (2*i));
+					}
+    	    	});	
         	});
     	});
 	});
@@ -792,12 +881,12 @@ function decreaseOpponentHealth()
 			
 			//END GAME - You win
 			console.log("You win")
-			game.state.start('Finish');
+			this.endGame();
 		});	
 	}
 	else
 	{
-	//Call Opponents Response
+		//Call Opponents Response
 		opponentResponse();
 	}
 }
@@ -834,8 +923,8 @@ function decreasePlayerHealth()
 			
 			//END GAME - You lose
 			console.log("You lose")
-			game.state.start('Finish');
-			});	
+			this.endGame();
+		});	
 	} 
 	else
 	{
@@ -902,30 +991,30 @@ function opponentResponse()
 		previousPlayerSpell.alpha = 0.2;
 		console.log("Correct");
 		opponentGoodSpell();
-		//text.addColor('#21AA1E',0);
+
+		// Colour word - Green
+		for(var i=0; i < lengthOfWord; i++)
+		{		
+			text.addColor('#21AA1E', (2*i));
+		}
 	} 
 	else 
 	{
-		//Create the sting with the spaces for comparison
-		/*
-		var temp = "";
-		for(var i = 0; i < target.length ; i++){
-			temp = temp + target[i] + " ";
-		}
-		
 		//Highlight the incorrect letters
-		for(var i = 0; i < text.text.length; i++){
-			if(text.text[i] == temp[i]){
-				//If the Letters are correct, turn it to green
-				text.addColor('#21AA1E',i);
-				text.addColor('FF9933',i+1);
-			} else {
+		for(var i = 0; i < lengthOfWord; i++)
+		{
+			if(answer[i] == target[i])
+			{
+				//If the Letter is correct, turn it to green
+				text.addColor('#21AA1E',(2*i));
+			} 
+			else 
+			{
 				//Else, turn it to red
-				text.addColor('#AA0000',i);	
-				text.addColor('FF9933',i+1);
+				text.addColor('#AA0000',(2*i));	
 			}
 		}
-		*/
+
 		//Call the Animation 
 		opponentBadSpell();
 	}
@@ -936,8 +1025,9 @@ function opponentResponse()
  */
 function playerResponse()
 {
-//If Correct, grey out this choice and disable it
+	//If Correct, grey out this choice and disable it
 	var randomChoice = Math.floor((Math.random() * 9));
+
 	//Select an object that is not greyed out as the previous user did it
 	while(assets[randomChoice].sprite.alpha == 0.2)
 	{
@@ -945,21 +1035,21 @@ function playerResponse()
 		randomChoice = randomChoice % 10;
 	}
 
+	// Select spell
 	selectInitialSpell(assets[randomChoice].sprite,randomChoice);
 	highLightSpell(assets[randomChoice].sprite);
 	
 	//Clear the Text
 	clearLetters();
+	
 	//Move Keyboard Up
 	moveKeyBoardUp();
+	
 	//Enabled State UserInput
 	microStateUserInput = true;
-	//Reset clock
-	spawnClock();
+	
 	//Enable Input
 	enableAssetInputs();
-	//Raise Keyboard
-	
 }
 
 
@@ -1067,59 +1157,41 @@ function opponentGoodSpell()
    	    			animation.onComplete.add(function()
    	    			{
         	    		explosion.destroy();
+        	    		
         	    		//Once Complete, then go to the next players turn
         	    		decreasePlayerHealth();
     	    		});	
     	   		}); 	
-
-    	   		// Reset colour of text (Yellow)
-				for(var i = 0; i < text.length; i++)
-				{
-					text.addColor('#FFFFFF',i);
-				} 	
         	});
     	});
     });
 }
 
 
-//Spawns the Clock which forces the User to input spells
-function spawnClock()
-{
-  initialTime = Math.floor(this.game.time.time / 1000);
-}
 
-
-
-/**
- * Update Function, Called Every Frame
- */
-Level.prototype.update = function()
-{	
-	//User Input
-		//If All elements are spawned Spawned, check time -> If <= 0 , then failed animation , else Spawn a new Clock
-		//Make Sure Keyboard is Up
-		//Enabled Buttons for the selection of words
-	if(microStateUserInput)
+// display current time to screen (with --)
+Level.prototype.updateTime = function ()
+{		
+	// If no time remaining, game finished
+	if(timeLeft <= 0)
 	{
-		// Clock
-		var timeRemaining = Math.floor((timeAllowed - ((this.game.time.time / 1000) - initialTime)));
-		
-		//If Clock is less than 0, then go to failed animation
-		if(timeRemaining <= 0)
-		{
-			clock.text = "";
-			moveKeyBoardDown();
-			//Disable all inputs
-			disableAssetInputs();			
-			highLightCircle.position.setTo(-1000,-1000);
-			opponentResponse();
-		} 
-		else 
-		{
-			clock.text = "Time: " + timeRemaining;
-		}
+		enterAnswer();
 	}
+	
+	clock.setText("Time: "+(--timeLeft), true);	
+
 
 	// Check lives
+	if(playerHealth <= 0 || opponentHealth <= 0)
+	{
+		//this.recordData();
+		this.endGame();
+	}
+};
+
+// Game has finished, move to finish state
+Level.prototype.endGame = function() 
+{
+	//this.recordData();
+	this.state.start('Finish');
 };

@@ -35,7 +35,7 @@ FinishScreen.prototype.create = function ()
 	// Add 'unlucky text'
 	var _Unlucky = this.add.sprite(576, 96, 'Unlucky');
 	_Unlucky.scale.setTo(1.5, 1.5);	
-	
+
 	
 	// Play again button
 	var _PlayAgain = this.add.button(672, 384, 'PlayAgain', this.playAgain, this, null, null, null, null);

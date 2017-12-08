@@ -51,14 +51,17 @@ RulesScreen.prototype.create = function ()
 
 
     //Add in text
-    scoreText = this.game.add.text(1700, 30, "Score: 0", smallStyle);    
+    scoreText = this.game.add.text(1000, 1000, "Score: 0", bigStyle);    
     scoreText.anchor.setTo(0.5);
+    scoreText.addColor('#FF9933', 0);	
 
     winnerItemText = this.game.add.text(1590, 315, "", medStyle);
     winnerItemText.anchor.setTo(0.5);
+    winnerItemText.addColor('#FF9933', 0);	
 
-    timeText = this.game.add.text(1070, 30, "Time: "+startingTime, smallStyle);
+    timeText = this.game.add.text(400, 1000, "Time Remaining: "+startingTime, bigStyle);
     timeText.anchor.setTo(0.5);
+	timeText.addColor('#FF9933', 0);	
 
 
 	// Add OK button
@@ -241,7 +244,7 @@ RulesScreen.prototype.updateTime = function ()
 	}
 	
 	// show current time
-	timeText.setText("Time: "+ --timeLeft, true);	
+	timeText.setText("Time Remaining: "+ --timeLeft, true);	
 };
 
 

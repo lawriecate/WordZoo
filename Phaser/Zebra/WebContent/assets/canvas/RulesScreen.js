@@ -57,23 +57,25 @@ RulesScreen.prototype.create = function ()
 	// Correct item text
 	correctItemText = this.game.add.text(960, 160, "", bigStyle);
     correctItemText.anchor.setTo(0.5);
-	 
+	correctItemText.addColor('#FF9933', 0);
+
 
 	// Add Score box + score value
 	var scoreBox = this.add.sprite(1664, 182, 'score_background');
 	scoreBox.scale.setTo(1.5, 1.5);
 	scoreText = this.add.text(1700, 225, "Score: "+score, smallStyle);
-	
+	scoreText.addColor('#FF9933', 0);
+
 	// Add Time box + time value
 	var timeBox = this.add.sprite(1664, 32, 'score_background');
 	timeBox.scale.setTo(1.5, 1.5);
-	timeText = this.add.text(1700, 75, "Time: "+time, smallStyle);
+	timeText = this.add.text(1700, 75, "Time: "+startingTime, smallStyle);
+    timeText.addColor('#FF9933', 0);
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
 	
 	// Time
-	timeLeft = time;
 	timer = this.time.create(false);
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 
@@ -105,6 +107,7 @@ RulesScreen.prototype.create = function ()
 	normalSpeed = speed;
 	currentSpeed = normalSpeed;
 	score = 0;
+	timeLeft = startingTime;
 	livesLeft = startingLives;
 	pause = false;
 
@@ -132,7 +135,7 @@ RulesScreen.prototype.updateTime = function ()
 	{
 		// Stop scrolling + walking
 		pause = true;
-		//zebraWalk.pause;
+		zebraWalk.stop();
 	}
 	// 2 -> Circle Title
 	else if(counter == 2)
@@ -191,6 +194,7 @@ RulesScreen.prototype.updateTime = function ()
 	else if(counter == 8)
 	{	
 		pause = false;
+		zebraWalk.play(10,true);
 	}
 
 
@@ -198,6 +202,7 @@ RulesScreen.prototype.updateTime = function ()
 	else if(counter == 13)
 	{	
 		pause = true;
+		zebraWalk.stop();
 	}
 	// 14 -> Highlight score
 	else if(counter == 14)
@@ -222,11 +227,13 @@ RulesScreen.prototype.updateTime = function ()
 
 		this.setIncorrect();
 		pause = false;
+		zebraWalk.play(10,true);
 	}
 	// 18 -> pause
 	else if(counter == 18)
 	{	
 		pause = true;
+		zebraWalk.stop();
 	}
 	// 19 -> Circle Title
 	else if(counter == 19)
@@ -282,12 +289,14 @@ RulesScreen.prototype.updateTime = function ()
 	else if(counter == 25)
 	{	
 		pause = false;
+		zebraWalk.play(10,true);
 	}
 
-	// 30 -> Unpause
+	// 30 -> Pause
 	else if(counter == 30)
 	{	
 		pause = true;
+		zebraWalk.stop();
 	}
 
 	// 31 -> Highlight lives
@@ -329,7 +338,7 @@ RulesScreen.prototype.updateTime = function ()
 		this.onClickOK();
 	}
 	
-	timeText.setText("Time: "+(--timeLeft), true);	
+	timeText.setText("Time: "+ --timeLeft , true);	
 };
 
 

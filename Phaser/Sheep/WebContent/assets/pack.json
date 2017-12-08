@@ -139,6 +139,12 @@
       "key": "MoreGames",
       "url": "assets/4 EndScreen/moreGames.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "score_background",
+      "url": "assets/4 EndScreen/score_background.png",
+      "overwrite": false
     }
   ],
   "PlayScreen": [
@@ -426,7 +432,7 @@
     }
   ],
   "meta": {
-    "generated": "1511917527172",
+    "generated": "1512661340383",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

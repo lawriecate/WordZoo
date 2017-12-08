@@ -23,6 +23,7 @@
 		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
 	var wordHistory = [];
 	var numWordHistory;
+	var gameStartTime;
 	var startTime;
 	
 	// Record click history
@@ -49,9 +50,8 @@
 	var timer;
 	
 	// Text styles
-	var smallStyle = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	var medStyle = {font: "bold 50px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-	var bigStyle = {font: "bold 60px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+	var bigStyle = {font: "bold 80px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	
 	
 window.onload = function() 

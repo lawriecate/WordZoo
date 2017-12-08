@@ -78,18 +78,23 @@ PlayScreen.prototype.create = function ()
 	// Text over GUI
 	mainText = this.add.text(960, 90, "", bigStyle);
 	mainText.anchor.setTo(0.5, 0.5);
+	mainText.addColor('#FF9933', 0);
 
 	TRtext = this.add.text(1640, 150, "", medStyle);
 	TRtext.anchor.setTo(0.5, 0.5);
-		
-	TLtext = this.add.text(430, 165, "", medStyle);
+	TRtext.addColor('#FF9933', 0);
+
+	TLtext = this.add.text(420, 165, "", medStyle);
 	TLtext.anchor.setTo(0.5, 0.5);
+	TLtext.addColor('#FF9933', 0);
 
 	BRtext = this.add.text(1660, 650, "", medStyle);
 	BRtext.anchor.setTo(0.5, 0.5);
+	BRtext.addColor('#FF9933', 0);
 
-	BLtext = this.add.text(450, 650, "", medStyle);
+	BLtext = this.add.text(440, 650, "", medStyle);
 	BLtext.anchor.setTo(0.5, 0.5);
+	BLtext.addColor('#FF9933', 0);
 
 
 	// Add score value

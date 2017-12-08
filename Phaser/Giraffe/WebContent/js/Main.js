@@ -5,7 +5,7 @@
 	// *** To be pulled from server not static ***
 	// --------------------------------------------
 	//word bank
-	var matchingWords =  [["A1","A2"],["B1","B2"],["C1","C2"],["D1","D2"]];
+	var matchingWords =  [["Weigh","Pay"],["Cat","Bat"],["Match","Catch"],["Funny","Money"]];
 
 	var randomWords = 	["Bench","Brain","Bread","Broccoli","Cage","Cannon",
 	            		"Castle","Chair","Clock","Crayon","Desk","Donkey",
