@@ -10,6 +10,20 @@ var Level_proto = Object.create(Phaser.State.prototype);
 Level.prototype = Level_proto;
 Level.prototype.constructor = Level;
 
+
+// Record word answers
+	// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+var wordHistory = [];
+var numWordHistory;
+	
+// Record click history
+	// [(int) x, (int) y, (UTCString) timeStamp]
+var clickHistory = [];
+var numClickHistory;
+var startTime;
+var gameStartTime;
+
+
 var keyboard; //Keyboard Group
 var targetWord;
 var input; //The Inputted Word
@@ -387,6 +401,23 @@ Level.prototype.create = function ()
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timer.start();
 
+
+    //If user closes window, record data
+    window.onbeforeunload = function() 
+    {
+        this.recordData();
+    };
+    
+    // Record screen clicks
+    this.game.input.onDown.add(function(touchStart) { 
+    		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
+    	}, this);
+
+    // Record Game Start Time
+    var time = new Date();
+    gameStartTime = time.toUTCString();
+
+
 	// Starting values
 	playerHealth = startingHealth;
 	opponentHealth = startingHealth;
@@ -564,6 +595,12 @@ function enterAnswer()
 	highLightCircle.position.setTo(-1000,-1000);
 	if(answer == target)
 	{
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [target, null, true, finishTime - startTime];	
+		numWordHistory++;
+
+
 		//Blur out the bottoms
 		previousPlayerSpell = selectedSpell.sprite;
 		previousPlayerSpell.alpha = 0.2;
@@ -579,6 +616,12 @@ function enterAnswer()
 	} 
 	else 
 	{		
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[numWordHistory] = [target, answer, false, finishTime - startTime];		
+		numWordHistory++;
+
+
 		//Highlight the incorrect letters
 		for(var i = 0; i < lengthOfWord; i++)
 		{
@@ -607,6 +650,10 @@ function switchInputLock()
 {
 	inputLock = !inputLock;
 	console.log("IL: "+inputLock);
+
+	// Set timer for time taken to answer
+	// *** Trigger on keyboard ip -> enable input ***
+    startTime = Math.floor(Date.now());
 }
 
 
@@ -1168,6 +1215,28 @@ function opponentGoodSpell()
 }
 
 
+// Record screen clicks
+Level.prototype.recordScreenPress = function(x, y) 
+{
+	// Get current time
+	var timeStamp = new Date(); 
+	timeStamp.toUTCString();
+
+	// Add to records
+	clickHistory[numClickHistory++] = [x, y, timeStamp];
+};
+
+// Record statistical data from game
+Level.prototype.recordData = function() 
+{
+	// Save gameStartTime
+	// Save score
+	// Save playerHealth
+	// Save opponentHealth
+	// Save wordHistory
+	// Save clickHistory 
+};
+
 
 // display current time to screen (with --)
 Level.prototype.updateTime = function ()
@@ -1184,7 +1253,7 @@ Level.prototype.updateTime = function ()
 	// Check lives
 	if(playerHealth <= 0 || opponentHealth <= 0)
 	{
-		//this.recordData();
+		this.recordData();
 		this.endGame();
 	}
 };
