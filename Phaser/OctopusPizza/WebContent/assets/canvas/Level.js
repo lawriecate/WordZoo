@@ -10,6 +10,21 @@ function Level()
 	Phaser.State.call(this);	
 }
 
+
+// Record word answers
+	// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+var wordHistory = [];
+var numWordHistory;
+	
+// Record click history
+	// [(int) x, (int) y, (UTCString) timeStamp]
+var clickHistory = [];
+var numClickHistory;
+var startTime;
+var gameStartTime;
+
+
+
 /** @type Phaser.State */
 var Level_proto = Object.create(Phaser.State.prototype);
 Level.prototype = Level_proto;
@@ -22,7 +37,6 @@ Level.prototype.init = function ()
 	this.scale.pageAlignVertically = true;
 	this.stage.backgroundColor = '#ffffff';	
 };
-
 
 
 Level.prototype.preload = function () 
@@ -57,8 +71,6 @@ Level.prototype.preload = function ()
 
 Level.prototype.create = function () 
 {
-console.log("1");
-
 	var _background = this.add.sprite(960, 540, 'background');
 	_background.anchor.setTo(0.5, 0.5);
 	
@@ -67,9 +79,6 @@ console.log("1");
 	 _pizza = this.add.sprite(1530, 825, 'pizza');
 	_pizza.anchor.setTo(0.5, 0.5);
 		
-
-console.log("2");
-
 	//Load Assets
 	assets[0].word = "Apple";
 	assets[1].word = "Bear";
@@ -91,8 +100,6 @@ console.log("2");
 	 *
 	 */
 
-
-	 console.log("3");
 	
 	//Order
 	var style = { font: "60px Arial", fill: "#000000", align: "left"};
@@ -108,8 +115,7 @@ console.log("2");
     strikes[2] = game.add.sprite(-1100,365,'strikeThrough');
     strikes[3] = game.add.sprite(-1100,440,'strikeThrough');
     strikes[4] = game.add.sprite(-1100,515,'strikeThrough');
-   
-console.log("4");
+  
 
     //Spawn the Clock
 	style = {font: "70px Arial", fill: '#FF9933', align: "left", fontWeight: 'bold'};
@@ -119,8 +125,6 @@ console.log("4");
 	scoreText = this.add.text(1700,80,"Score: ",style);
 	scoreText.anchor.setTo(0.5,0.5);
    
-
-console.log("n "+assets[0].word);
 
 	//Decorative items
 	//x, y, asset
@@ -279,6 +283,23 @@ console.log("n "+assets[0].word);
 	_selectItem9.inputEnabled = true;
 	_selectItem9.events.onInputDown.add(spawnDraggableItem,{selectedItem: 9});
 	
+
+    //If user closes window, record data
+    window.onbeforeunload = function() 
+    {
+        this.recordData();
+    };
+    
+    // Record screen clicks
+    this.game.input.onDown.add(function(touchStart) { 
+    		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
+    	}, this);
+
+    // Record Game Start Time
+    var time = new Date();
+    gameStartTime = time.toUTCString();
+
+
 	//Generate the first order
 	score = 0;
 	generateOrder();
@@ -298,7 +319,7 @@ Level.prototype.update = function()
 	if(timeRemaining <= 0)
 	{
 		//Gameover
-		game.state.start('Finish');
+		this.endGame();
 	} 
 	else 
 	{
@@ -410,6 +431,9 @@ function resetPizza()
 	
 	//Reset Array
 	toppings = new Array();
+
+	// Set timer for time taken to answer
+    startTime = Math.floor(Date.now());
 }
 
 
@@ -422,6 +446,11 @@ function checkAnswer()
 	{
 		if(order[i] == selectedAnswer)
 		{
+			// record word answers
+			var finishTime = Math.floor(Date.now());
+			wordHistory[numWordHistory] = [selectedAnswer, null, true, finishTime - startTime];	
+			numWordHistory++;
+
 			//Strike through
 			strikes[i].position.x = 100;
 			
@@ -437,6 +466,12 @@ function checkAnswer()
 			return;
 		}
 	}	
+	
+	// record word answers
+	var finishTime = Math.floor(Date.now());
+	wordHistory[numWordHistory] = [order, selectedAnswer, false, finishTime - startTime];	
+	numWordHistory++;
+
 	decreaseScore();
 	dragItem.destroy();
 }
@@ -549,3 +584,31 @@ function generateOrder()
 	//Set text		
 	orderText.text = orderString;	
 }
+
+
+// Record screen clicks
+Level.prototype.recordScreenPress = function(x, y) 
+{
+	// Get current time
+	var timeStamp = new Date(); 
+	timeStamp.toUTCString();
+
+	// Add to records
+	clickHistory[numClickHistory++] = [x, y, timeStamp];
+};
+
+// Record statistical data from game
+Level.prototype.recordData = function() 
+{
+	// Save gameStartTime
+	// Save score
+	// Save wordHistory
+	// Save clickHistory 
+};
+
+// Game has finished, move to finish state
+Level.prototype.endGame = function() 
+{
+	this.recordData();
+	this.state.start('Finish');
+};
