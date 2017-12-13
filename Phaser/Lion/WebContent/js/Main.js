@@ -14,7 +14,6 @@
 		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
 	var wordHistory = [];
 	var numWordHistory;
-	var startTime;
 
 	// raw text of each button
 	var TLraw;

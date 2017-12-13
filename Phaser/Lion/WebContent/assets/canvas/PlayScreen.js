@@ -36,7 +36,6 @@ PlayScreen.prototype.create = function ()
 	GK_Mid = this.add.sprite(790, 320, 'goalkeeper_center');
 	GK_Mid.scale.setTo(1.5, 1.5);
 	
-
 	
 	// Add TopLeft word box
 	topLeft = this.add.button(544, 128, 'ScoreBackground', this.clickTL, this, null, null, null, null);
@@ -396,7 +395,7 @@ PlayScreen.prototype.clickTL = function ()
 	{	
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [correctWord, TLraw, true, finishTime - startTime];		
+		wordHistory[numWordHistory] = [correctWord, TLraw, false, finishTime - startTime];		
 		numWordHistory++;
 
 		// incorrect answer, loose a life
@@ -585,19 +584,362 @@ PlayScreen.prototype.reset = function ()
 
 // Generate an incorrect word
 PlayScreen.prototype.genIncorrect = function (preSetNum)
-{	
-	// Random index to add incorrect letter
-	var positionIndex = Math.floor((Math.random() * correctWord.length-1) +0);
-	
-	// Random index of letters array
-	var letterIndex = Math.floor(Math.random() * letters.length);
+{
+	// Random value for which branch of common spelling mistakes to follow
+	var tree = Math.floor((Math.random() * 4) + 0);
 
-	// Return word with random letter and random position
-	var newWord = correctWord.substr(0,positionIndex)
-		+ letters[letterIndex]
-		+ correctWord.substr((positionIndex + 1), (correctWord.length - 1));
+	// Define variables
+	var regex;
+	var finished = false;
+	var newWord = "";
 
 	
+	while(!finished)
+	{
+		// Split into 4 different trees
+
+		// Tree 0
+		if(tree == 0)
+		{
+			// nse	->	nce		@ End of Line
+			regex = /nse+$/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'nce');
+				finished = true;
+			}
+
+			// sy	->	cy 		@ End of Line
+			regex = /sy+$/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'cy');
+				finished = true;
+			}
+
+
+// Not sure how to replace _ character
+
+			// i_e	->	i_
+//			regex = /i.e/g;
+//			if(regex.exec(correctWord))
+//			{
+//				newWord = correctWord.replace(regex, 'i.');
+//				finished = true;
+//			}			
+
+
+			// oe	->	e 
+			regex = /oe/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'e');
+				finished = true;
+			}
+
+			// qu 	->	kw
+			regex = /qu/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'kw');
+				finished = true;
+			}
+
+			// gue	->	g
+			regex = /gue/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'g');
+				finished = true;
+			}
+
+			// ie 	-> ei
+			regex = /ie/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ei');
+				finished = true;
+			}
+		
+			// ei 	-> ie
+			regex = /ei/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ie');
+				finished = true;
+			}
+
+			// re	->	er
+			regex = /re/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'er');
+				finished = true;
+			}
+		}
+
+
+		// Tree 1
+		if(tree == 1)
+		{
+			// xs	->	ies		@ End of Line
+			regex = /xs+$/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ies');
+				finished = true;
+			}
+
+			// ae	->	e
+			regex = /ae/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'e');
+				finished = true;
+			}
+
+			// eur	->	er
+			regex = /eur/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'er');
+				finished = true;
+			}
+
+			// et	->	it
+			regex = /et/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'it');
+				finished = true;
+			}
+
+			// ck	->	k
+			regex = /ck/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'k');
+				finished = true;
+			}
+
+			// qu 	->	q
+			regex = /qu/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'q');
+				finished = true;
+			}
+
+			// ent	-> ant
+			regex = /ent/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ant');
+				finished = true;
+			}
+
+			// ant	-> ent
+			regex = /ant/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ent');
+				finished = true;
+			}
+
+			// er	->	re
+			regex = /er/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 're');
+				finished = true;
+			}
+		}
+
+
+		// Tree 2
+		if(tree == 2)
+		{
+			// xs	->	es		@ End of Line
+			regex = /xs+$/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'es');
+				finished = true;
+			}
+
+			// a_i	->	ai_
+// ?
+
+			// ou	-> 	o
+			regex = /ou/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'o');
+				finished = true;
+			}
+
+			// os	-> oes
+			regex = /os/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'oes');
+				finished = true;
+			}
+
+			// oes	-> os
+			regex = /oes/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'os');
+				finished = true;
+			}
+
+			// sc 	-> 	c
+			regex = /sc/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'c');
+				finished = true;
+			}
+
+			// i 	->	y
+			regex = /i/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'y');
+				finished = true;
+			}
+
+			// c	->	s
+			regex = /c/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 's');
+				finished = true;
+			}
+
+			// s 	->	c
+			regex = /s/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'c');
+				finished = true;
+			}
+		}
+
+
+		// Tree 3
+		if(tree == 3)
+		{
+			// x	->	ks		@ End of Line
+			regex = /x+$/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ks');
+				finished = true;
+			}
+
+			// s 	->	z
+			regex = /s/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'z');
+				finished = true;
+			}
+
+			// ite	->	ate
+			regex = /ite/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ate');
+				finished = true;
+			}
+
+			// ch	->	sh
+			regex = /ch/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'sh');
+				finished = true;
+			}
+
+			// sh	->	ch
+			regex = /sh/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ch');
+				finished = true;
+			}
+
+			// ie 	-> ei
+			regex = /ie/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ei');
+				finished = true;
+			}
+
+			// ei 	-> ie
+			regex = /ei/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'ie');
+				finished = true;
+			}
+
+			// j 	-> g
+			regex = /j/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'g');
+				finished = true;
+			}
+
+			// g 	->	j
+			regex = /g/g;
+			if(regex.exec(correctWord))
+			{
+				newWord = correctWord.replace(regex, 'j');
+				finished = true;
+			}
+		}
+
+
+
+		// ***************************************************************
+		// Not subject to the above common mistakes - Change Random Letter
+		// ***************************************************************
+		if(!finished)
+		{
+			// Random index to add incorrect letter
+			var positionIndex = Math.floor((Math.random() * correctWord.length) + 0);
+		
+			// Random index of letters array
+			var letterIndex = Math.floor(Math.random() * letters.length);
+
+			// if too high, try again
+			if(positionIndex > (correctWord.length - 2))
+			{
+				return this.genIncorrect(preSetNum);
+			}
+
+			// Return word with random letter and random position
+			newWord = correctWord.substr(0,positionIndex + 1)
+				+ letters[letterIndex]
+				+ correctWord.substr((positionIndex + 2), (correctWord.length));
+		}
+
+		console.log(newWord);
+		finished = true;
+	}
+
+	
+
+	//console.log(newWord+" "+tree);
+
+
+
+
 	// Make sure this incorrect word is not the same as the correct word, or previous incorrect words -> return
 	if(preSetNum == 0 && newWord != correctWord)
 	{
