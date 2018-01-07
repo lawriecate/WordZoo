@@ -10,10 +10,7 @@ import numpy as np          #Linear operations
 import tflearn              #The Magic
 import pandas as pd
 import numpy as np
-
-#Global Model
-model = 0
-wordAttributes = 0
+import csv
 
 '''
 Creates the model
@@ -27,7 +24,7 @@ def createAndTrainModel():
     layer1 = 32
     layer2 = 32
     outLayer = 2
-    epochCount = 30
+    epochCount = 50
     batchSize = len(labels)
     #-----------------------------
 
@@ -42,7 +39,7 @@ def createAndTrainModel():
     global model
     model = tflearn.DNN(network)
     #Training and Validation
-    model.fit(data,labels, n_epoch = epochCount, batch_size = batchSize, show_metric = True , validation_set = 0.1)
+    model.fit(data,labels, n_epoch = epochCount, batch_size = batchSize, show_metric = True , validation_set = 0.3)
 
     #Once Training is complete, save it
     #model.save('wordDifficulty')
@@ -55,7 +52,9 @@ def loadWords():
     global wordAttributes
     wordAttributes = pd.read_csv(r'../input/wordAttributes.csv')
     #Create List of Words and randomly shuffle them
-    #df.sample(frac=1)
+    global words
+    words = wordAttributes.ix[:,0]
+    words = words.sample(frac=1).reset_index(drop=True)
     return;
 
 '''
@@ -80,20 +79,47 @@ def createQuery(word1,word2):
     query = np.concatenate((word1,word2))
     return query;
 
-def test():
-    #test = [4,1,0,1,4.25,0,1,0,1,4,0.25,0,3,-1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,4,1,0,1,4.92,0,0,0,1,4,0.25,0,4,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]
-    test = createQuery(getWordAtributes("cat"),getWordAtributes("elephant"))
-    pred = model.predict([test])
-    return pred;
+'''
+Sorts the words based on their wordDifficulty
+Done using Bubble sort, and the Neural Network assesses if one word is harder than the other
+if this is true, then swap the order, else don't
+Repeat n^2 times
+'''
+def sortWords():
+    #run Bubble Sort
+    for passnum in range(len(words) - 1):
+        for i in range (passnum):
+            #Create the query
+            query = createQuery(getWordAtributes(words[i]),getWordAtributes(words[i+1]))
+            #Query the Model
+            pred = model.predict([query])
+            print(pred)
+            #Check, if this is true, then the swap if it is
+            if (pred[0][0] > pred [0][1]):
+                temp = words[i]
+                words[i] = words[i+1]
+                words[i+1] = temp
+
+    #Print out Solution
+    print(words)
+
+    return;
 
 if __name__ == "__main__":
     loadWords()
-    #createQuery(getWordAtributes("cat"),getWordAtributes("cat"))
     createAndTrainModel()
-    pred = test()
-    print(pred[0][0], " ", pred[0][1])
 
-    if (pred[0][0] > pred[0][1]):
-        print("class 0")
-    else:
-        print("class 1")
+    #Convert to Numpy
+    #global words
+    words = words.values
+    #For Testing
+    #words = words[:5]
+    #Repeat 5 times to properly make sure the list is well sorted
+    for i in range(5):
+        sortWords()
+        fileName = 'output' + str(i)
+        #Save the words out
+        f = open(fileName,'w')
+        for ele in words:
+            f.write(ele+'\n')
+        f.close()
