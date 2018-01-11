@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+    <title><%=typeof title == 'undefined' ? 'WordZoo' : title%></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -34,6 +34,27 @@
   </head>
 
   <body>
+    <ul>
+      <li><a href="/login">Log In</a></li>
+      <li><a href="/signup">Sign Up</a></li>
+      <li><a href="/admin">Admin Home</a></li>
+      <ul><li><a href="#">Manage Users</a></li>
+      <li><a href="#">Manage Schools</a></li>
+      <li><a href="#">Data Tools</a></li>
+      <li><a href="#">Manage Games</a></li>
+      <li><a href="#">Play Game</a></li>
+    </ul>
+      <li><a href="#">Teacher Home</a></li>
+      <ul>
+      <li><a href="#">Teach Class</a></li>
+      <li><a href="#">Manage Class</a></li>
+    </ul>
+    <li><a href="#">Student Home</a></li>
+    <ul>
+    <li><a href="#">Play Game</a></li>
+    <li><a href="#">Profile </a></li>
+  </ul>
+    </ul>
     <%- body %>
 
 
@@ -60,7 +81,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 

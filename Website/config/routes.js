@@ -54,4 +54,16 @@ module.exports.routes = {
     'post /login': 'UserController.login',
     'post /signup': 'UserController.signup',
     '/logout': 'UserController.logout',
+
+    'get /admin': { view: 'auth/register' },
+    'get /admin/schools': { view: 'auth/register' },
+    'get /admin/users': { view: 'auth/register' },
+    'get /admin/games': { view: 'auth/register' },
+    'get /admin/data': { view: 'auth/register' },
+
+    'get /teach': { view: 'auth/register' },
+    'get /teach/class': { view: 'auth/register' },
+
+    'get /student/play': { view: 'auth/register' },
+    'get /student/login': { view: 'auth/register' },
 };

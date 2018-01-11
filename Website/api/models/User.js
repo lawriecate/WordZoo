@@ -15,6 +15,10 @@ module.exports = {
     password: {
       type: 'string',
       required: true
+    },
+    created_at: {
+      type: 'datetime',
+      required: true
     }
   },
 
