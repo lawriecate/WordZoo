@@ -458,6 +458,17 @@ function addLetter()
 	}
 
 	//Makes Key expand, When completes, reset's to the original Size
+
+
+
+	console.log('enxpand');
+	game.world.bringToTop(this.button);
+
+
+
+
+
+
 	var tween1 = game.add.tween(this.button.scale).to({x:2 , y:2},70,"Linear",true);
 	tween1.onComplete.add(resetObjectSize,{button: this.button});
 	
@@ -1253,7 +1264,6 @@ Level.prototype.updateTime = function ()
 	// Check lives
 	if(playerHealth <= 0 || opponentHealth <= 0)
 	{
-		this.recordData();
 		this.endGame();
 	}
 };
@@ -1261,6 +1271,6 @@ Level.prototype.updateTime = function ()
 // Game has finished, move to finish state
 Level.prototype.endGame = function() 
 {
-	//this.recordData();
+	this.recordData();
 	this.state.start('Finish');
 };

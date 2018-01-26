@@ -38,23 +38,27 @@ PlayScreen.prototype.create = function ()
 	
 	
 	// Add TopLeft word box
-	topLeft = this.add.button(544, 128, 'ScoreBackground', this.clickTL, this, null, null, null, null);
+	topLeft = this.add.button(660, 190, 'ScoreBackground', this.expandTL, this, null, null, null, null);
 	topLeft.scale.setTo(1.5, 1.5);
+	topLeft.anchor.setTo(0.5, 0.5);
 	topLeft.visible = false;
 
 	// Add TopRight word box
-	topRight = this.add.button(1184, 128, 'ScoreBackground', this.clickTR, this, null, null, null, null);
+	topRight = this.add.button(1300, 190, 'ScoreBackground', this.expandTR, this, null, null, null, null);
 	topRight.scale.setTo(1.5, 1.5);
+	topRight.anchor.setTo(0.5, 0.5);
 	topRight.visible = false;
 	
 	// Add BottomLeft word box
-	bottomLeft = this.add.button(544, 576, 'ScoreBackground', this.clickBL, this, null, null, null, null);
+	bottomLeft = this.add.button(660, 640, 'ScoreBackground', this.expandBL, this, null, null, null, null);
 	bottomLeft.scale.setTo(1.5, 1.5);
+	bottomLeft.anchor.setTo(0.5, 0.5);
 	bottomLeft.visible = false;
 	
 	// Add BottomRight word box
-	bottomRight = this.add.button(1184, 576, 'ScoreBackground', this.clickBR, this, null, null, null, null);
+	bottomRight = this.add.button(1300, 640, 'ScoreBackground', this.expandBR, this, null, null, null, null);
 	bottomRight.scale.setTo(1.5, 1.5);
+	bottomRight.anchor.setTo(0.5, 0.5);
 	bottomRight.visible = false;
 	
 	// TL text
@@ -182,7 +186,6 @@ PlayScreen.prototype.create = function ()
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timer.start();
 	
-
 
 
 	// Football roll in -> Start
@@ -362,6 +365,67 @@ PlayScreen.prototype.setWords = function ()
 };
 
 
+
+
+// expand topLeft button
+PlayScreen.prototype.expandTL = function ()
+{			
+	// Add tweens
+	var tween1 = this.game.add.tween(topLeft.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
+	var tween2 = this.game.add.tween(topLeft.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
+
+	// Add linking
+	tween1.onComplete.add(function (){tween2.start();}, this);
+	tween2.onComplete.add(function (){this.clickTL();}, this);
+
+	// Start
+	tween1.start();
+};
+// expand topRight button
+PlayScreen.prototype.expandTR = function ()
+{			
+	// Add tweens
+	var tween1 = this.game.add.tween(topRight.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
+	var tween2 = this.game.add.tween(topRight.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
+
+	// Add linking
+	tween1.onComplete.add(function (){tween2.start();}, this);
+	tween2.onComplete.add(function (){this.clickTR();}, this);
+
+	// Start
+	tween1.start();
+};
+// expand bottomLeft button
+PlayScreen.prototype.expandBL = function ()
+{			
+	// Add tweens
+	var tween1 = this.game.add.tween(bottomLeft.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
+	var tween2 = this.game.add.tween(bottomLeft.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
+
+	// Add linking
+	tween1.onComplete.add(function (){tween2.start();}, this);
+	tween2.onComplete.add(function (){this.clickBL();}, this);
+
+	// Start
+	tween1.start();
+};
+// expand bottomRight button
+PlayScreen.prototype.expandBR = function ()
+{			
+	// Add tweens
+	var tween1 = this.game.add.tween(bottomRight.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
+	var tween2 = this.game.add.tween(bottomRight.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
+
+	// Add linking
+	tween1.onComplete.add(function (){tween2.start();}, this);
+	tween2.onComplete.add(function (){this.clickBR();}, this);
+
+	// Start
+	tween1.start();
+};
+
+
+
 //onClick top left button
 PlayScreen.prototype.clickTL = function ()
 {			
@@ -388,7 +452,6 @@ PlayScreen.prototype.clickTL = function ()
 		GK_BR_Dive.play(5);
 		
 		// Move football to TL, score
-		// onComplete -> reset()
 		this.ballTL(true);
 	}
 	else
@@ -406,7 +469,6 @@ PlayScreen.prototype.clickTL = function ()
 		GK_TL_Dive.play(5);
 
 		// Move football to TL, save
-		// onComplete -> reset()
 		this.ballTL(false);
 	}
 };
@@ -435,7 +497,6 @@ PlayScreen.prototype.clickTR = function ()
 		GK_BL_Dive.play(5);
 
 		// Move football to TR, score
-		// onComplete -> reset()
 		this.ballTR(true);
 	}
 	else
@@ -453,7 +514,6 @@ PlayScreen.prototype.clickTR = function ()
 		GK_TR_Dive.play(5);
 
 		// Move football to TR, save
-		// onComplete -> reset()
 		this.ballTR(false);
 	}
 };
@@ -482,7 +542,6 @@ PlayScreen.prototype.clickBL = function ()
 		GK_TR_Dive.play(5);
 		
 		// Move football to BL, score
-		// onComplete -> reset()
 		this.ballBL(true);
 	}
 	else
@@ -500,7 +559,6 @@ PlayScreen.prototype.clickBL = function ()
 		GK_BL_Dive.play(5);
 
 		// Move football to BL, save
-		// onComplete -> reset()
 		this.ballBL(false);
 	}
 };
@@ -529,7 +587,6 @@ PlayScreen.prototype.clickBR = function ()
 		GK_TL_Dive.play(5);
 		
 		// Move football to BR, score
-		// onComplete -> reset()
 		this.ballBR(true);
 	}
 	else
@@ -547,7 +604,6 @@ PlayScreen.prototype.clickBR = function ()
 		GK_BR_Dive.play(5);
 
 		// Move football to BR, save
-		// onComplete -> reset()
 		this.ballBR(false);
 	}
 };
@@ -932,11 +988,6 @@ PlayScreen.prototype.genIncorrect = function (preSetNum)
 		console.log(newWord);
 		finished = true;
 	}
-
-	
-
-	//console.log(newWord+" "+tree);
-
 
 
 

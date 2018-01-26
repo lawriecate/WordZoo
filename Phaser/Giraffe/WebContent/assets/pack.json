@@ -146,7 +146,7 @@
     },
     {
       "type": "spritesheet",
-      "key": "GiraffeAnimation",
+      "key": "giraffeFalling",
       "url": "assets/3 Play/GiraffeFailAnimation.png",
       "frameWidth": 375,
       "frameHeight": 190,
@@ -194,7 +194,7 @@
     }
   ],
   "meta": {
-    "generated": "1511797438652",
+    "generated": "1515895567039",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

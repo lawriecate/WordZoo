@@ -31,6 +31,7 @@ RulesScreen.prototype.init = function ()
 
 RulesScreen.prototype.preload = function () 
 {	
+	this.load.pack('PlayScreen', 'assets/pack.json');	
 	this.load.pack('RulesScreen', 'assets/pack.json');	
 };
 
@@ -92,45 +93,40 @@ RulesScreen.prototype.create = function ()
 
 	
 	// Add giraffe walking sprites
-	giraffeWalk = this.game.add.sprite(playerLanePositionsX[0], playerLanePositionsY[0], 'giraffeWalking', 1);
+	giraffeWalk = this.game.add.sprite(0, playerLanePositionsY[0], 'giraffeWalking', 1);
 	giraffeWalk.scale.setTo(0.5, 0.5);
 
 	// Add giraffe walking sprite
-	giraffe = this.game.add.sprite(playerLanePositionsX[0], playerLanePositionsY[0], 'giraffeWalking', 0);
-	giraffe.scale.setTo(0.5, 0.5);
+	giraffe = this.game.add.sprite(playerLanePositionsX[0] - 144, playerLanePositionsY[0], 'giraffeFalling', 0);
+	giraffe.scale.setTo(1.5, 1.5);
 
 
 	// giraffe fall animation
     giraffeFalling = giraffe.animations.add('fall', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 10);
-    giraffeFalling.onComplete.add(function () {console.log("onComplete3");}, this);
-   // giraffeFall.onComplete.add(function () {
-		//giraffe.frame = 0; this.checkLives(); this.leaveStone(); console.log("onComplete");}, this);		 // 				*** FIX ***
-
 
     // giraffe walking animation + hide
     giraffeWalking = giraffeWalk.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10);
-    giraffeWalk.visible = false;
+    giraffe.visible = false;
 
 
     // giraffe tween off stone 0
 	giraffeMove0 = this.game.add.tween(giraffeWalk).to({x: '+150'}, 600, Phaser.Easing.Linear.None, false);
 	giraffeMove0.onComplete.add(function (){
 		currentColoumn++; this.moveGiraffe(playerLanePositionsX[(currentColoumn * 2)], playerLanePositionsY[currentLane]);
-		giraffeWalking.stop(); giraffeWalk.visible = false; giraffe.visible = true;
+		giraffeWalking.stop();
 	}, this);
 
     // giraffe tween off stone 1
 	giraffeMove1 = this.game.add.tween(giraffeWalk).to({x: '+150'}, 600, Phaser.Easing.Linear.None, false);
 	giraffeMove1.onComplete.add(function (){
 		currentColoumn++; this.moveGiraffe(playerLanePositionsX[(currentColoumn * 2)], playerLanePositionsY[currentLane]);
-		giraffeWalking.stop(); giraffeWalk.visible = false; giraffe.visible = true;
+		giraffeWalking.stop(); 
 	}, this);
 	
 	// giraffe tween off stone 2
 	giraffeMove2 = this.game.add.tween(giraffeWalk).to({x: '+150'}, 600, Phaser.Easing.Linear.None, false);
 	giraffeMove2.onComplete.add(function (){
 		giraffeWalking.stop(); this.moveGiraffe(playerLanePositionsX[6], playerLanePositionsY[currentLane]);
-		giraffeWalk.visible = false; giraffe.visible = true;
 	}, this);
 
 
@@ -268,11 +264,7 @@ RulesScreen.prototype.updateTime = function ()
 
 		// 6 -> move giraffe
 		else if(counter == 6)
-		{
-			// Swap giraffe sprites
-			giraffe.visible = false;
-			giraffeWalk.visible = true;
-			
+		{	
 			this.moveGiraffe(playerLanePositionsX[1], playerLanePositionsY[1]);
 			currentLane = 1;
 
@@ -283,6 +275,9 @@ RulesScreen.prototype.updateTime = function ()
 		// 7 -> highlight score
 		else if(counter == 7)
 		{
+		   // giraffe.visible = false;
+			//giraffeWalk.visible = true;
+
 			circle.x = 1590;
 			circle.y = -50;
 			circle.visible = true;
@@ -343,41 +338,52 @@ RulesScreen.prototype.updateTime = function ()
 		
 		// 15 -> move giraffe
 		else if(counter == 15)
-		{
-			// Swap giraffe sprites
-			giraffe.visible = false;
-			giraffeWalk.visible = true;
-			
+		{			
 			this.moveGiraffe(playerLanePositionsX[3], playerLanePositionsY[0]);
 			currentLane = 0;
-
-			giraffeWalking.play(10, true);
-			giraffeMove1.start();
 		}
 
-		// 16 -> highlight lives
+		// 16 -> fall in
 		else if(counter == 16)
 		{
+			giraffe.visible = true;
+			giraffeWalk.visible = false;
+
+		    giraffeFalling.onComplete.add(function () 
+		    {
+		    	giraffeWalking.play(10, true);
+				giraffeMove1.start();
+		    }, this);
+
+			giraffeFalling.play(10, false);
+		}
+
+		// 17 -> highlight lives
+		else if(counter == 17)
+		{
+		    giraffe.visible = false;
+			giraffeWalk.visible = true;
+
 			circleBig.x = -80;
 			circleBig.y = -80;
 			circleBig.visible = true;
 		}
 
-		// 17 -> decrease lives
-		else if(counter == 17)
+		// 18 -> decrease lives
+		else if(counter == 18)
 		{
 			livesBox = this.add.sprite(0, 0, 'Lives', 1);
 			this.world.bringToTop(circleBig);
 		}
 
-		// 18 -> hide cicrle
-		else if(counter == 18)
+		// 19 -> hide cicrle
+		else if(counter == 19)
 		{
 			circleBig.visible = false;
 		}
 		
-		// 19 -> Exit
-		else if(counter == 19)
+		// 20 -> Exit
+		else if(counter == 20)
 		{
 			this.onClickOK();
 		}
@@ -406,10 +412,10 @@ RulesScreen.prototype.updateTime = function ()
 // Move giraffe to new position
 RulesScreen.prototype.moveGiraffe = function (posX, posY)
 {	
-	giraffe.x = posX;
+	giraffe.x = posX - 144;
 	giraffe.y = posY;
 
-	giraffeWalk.x = posX + 150;
+	giraffeWalk.x = posX;
 	giraffeWalk.y = posY;
 };
 
