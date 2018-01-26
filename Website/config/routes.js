@@ -65,5 +65,7 @@ module.exports.routes = {
     'get /teach/class': { view: 'auth/register' },
 
     'get /student/play':'GameController.select' ,
+    'get /student/testdata': 'GameController.testdata',
+    'post /student/savedata': 'GameController.savetestdata',
     'get /student/login': { view: 'auth/register' },
 };
