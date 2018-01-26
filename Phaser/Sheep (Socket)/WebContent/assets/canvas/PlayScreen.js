@@ -565,25 +565,29 @@ PlayScreen.prototype.recordData = function()
 	//formData.append("screenPresses", clickHistory);
 	//formData.append("wordResults", wordHistory);
 
-var data = {
+	var data = {
         'gameName': "Sheep",
         'score': score,
         'duration': duration,
         'screenPresses': clickHistory,
         'wordResults': wordHistory
-};
+	};
 
 
 
-/*
+
 	// GET
 $.ajax(
 {
   type: "GET",
   url: "http://localhost:1982/server.asp",
+  data: data,
   success: function(resp) 
   {
-  	console.log("Woo"+resp);
+  	console.log("Woo ");//+resp);
+
+  	//this.printReturn(resp);
+    return resp;
   },
   error: function() 
   {
@@ -592,26 +596,22 @@ $.ajax(
 });
 
 console.log("Post2");
-*/
-
-
-
-// POST
-//$.ajax(
-//{
-//  type: "POST",
-//  url: "http://localhost:1982/server.asp",
-//  data: data
-//});
-
-console.log("Post3");
 };
+
+
+// Game has finished, move to finish state
+PlayScreen.prototype.printReturn = function(data) 
+{
+	console.log(data);
+};
+
+3
+
 
 
 // Game has finished, move to finish state
 PlayScreen.prototype.endGame = function() 
 {
 	console.log('Finish');
-
-	//this.state.start('finish');
+	this.state.start('Finish');
 };
