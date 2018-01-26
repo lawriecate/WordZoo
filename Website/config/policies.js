@@ -33,6 +33,10 @@ module.exports.policies = {
     '*': 'isAuthenticated',
     login: true,
     signup: true
+  },
+
+  GameController: {
+    '*': 'isAuthenticated'
   }
 
   /***************************************************************************

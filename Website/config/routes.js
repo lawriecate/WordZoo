@@ -55,15 +55,15 @@ module.exports.routes = {
     'post /signup': 'UserController.signup',
     '/logout': 'UserController.logout',
 
-    'get /admin': { view: 'auth/register' },
-    'get /admin/schools': { view: 'auth/register' },
-    'get /admin/users': { view: 'auth/register' },
-    'get /admin/games': { view: 'auth/register' },
-    'get /admin/data': { view: 'auth/register' },
+    'get /admin': { view: 'admin/home' },
+    'get /admin/schools': { view: 'admin/schools' },
+    'get /admin/users': { view: 'admin/users', locals: [] },
+    'get /admin/games': { view: 'admin/games' },
+    'get /admin/data': { view: 'admin/data' },
 
     'get /teach': { view: 'auth/register' },
     'get /teach/class': { view: 'auth/register' },
 
-    'get /student/play': { view: 'auth/register' },
+    'get /student/play':'GameController.select' ,
     'get /student/login': { view: 'auth/register' },
 };

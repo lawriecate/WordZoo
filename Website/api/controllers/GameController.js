@@ -6,6 +6,7 @@
  */
 
 module.exports = {
-	
+	select: function (req, res) {
+    return res.send('Choose a game:');
+  },
 };
-

@@ -40,7 +40,8 @@ module.exports = {
       name: inputs.name,
       email: inputs.email,
       // TODO: But encrypt the password first
-      password: inputs.password
+      password: inputs.password,
+      created_at: '2018-01-01 00:00:00'
     })
     .exec(cb);
   },
