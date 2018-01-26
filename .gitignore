@@ -1,6 +1,8 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> Prototype-Layouts
 **/.DS_Store
 .DS_Store
+*.db
+Website/.tmp/*
+Website/node_modules/*
+WebsiteOld/node_modules/*
+*.log
