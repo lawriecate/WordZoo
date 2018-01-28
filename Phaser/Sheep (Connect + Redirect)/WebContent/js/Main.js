@@ -95,7 +95,7 @@ window.onload = function()
 {
 	// Create game
 	var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
-/*	$.get('http://localhost:1337/student/testdata', function(data) 
+	$.get('http://localhost:1337/student/testdata', function(data) 
 	{
 		console.log(data);
 		groupWords = data;
@@ -106,11 +106,11 @@ window.onload = function()
 		game.state.add('rules', RulesScreen);
 		game.state.add('play', PlayScreen);
 		game.state.add('finish', FinishScreen);
-*/
+
 		// Show loading screen
 console.log('State -> Loading');
 		game.state.start('loading');
-/*	});
+	});
 	
 	$.post('http://localhost:1337/student/savedata',{gamename:'The Sheep Game'}, function(data) 
 	{
@@ -120,5 +120,5 @@ console.log('State -> Loading');
 		// Start game
 console.log('State -> Start');
 		game.state.start('start');
-	});*/
+	});
 };
