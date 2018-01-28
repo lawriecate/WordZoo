@@ -26,19 +26,23 @@ var wordHistory = [];
 var numWordHistory;
 var startTime;
 
-// Correct word vales
-var TLraw;
-var TRraw;
-var BLraw;
-var BRraw;
-
-
 // Record click history
 	// [(int) x, (int) y, (UTCString) timeStamp]
 var clickHistory = [];
 var numClickHistory;
 var gameStartTime;
 
+// Player coins
+var startingCoins;
+var earnedCoins;
+var totalCoins;
+
+
+// Correct word vales
+var TLraw;
+var TRraw;
+var BLraw;
+var BRraw;
 
 // sheep + onDrag animation
 var mainSheep;
@@ -97,13 +101,12 @@ window.onload = function()
 	var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
 	$.get('http://localhost:1337/student/testdata', function(data) 
 	{
-		console.log(data);
+		console.log("GET" + data);
 		groupWords = data;
 		
-		// data[0] = groupWords
-		// data[1] = startingCoins
-
-
+			// Multiple inputs
+		// groupWords = data[0];
+		// startingCoins = data[1];
 
 
 		// Add states
@@ -114,17 +117,15 @@ window.onload = function()
 		game.state.add('finish', FinishScreen);
 
 		// Show loading screen
-console.log('State -> Loading');
 		game.state.start('loading');
 	});
 	
 	$.post('http://localhost:1337/student/savedata',{gamename:'The Sheep Game'}, function(data) 
 	{
 		// Log returned data
-		console.log(data);
+		console.log("POST" + data);
 
 		// Start game
-console.log('State -> Start');
 		game.state.start('start');
 	});
 };

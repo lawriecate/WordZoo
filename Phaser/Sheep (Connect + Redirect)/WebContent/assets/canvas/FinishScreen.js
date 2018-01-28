@@ -42,6 +42,12 @@ FinishScreen.prototype.create = function ()
 	scoreText = this.add.text(90, 50, "Score: "+score, medStyle);
 	scoreText.addColor('#FF9933', 0);
 	
+
+
+	// Show earned coins + total coins
+
+
+
 	// Play again button
 	var _PlayAgain = this.add.button(672, 384, 'PlayAgain', this.playAgain, this, null, null, null, null);
 	_PlayAgain.scale.setTo(1.5, 1.5);

@@ -548,13 +548,12 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 // Record statistical data from game
 PlayScreen.prototype.recordData = function() 
 {
-	console.log("Pre");
-
 	// Calculate game duration
     var time = new Date();
     var gameEndTime = time.toUTCString();
-	var duration = gameStartTime - gameEndTime;
-
+	var duration = gameStartTime - gameEndTime;	
+	var earnedCoins = score;
+	var totalCoins = earnedCoins + startingCoins;
 
 
 	// Prep + load data
@@ -568,6 +567,7 @@ PlayScreen.prototype.recordData = function()
 	var data = {
         'gameName': "Sheep",
         'score': score,
+        'coins': totalCoins,
         'duration': duration,
         'screenPresses': clickHistory,
         'wordResults': wordHistory
@@ -577,25 +577,23 @@ PlayScreen.prototype.recordData = function()
 
 
 	// GET
-$.ajax(
-{
-  type: "GET",
-  url: "http://localhost:1982/server.asp",
-  data: data,
-  success: function(resp) 
-  {
-  	console.log("Woo ");//+resp);
+	$.ajax(
+	{
+		type: "GET",
+	  	url: "http://localhost:1982/server.asp",
+	  	data: data,
+	  	success: function(resp) 
+		{
+	  		console.log("Woo ");//+resp);
 
-  	//this.printReturn(resp);
-    return resp;
-  },
-  error: function() 
-  {
-	console.log("Boo");
-  }
-});
-
-console.log("Post2");
+	  		//this.printReturn(resp);
+	    	return resp;
+	  	},
+	  	error: function() 
+	  	{
+			console.log("Boo");
+	  	}
+	});
 };
 
 
@@ -605,13 +603,12 @@ PlayScreen.prototype.printReturn = function(data)
 	console.log(data);
 };
 
-3
 
 
 
 // Game has finished, move to finish state
 PlayScreen.prototype.endGame = function() 
 {
-	console.log('Finish');
-	this.state.start('Finish');
+	console.log('finish');
+	this.state.start('finish');
 };
