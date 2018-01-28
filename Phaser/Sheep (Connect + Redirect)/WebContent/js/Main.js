@@ -100,6 +100,12 @@ window.onload = function()
 		console.log(data);
 		groupWords = data;
 		
+		// data[0] = groupWords
+		// data[1] = startingCoins
+
+
+
+
 		// Add states
 		game.state.add('loading', LoadingScreen);
 		game.state.add('start', StartScreen);
