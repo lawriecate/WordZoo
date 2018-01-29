@@ -73,5 +73,12 @@ module.exports = {
       // Otherwise if this is an HTML-wanting browser, redirect to /welcome.
       return res.redirect('/welcome');
     });
+  },
+
+  list: function(req,res) {
+    users = User.find().exec(function(err,users) {
+      return res.view('admin/users.ejs', {'title':'Manage Users', users: users});
+    });
+
   }
 };

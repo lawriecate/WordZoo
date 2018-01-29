@@ -24,14 +24,38 @@ module.exports = {
       type: 'string',
       required: false
     },
-    created: {
+    country: {
+      type: 'string',
+      required: false,
+      defaultsTo: 'UK'
+    },
+    created_at: {
       type: 'datetime',
-      required: true
+      required: true,
+      defaultsTo: function() {return new Date();}
     },
     classes: {
       collection: 'Class',
       via: 'school'
+    },
+    teachers: {
+      collection: 'User',
+      via: 'teaches_at',
+      dominant:true
     }
   },
+
+  make: function (inputs, cb) {
+    // Create a school
+    School.create({
+      name: inputs.name,
+			phone:inputs.phone,
+			address: inputs.address,
+			postcode: inputs.postcode,
+			country: inputs.country,
+    }).exec(cb);
+
+  },
+
 
 };

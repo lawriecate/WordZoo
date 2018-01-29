@@ -1,0 +1,24 @@
+<h1>Modify School</h1>
+<form method="post" >
+  <input type="text" name="name" placeholder=" Name" value="<%= school.name ? school.name : ''  %>" />
+  <input type="text" name="phone" placeholder=" Telephone" value="<%= school.phone ? school.phone : ''  %>" />
+  <textarea  name="address" placeholder="School Name" ><%= school.address ? school.address : ''  %></textarea>
+  <input type="text" name="postcode" placeholder=" Postcode" value="<%= school.postcode ? school.postcode : ''  %>" />
+  <input type="text" name="country" placeholder="UK" value="<%= school.country ? school.country : ''  %>" />
+  <input type="submit" value="Save" />
+</form>
+<h2>Assign Teachers</h2>
+<form method="post" action="/admin/schools/<%= school.id %>/assignteacher/">
+  <select name="teacher_id">
+    <% _.each(users, function (user) { %>
+    <option value="<%= user.id %>"><%= user.name %></option>
+    <% }) %>
+  </select>
+    <input type="submit" value="Assign As Teacher" />
+</form>
+Teachers at this school <%= school.teachers.length %>:
+<ul>
+  <% _.each(school.teachers, function (teacher) { %>
+  <li><%= teacher.name %></li>
+  <% }) %>
+</ul>

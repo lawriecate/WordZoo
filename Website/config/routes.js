@@ -56,8 +56,14 @@ module.exports.routes = {
     '/logout': 'UserController.logout',
 
     'get /admin': { view: 'admin/home' },
-    'get /admin/schools': { view: 'admin/schools' },
-    'get /admin/users': { view: 'admin/users', locals: [] },
+    'get /admin/schools': 'SchoolController.list' ,
+    'get /admin/schools/new': { view: 'admin/school_new' },
+    'post /admin/schools/new': 'SchoolController.create' ,
+    'get /admin/schools/manage': { view: 'admin/schoolDetails' },
+    'get /admin/schools/:id/edit': 'SchoolController.edit' ,
+    'post /admin/schools/:id/edit': 'SchoolController.update' ,
+    'post /admin/schools/:id/assignteacher': 'SchoolController.assignTeacher' ,
+    'get /admin/users': 'UserController.list',
     'get /admin/games': { view: 'admin/games' },
     'get /admin/data': { view: 'admin/data' },
 

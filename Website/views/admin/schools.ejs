@@ -1,0 +1,11 @@
+<h1>Manage Schools</h1>
+<a href="/admin/schools/new">New School</a>
+<% if(schools.length == 0) { %>
+  No schools registered
+<% } else { %>
+<ul>
+  <% _.each(schools, function (schools) { %>
+    <li><%= schools.name %> <a href="/admin/schools/<%= schools.id %>/edit/">Manage</a></li>
+    <% }) %>
+</ul>
+<% } %>

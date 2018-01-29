@@ -29,34 +29,48 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/general.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
 
   <body>
-    <ul>
-      <li><a href="/login">Log In</a></li>
-      <li><a href="/signup">Sign Up</a></li>
-      <li><a href="/admin">Admin Home</a></li>
-      <ul><li><a href="#">Manage Users</a></li>
-      <li><a href="#">Manage Schools</a></li>
-      <li><a href="#">Data Tools</a></li>
-      <li><a href="#">Manage Games</a></li>
-      <li><a href="#">Play Game</a></li>
-    </ul>
-      <li><a href="#">Teacher Home</a></li>
+    <div class="container">
+      <img width="400" src="/images/WordZoo_logo.png" />
+      <div  class="menu">
       <ul>
-      <li><a href="#">Teach Class</a></li>
-      <li><a href="#">Manage Class</a></li>
-    </ul>
-    <li><a href="#">Student Home</a></li>
-    <ul>
-    <li><a href="#">Play Game</a></li>
-    <li><a href="#">Profile </a></li>
-  </ul>
-    </ul>
-    <%- body %>
+        <% if(req.session.me == null) { %><li><a href="/login">Log In</a></li>
+        <% }  else { %><li><a href="#">Welcome <%= req.session.me %></a></li><% } %>
+        <li><a href="/signup">Sign Up</a></li>
+        <li>
+          <a href="/admin">Admin Home</a>
+          <ul><li><a href="/admin/users">Manage Users</a></li>
+            <li><a href="/admin/schools">Manage Schools</a></li>
+            <li><a href="#">Data Tools</a></li>
+            <li><a href="#">Manage Games</a></li>
+            <li><a href="#">Play Game</a></li>
+          </ul>
+        </li>
 
+        <li><a href="#">Teacher Home</a>
+          <ul>
+          <li><a href="#">Teach Class</a></li>
+          <li><a href="#">Manage Class</a></li>
+        </ul>
+        </li>
+
+      <li><a href="#">Student Home</a>
+        <ul>
+        <li><a href="#">Play Game</a></li>
+        <li><a href="#">Profile </a></li>
+      </ul></li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <%- body %>
+</div>
 
 
     <!--

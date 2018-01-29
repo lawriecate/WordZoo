@@ -18,7 +18,16 @@ module.exports = {
     },
     created_at: {
       type: 'datetime',
-      required: true
+      required: true,
+      defaultsTo: function() {return new Date();}
+    },
+    admin: {
+      type: 'boolean',
+      defaultsTo: false
+    },
+    teaches_at: {
+      collection: 'School',
+      via: 'teachers'
     }
   },
 
