@@ -110,8 +110,8 @@ window.onload = function()
 
 
 		// Add states
-		game.state.add('loading', LoadingScreen);
 		game.state.add('start', StartScreen);
+		game.state.add('loading', LoadingScreen);
 		game.state.add('rules', RulesScreen);
 		game.state.add('play', PlayScreen);
 		game.state.add('finish', FinishScreen);
