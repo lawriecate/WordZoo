@@ -110,7 +110,7 @@ window.onload = function()
 			// Show loading screen
 			game.state.start('loading');
 
-	$.get('http://localhost:1337/student/te2stdata', function(data)
+	$.get('http://localhost:1337/student/testdata', function(data)
 	{
 		console.log("GET" + data);
 		groupWords = data;
@@ -120,9 +120,11 @@ window.onload = function()
 		// startingCoins = data[1];
 
 
+	}).fail(function() {
+		console.log('i failed');
 	});
 
-	$.post('http://localhost:1337/student/s2avedata',{gamename:'The Sheep Game'}, function(data)
+	$.post('http://localhost:1337/student/savedata',{gamename:'The Sheep Game'}, function(data)
 	{
 		// Log returned data
 		console.log("POST" + data);
