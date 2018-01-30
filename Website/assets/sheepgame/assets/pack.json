@@ -3,19 +3,25 @@
     {
       "type": "image",
       "key": "background",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//1 StartScreen/MainMenu.png",
+      "url": "http://localhost:1337/sheepgame/assets/1 StartScreen/MainMenu.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//1 StartScreen/play.png",
+      "url": "http://localhost:1337/sheepgame/assets/1 StartScreen/play.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//1 StartScreen/rules.png",
+      "url": "http://localhost:1337/sheepgame/assets/1 StartScreen/rules.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "preloader",
+      "url": "http://localhost:1337/sheepgame/assets/1 StartScreen/preloader.gif",
       "overwrite": false
     }
   ],
@@ -23,55 +29,55 @@
     {
       "type": "image",
       "key": "okButton",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/ok.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/ok.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Background",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/Background.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/Background.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Soap",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/Soap.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/Soap.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Flag",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/Flag.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/Flag.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "gui",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/gui.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/gui.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "penFront",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/penFront.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/penFront.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "penBack",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/penBack.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/penBack.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "mainSheep",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/mainSheep.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/mainSheep.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/Lives.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": -1,
@@ -81,7 +87,7 @@
     {
       "type": "spritesheet",
       "key": "Red",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/Red.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/Red.png",
       "frameWidth": 312,
       "frameHeight": 474,
       "frameMax": -1,
@@ -91,13 +97,13 @@
     {
       "type": "image",
       "key": "highlightCircle",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/highlightCircle.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/highlightCircle.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "sheepPen",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/sheepPen.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/sheepPen.png",
       "frameWidth": 570,
       "frameHeight": 320,
       "frameMax": -1,
@@ -107,7 +113,7 @@
     {
       "type": "spritesheet",
       "key": "sheepWobble",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//2 Rules/sheepWobble.png",
+      "url": "http://localhost:1337/sheepgame/assets/2 Rules/sheepWobble.png",
       "frameWidth": 700,
       "frameHeight": 700,
       "frameMax": -1,
@@ -119,31 +125,31 @@
     {
       "type": "image",
       "key": "FinishBackgroun",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//4 EndScreen/endBackground.png",
+      "url": "http://localhost:1337/sheepgame/assets/4 EndScreen/endBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Unlucky",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//4 EndScreen/unlucky.png",
+      "url": "http://localhost:1337/sheepgame/assets/4 EndScreen/unlucky.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayAgain",
-      "url": "http://localhost:1337/sheepgame/assets//4 EndScreen/playAgain.png",
+      "url": "http://localhost:1337/sheepgame/assets/4 EndScreen/playAgain.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//4 EndScreen/moreGames.png",
+      "url": "http://localhost:1337/sheepgame/assets/4 EndScreen/moreGames.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "score_background",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets//4 EndScreen/score_background.png",
+      "url": "http://localhost:1337/sheepgame/assets/4 EndScreen/score_background.png",
       "overwrite": false
     }
   ],
@@ -151,13 +157,13 @@
     {
       "type": "image",
       "key": "Background",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets/3 Play/Background.png",
+      "url": "http://localhost:1337/sheepgame/assets/3 Play/Background.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets/3 Play/Lives.png",
+      "url": "http://localhost:1337/sheepgame/assets/3 Play/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": 4,
@@ -167,43 +173,43 @@
     {
       "type": "image",
       "key": "Bench",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets/3 Play/Bench.png",
+      "url": "http://localhost:1337/sheepgame/assets/3 Play/Bench.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Brain",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets/3 Play/Brain.png",
+      "url": "http://localhost:1337/sheepgame/assets/3 Play/Brain.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Bread",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets/3 Play/Bread.png",
+      "url": "http://localhost:1337/sheepgame/assets/3 Play/Bread.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Broccoli",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets/3 Play/Broccoli.png",
+      "url": "http://localhost:1337/sheepgame/assets/3 Play/Broccoli.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Cage",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets/3 Play/Cage.png",
+      "url": "http://localhost:1337/sheepgame/assets/3 Play/Cage.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Cannon",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets/3 Play/Cannon.png",
+      "url": "http://localhost:1337/sheepgame/assets/3 Play/Cannon.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Castle",
-      "url": "http://localhost:1337/sheepgame/assets/http://localhost:1337/sheepgame/assets/3 Play/Castle.png",
+      "url": "http://localhost:1337/sheepgame/assets/3 Play/Castle.png",
       "overwrite": false
     },
     {
@@ -432,7 +438,7 @@
     }
   ],
   "meta": {
-    "generated": "1512661340383",
+    "generated": "1517175430739",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
