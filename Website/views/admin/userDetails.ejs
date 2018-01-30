@@ -1,0 +1,18 @@
+<h1>Modify User</h1>
+<form method="post" >
+  <input type="text" name="name" placeholder="Name" value="<%= user.name ? user.name : ''  %>" />
+  <input type="text" name="email" placeholder="Email" value="<%= user.email ? user.email : ''  %>" />
+  <input type="text" name="password" placeholder="New Password" value="<%= user.password ? user.password : ''  %>" />
+
+  <input type="submit" value="Save" />
+</form>
+<h2>Assign To School</h2>
+<p><%= user.teaches_at[0].name %>
+<form method="post" action="/admin/users/<%= user.id %>/assignto/">
+  <select name="school_id">
+    <% _.each(schools, function (school) { %>
+    <option value="<%= school.id %>"><%= school.name %></option>
+    <% }) %>
+  </select>
+    <input type="submit" value="Assign As Teacher" />
+</form>

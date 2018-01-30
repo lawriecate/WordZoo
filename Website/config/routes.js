@@ -64,6 +64,9 @@ module.exports.routes = {
     'post /admin/schools/:id/edit': 'SchoolController.update' ,
     'post /admin/schools/:id/assignteacher': 'SchoolController.assignTeacher' ,
     'get /admin/users': 'UserController.list',
+    'get /admin/users/:id': 'UserController.edit',
+    'post /admin/users/:id': 'UserController.update',
+    'post /admin/users/:id/assignto': 'UserController.assignSchool',
     'get /admin/games': { view: 'admin/games' },
     'get /admin/data': { view: 'admin/data' },
 

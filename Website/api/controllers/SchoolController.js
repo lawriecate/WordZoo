@@ -46,7 +46,7 @@ module.exports = {
 				if (err) {
 					return res.serverError(err);
 				}
-				sails.log(school.teachers);
+//				sails.log(school.teachers);
 				return res.view('admin/schoolDetails', {'title':'Edit School',school: school, users: users});
 			});
 		})
@@ -81,6 +81,7 @@ module.exports = {
 					if (err) {
 						return res.serverError(err);
 					}
+					
 					school.teachers.add(user.id);
 					sails.log(user.name);
 					school.save(function(err) {

@@ -80,5 +80,50 @@ module.exports = {
       return res.view('admin/users.ejs', {'title':'Manage Users', users: users});
     });
 
+  },
+  edit: function(req,res) {
+		User.findOne({id:req.params.id}).populate('teaches_at').exec(function(err,user) {
+			if (err) {
+				return res.serverError(err);
+			}
+      schools = School.find().exec(function(err,schools) {
+				if (err) {
+					return res.serverError(err);
+				}
+				return res.view('admin/userDetails', {'title':'Edit User',user: user, schools:schools});
+      });
+		})
+
+	},
+
+	update: function(req,res) {
+		params = {
+      name: req.param('name'),
+			email: req.param('email'),
+			password: req.param('password')
+    };
+		User.update({id:req.params.id},params).exec(function(err,user) {
+			if (err) {
+				return res.serverError(err);
+			}
+			return res.redirect('/admin/users/'+user[0].id+'/');
+		})
+
+
+	},
+
+  assignSchool: function(req,res) {
+    User.findOne({id:req.params.id}).populate('teaches_at').exec(function(err,user) {
+			if (err) {
+				return res.serverError(err);
+			}
+      school = School.findOne(req.param('school_id')).exec(function(err,school) {
+				if (err) {
+					return res.serverError(err);
+				}
+        user.teaches_at.add(school.id);
+				return res.redirect('/admin/users/'+user.id+'/');
+      });
+		})
   }
 };
