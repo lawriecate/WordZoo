@@ -122,7 +122,14 @@ module.exports = {
 					return res.serverError(err);
 				}
         user.teaches_at.add(school.id);
-				return res.redirect('/admin/users/'+user.id+'/');
+
+        user.save(function(err) {
+          if (err) {
+            return res.serverError(err);
+          }
+          return res.redirect('/admin/users/'+user.id+'/');
+        });
+				
       });
 		})
   }

@@ -81,7 +81,7 @@ module.exports = {
 					if (err) {
 						return res.serverError(err);
 					}
-					
+
 					school.teachers.add(user.id);
 					sails.log(user.name);
 					school.save(function(err) {

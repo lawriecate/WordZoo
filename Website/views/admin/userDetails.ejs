@@ -7,7 +7,13 @@
   <input type="submit" value="Save" />
 </form>
 <h2>Assign To School</h2>
-<p><%= user.teaches_at[0].name %>
+<p>Assigned to:
+  <ul>
+    <% _.each(user.teaches_at, function (school) { %>
+    <li><%= school.name %></li>
+    <% }) %>
+  </ul>
+</p>
 <form method="post" action="/admin/users/<%= user.id %>/assignto/">
   <select name="school_id">
     <% _.each(schools, function (school) { %>
