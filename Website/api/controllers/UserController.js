@@ -129,7 +129,7 @@ module.exports = {
           }
           return res.redirect('/admin/users/'+user.id+'/');
         });
-				
+
       });
 		})
   }

@@ -42,6 +42,10 @@ module.exports = {
       collection: 'User',
       via: 'teaches_at',
       dominant:true
+    },
+    pupils: {
+      collection: 'Pupil',
+      via: 'school'
     }
   },
 
