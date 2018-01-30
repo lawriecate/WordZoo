@@ -29,11 +29,6 @@ module.exports = {
       required: false,
       defaultsTo: 'UK'
     },
-    created_at: {
-      type: 'datetime',
-      required: true,
-      defaultsTo: function() {return new Date();}
-    },
     classes: {
       collection: 'Class',
       via: 'school'

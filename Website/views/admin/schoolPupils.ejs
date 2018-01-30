@@ -1,0 +1,17 @@
+<h1>Manage School</h1>
+<h2><a href="/admin/schools/<%= school.id %>/edit/">Manage School</a></h2>
+<h2>New Class</h2>
+<form method="post" >
+  <input type="text" name="name" placeholder="Name" value="" />
+  <input type="submit" value="Save" />
+</form>
+<h2>New Pupil</h2>
+<form method="post" >
+  <input type="text" name="name" placeholder=" Name" value="<%= school.name ? school.name : ''  %>" />
+  <input type="text" name="dob" placeholder="01/01/2014" value="<%= school.phone ? school.phone : ''  %>" />
+  <select name="class_id">
+    <option value="-1">No Class</option>
+  </select>
+  <input type="submit" value="Save" />
+</form>
+<h2>All Classes</h2>

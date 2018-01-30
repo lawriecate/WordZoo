@@ -7,6 +7,7 @@
   <input type="text" name="country" placeholder="UK" value="<%= school.country ? school.country : ''  %>" />
   <input type="submit" value="Save" />
 </form>
+<h2><a href="/admin/schools/<%= school.id %>/classes/">Manage Classes</a></h2>
 <h2>Assign Teachers</h2>
 <form method="post" action="/admin/schools/<%= school.id %>/assignteacher/">
   <select name="teacher_id">

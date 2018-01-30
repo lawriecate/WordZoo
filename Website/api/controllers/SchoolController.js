@@ -95,5 +95,37 @@ module.exports = {
 		});
 
 
+	},
+
+	viewClasses: function(req,res) {
+		School.findOne({id:req.params.id}).populate('classes').exec(function(err,school) {
+			if (err) {
+				return res.serverError(err);
+			}
+			sails.log(school);
+			//school.classes.populate('pupils');
+			return res.view('admin/schoolPupils', {'title':'Manage School',school: school, classes:school.classes});
+		});
+	},
+
+	addClass: function(req,res) {
+		School.findOne({id:req.params.id}).populate('classes').exec(function(err,school) {
+			if (err) {
+				return res.serverError(err);
+			}
+			newClass = {name:req.param('name'), school: school.id};
+			sails.log(newClass);
+			school.classes.add(newClass);
+
+			sails.log(school);
+			school.save(function(err) {
+					if (err) {
+						return res.serverError(err);
+					}
+					return res.redirect('/admin/schools/'+school.id+'/edit');
+			});
+			//school.classes.populate('pupils');
+
+		});
 	}
 };
