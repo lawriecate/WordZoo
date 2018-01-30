@@ -1,9 +1,9 @@
 // Global variables
-var sheep = sheep|| {}; 
+var sheep = sheep|| {};
 
 
-function PlayScreen() 
-{	
+function PlayScreen()
+{
 	Phaser.State.call(this);
 }
 
@@ -13,28 +13,28 @@ PlayScreen.prototype = PlayScreen_proto;
 PlayScreen.prototype.constructor = PlayScreen;
 
 
-PlayScreen.prototype.init = function () 
-{	
+PlayScreen.prototype.init = function ()
+{
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#ffffff';	
+	this.stage.backgroundColor = '#ffffff';
 };
 
-PlayScreen.prototype.preload = function () 
-{	
-	this.load.pack('PlayScreen', 'assets/pack.json');
+PlayScreen.prototype.preload = function ()
+{
+	this.load.pack('PlayScreen', 'http://localhost:1337/sheepgame/assets/pack.json');
 
 	// Set up pens array + fill with blanks
 	pens = new Array();
 	for(var i = 0; i < 4; i++){
 		pens[i] = new Object();
-	}	
+	}
 };
 
 
-PlayScreen.prototype.create = function () 
-{	
+PlayScreen.prototype.create = function ()
+{
 	// Add background
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
 
@@ -45,16 +45,16 @@ PlayScreen.prototype.create = function ()
 
 	pens[1].back = this.add.sprite(1581, 381, 'penBack');
 	pens[1].back.anchor.setTo(0.5, 0.5);
-	
+
 	pens[2].back = this.add.sprite(383, 871, 'penBack');
 	pens[2].back.anchor.setTo(0.5, 0.5);
-	
+
 	pens[3].back = this.add.sprite(1592, 868, 'penBack');
 	pens[3].back.anchor.setTo(0.5, 0.5);
-	
+
 
 	// Add sheep to pens
-	pens[0].sheep = this.add.sprite(68, 210, 'sheepPen', 12);	
+	pens[0].sheep = this.add.sprite(68, 210, 'sheepPen', 12);
 	pens[0].front = this.add.sprite(374, 387, 'penFront');
 	pens[0].front.anchor.setTo(0.5, 0.5);
 
@@ -65,7 +65,7 @@ PlayScreen.prototype.create = function ()
 	pens[2].sheep = this.add.sprite(75, 697, 'sheepPen', 12);
 	pens[2].front = this.add.sprite(383, 871, 'penFront');
 	pens[2].front.anchor.setTo(0.5, 0.5);
-	
+
 	pens[3].sheep = this.add.sprite(1266, 709, 'sheepPen', 12);
 	pens[3].front = this.add.sprite(1592, 868, 'penFront');
 	pens[3].front.anchor.setTo(0.5, 0.5);
@@ -125,13 +125,13 @@ PlayScreen.prototype.create = function ()
 
 
     //If user closes window, record data
-    window.onbeforeunload = function() 
+    window.onbeforeunload = function()
     {
         this.recordData();
     };
-    
+
     // Record screen clicks
-    this.game.input.onDown.add(function(touchStart) { 
+    this.game.input.onDown.add(function(touchStart) {
     		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
     	}, this);
 
@@ -139,7 +139,7 @@ PlayScreen.prototype.create = function ()
     var time = new Date();
     gameStartTime = time.toUTCString();
 
-	
+
 	// Time
 	timer = this.time.create(false);
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
@@ -152,14 +152,14 @@ PlayScreen.prototype.create = function ()
 
 
 	// Start game
-	this.spawnItems();		
+	this.spawnItems();
 };
 
 
 
 // display current time to screen (with --)
 PlayScreen.prototype.updateTime = function ()
-{	
+{
 	// update game
 	this.update();
 
@@ -168,13 +168,13 @@ PlayScreen.prototype.updateTime = function ()
 		this.recordData();
 		//this.endGame();
 	}
-	
-	timeText.setText("Time: "+(--timeLeft), true);	
+
+	timeText.setText("Time: "+(--timeLeft), true);
 };
 
 // display current score to screen
 PlayScreen.prototype.updateScore = function ()
-{	
+{
 	scoreText.setText("Score: "+score, true);
 };
 
@@ -215,7 +215,7 @@ PlayScreen.prototype.dropSheep = function ()
 			// reset
 			this.spawnItems();
 		}
-		else 
+		else
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
@@ -229,8 +229,8 @@ PlayScreen.prototype.dropSheep = function ()
 			this.spawnItems();
 		}
 		return;
-	} 
-	
+	}
+
 	if(this.checkOverlap(sheepWobble,pens[1].sheep))
 	{
 		if(correctPen == 1)
@@ -248,7 +248,7 @@ PlayScreen.prototype.dropSheep = function ()
 			// reset
 			this.spawnItems();
 		}
-		else 
+		else
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
@@ -263,7 +263,7 @@ PlayScreen.prototype.dropSheep = function ()
 		}
 		return;
 	}
-	
+
 	if(this.checkOverlap(sheepWobble,pens[2].sheep))
 	{
 		if(correctPen == 2)
@@ -281,7 +281,7 @@ PlayScreen.prototype.dropSheep = function ()
 			// reset
 			this.spawnItems();
 		}
-		else 
+		else
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
@@ -295,8 +295,8 @@ PlayScreen.prototype.dropSheep = function ()
 			this.spawnItems();
 		}
 		return;
-	} 
-	
+	}
+
 	if(this.checkOverlap(sheepWobble,pens[3].sheep))
 	{
 		if(correctPen == 3)
@@ -314,7 +314,7 @@ PlayScreen.prototype.dropSheep = function ()
 			// reset
 			this.spawnItems();
 		}
-		else 
+		else
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
@@ -328,7 +328,7 @@ PlayScreen.prototype.dropSheep = function ()
 			this.spawnItems();
 		}
 		return;
-	} 
+	}
 }
 
 
@@ -364,13 +364,13 @@ PlayScreen.prototype.checkOverlap = function (spriteA, spriteB)
 PlayScreen.prototype.addSheepToPen = function (pen)
 {
 	var temp = pens[pen].sheep.frame;
-	
+
 	temp--;
 	//Stop us going past the first frame
 	if(temp < 0){
 		temp = 0;
 	}
-	
+
 	pens[pen].sheep.frame = temp;
 }
 
@@ -378,18 +378,18 @@ PlayScreen.prototype.addSheepToPen = function (pen)
 
 // on action, check to see if valid move
 PlayScreen.prototype.update = function(){
-	
+
 	//Reset All Pens
 	this.resetPens();
 
 	//Check if over any of the pens
 	if(dragging){
 		sheepWobble.position = this.input.position;
-		
+
 		if(this.checkOverlap(sheepWobble,pens[0].sheep))
 		{
 			this.expandPen(0);
-		}		
+		}
 		else if(this.checkOverlap(sheepWobble,pens[1].sheep))
 		{
 			this.expandPen(1);
@@ -401,9 +401,9 @@ PlayScreen.prototype.update = function(){
 		else if(this.checkOverlap(sheepWobble,pens[3].sheep))
 		{
 			this.expandPen(3);
-		} 		
+		}
 	}
-	
+
 	// Check if drag sheep has ended
 	if(this.input.activePointer.isUp)
 	{
@@ -411,7 +411,7 @@ PlayScreen.prototype.update = function(){
 		{
 			this.dropSheep();
 		}
-	}	
+	}
 };
 
 
@@ -419,7 +419,7 @@ PlayScreen.prototype.update = function(){
 
 // Spawn items
 PlayScreen.prototype.spawnItems = function ()
-{	
+{
 	// random index for correct pen
 	correctPen = Math.floor(Math.random() * 4);
 
@@ -481,7 +481,7 @@ PlayScreen.prototype.spawnItems = function ()
 				BLraw = incorrectWord2;
 				BRraw = incorrectWord3;
 				break;
-		
+
 		case 2: correctLocation = 2;
 				TLtext.setText(incorrectWord1);
 				TRtext.setText(incorrectWord2);
@@ -493,7 +493,7 @@ PlayScreen.prototype.spawnItems = function ()
 				BLraw = incorrectWord2;
 				BRraw = incorrectWord3;
 				break;
-				
+
 		case 3: correctLocation = 3;
 				TLtext.setText(incorrectWord1);
 				TRtext.setText(incorrectWord2);
@@ -515,7 +515,7 @@ PlayScreen.prototype.spawnItems = function ()
 
 
 // Check how many lives remaining, show correct frame
-PlayScreen.prototype.checkLives = function() 
+PlayScreen.prototype.checkLives = function()
 {
 	if(livesLeft <= 0)
 	{
@@ -535,10 +535,10 @@ PlayScreen.prototype.checkLives = function()
 
 
 // Record screen clicks
-PlayScreen.prototype.recordScreenPress = function(x, y) 
+PlayScreen.prototype.recordScreenPress = function(x, y)
 {
 	// Get current time
-	var timeStamp = new Date(); 
+	var timeStamp = new Date();
 	timeStamp.toUTCString();
 
 	// Add to records
@@ -546,12 +546,12 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 };
 
 // Record statistical data from game
-PlayScreen.prototype.recordData = function() 
+PlayScreen.prototype.recordData = function()
 {
 	// Calculate game duration
     var time = new Date();
     var gameEndTime = time.toUTCString();
-	var duration = gameStartTime - gameEndTime;	
+	var duration = gameStartTime - gameEndTime;
 	var earnedCoins = score;
 	var totalCoins = earnedCoins + startingCoins;
 
@@ -582,14 +582,14 @@ PlayScreen.prototype.recordData = function()
 		type: "GET",
 	  	url: "http://localhost:1982/server.asp",
 	  	data: data,
-	  	success: function(resp) 
+	  	success: function(resp)
 		{
 	  		console.log("Woo ");//+resp);
 
 	  		//this.printReturn(resp);
 	    	return resp;
 	  	},
-	  	error: function() 
+	  	error: function()
 	  	{
 			console.log("Boo");
 	  	}
@@ -598,7 +598,7 @@ PlayScreen.prototype.recordData = function()
 
 
 // Game has finished, move to finish state
-PlayScreen.prototype.printReturn = function(data) 
+PlayScreen.prototype.printReturn = function(data)
 {
 	console.log(data);
 };
@@ -607,7 +607,7 @@ PlayScreen.prototype.printReturn = function(data)
 
 
 // Game has finished, move to finish state
-PlayScreen.prototype.endGame = function() 
+PlayScreen.prototype.endGame = function()
 {
 	console.log('finish');
 	this.state.start('finish');

@@ -99,28 +99,32 @@ window.onload = function()
 {
 	// Create game
 	var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
-	$.get('http://localhost:1337/student/testdata', function(data) 
+
+			// Add states
+			game.state.add('loading', LoadingScreen);
+			game.state.add('start', StartScreen);
+			game.state.add('rules', RulesScreen);
+			game.state.add('play', PlayScreen);
+			game.state.add('finish', FinishScreen);
+
+			// Show loading screen
+			game.state.start('loading');
+
+	$.get('http://localhost:1337/student/testdata', function(data)
 	{
 		console.log("GET" + data);
 		groupWords = data;
-		
+
 			// Multiple inputs
 		// groupWords = data[0];
 		// startingCoins = data[1];
 
 
-		// Add states
-		game.state.add('start', StartScreen);
-		game.state.add('loading', LoadingScreen);
-		game.state.add('rules', RulesScreen);
-		game.state.add('play', PlayScreen);
-		game.state.add('finish', FinishScreen);
-
-		// Show loading screen
-		game.state.start('loading');
+	}).fail(function() {
+		console.log('i failed');
 	});
-	
-	$.post('http://localhost:1337/student/savedata',{gamename:'The Sheep Game'}, function(data) 
+
+	$.post('http://localhost:1337/student/savedata',{gamename:'The Sheep Game'}, function(data)
 	{
 		// Log returned data
 		console.log("POST" + data);

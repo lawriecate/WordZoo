@@ -1,5 +1,5 @@
 //global variables
-var sheep = sheep|| {}; 
+var sheep = sheep|| {};
 
 var circle;
 var circleBig;
@@ -10,9 +10,9 @@ var sheepTween;
 var counter;
 
 
-function RulesScreen() 
-{	
-	Phaser.State.call(this);	
+function RulesScreen()
+{
+	Phaser.State.call(this);
 }
 
 /** @type Phaser.State */
@@ -20,26 +20,26 @@ var RulesScreen_proto = Object.create(Phaser.State.prototype);
 RulesScreen.prototype = RulesScreen_proto;
 RulesScreen.prototype.constructor = RulesScreen;
 
-RulesScreen.prototype.init = function () 
-{	
+RulesScreen.prototype.init = function ()
+{
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#ffffff';	
+	this.stage.backgroundColor = '#ffffff';
 };
 
-RulesScreen.prototype.preload = function () 
-{	
-	this.load.pack('RulesScreen', 'assets/pack.json');	
+RulesScreen.prototype.preload = function ()
+{
+	this.load.pack('RulesScreen', 'http://localhost:1337/sheepgame/assets/pack.json');	
 
 	// Set up pens array + fill with blanks
 	pens = new Array();
 	for(var i = 0; i < 4; i++){
 		pens[i] = new Object();
-	}	
+	}
 };
 
-RulesScreen.prototype.create = function () 
+RulesScreen.prototype.create = function ()
 {
 // Add background
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
@@ -51,16 +51,16 @@ RulesScreen.prototype.create = function ()
 
 	pens[1].back = this.add.sprite(1581, 381, 'penBack');
 	pens[1].back.anchor.setTo(0.5, 0.5);
-	
+
 	pens[2].back = this.add.sprite(383, 871, 'penBack');
 	pens[2].back.anchor.setTo(0.5, 0.5);
-	
+
 	pens[3].back = this.add.sprite(1592, 868, 'penBack');
 	pens[3].back.anchor.setTo(0.5, 0.5);
-	
+
 
 	// Add sheep to pens
-	pens[0].sheep = this.add.sprite(68, 210, 'sheepPen', 12);	
+	pens[0].sheep = this.add.sprite(68, 210, 'sheepPen', 12);
 	pens[0].front = this.add.sprite(374, 387, 'penFront');
 	pens[0].front.anchor.setTo(0.5, 0.5);
 
@@ -71,7 +71,7 @@ RulesScreen.prototype.create = function ()
 	pens[2].sheep = this.add.sprite(75, 697, 'sheepPen', 12);
 	pens[2].front = this.add.sprite(383, 871, 'penFront');
 	pens[2].front.anchor.setTo(0.5, 0.5);
-	
+
 	pens[3].sheep = this.add.sprite(1266, 709, 'sheepPen', 12);
 	pens[3].front = this.add.sprite(1592, 868, 'penFront');
 	pens[3].front.anchor.setTo(0.5, 0.5);
@@ -89,7 +89,7 @@ RulesScreen.prototype.create = function ()
 	TRtext = this.add.text(1640, 150, "", medStyle);
 	TRtext.anchor.setTo(0.5, 0.5);
 	TRtext.addColor('#FF9933', 0);
-		
+
 	TLtext = this.add.text(420, 165, "", medStyle);
 	TLtext.anchor.setTo(0.5, 0.5);
 	TLtext.addColor('#FF9933', 0);
@@ -150,7 +150,7 @@ RulesScreen.prototype.create = function ()
 	// Add Hand Click Animation
 	handClick = hand.animations.add('Red', [0,1,2,3,4,5]);
 
-	
+
 	// Time
 	timer = this.time.create(false);
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
@@ -161,14 +161,14 @@ RulesScreen.prototype.create = function ()
 	score = 0;
 	counter = 0;
 
-	
+
 
 	// Set text
 	mainText.setText("Soap");
 	TLtext.setText("Hat");
 	TRtext.setText("House");
 	BLtext.setText("Car");
-	BRtext.setText("Rope");	
+	BRtext.setText("Rope");
 
 	// Start
 	timer.start();
@@ -178,7 +178,7 @@ RulesScreen.prototype.create = function ()
 
 // display current time to screen (with --)
 RulesScreen.prototype.updateTime = function ()
-{	
+{
 	// Fixed Demo
 	counter++;
 	console.log(counter);
@@ -206,7 +206,7 @@ RulesScreen.prototype.updateTime = function ()
 	// At 4 seconds, click hand
 	else if(counter == 4)
 	{
-		hand.animations.currentAnim.onComplete.add(function () { hand.animations.frame = 5; sheepWobble.visible = true; 
+		hand.animations.currentAnim.onComplete.add(function () { hand.animations.frame = 5; sheepWobble.visible = true;
 			mainSheep.visible = false; }, this);
 		handClick.play(10);
 	}
@@ -216,15 +216,15 @@ RulesScreen.prototype.updateTime = function ()
 		handTween = this.game.add.tween(hand).to({x: '+400', y: '+200'}, 400, Phaser.Easing.Linear.None, false);
 		sheepTween = this.game.add.tween(sheepWobble).to({x: '+400', y: '+200'}, 400, Phaser.Easing.Linear.None, false);
 
-		handTween.onComplete.add(function () { 	pens[3].back.scale.setTo(1.5,1.5); pens[3].front.scale.setTo(1.5,1.5); 
+		handTween.onComplete.add(function () { 	pens[3].back.scale.setTo(1.5,1.5); pens[3].front.scale.setTo(1.5,1.5);
 			handTween = this.game.add.tween(hand).to({x: '+200', y: '+100'}, 200, Phaser.Easing.Linear.None, false);
 			sheepTween = this.game.add.tween(sheepWobble).to({x: '+200', y: '+100'}, 200, Phaser.Easing.Linear.None, false);
 
-			handTween.onComplete.add(function () { 	pens[3].back.scale.setTo(1,1); pens[3].front.scale.setTo(1,1); 
+			handTween.onComplete.add(function () { 	pens[3].back.scale.setTo(1,1); pens[3].front.scale.setTo(1,1);
 				sheepWobble.visible = false; mainSheep.visible = true; hand.animations.frame = 0; pens[3].sheep.frame = 11;
 			}, this);
-			handTween.start(); 
-			sheepTween.start(); 
+			handTween.start();
+			sheepTween.start();
 
 		}, this);
 		handTween.start();
@@ -233,7 +233,7 @@ RulesScreen.prototype.updateTime = function ()
 	// At 6 seconds, move hand away
 	else if(counter == 6)
 	{
-		sheepWobble.x = 948; 
+		sheepWobble.x = 948;
 		sheepWobble.y = 560;
 
 		handTween = this.game.add.tween(hand).to({x: '+500', y: '+120'}, 400, Phaser.Easing.Linear.None, false);
@@ -262,7 +262,7 @@ RulesScreen.prototype.updateTime = function ()
 		TLtext.setText("Bag");
 		TRtext.setText("Tiger");
 		BLtext.setText("Book");
-		BRtext.setText("Lemon");	
+		BRtext.setText("Lemon");
 	}
 	// At 10 seconds, circle title
 	else if(counter == 10)
@@ -290,7 +290,7 @@ RulesScreen.prototype.updateTime = function ()
 	// At 13 seconds, click hand
 	else if(counter == 13)
 	{
-		hand.animations.currentAnim.onComplete.add(function () { hand.animations.frame = 5; sheepWobble.visible = true; 
+		hand.animations.currentAnim.onComplete.add(function () { hand.animations.frame = 5; sheepWobble.visible = true;
 			mainSheep.visible = false; }, this);
 		handClick.play(10);
 	}
@@ -300,15 +300,15 @@ RulesScreen.prototype.updateTime = function ()
 		handTween = this.game.add.tween(hand).to({x: '+300', y: '-150'}, 300, Phaser.Easing.Linear.None, false);
 		sheepTween = this.game.add.tween(sheepWobble).to({x: '+300', y: '-150'}, 300, Phaser.Easing.Linear.None, false);
 
-		handTween.onComplete.add(function () { 	pens[1].back.scale.setTo(1.5,1.5); pens[1].front.scale.setTo(1.5,1.5); 
+		handTween.onComplete.add(function () { 	pens[1].back.scale.setTo(1.5,1.5); pens[1].front.scale.setTo(1.5,1.5);
 			handTween = this.game.add.tween(hand).to({x: '+300', y: '-150'}, 300, Phaser.Easing.Linear.None, false);
 			sheepTween = this.game.add.tween(sheepWobble).to({x: '+300', y: '-150'}, 300, Phaser.Easing.Linear.None, false);
 
-			handTween.onComplete.add(function () { 	pens[1].back.scale.setTo(1,1); pens[1].front.scale.setTo(1,1); 
+			handTween.onComplete.add(function () { 	pens[1].back.scale.setTo(1,1); pens[1].front.scale.setTo(1,1);
 				sheepWobble.visible = false; mainSheep.visible = true; hand.animations.frame = 0;
 			}, this);
-			handTween.start(); 
-			sheepTween.start(); 
+			handTween.start();
+			sheepTween.start();
 
 		}, this);
 		handTween.start();
@@ -337,7 +337,7 @@ RulesScreen.prototype.updateTime = function ()
 	// At 18 seconds, hide circle
 	else if(counter == 18)
 	{
-		circle.visible = false;	
+		circle.visible = false;
 	}
 	// At 19 seconds, exit
 	else if(counter == 19)
@@ -355,8 +355,8 @@ RulesScreen.prototype.updateTime = function ()
 	if(timeLeft <= 0){
 		this.endGame();
 	}
-	
-	timeText.setText("Time: "+(--timeLeft), true);	
+
+	timeText.setText("Time: "+(--timeLeft), true);
 };
 
 
@@ -364,7 +364,7 @@ RulesScreen.prototype.updateTime = function ()
 
 
 // On click OK button, return to start screen
-RulesScreen.prototype.onClickOK = function() 
+RulesScreen.prototype.onClickOK = function()
 {
 	this.state.start('start');
 };
