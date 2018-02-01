@@ -707,10 +707,16 @@
       "key": "removeShoes",
       "url": "assets/canvas/removeShoes.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lock",
+      "url": "assets/canvas/lock.png",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1517494417394",
+    "generated": "1517510287236",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
