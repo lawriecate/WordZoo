@@ -11,7 +11,7 @@ module.exports = function(req, res, next) {
 
   // If `req.session.me` exists, that means the user is logged in.
   if (req.session.me) {
-    if(req.session.user.admin) {
+    if(req.user.isAdmin) {
       return next();
     }
   }

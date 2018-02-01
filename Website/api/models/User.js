@@ -16,7 +16,7 @@ module.exports = {
       type: 'string',
       required: true
     },
-    
+
     admin: {
       type: 'boolean',
       defaultsTo: false
@@ -70,6 +70,7 @@ module.exports = {
       // TODO: But encrypt the password first
       password: inputs.password
     })
+    .populate('teaches_at')
     .exec(cb);
   }
 };
