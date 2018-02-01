@@ -37,7 +37,7 @@
       "key": "blackShoes",
       "url": "assets/blackShoes.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -47,7 +47,7 @@
       "key": "blackTie",
       "url": "assets/blackTie.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -57,7 +57,7 @@
       "key": "blueShirt",
       "url": "assets/blueShirt.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -67,7 +67,7 @@
       "key": "blueShoes",
       "url": "assets/blueShoes.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -77,7 +77,7 @@
       "key": "blueSunglasses",
       "url": "assets/blueSunglasses.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -87,7 +87,7 @@
       "key": "bowTie",
       "url": "assets/bowTie.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -97,7 +97,7 @@
       "key": "bowlerHat",
       "url": "assets/bowlerHat.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -107,7 +107,7 @@
       "key": "brownBoots",
       "url": "assets/brownBoots.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -117,7 +117,7 @@
       "key": "clownNose",
       "url": "assets/clownNose.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -127,7 +127,7 @@
       "key": "clownWig",
       "url": "assets/clownWig.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -137,7 +137,7 @@
       "key": "cowboyHat",
       "url": "assets/cowboyHat.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -147,7 +147,7 @@
       "key": "crown",
       "url": "assets/crown.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -157,7 +157,7 @@
       "key": "greenShirt",
       "url": "assets/greenShirt.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -167,7 +167,7 @@
       "key": "greenShoes",
       "url": "assets/greenShoes.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -177,7 +177,7 @@
       "key": "gryTie",
       "url": "assets/gryTie.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -187,7 +187,7 @@
       "key": "hardHat",
       "url": "assets/hardHat.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -197,7 +197,7 @@
       "key": "highHeels",
       "url": "assets/highHeels.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -207,7 +207,7 @@
       "key": "hpGlasses",
       "url": "assets/hpGlasses.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -217,7 +217,7 @@
       "key": "hufTie",
       "url": "assets/hufTie.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -227,7 +227,7 @@
       "key": "monocole",
       "url": "assets/monocole.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -237,7 +237,7 @@
       "key": "moustache",
       "url": "assets/moustache.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -247,7 +247,7 @@
       "key": "necklace",
       "url": "assets/necklace.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -257,7 +257,7 @@
       "key": "orangeShirt",
       "url": "assets/orangeShirt.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -267,7 +267,7 @@
       "key": "pinkBoots",
       "url": "assets/pinkBoots.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -277,7 +277,7 @@
       "key": "pinkGlasses",
       "url": "assets/pinkGlasses.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -287,7 +287,7 @@
       "key": "pinkShirt",
       "url": "assets/pinkShirt.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -297,7 +297,7 @@
       "key": "pinkShoes",
       "url": "assets/pinkShoes.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -307,7 +307,7 @@
       "key": "purpleShirt",
       "url": "assets/purpleShirt.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -317,7 +317,7 @@
       "key": "ravTie",
       "url": "assets/ravTie.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -327,7 +327,7 @@
       "key": "redGlasses",
       "url": "assets/redGlasses.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -337,7 +337,7 @@
       "key": "redShirt",
       "url": "assets/redShirt.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -347,7 +347,7 @@
       "key": "slyTie",
       "url": "assets/slyTie.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -357,7 +357,7 @@
       "key": "topHat",
       "url": "assets/topHat.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -367,7 +367,7 @@
       "key": "whiteShirt",
       "url": "assets/whiteShirt.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -377,7 +377,7 @@
       "key": "yellowBoots",
       "url": "assets/yellowBoots.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -387,7 +387,7 @@
       "key": "yellowShirt",
       "url": "assets/yellowShirt.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -397,7 +397,7 @@
       "key": "blackSunglasses",
       "url": "assets/blackSunglasses.png",
       "frameWidth": 437,
-      "frameHeight": 570,
+      "frameHeight": 475,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -671,10 +671,46 @@
       "key": "zebra",
       "url": "assets/canvas/zebra.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeGlasses",
+      "url": "assets/canvas/removeGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeHat",
+      "url": "assets/canvas/removeHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeNeck",
+      "url": "assets/canvas/removeNeck.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeNose",
+      "url": "assets/canvas/removeNose.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeShirt",
+      "url": "assets/canvas/removeShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeShoes",
+      "url": "assets/canvas/removeShoes.png",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1517485727561",
+    "generated": "1517494417394",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

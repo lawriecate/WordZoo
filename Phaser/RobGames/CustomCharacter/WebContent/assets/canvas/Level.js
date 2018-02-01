@@ -28,8 +28,15 @@ Level.prototype.init = function () {
 	this.stage.backgroundColor = '#ffffff';
 	
 };
-
+//Groups
 var _buy;
+var _feet;
+var _body;
+var _neck;
+var _eye;
+var _nose;
+var _head;
+var _animals;
 
 Level.prototype.preload = function () {
 	
@@ -55,192 +62,11 @@ Level.prototype.create = function () {
 	
 	
 	
-	var _animals = this.add.sprite(0, 0, 'animals', 0);
+	_animals = this.add.sprite(0, 0, 'animals', 0);
 	_animals.scale.setTo(1.2, 1.2);
-	
-	 _buy = this.add.group();
-	
-	var item1 = this.add.sprite(560, 1085, 'blackBoot', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add();
-	
-	item1 = this.add.sprite(722, 1085, 'blackGlasses', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addEye,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 1232, 'blackShoe', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addFeet,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 1232, 'blueGlasses', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addEye,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 1385, 'blueShirt1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addBody,{item: XXXX});
 
-	item1 = this.add.sprite(722, 1385, 'blueShoe', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addFeet,{item: XXXX});
 	
-	item1 = this.add.sprite(560, 571, 'bowTie1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addNeck,{item: XXXX});
-
-	item1 = this.add.sprite(886, 1385, 'bowlerHat1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addHead,{item: XXXX});
-
-	item1 = this.add.sprite(560, 871, 'brownBoot', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addFeet,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 718, 'clownNose1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addNose,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 871, 'clownWIg', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addHead,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 571, 'cowboyHat1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addHead,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 2260, 'crown1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addHead,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 2113, 'elephant', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(changeAnimal,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 2413, 'giraffe', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(changeAnimal,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 871, 'greenShirt1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addBody,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 1085, 'greenShoe', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addFeet,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 1232, 'gryTie1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addNeck,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 57, 'hardHat1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addHead,{item: XXXX});
-
-	item1 = this.add.sprite(886, 571, 'highHeel', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addFeet,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 718, 'hpGlasses1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addEye,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 57, 'hufTie1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addNeck,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 2113, 'lion', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(changeAnimal,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 204, 'monocle', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addEye,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 57, 'moustache1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addNose,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 357, 'necklace1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addNeck,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 2113, 'octopus', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(changeAnimal,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 204, 'orangeShirt1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addBody,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 2260, 'owl', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(changeAnimal,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 2260, 'panda', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(changeAnimal,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 357, 'pinkBoot', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addFeet,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 204, 'pinkGlasses1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addEye,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 357, 'pinkShirt1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addBody,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 1599, 'pinkShoe', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addFeet,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 1599, 'purpleShirt1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addBody,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 1599, 'ravTie1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addNeck,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 1746, 'redGlasses1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addEye,{item: XXXX});
-	
-	item1 = this.add.sprite(560, 1899, 'redShirt1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addBody,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 2413, 'sheep', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(changeAnimal,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 718, 'slyTie1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addNeck,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 1746, 'topHat1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addHead,{item: XXXX});
-
-	item1 = this.add.sprite(886, 1746, 'whiteShirt1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addBody,{item: XXXX});
-	
-	item1 = this.add.sprite(886, 1899, 'yellowBoot', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addFeet,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 1899, 'yellowShirt1', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(addBody,{item: XXXX});
-	
-	item1 = this.add.sprite(722, 2413, 'zebra', null, _buy);
-	item1.inputEnabled = true;
-	item1.events.onInputDown.add(changeAnimal,{item: XXXX});
-	
-	var _feet = this.add.group();
+	_feet = this.add.group();
 	
 	var _blackBoots = this.add.sprite(0, 0, 'blackBoots', 0, _feet);
 	_blackBoots.scale.setTo(1.2, 1.2);
@@ -278,7 +104,7 @@ Level.prototype.create = function () {
 	_yellowBoots.scale.setTo(1.2, 1.2);
 	_yellowBoots.alpha = 0.0;
 	
-	var _body = this.add.group();
+	_body = this.add.group();
 	
 	var _blueShirt = this.add.sprite(0, 0, 'blueShirt', 0, _body);
 	_blueShirt.scale.setTo(1.2, 1.2);
@@ -312,7 +138,7 @@ Level.prototype.create = function () {
 	_yellowShirt.scale.setTo(1.2, 1.2);
 	_yellowShirt.alpha = 0.0;
 	
-	var _neck = this.add.group();
+	_neck = this.add.group();
 	
 	var _blackTie = this.add.sprite(0, 0, 'blackTie', 0, _neck);
 	_blackTie.scale.setTo(1.2, 1.2);
@@ -342,7 +168,7 @@ Level.prototype.create = function () {
 	_slyTie.scale.setTo(1.2, 1.2);
 	_slyTie.alpha = 0.0;
 	
-	var _eye = this.add.group();
+	_eye = this.add.group();
 	
 	var _blueSunglasses = this.add.sprite(0, 0, 'blueSunglasses', 0, _eye);
 	_blueSunglasses.scale.setTo(1.2, 1.2);
@@ -368,7 +194,7 @@ Level.prototype.create = function () {
 	_hpGlasses.scale.setTo(1.2, 1.2);
 	_hpGlasses.alpha = 0.0;
 	
-	var _nose = this.add.group();
+	_nose = this.add.group();
 	
 	var _clownNose = this.add.sprite(0, 0, 'clownNose', 0, _nose);
 	_clownNose.scale.setTo(1.2, 1.2);
@@ -378,7 +204,7 @@ Level.prototype.create = function () {
 	_moustache.scale.setTo(1.2, 1.2);
 	_moustache.alpha = 0.0;
 	
-	var _head = this.add.group();
+	_head = this.add.group();
 	
 	var _bowlerHat = this.add.sprite(0, 0, 'bowlerHat', 0, _head);
 	_bowlerHat.scale.setTo(1.2, 1.2);
@@ -400,11 +226,220 @@ Level.prototype.create = function () {
 	_crown.scale.setTo(1.2, 1.2);
 	_crown.alpha = 0.0;
 	
+	var _clownWig = this.add.sprite(0,0,'clownWig',0,_head);
+	_clownWig.scale.setTo(1.2,1.2);
+	_clownWig.alpha = 0.0;
+	
+	 _buy = this.add.group();
+		
+		var item1 = this.add.sprite(560, 1085, 'blackBoot', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addFeet,{item: _blackBoots});
+		
+		item1 = this.add.sprite(722, 1085, 'blackGlasses', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addEye,{item: _blackSunglasses});
+		
+		item1 = this.add.sprite(722, 1232, 'blackShoe', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addFeet,{item: _blackShoes});
+		
+		item1 = this.add.sprite(886, 1232, 'blueGlasses', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addEye,{item: _blueSunglasses});
+		
+		item1 = this.add.sprite(560, 1385, 'blueShirt1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addBody,{item: _blueShirt});
+
+		item1 = this.add.sprite(722, 1385, 'blueShoe', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addFeet,{item: _blueShoes});
+		
+		item1 = this.add.sprite(560, 571, 'bowTie1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addNeck,{item: _bowTie});
+
+		item1 = this.add.sprite(886, 1385, 'bowlerHat1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addHead,{item: _bowlerHat});
+
+		item1 = this.add.sprite(560, 871, 'brownBoot', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addFeet,{item: _brownBoots});
+		
+		item1 = this.add.sprite(560, 718, 'clownNose1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addNose,{item: _clownNose});
+		
+		item1 = this.add.sprite(722, 871, 'clownWIg', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addHead,{item: _clownWig});
+		
+		item1 = this.add.sprite(722, 571, 'cowboyHat1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addHead,{item: _cowboyHat});
+		
+		item1 = this.add.sprite(722, 2260, 'crown1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addHead,{item: _crown});
+		
+		item1 = this.add.sprite(560, 2113, 'elephant', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(changeAnimal,{item: 6});
+		
+		item1 = this.add.sprite(560, 2413, 'giraffe', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(changeAnimal,{item: 0});
+		
+		item1 = this.add.sprite(886, 871, 'greenShirt1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addBody,{item: _greenShirt});
+		
+		item1 = this.add.sprite(886, 1085, 'greenShoe', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addFeet,{item: _greenShoes});
+		
+		item1 = this.add.sprite(560, 1232, 'gryTie1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addNeck,{item: _gryTie});
+		
+		item1 = this.add.sprite(560, 57, 'hardHat1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addHead,{item: _hardHat});
+
+		item1 = this.add.sprite(886, 571, 'highHeel', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addFeet,{item: _highHeels});
+		
+		item1 = this.add.sprite(886, 718, 'hpGlasses1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addEye,{item: _hpGlasses});
+		
+		item1 = this.add.sprite(722, 57, 'hufTie1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addNeck,{item: _hufTie});
+		
+		item1 = this.add.sprite(722, 2113, 'lion', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(changeAnimal,{item: 7});
+		
+		item1 = this.add.sprite(722, 204, 'monocle', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addEye,{item: _monocole});
+		
+		item1 = this.add.sprite(886, 57, 'moustache1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addNose,{item: _moustache});
+		
+		item1 = this.add.sprite(560, 357, 'necklace1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addNeck,{item: _necklace});
+		
+		item1 = this.add.sprite(886, 2113, 'octopus', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(changeAnimal,{item: 2});
+		
+		item1 = this.add.sprite(560, 204, 'orangeShirt1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addBody,{item: _orangeShirt});
+		
+		item1 = this.add.sprite(560, 2260, 'owl', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(changeAnimal,{item: 1});
+		
+		item1 = this.add.sprite(886, 2260, 'panda', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(changeAnimal,{item: 4});
+		
+		item1 = this.add.sprite(886, 357, 'pinkBoot', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addFeet,{item: _pinkBoots});
+		
+		item1 = this.add.sprite(886, 204, 'pinkGlasses1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addEye,{item: _pinkGlasses});
+		
+		item1 = this.add.sprite(722, 357, 'pinkShirt1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addBody,{item: _pinkShirt});
+		
+		item1 = this.add.sprite(560, 1599, 'pinkShoe', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addFeet,{item: _pinkShoes});
+		
+		item1 = this.add.sprite(722, 1599, 'purpleShirt1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addBody,{item: _purpleShirt});
+		
+		item1 = this.add.sprite(886, 1599, 'ravTie1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addNeck,{item: _ravTie});
+		
+		item1 = this.add.sprite(560, 1746, 'redGlasses1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addEye,{item: _redGlasses});
+		
+		item1 = this.add.sprite(560, 1899, 'redShirt1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addBody,{item: _redShirt});
+		
+		item1 = this.add.sprite(886, 2413, 'sheep', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(changeAnimal,{item: 5});
+		
+		item1 = this.add.sprite(722, 718, 'slyTie1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addNeck,{item: _slyTie});
+		
+		item1 = this.add.sprite(722, 1746, 'topHat1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addHead,{item: _topHat});
+
+		item1 = this.add.sprite(886, 1746, 'whiteShirt1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addBody,{item: _whiteShirt});
+		
+		item1 = this.add.sprite(886, 1899, 'yellowBoot', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addFeet,{item: _yellowBoots});
+		
+		item1 = this.add.sprite(722, 1899, 'yellowShirt1', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(addBody,{item: _yellowShirt});
+		
+		item1 = this.add.sprite(722, 2413, 'zebra', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(changeAnimal,{item: 3});
+		
+		item1 = this.add.sprite(560,2627,'removeHat', null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(removeHat);
+		
+		item1 = this.add.sprite(722,2627,'removeGlasses',null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(removeGlasses);
+		
+		item1 = this.add.sprite(886,2627,'removeNeck',null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(removeNeck);
+		
+		item1 = this.add.sprite(560,2627+147,'removeNose',null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(removeNose);
+		
+		item1 = this.add.sprite(722,2627+147,'removeShirt',null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(removeShirt);
+		
+		item1 = this.add.sprite(886,2627+147,'removeShoes',null, _buy);
+		item1.inputEnabled = true;
+		item1.events.onInputDown.add(removeShoes);
 	
 };
 
 var page = 0;
-var upperLimit = 4;
+var upperLimit = 5;
 
 function moveItemsUp(){
 	if(page == 0){
@@ -426,29 +461,139 @@ function moveItemsDown(){
 	page++;
 }
 
+
+var animalIndex = 0;
+
 function addHead(){
 	console.log("Head");
+	_head.forEach(function(item){
+		item.alpha = 0.0;
+	});
+	
+	this.item.frame = animalIndex;
+	this.item.alpha = 1.0;
+	
 }
 
 function addNose(){
 	console.log("Nose");
+	_nose.forEach(function(item){
+		item.alpha = 0.0;
+	});
+	
+	this.item.frame = animalIndex;
+	this.item.alpha = 1.0;
 }
 
 function addEye(){
 	console.log("Eye");
+	_eye.forEach(function(item){
+		item.alpha = 0.0;
+	});
+	
+	this.item.frame = animalIndex;
+	this.item.alpha = 1.0;
 }
 
 function addNeck(){
 	console.log("Neck");
+	_neck.forEach(function(item){
+		item.alpha = 0.0;
+	});
+	
+	this.item.frame = animalIndex;
+	this.item.alpha = 1.0;
 }
 
 function addBody(){
 	console.log("Body");
+	_body.forEach(function(item){
+		item.alpha = 0.0;
+	});
+	
+	this.item.frame = animalIndex;
+	this.item.alpha = 1.0;
 }
 
 function addFeet(){
 	console.log("Feet");
+	_feet.forEach(function(item){
+		item.alpha = 0.0;
+	});
+	
+	this.item.frame = animalIndex;
+	this.item.alpha = 1.0;
 }
+
+function changeAnimal(){
+	console.log("Animal");
+	animalIndex = this.item;
+	_animals.frame = animalIndex;
+	
+	//For Each Object, update the frames
+	_feet.forEach(function(item){
+		item.frame = animalIndex;
+	});
+	
+	_body.forEach(function(item){
+		item.frame = animalIndex;
+	});
+	
+	_neck.forEach(function(item){
+		item.frame = animalIndex;
+	});
+	
+	_eye.forEach(function(item){
+		item.frame = animalIndex;
+	});
+	
+	_nose.forEach(function(item){
+		item.frame = animalIndex;
+	});
+	
+	_head.forEach(function(item){
+		item.frame = animalIndex;
+	});
+}
+
+function removeHat(){
+	_head.forEach(function(item){
+		item.alpha = 0.0;
+	});
+}
+
+function removeGlasses(){
+	_eye.forEach(function(item){
+		item.alpha = 0.0;
+	});
+}
+
+function removeNeck(){
+	_neck.forEach(function(item){
+		item.alpha = 0.0;
+	});
+}
+
+function removeNose(){
+	_nose.forEach(function(item){
+		item.alpha = 0.0;
+	});
+}
+
+function removeShirt(){
+	_body.forEach(function(item){
+		item.alpha = 0.0;
+	});
+}
+
+function removeShoes(){
+	_feet.forEach(function(item){
+		item.alpha = 0.0;
+	});
+}
+
+
+
 
 
 
