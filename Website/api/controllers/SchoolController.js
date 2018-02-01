@@ -104,7 +104,7 @@ module.exports = {
 			}
 			sails.log(school);
 			//school.classes.populate('pupils');
-			return res.view('admin/schoolPupils', {'title':'Manage School',school: school, classes:school.classes});
+			return res.view('admin/schoolPupils', {'title':'Manage School',school: school});
 		});
 	},
 
@@ -122,7 +122,7 @@ module.exports = {
 					if (err) {
 						return res.serverError(err);
 					}
-					return res.redirect('/admin/schools/'+school.id+'/edit');
+					return res.redirect('/admin/schools/'+school.id+'/classes');
 			});
 			//school.classes.populate('pupils');
 
