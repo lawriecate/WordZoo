@@ -1,6 +1,14 @@
 <h1>Hello <%= req.user.name %></h1>
 <h2>Classes at <%= school.name %></h2>
 <table>
+  <tr>
+    <td>
+      <form method="post" action="/teach/newclass">
+        <input type="text" name="name" placeholder="Class Name"/>
+        <input type="submit" value="Create New Class" />
+      </form>
+    </td>
+  </tr>
   <% _.each(school.classes, function (schoolClass) { %>
   <tr>
     <td>

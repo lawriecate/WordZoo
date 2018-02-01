@@ -49,7 +49,7 @@ module.exports = {
     Pupil.create(params).exec(cb);
 
   },
-  update: function(pupilid,inputs,cb) {
+  edit: function(pupilid,inputs,cb) {
     if(inputs.name.indexOf(" ")==-1) {
       username = inputs.name;
     } else {
@@ -67,6 +67,13 @@ module.exports = {
 			dob: inputs.address,
 			school: inputs.school,
 			passcode: passcode,
+    }).exec(cb);
+  },
+  regenerate: function(pupilid,inputs,cb) {
+    var passcode = Math.floor(1000 + Math.random() * 9000);
+    Pupil.update({id:pupilid},
+      {
+			passcode: passcode
     }).exec(cb);
   }
 };

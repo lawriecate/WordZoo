@@ -82,7 +82,10 @@ module.exports.routes = {
 
 
     'get /teach': 'TeacherController.home',
+    'post /teach/newclass': 'TeacherController.newClass',
     'get /teach/class/:classid': 'TeacherController.viewClass',
+    'post /teach/class/:classid/newpupil': 'TeacherController.addPupil',
+    'post /teach/class/:classid/regenerate': 'TeacherController.regenKey',
     'get /teach/start/:pupilid': 'TeacherController.startSession',
 
     'get /student':'GameController.home' ,
