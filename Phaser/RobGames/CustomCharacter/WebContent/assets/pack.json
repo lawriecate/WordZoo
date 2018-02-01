@@ -1,0 +1,683 @@
+{
+  "main": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/backgroundImage.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "upDown",
+      "url": "assets/upDownButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "animals",
+      "url": "assets/animals.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackBoots",
+      "url": "assets/blackBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackShoes",
+      "url": "assets/blackShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackTie",
+      "url": "assets/blackTie.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blueShirt",
+      "url": "assets/blueShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blueShoes",
+      "url": "assets/blueShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blueSunglasses",
+      "url": "assets/blueSunglasses.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "bowTie",
+      "url": "assets/bowTie.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "bowlerHat",
+      "url": "assets/bowlerHat.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "brownBoots",
+      "url": "assets/brownBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "clownNose",
+      "url": "assets/clownNose.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "clownWig",
+      "url": "assets/clownWig.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "cowboyHat",
+      "url": "assets/cowboyHat.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "crown",
+      "url": "assets/crown.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "greenShirt",
+      "url": "assets/greenShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "greenShoes",
+      "url": "assets/greenShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "gryTie",
+      "url": "assets/gryTie.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "hardHat",
+      "url": "assets/hardHat.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "highHeels",
+      "url": "assets/highHeels.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "hpGlasses",
+      "url": "assets/hpGlasses.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "hufTie",
+      "url": "assets/hufTie.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "monocole",
+      "url": "assets/monocole.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "moustache",
+      "url": "assets/moustache.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "necklace",
+      "url": "assets/necklace.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "orangeShirt",
+      "url": "assets/orangeShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkBoots",
+      "url": "assets/pinkBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkGlasses",
+      "url": "assets/pinkGlasses.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkShirt",
+      "url": "assets/pinkShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkShoes",
+      "url": "assets/pinkShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "purpleShirt",
+      "url": "assets/purpleShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "ravTie",
+      "url": "assets/ravTie.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "redGlasses",
+      "url": "assets/redGlasses.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "redShirt",
+      "url": "assets/redShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "slyTie",
+      "url": "assets/slyTie.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "topHat",
+      "url": "assets/topHat.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "whiteShirt",
+      "url": "assets/whiteShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "yellowBoots",
+      "url": "assets/yellowBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "yellowShirt",
+      "url": "assets/yellowShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackSunglasses",
+      "url": "assets/blackSunglasses.png",
+      "frameWidth": 437,
+      "frameHeight": 570,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "blackBoot",
+      "url": "assets/canvas/blackBoot.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blackGlasses",
+      "url": "assets/canvas/blackGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blackShoe",
+      "url": "assets/canvas/blackShoe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blueGlasses",
+      "url": "assets/canvas/blueGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blueShirt1",
+      "url": "assets/canvas/blueShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blueShoe",
+      "url": "assets/canvas/blueShoe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bowTie1",
+      "url": "assets/canvas/bowTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bowlerHat1",
+      "url": "assets/canvas/bowlerHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "brownBoot",
+      "url": "assets/canvas/brownBoot.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "clownNose1",
+      "url": "assets/canvas/clownNose.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "clownWIg",
+      "url": "assets/canvas/clownWIg.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cowboyHat1",
+      "url": "assets/canvas/cowboyHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "crown1",
+      "url": "assets/canvas/crown.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "elephant",
+      "url": "assets/canvas/elephant.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "giraffe",
+      "url": "assets/canvas/giraffe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "greenShirt1",
+      "url": "assets/canvas/greenShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "greenShoe",
+      "url": "assets/canvas/greenShoe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "gryTie1",
+      "url": "assets/canvas/gryTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "hardHat1",
+      "url": "assets/canvas/hardHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "highHeel",
+      "url": "assets/canvas/highHeel.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "hpGlasses1",
+      "url": "assets/canvas/hpGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "hufTie1",
+      "url": "assets/canvas/hufTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lion",
+      "url": "assets/canvas/lion.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "monocle",
+      "url": "assets/canvas/monocle.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "moustache1",
+      "url": "assets/canvas/moustache.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "necklace1",
+      "url": "assets/canvas/necklace.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "octopus",
+      "url": "assets/canvas/octopus.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "orangeShirt1",
+      "url": "assets/canvas/orangeShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "owl",
+      "url": "assets/canvas/owl.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "panda",
+      "url": "assets/canvas/panda.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pinkBoot",
+      "url": "assets/canvas/pinkBoot.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pinkGlasses1",
+      "url": "assets/canvas/pinkGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pinkShirt1",
+      "url": "assets/canvas/pinkShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pinkShoe",
+      "url": "assets/canvas/pinkShoe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "purpleShirt1",
+      "url": "assets/canvas/purpleShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ravTie1",
+      "url": "assets/canvas/ravTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "redGlasses1",
+      "url": "assets/canvas/redGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "redShirt1",
+      "url": "assets/canvas/redShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "sheep",
+      "url": "assets/canvas/sheep.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "slyTie1",
+      "url": "assets/canvas/slyTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "topHat1",
+      "url": "assets/canvas/topHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "whiteShirt1",
+      "url": "assets/canvas/whiteShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "yellowBoot",
+      "url": "assets/canvas/yellowBoot.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "yellowShirt1",
+      "url": "assets/canvas/yellowShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "zebra",
+      "url": "assets/canvas/zebra.png",
+      "overwrite": false
+    }
+  ],
+  "meta": {
+    "generated": "1517485727561",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}
