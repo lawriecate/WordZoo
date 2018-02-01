@@ -61,6 +61,8 @@ module.exports.routes = {
     'post /admin/schools/new': 'SchoolController.create' ,
     'get /admin/schools/manage': { view: 'admin/schoolDetails' },
     'get /admin/schools/:id/classes': 'SchoolController.viewClasses',
+    'get /admin/schools/:schoolid/classes/:classid': 'SchoolController.manageClass',
+    'post /admin/schools/:schoolid/classes/:classid/addpupil': 'SchoolController.addPupil',
     'post /admin/schools/:id/classes': 'SchoolController.addClass',
     'get /admin/schools/:id/edit': 'SchoolController.edit' ,
     'post /admin/schools/:id/edit': 'SchoolController.update' ,

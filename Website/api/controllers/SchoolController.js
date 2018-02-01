@@ -114,16 +114,61 @@ module.exports = {
 				return res.serverError(err);
 			}
 			newClass = {name:req.param('name'), school: school.id};
-			sails.log(newClass);
+			//sails.log(newClass);
 			school.classes.add(newClass);
 
-			sails.log(school);
+			//sails.log(school);
 			school.save(function(err) {
 					if (err) {
 						return res.serverError(err);
 					}
 					return res.redirect('/admin/schools/'+school.id+'/classes');
 			});
+			//school.classes.populate('pupils');
+
+		});
+	},
+
+	manageClass: function(req,res) {
+		School.findOne({id:req.params.schoolid}).populate('classes').exec(function(err,school) {
+			if (err) {
+				return res.serverError(err);
+			}
+			Class.findOne({id:req.params.classid}).populate('pupils').exec(function(err,schoolClass) {
+				if (err) {
+					return res.serverError(err);
+				}
+
+				return res.view('admin/schoolClass', {'title':'Manage Class',school: school,schoolClass:schoolClass});
+
+			//school.classes.populate('pupils');
+		});
+		});
+	},
+
+	addPupil: function(req,res) {
+		School.findOne({id:req.params.schoolid}).populate('classes').exec(function(err,school) {
+			if (err) {
+				return res.serverError(err);
+			}
+			newPupil = {name:req.param('name'), dob:req.param('dob'),school:school.id};
+			//sails.log(newClass);
+			Class.findOne({id:req.params.classid}).exec(function(err,schoolClass) {
+				if (err) {
+					return res.serverError(err);
+				}
+				schoolClass.pupils.add(newPupil);
+				//sails.log(newPupil);
+				schoolClass.save(function(err) {
+						if (err) {
+							return res.serverError(err);
+						}
+						return res.redirect('/admin/schools/'+school.id+'/classes/'+schoolClass.id);
+				});
+			});
+
+			//sails.log(school);
+
 			//school.classes.populate('pupils');
 
 		});
