@@ -1,0 +1,8 @@
+<h1>Manage Games</h1>
+<h2>All Games </h2>
+<a href="/admin/games/new">New Game</a>
+<ul>
+  <% _.each(games, function (game) { %>
+  <li><%= game.name %> <a href="/admin/games/<%= game.id %>/">Manage</a></li>
+  <% }) %>
+</ul>

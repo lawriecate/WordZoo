@@ -15,6 +15,26 @@ module.exports = {
     source: {
       type: 'string',
       required: true
+    },
+    live: {
+      type: 'boolean',
+      required: true,
+      defaultsTo: false
+    },
+    slug: {
+      type: 'string',
+      required: true
     }
-  }
+  },
+  make: function (inputs, cb) {
+    // Create a school
+    Game.create({
+      name: inputs.name,
+      source:inputs.source,
+      live: inputs.live,
+      slug: inputs.slug
+    }).exec(cb);
+
+  },
+
 };

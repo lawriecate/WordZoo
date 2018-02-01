@@ -1,0 +1,6 @@
+<h1>Select a game!</h1>
+<ul>
+  <% _.each(games, function (game) { %>
+  <li><a href="/student/play/<%= game.slug %>/"><%= game.name %> </a></li>
+  <% }) %>
+</ul>

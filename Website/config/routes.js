@@ -71,15 +71,22 @@ module.exports.routes = {
     'get /admin/users/:id': 'UserController.edit',
     'post /admin/users/:id': 'UserController.update',
     'post /admin/users/:id/assignto': 'UserController.assignSchool',
-    'get /admin/games': { view: 'admin/games' },
+    'get /admin/games': 'GameController.list' ,
+    'get /admin/games/new': {view:'admin/gameNew'},
+    'post /admin/games/new': 'GameController.create' ,
+    'get /admin/games/:gameid': 'GameController.editGame' ,
+    'post /admin/games/:gameid': 'GameController.updateGame' ,
+
     'get /admin/data': { view: 'admin/data' },
+
+
 
     'get /teach': 'TeacherController.home',
     'get /teach/class/:classid': 'TeacherController.viewClass',
     'get /teach/start/:pupilid': 'TeacherController.startSession',
 
-    'get /student/play':'GameController.select' ,
-    'get /student/play/sheep': 'GameController.sheepgame',
+    'get /student':'GameController.home' ,
+    'get /student/play/:gameslug': 'GameController.play',
     'get /student/testdata': 'GameController.testdata',
     'post /student/savedata': 'GameController.savetestdata',
     'get /student/login': { view: 'auth/register' },
