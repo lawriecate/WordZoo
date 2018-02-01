@@ -40,8 +40,13 @@
       <div  class="menu">
       <ul>
         <% if(!req.session.isLoggedIn) { %><li><a href="/login">Log In</a></li>
-        <% }  else { %><li><a href="#">Welcome <%= req.session.user.name %></a></li><% } %>
+        <% }  else { %>
+          <li><a href="#">Welcome <%= req.user.name %></a>
+                <ul><li><a href="/logout">Log Out</a></li></ul>
+          </li><% } %>
         <% if(!req.session.isLoggedIn) { %><li><a href="/signup">Sign Up</a></li><% } %>
+        <% if(req.session.isLoggedIn) {
+            if(req.user.isAdmin) { %>
         <li>
           <a href="/admin">Admin Home</a>
           <ul><li><a href="/admin/users">Manage Users</a></li>
@@ -51,20 +56,28 @@
             <li><a href="#">Play Game</a></li>
           </ul>
         </li>
-
-        <li><a href="#">Teacher Home</a>
+        <% }
+      } %>
+        <% if(req.session.isLoggedIn) {
+            if(req.user.isTeacher) { %>
+        <li><a href="/teach">Teacher Home</a>
           <ul>
           <li><a href="#">Teach Class</a></li>
           <li><a href="#">Manage Class</a></li>
         </ul>
         </li>
+        <% }
+      } %>
 
+      <% if(req.session.pupilIsLoggedIn) {
+         %>
       <li><a href="#">Student Home</a>
         <ul>
         <li><a href="#">Play Game</a></li>
         <li><a href="#">Profile </a></li>
       </ul></li>
-
+      <%
+      } %>
       </ul>
     </div>
   </div>
@@ -95,7 +108,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 

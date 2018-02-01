@@ -74,6 +74,7 @@ module.exports.routes = {
     'get /admin/games': { view: 'admin/games' },
     'get /admin/data': { view: 'admin/data' },
 
+    'get /teach': 'TeacherController.home',
     'get /teach': { view: 'auth/register' },
     'get /teach/class': { view: 'auth/register' },
 
