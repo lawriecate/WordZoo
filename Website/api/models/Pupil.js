@@ -26,26 +26,44 @@ module.exports = {
   },
   make: function (inputs, cb) {
     // Create a pupil
-    var name = inputs.name;
-    var first_name = name.substr(0,name.indexOf(" ")).toLowerCase();
+    if(inputs.name.indexOf(" ")==-1) {
+      username = inputs.name;
+    } else {
+      username = inputs.name.substr(0,inputs.name.indexOf(" "));
+      if(username=="") {
+        username = "banana";
+      }
+    }
+
+    username = username.toLowerCase();
+
     var passcode = Math.floor(1000 + Math.random() * 9000);
-    Pupil.create({
+    var params ={
       name: inputs.name,
-			username:first_name,
+			username:username,
 			dob: inputs.address,
 			school: inputs.school,
 			passcode: passcode,
-    }).exec(cb);
+    };
+    sails.log(params);
+    Pupil.create(params).exec(cb);
 
   },
   update: function(pupilid,inputs,cb) {
-    var name = inputs.name;
-    var first_name = name.substr(0,name.indexOf(" ")).toLowerCase();
+    if(inputs.name.indexOf(" ")==-1) {
+      username = inputs.name;
+    } else {
+      username = inputs.name.substr(0,inputs.name.indexOf(" "));
+      if(username=="") {
+        username = "banana";
+      }
+    }
+    username = username.toLowerCase();
     var passcode = Math.floor(1000 + Math.random() * 9000);
     Pupil.update({id:pupilid},
       {
         name: inputs.name,
-			username:first_name,
+			username:username,
 			dob: inputs.address,
 			school: inputs.school,
 			passcode: passcode,

@@ -7,18 +7,12 @@
 
 module.exports = {
 	list: function(req,res) {
-
 			schools = School.find().exec(function(err,schools) {
 				if (err) {
 					return res.serverError(err);
 				}
-
-					return res.view('admin/schools.ejs', {'title':'Manage Schools', schools: schools});
-
-
+				return res.view('admin/schools.ejs', {'title':'Manage Schools', schools: schools});
 			});
-
-
   },
 
 	create: function(req,res) {
@@ -32,8 +26,7 @@ module.exports = {
 			if (err) {
 				return res.serverError(err);
 			}
-
-			  return res.redirect('/admin/schools');
+			return res.redirect('/admin/schools');
 		});
 	},
 
@@ -153,12 +146,14 @@ module.exports = {
 			}
 			params = {name:req.param('name'), dob:req.param('dob'),school:school.id};
 			Pupil.make(params, function(err,pupil) {
+				if (err) {
+					return res.serverError(err);
+				}
 				Class.findOne({id:req.params.classid}).exec(function(err,schoolClass) {
 					if (err) {
 						return res.serverError(err);
 					}
-					schoolClass.pupils.add(pupil);
-					sails.log(pupil);
+					schoolClass.pupils.add(pupil.id);
 					schoolClass.save(function(err) {
 							if (err) {
 								return res.serverError(err);
@@ -168,6 +163,7 @@ module.exports = {
 				});
 
 			});
+
 			//sails.log(newClass);
 
 			//sails.log(school);

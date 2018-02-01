@@ -1,7 +1,11 @@
 <h1>Hello <%= req.user.name %></h1>
 <h2>Classes at <%= school.name %></h2>
-<ul>
+<table>
   <% _.each(school.classes, function (schoolClass) { %>
-  <li><a href="/teach/class/<%=schoolClass.id%>/"><%= schoolClass.name %> &raquo;</a></li>
+  <tr>
+    <td>
+    <a href="/teach/class/<%=schoolClass.id%>/"><%= schoolClass.name %> &raquo;</a>
+    </td>
+  </tr>
   <% }) %>
-</ul>
+</table>

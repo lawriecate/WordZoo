@@ -1,7 +1,18 @@
 <h1><%= schoolClass.name %></h1>
 <h2><%= schoolClass.pupils.length %> pupils </h2>
-<ul>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Login</td>
+    <td>Passcode</td>
+    <td>Actions</td>
+  </tr>
   <% _.each(schoolClass.pupils, function (pupil) { %>
-  <li><%= pupil.name %> <a href="/teach/start/<%=pupil.id%>"> Start Session &raquo;</a></li>
+  <tr>
+    <td><%= pupil.name %> </td>
+    <td><%= pupil.first_name %> </td>
+    <td><%= pupil.passcode %> </td>
+    <td><a href="/teach/start/<%=pupil.id%>"> Start Session &raquo;</a></td>
+  </tr>
   <% }) %>
-</ul>
+</table>
