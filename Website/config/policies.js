@@ -32,7 +32,11 @@ module.exports.policies = {
   UserController: {
     '*': 'isAuthenticated',
     login: true,
-    signup: true
+    signup: true,
+    edit: 'isAdmin',
+    update: 'isAdmin',
+    assignSchool: 'isAdmin',
+    list: 'isAdmin'
   },
 
   GameController: {

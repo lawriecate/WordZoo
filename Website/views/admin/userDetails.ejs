@@ -3,7 +3,7 @@
   <input type="text" name="name" placeholder="Name" value="<%= user.name ? user.name : ''  %>" />
   <input type="text" name="email" placeholder="Email" value="<%= user.email ? user.email : ''  %>" />
   <input type="text" name="password" placeholder="New Password" value="<%= user.password ? user.password : ''  %>" />
-
+  <label> Administrator: <input type="checkbox" value="true" name="admin" <% if(user.admin) { %>checked="checked"<% } %>/> </label>
   <input type="submit" value="Save" />
 </form>
 <h2>Assign To School</h2>

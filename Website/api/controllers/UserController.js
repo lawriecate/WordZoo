@@ -30,7 +30,8 @@ module.exports = {
     // "Forget" the user from the session.
     // Subsequent requests from this user agent will NOT have `req.session.me`.
     req.session.me = null;
-
+    req.session.user = null;
+    req.session.isLoggedIn = false;
     // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
     // send a simple response letting the user agent know they were logged out
     // successfully.
@@ -100,7 +101,8 @@ module.exports = {
 		params = {
       name: req.param('name'),
 			email: req.param('email'),
-			password: req.param('password')
+			password: req.param('password'),
+      admin: (req.param('admin')=="true")
     };
 		User.update({id:req.params.id},params).exec(function(err,user) {
 			if (err) {
