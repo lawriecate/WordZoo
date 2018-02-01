@@ -2,6 +2,11 @@
 var octopus = octopus|| {}; 
 
 
+// Words
+var words = ["Apple", "Bear", "Bird", "Boat", "Book", "Car", "Cheese", "Cone", "Dog", "Hat"];
+
+
+
 //Game assets
 var game;
 var assets;

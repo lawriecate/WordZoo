@@ -24,6 +24,9 @@
 	var gameStartTime;
 	
 	
+	// input lock
+	var inputLock;
+
 	// background scroll
 	var backgroundScroll;
 	var backgroundDistance;

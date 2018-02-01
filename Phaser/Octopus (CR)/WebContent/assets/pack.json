@@ -1,0 +1,129 @@
+{
+  "Main": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pizza",
+      "url": "assets/pizza.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "selectItem",
+      "url": "assets/selectItem.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "strikeThrough",
+      "url": "assets/strikeThrough.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "highlightCircle",
+      "url": "assets/highlightCircle.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Red",
+      "url": "assets/Red.png",
+      "frameWidth": 312,
+      "frameHeight": 474,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "ok",
+      "url": "assets/ok.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "preloader",
+      "url": "assets/preloader.gif",
+      "overwrite": false
+    }
+  ],
+  "StartScreen": [
+    {
+      "type": "image",
+      "key": "MainMenu",
+      "url": "assets/MainMenu.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Play",
+      "url": "assets/play.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Rules",
+      "url": "assets/rules.png",
+      "overwrite": false
+    }
+  ],
+  "RulesScreen": [
+    {
+      "type": "image",
+      "key": "rulesBackground",
+      "url": "assets/rulesMenu.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ok",
+      "url": "assets/ok.png",
+      "overwrite": false
+    }
+  ],
+  "FinishScreen": [
+    {
+      "type": "image",
+      "key": "endBackGround",
+      "url": "assets/endBackGround.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "moreGames",
+      "url": "assets/moreGames.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "playAgain",
+      "url": "assets/playAgain.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "score_background",
+      "url": "assets/score_background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Unlucky",
+      "url": "assets/unlucky.png",
+      "overwrite": false
+    }
+  ],
+  "meta": {
+    "generated": "1517494273323",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}

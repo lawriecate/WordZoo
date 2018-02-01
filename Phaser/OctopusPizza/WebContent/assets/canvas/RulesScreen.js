@@ -1,3 +1,7 @@
+//global variables
+var octopus = octopus|| {}; 
+
+
 // Global variables
 var timeLeft;
 var timer;
@@ -29,30 +33,36 @@ RulesScreen.prototype.init = function ()
 
 RulesScreen.prototype.preload = function () 
 {	
+	// Load pack
 	this.load.pack('Main', 'assets/pack.json');
 	
+	// Load assets
+	for(var i = 0; i < words.length; i++)
+	{
+		this.load.image(words[i] ,'assets/testAssets/'+words[i]+'.png');
+	}
+
+
 	assets = new Array();
 	strikes = new Array();
 	toppings = new Array();
 	
 	//Creates the asset array of blank objects
-	for(var i = 0; i < 10; i++)
+	for(var i = 0; i < words.length; i++)
 	{
 		assets[i] = new Object();
+		assets[i].word = words[i];
 	}
 	
-	//Load the Assets
-	//this.load.image('Apple','assets/testAssets/Apple.png');
-	//this.load.image('Bear' ,'assets/testAssets/Bear.png');
-	//this.load.image('Bird' ,'assets/testAssets/Bird.png' );
-	//this.load.image('Boat' ,'assets/testAssets/Boat.png');
-	//this.load.image('Book' ,'assets/testAssets/Book.png');
-	//this.load.image('Car' ,'assets/testAssets/Car.png');
-	//this.load.image('Cheese' ,'assets/testAssets/Cheese.png');
-	//this.load.image('Cone' ,'assets/testAssets/Cone.png');
-	//this.load.image('Dog' ,'assets/testAssets/Dog.png');
-	//this.load.image('Hat' ,'assets/testAssets/Hat.png');
-	//this.load.image('strikeThrough','assets/strikeThrough.png');
+
+	/**
+	 * Layout of Select Items
+	 *  _______________
+	 * | 0 | 1 | 2 | 3 |
+	 * | 4 | 5 | 6 | 7 |
+	 * | 8 | 9 |
+	 *
+	 */
 };
 
 RulesScreen.prototype.create = function () 
@@ -65,28 +75,6 @@ RulesScreen.prototype.create = function ()
 	 _pizza = this.add.sprite(1530, 825, 'pizza');
 	_pizza.anchor.setTo(0.5, 0.5);
 		
-
-	//Load Assets
-	assets[0].word = "Apple";
-	assets[1].word = "Bear";
-	assets[2].word = "Car";
-	assets[3].word = "Boat";
-	assets[4].word = "Cheese";
-	assets[5].word = "Bird";
-	assets[6].word = "Book";
-	assets[7].word = "Cone";
-	assets[8].word = "Dog";
-	assets[9].word = "Hat";
-
-	/**
-	 * Layout of Select Items
-	 *  _______________
-	 * | 0 | 1 | 2 | 3 |
-	 * | 4 | 5 | 6 | 7 |
-	 * | 8 | 9 |
-	 *
-	 */
-
 	
 	//Order
 	var style = { font: "60px Arial", fill: "#000000", align: "left"};
@@ -243,7 +231,7 @@ RulesScreen.prototype.create = function ()
 	clock.text = "Time Remaining: " + timeLeft;
 	counter = 0;
 
-	orderText.text = "• Apple \n• Book";
+	orderText.text = "• "+assets[0].word+" \n• "+assets[6].word;
 
 	timer.start();
 };

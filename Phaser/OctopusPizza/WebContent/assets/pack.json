@@ -31,66 +31,6 @@
       "overwrite": false
     },
     {
-      "type": "image",
-      "key": "Apple",
-      "url": "assets/testAssets/Apple.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Bear",
-      "url": "assets/testAssets/Bear.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Bird",
-      "url": "assets/testAssets/Bird.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Boat",
-      "url": "assets/testAssets/Boat.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Book",
-      "url": "assets/testAssets/Book.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Car",
-      "url": "assets/testAssets/Car.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Cheese",
-      "url": "assets/testAssets/Cheese.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Cone",
-      "url": "assets/testAssets/Cone.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Dog",
-      "url": "assets/testAssets/Dog.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Hat",
-      "url": "assets/testAssets/Hat.png",
-      "overwrite": false
-    },
-    {
       "type": "spritesheet",
       "key": "Red",
       "url": "assets/Red.png",
@@ -174,7 +114,7 @@
     }
   ],
   "meta": {
-    "generated": "1511966963243",
+    "generated": "1517492465886",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

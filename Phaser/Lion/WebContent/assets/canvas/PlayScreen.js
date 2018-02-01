@@ -188,6 +188,8 @@ PlayScreen.prototype.create = function ()
 	
 
 
+	this.recordData();
+
 	// Football roll in -> Start
 	this.ballRollIn();
 };
