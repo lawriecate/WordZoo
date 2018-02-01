@@ -1,0 +1,7 @@
+<h1><%= schoolClass.name %></h1>
+<h2><%= schoolClass.pupils.length %> pupils </h2>
+<ul>
+  <% _.each(schoolClass.pupils, function (pupil) { %>
+  <li><%= pupil.name %> <a href="/teach/start"> Start Session &raquo;</a></li>
+  <% }) %>
+</ul>

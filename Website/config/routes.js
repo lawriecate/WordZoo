@@ -75,8 +75,8 @@ module.exports.routes = {
     'get /admin/data': { view: 'admin/data' },
 
     'get /teach': 'TeacherController.home',
-    'get /teach': { view: 'auth/register' },
-    'get /teach/class': { view: 'auth/register' },
+    'get /teach/class/:classid': 'TeacherController.viewClass',
+    'get /teach/start/:pupilid': 'TeacherController.startSession',
 
     'get /student/play':'GameController.select' ,
     'get /student/play/sheep': 'GameController.sheepgame',

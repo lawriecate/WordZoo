@@ -27,11 +27,24 @@ module.exports = function fetchUserHook(sails) {
               req.user = user;
               req.user.isAdmin = user.admin;
               req.user.isTeacher = (user.teaches_at[0] != null);
-              
+
               // Continue the request.
               return next();
 
             });
+
+            if(req.session.pupilId != null) {
+              Pupil.findOne({id: req.session.pupilId}).exec(function(err, pupil) {
+                if (err) { return res.serverError(err); }
+                if (!pupil) { return res.serverError(new Error('Session error')); }
+
+                // Add the user info to the request.
+                req.pupil = pupil;
+                // Continue the request.
+                return next();
+
+              });
+            }
           },
           skipAssets: true
         }
