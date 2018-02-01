@@ -38,6 +38,10 @@ module.exports = function login(inputs) {
     req.session.me = user.id;
     req.session.user = user;
     req.session.isLoggedIn = true;
+
+    if(user.schools[0] != null) {
+      req.session.school = user.schools[0];
+    }
     // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
     // send a 200 response letting the user agent know the login was successful.
     // (also do this if no `successRedirect` was provided)

@@ -41,7 +41,7 @@
       <ul>
         <% if(!req.session.isLoggedIn) { %><li><a href="/login">Log In</a></li>
         <% }  else { %><li><a href="#">Welcome <%= req.session.user.name %></a></li><% } %>
-        <li><a href="/signup">Sign Up</a></li>
+        <% if(!req.session.isLoggedIn) { %><li><a href="/signup">Sign Up</a></li><% } %>
         <li>
           <a href="/admin">Admin Home</a>
           <ul><li><a href="/admin/users">Manage Users</a></li>
