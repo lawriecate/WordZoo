@@ -28,7 +28,7 @@ PlayScreen.prototype.preload = function ()
 
 PlayScreen.prototype.create = function () 
 {	
-console.log('update 3');
+console.log('create');
 
 
 	// Add background
@@ -138,20 +138,22 @@ console.log('update 3');
 	giraffeMove0 = this.game.add.tween(giraffeWalk).to({x: '+290'}, 800, Phaser.Easing.Linear.None, false);
 	giraffeMove0.onComplete.add(function (){console.log('off 0');
 		currentColoumn++; this.moveGiraffe(playerLanePositionsX[(currentColoumn * 2)], playerLanePositionsY[currentLane]);
-		giraffeWalking.stop(); giraffeWalk.visible = true; giraffe.visible = false;
+		giraffeWalking.stop(); giraffeWalk.visible = true; giraffe.visible = false; inputLock = false;
 	}, this);
 
     // giraffe tween off stone 1
 	giraffeMove1 = this.game.add.tween(giraffeWalk).to({x: '+290'}, 800, Phaser.Easing.Linear.None, false);
 	giraffeMove1.onComplete.add(function (){console.log('off 1');
 		currentColoumn++; this.moveGiraffe(playerLanePositionsX[(currentColoumn * 2)], playerLanePositionsY[currentLane]);
-		giraffeWalking.stop(); giraffeWalk.visible = true; giraffe.visible = false;}, this);
+		giraffeWalking.stop(); giraffeWalk.visible = true; giraffe.visible = false; inputLock = false;
+	}, this);
 	
 	    // giraffe tween off stone 2
 	giraffeMove2 = this.game.add.tween(giraffeWalk).to({x: '+290'}, 800, Phaser.Easing.Linear.None, false);
 	giraffeMove2.onComplete.add(function (){ console.log('off 2');
 		this.moveGiraffe(playerLanePositionsX[6], playerLanePositionsY[currentLane]);
-		giraffeWalking.stop(); giraffeWalk.visible = true; giraffe.visible = false; this.reset();}, this);
+		giraffeWalking.stop(); giraffeWalk.visible = true; giraffe.visible = false; this.reset();
+	}, this);
 
 
 	// Keyboard controls
@@ -201,6 +203,7 @@ console.log('update 3');
 	currentColoumn = 0;
 	currentLane = 0;
 	score = 0;
+	inputLock = true;
 	this.updateScore();
 	livesLeft = startingLives;
 
@@ -315,6 +318,12 @@ PlayScreen.prototype.moveGiraffe = function (posX, posY)
 // Move giraffe up one lane
 PlayScreen.prototype.giraffeUp = function ()
 {	
+	// If input is locked (move in progress), ignore
+	if(inputLock == true)
+	{
+		return;
+	}
+
 	// if scrolling background, reject inputs
 	if(backgroundScroll)
 	{
@@ -339,6 +348,12 @@ PlayScreen.prototype.giraffeUp = function ()
 // Move giraffe down one lane
 PlayScreen.prototype.giraffeDown = function ()
 {	
+	// If input is locked (move in progress), ignore
+	if(inputLock == true)
+	{
+		return;
+	}
+
 	// if scrolling background, reject inputs
 	if(backgroundScroll)
 	{
@@ -362,6 +377,12 @@ PlayScreen.prototype.giraffeDown = function ()
 // Move giraffe right
 PlayScreen.prototype.giraffeRight = function ()
 {	
+	// If input is locked (move in progress), ignore
+	if(inputLock == true)
+	{
+		return;
+	}
+
 	// if scrolling background, reject inputs
 	if(backgroundScroll)
 	{
@@ -440,8 +461,6 @@ PlayScreen.prototype.leaveStone = function (isCorrect)
 	// If a correct answer, simple move off stone
 	if(isCorrect)
 	{
-		console.log('walking');
-
 		// find which stone to move off
 		if(currentColoumn == 0)
 		{	
@@ -828,6 +847,9 @@ PlayScreen.prototype.spawnWords = function ()
 	
     // Set timer for time taken to answer
     startTime = Math.floor(Date.now());
+
+    // Allow player input
+    inputLock = false;
 };
 
 
@@ -939,14 +961,24 @@ PlayScreen.prototype.clickC3 = function ()
 // onClick any stones
 PlayScreen.prototype.validate = function (lane, coloumn)
 {	
-	// record current lane
-	currentLane = lane;
+	// If input is locked (move in progress), ignore
+	if(inputLock == true)
+	{
+		return;
+	}
+	else
+	{
+		inputLock = true;
+	}
 
 	// if not current lane, ignore
 	if(currentColoumn != (coloumn / 2))
 	{
 		return;
 	}
+
+	// record current lane
+	currentLane = lane;
 
 	// Swap giraffe sprites
 	giraffe.visible = false;
