@@ -94,66 +94,6 @@
     },
     {
       "type": "image",
-      "key": "Apple",
-      "url": "assets/Items/Apple.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Bear",
-      "url": "assets/Items/Bear.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Bird",
-      "url": "assets/Items/Bird.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Boat",
-      "url": "assets/Items/Boat.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Book",
-      "url": "assets/Items/Book.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Car",
-      "url": "assets/Items/Car.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Cheese",
-      "url": "assets/Items/Cheese.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Cone",
-      "url": "assets/Items/Cone.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Dog",
-      "url": "assets/Items/Dog.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Hat",
-      "url": "assets/Items/Hat.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
       "key": "easel",
       "url": "assets/easel.png",
       "overwrite": false
@@ -175,8 +115,22 @@
       "spacing": 0
     }
   ],
+  "loadingScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/menuBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "preloader",
+      "url": "assets/preloader.gif",
+      "overwrite": false
+    }
+  ],
   "meta": {
-    "generated": "1511986126980",
+    "generated": "1517485357694",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

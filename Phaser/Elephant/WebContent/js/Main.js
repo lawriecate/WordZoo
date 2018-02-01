@@ -5,8 +5,8 @@
 	// *** To be pulled from server not static ***
 	// --------------------------------------------
 	//word bank
-	var matchingWords = [['Hat','Hat'],['Boat','Boat'],['Cheese','Cheese']];
-	var randomWords = ["Apple","Bear","Bird","Book","Car","Cone","Dog"];
+	var matchingWords = [['Apple','Apple'],['Bear','Bear'],['Bird','Bird'],['Boat','Boat'],['Book','Book'],
+						['Car','Car'],['Cheese','Cheese'],['Cone','Cone'],['Dog','Dog'],['Hat','Hat']];
 
 	// define items
 	var easel1, easel2, easel3;
@@ -60,6 +60,7 @@ window.onload = function()
 	var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
 	
 	// Add states
+	//game.state.add('loading', LoadingScreen);
 	game.state.add('start', StartScreen);
 	game.state.add('rules', RulesScreen);
 	game.state.add('play', PlayScreen);

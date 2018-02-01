@@ -5,14 +5,10 @@
 	// *** To be pulled from server not static ***
 	// --------------------------------------------
 	//word bank
-	var matchingWords =  [["Weigh","Pay"],["Cat","Bat"],["Match","Catch"],["Funny","Money"]];
-
-	var randomWords = 	["Bench","Brain","Bread","Broccoli","Cage","Cannon",
-	            		"Castle","Chair","Clock","Crayon","Desk","Donkey",
-	            		"Feather","Fireman","Flag","Football","Grape","Guitar",
-	         			"Heart","Island","Jumper","Mouse","Notebook","Owl",
-	         			"Pear","Police","Rabbit","Rake","Soap","Squirrel"];
-
+	var matchingWords =  	[["A1","A2"],["B1","B2"],["C1","C2"],["D1","D2"],
+							["E1","E2"],["F1","F2"],["G1","G2"],["H1","H2"],
+							["I1","I2"],["J1","J2"],["K1","K2"],["L1","L2"]];
+							
 	
 	// Record word answers
 		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]

@@ -54,7 +54,7 @@ LoadingScreen.prototype.create = function ()
 
 
 // record time on this menu, if too big -> show timeout message + exit
-PlayScreen.prototype.updateTime = function ()
+LoadingScreen.prototype.updateTime = function ()
 {
 	// If reached timeout point, show error
 	if(timeCounter > timeoutPoint)

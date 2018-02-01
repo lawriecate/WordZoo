@@ -428,29 +428,70 @@ PlayScreen.prototype.spawnItems = function ()
 
 
 	// Get random words to fill incorrect text boxes
-	incorrectWord1 = randomWords[Math.floor(Math.random() * randomWords.length)];
-	incorrectWord2 = randomWords[Math.floor(Math.random() * randomWords.length)];
-	incorrectWord3 = randomWords[Math.floor(Math.random() * randomWords.length)];
+	incorrectWord1 = groupWords[Math.floor(Math.random() * groupWords.length)];
+	incorrectWord2 = groupWords[Math.floor(Math.random() * groupWords.length)];
+	incorrectWord3 = groupWords[Math.floor(Math.random() * groupWords.length)];
 
-	// While 2 are the same, reset util you get unique
-	while(incorrectWord1 == incorrectWord2 || incorrectWord1 == incorrectWord3 || incorrectWord2 == incorrectWord3)
+
+	// While 1st is the same as the correct
+	while(incorrectWord1 == correctRow)
 	{
-		incorrectWord1 = randomWords[Math.floor(Math.random() * randomWords.length)];
-		incorrectWord2 = randomWords[Math.floor(Math.random() * randomWords.length)];
-		incorrectWord3 = randomWords[Math.floor(Math.random() * randomWords.length)];
+		incorrectWord1 = groupWords[Math.floor(Math.random() * groupWords.length)];
 	}
+	// While 2nd is the same as 1st / the correct
+	while(incorrectWord2 == incorrectWord1 || incorrectWord2 == correctRow)
+	{
+		incorrectWord2 = groupWords[Math.floor(Math.random() * groupWords.length)];
+	}
+	// While 3rd is the same as 1st / 2nd / the correct
+	while(incorrectWord3 == incorrectWord2 || incorrectWord3 == incorrectWord1 || incorrectWord3 == correctRow)
+	{
+		incorrectWord3 = groupWords[Math.floor(Math.random() * groupWords.length)];
+	}
+
 
 
 	// Get a pair of matching values
-	correctWordA = correctRow[Math.floor(Math.random() * correctRow.length)];
-	correctWordB = correctRow[Math.floor(Math.random() * correctRow.length)];
-
-	// Make sure correctWordA isn't the same as correctWordB
-	while(correctWordA == correctWordB)
+	if(Math.floor(Math.random() * 2) == 1)
 	{
-		correctWordA = correctRow[Math.floor(Math.random() * correctRow.length)];
-		correctWordB = correctRow[Math.floor(Math.random() * correctRow.length)];
+		correctWordA = correctRow[1];
+		correctWordB = correctRow[0];
 	}
+	else
+	{
+		correctWordA = correctRow[0];
+		correctWordB = correctRow[1];
+	}
+
+
+
+	// Get incorrect words from incorrect word rows
+	if(Math.floor(Math.random() * 2) == 1)
+	{
+		incorrectWord1 = incorrectWord1[0];
+	}
+	else
+	{
+		incorrectWord1 = incorrectWord1[0];
+	}
+	if(Math.floor(Math.random() * 2) == 1)
+	{
+		incorrectWord2 = incorrectWord2[0];
+	}
+	else
+	{
+		incorrectWord2 = incorrectWord2[0];
+	}
+	if(Math.floor(Math.random() * 2) == 1)
+	{
+		incorrectWord3 = incorrectWord3[0];
+	}
+	else
+	{
+		incorrectWord3 = incorrectWord3[0];
+	}
+
+
 
 	// Set one correct word to mainText
 	mainText.setText(correctWordA);
