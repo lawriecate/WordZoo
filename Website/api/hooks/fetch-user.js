@@ -28,18 +28,6 @@ module.exports = function fetchUserHook(sails) {
               req.user.isAdmin = user.admin;
               req.user.isTeacher = (user.teaches_at[0] != null);
 
-              if(req.session.pupilId != null) {// also check if a pupil session has been started
-                Pupil.findOne({id: req.session.pupilId}).exec(function(err, pupil) {
-                  if (err) { return res.serverError(err); }
-                  if (!pupil) { return res.serverError(new Error('Session error')); }
-
-                  // Add the user info to the request.
-                  req.pupil = pupil;
-                  // Continue the request.
-                  return next();
-
-                });
-              }
 
               // Continue the request.
               return next();

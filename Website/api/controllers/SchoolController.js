@@ -151,21 +151,24 @@ module.exports = {
 			if (err) {
 				return res.serverError(err);
 			}
-			newPupil = {name:req.param('name'), dob:req.param('dob'),school:school.id};
-			//sails.log(newClass);
-			Class.findOne({id:req.params.classid}).exec(function(err,schoolClass) {
-				if (err) {
-					return res.serverError(err);
-				}
-				schoolClass.pupils.add(newPupil);
-				//sails.log(newPupil);
-				schoolClass.save(function(err) {
-						if (err) {
-							return res.serverError(err);
-						}
-						return res.redirect('/admin/schools/'+school.id+'/classes/'+schoolClass.id);
+			params = {name:req.param('name'), dob:req.param('dob'),school:school.id};
+			Pupil.make(params, function(err,pupil) {
+				Class.findOne({id:req.params.classid}).exec(function(err,schoolClass) {
+					if (err) {
+						return res.serverError(err);
+					}
+					schoolClass.pupils.add(pupil);
+					sails.log(pupil);
+					schoolClass.save(function(err) {
+							if (err) {
+								return res.serverError(err);
+							}
+							return res.redirect('/admin/schools/'+school.id+'/classes/'+schoolClass.id);
+					});
 				});
+
 			});
+			//sails.log(newClass);
 
 			//sails.log(school);
 
