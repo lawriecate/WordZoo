@@ -1,0 +1,1479 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Level",
+    "sceneWidth": 1050,
+    "sceneHeight": 570,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "// to change this code: Canvas editor > Configuration > Editor > userCode > Create\r\nthis.addHelloWorldText();\r\n\r\n"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "13fcdc61-83c7-4593-87c8-c59ec656ad01",
+          "asset": "0",
+          "info": {"editorName": "background"}
+        },
+        {
+          "type": "image",
+          "id": "b3c9f710-0aa5-4762-9924-54e91e549daf",
+          "asset": "1",
+          "info": {
+            "editorName": "upDown",
+            "x": 681,
+            "y": 7
+          }
+        },
+        {
+          "type": "image",
+          "id": "1b9ba446-7490-435a-9029-ac0cf0227379",
+          "asset": "1",
+          "info": {
+            "editorName": "upDown1",
+            "x": 898,
+            "y": 555,
+            "rotation": 3.141592653589793
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "0924cd71-7979-4c5c-8261-f81241881370",
+          "asset": "2",
+          "info": {
+            "editorName": "animals",
+            "scale.x": 1.2,
+            "scale.y": 1.2
+          }
+        },
+        {
+          "type": "group",
+          "id": "3bd1a04b-a7a8-4efd-b4a0-f6ad1bbbd21c",
+          "info": {
+            "editorName": "buy",
+            "setAll": [],
+            "children": [
+              {
+                "type": "image",
+                "id": "0bcd7506-bda8-4115-8d76-9e98d3af1421",
+                "asset": "3",
+                "info": {
+                  "editorName": "blackBoot",
+                  "x": 560,
+                  "y": 1085
+                }
+              },
+              {
+                "type": "image",
+                "id": "0bcc58ab-872d-48ee-929e-bc646bb16127",
+                "asset": "4",
+                "info": {
+                  "editorName": "blackGlasses",
+                  "x": 722,
+                  "y": 1085
+                }
+              },
+              {
+                "type": "image",
+                "id": "5feedc79-a75d-4460-80af-daf5399ab6d6",
+                "asset": "5",
+                "info": {
+                  "editorName": "blackShoe",
+                  "x": 722,
+                  "y": 1232
+                }
+              },
+              {
+                "type": "image",
+                "id": "6bbe9034-9a15-4191-bffa-c515cad5c3b2",
+                "asset": "6",
+                "info": {
+                  "editorName": "blueGlasses",
+                  "x": 886,
+                  "y": 1232
+                }
+              },
+              {
+                "type": "image",
+                "id": "d2648d92-ca29-426f-aab7-9fb9def8574b",
+                "asset": "7",
+                "info": {
+                  "editorName": "blueShirt1",
+                  "x": 560,
+                  "y": 1385
+                }
+              },
+              {
+                "type": "image",
+                "id": "e285dbcc-30db-4cda-b2d5-42054dd58d3a",
+                "asset": "8",
+                "info": {
+                  "editorName": "blueShoe",
+                  "x": 722,
+                  "y": 1385
+                }
+              },
+              {
+                "type": "image",
+                "id": "170698b9-4057-4691-b20e-f1b521a1035b",
+                "asset": "9",
+                "info": {
+                  "editorName": "bowTie1",
+                  "x": 560,
+                  "y": 571
+                }
+              },
+              {
+                "type": "image",
+                "id": "33c236f1-6f37-4131-93f3-db6b9be6d8a5",
+                "asset": "10",
+                "info": {
+                  "editorName": "bowlerHat1",
+                  "x": 886,
+                  "y": 1385
+                }
+              },
+              {
+                "type": "image",
+                "id": "1c1e7ba1-4ad6-4b73-b6ee-d68d3dd2f884",
+                "asset": "11",
+                "info": {
+                  "editorName": "brownBoot",
+                  "x": 560,
+                  "y": 871
+                }
+              },
+              {
+                "type": "image",
+                "id": "11e3a82d-a372-414f-817d-26597a1f577d",
+                "asset": "12",
+                "info": {
+                  "editorName": "clownNose1",
+                  "x": 560,
+                  "y": 718
+                }
+              },
+              {
+                "type": "image",
+                "id": "c319b172-6163-4588-bca3-0c1d94eb21b4",
+                "asset": "13",
+                "info": {
+                  "editorName": "clownWIg",
+                  "x": 722,
+                  "y": 871
+                }
+              },
+              {
+                "type": "image",
+                "id": "c80403fc-dd57-42c1-8ba8-dca9b4a36ef0",
+                "asset": "14",
+                "info": {
+                  "editorName": "cowboyHat1",
+                  "x": 722,
+                  "y": 571
+                }
+              },
+              {
+                "type": "image",
+                "id": "18f23aaf-39c5-4671-bc44-3c4cf363f98d",
+                "asset": "15",
+                "info": {
+                  "editorName": "crown1",
+                  "x": 722,
+                  "y": 2260
+                }
+              },
+              {
+                "type": "image",
+                "id": "dd6209e0-6e83-4dbc-b3de-5d32ab7573a7",
+                "asset": "16",
+                "info": {
+                  "editorName": "elephant",
+                  "x": 560,
+                  "y": 2113
+                }
+              },
+              {
+                "type": "image",
+                "id": "65da3ce8-2581-4580-9046-10f966cb8486",
+                "asset": "17",
+                "info": {
+                  "editorName": "giraffe",
+                  "x": 560,
+                  "y": 2413
+                }
+              },
+              {
+                "type": "image",
+                "id": "dc695b7e-05b9-4cd0-9ccc-6004fede87b7",
+                "asset": "18",
+                "info": {
+                  "editorName": "greenShirt1",
+                  "x": 886,
+                  "y": 871
+                }
+              },
+              {
+                "type": "image",
+                "id": "55262eaf-0e43-44ca-b27b-061b028be41e",
+                "asset": "19",
+                "info": {
+                  "editorName": "greenShoe",
+                  "x": 886,
+                  "y": 1085
+                }
+              },
+              {
+                "type": "image",
+                "id": "a312cf73-e51c-4774-bca8-d0d7013e3f44",
+                "asset": "20",
+                "info": {
+                  "editorName": "gryTie1",
+                  "x": 560,
+                  "y": 1232
+                }
+              },
+              {
+                "type": "image",
+                "id": "29542735-abac-4d9f-b37d-ef5011d76276",
+                "asset": "21",
+                "info": {
+                  "editorName": "hardHat1",
+                  "x": 560,
+                  "y": 57,
+                  "rotation": 1.2217304763960308E-5
+                }
+              },
+              {
+                "type": "image",
+                "id": "89ad21d3-86f9-48f4-9d86-1bf55f5b0d6b",
+                "asset": "22",
+                "info": {
+                  "editorName": "highHeel",
+                  "x": 886,
+                  "y": 571
+                }
+              },
+              {
+                "type": "image",
+                "id": "f4c3dc74-3039-4304-a70d-0bc880eb7727",
+                "asset": "23",
+                "info": {
+                  "editorName": "hpGlasses1",
+                  "x": 886,
+                  "y": 718
+                }
+              },
+              {
+                "type": "image",
+                "id": "019f80ef-7563-4245-9aab-7c387fad8b3c",
+                "asset": "24",
+                "info": {
+                  "editorName": "hufTie1",
+                  "x": 722,
+                  "y": 57
+                }
+              },
+              {
+                "type": "image",
+                "id": "ee9fff14-97bd-4294-9b8b-cc7df30fa31c",
+                "asset": "25",
+                "info": {
+                  "editorName": "lion",
+                  "x": 722,
+                  "y": 2113
+                }
+              },
+              {
+                "type": "image",
+                "id": "db1b78a8-2c84-4014-bb83-392f95db8576",
+                "asset": "26",
+                "info": {
+                  "editorName": "monocle",
+                  "x": 722,
+                  "y": 204
+                }
+              },
+              {
+                "type": "image",
+                "id": "61b8bb64-3137-4766-96fb-b76d54baa495",
+                "asset": "27",
+                "info": {
+                  "editorName": "moustache1",
+                  "x": 886,
+                  "y": 57
+                }
+              },
+              {
+                "type": "image",
+                "id": "8d91c634-c01a-46f3-acfa-8276f7f91022",
+                "asset": "28",
+                "info": {
+                  "editorName": "necklace1",
+                  "x": 560,
+                  "y": 357
+                }
+              },
+              {
+                "type": "image",
+                "id": "1a6261c7-a6e5-4723-8eda-83a8332a52c6",
+                "asset": "29",
+                "info": {
+                  "editorName": "octopus",
+                  "x": 886,
+                  "y": 2113
+                }
+              },
+              {
+                "type": "image",
+                "id": "d7b70a34-d1a0-488a-b53e-9261c191a2c3",
+                "asset": "30",
+                "info": {
+                  "editorName": "orangeShirt1",
+                  "x": 560,
+                  "y": 204
+                }
+              },
+              {
+                "type": "image",
+                "id": "1b7e9843-4bd6-4e25-af08-33d94671e184",
+                "asset": "31",
+                "info": {
+                  "editorName": "owl",
+                  "x": 560,
+                  "y": 2260
+                }
+              },
+              {
+                "type": "image",
+                "id": "b01124ff-a594-4bca-bbcb-e40fc14a5480",
+                "asset": "32",
+                "info": {
+                  "editorName": "panda",
+                  "x": 886,
+                  "y": 2260
+                }
+              },
+              {
+                "type": "image",
+                "id": "f9d0bc4a-7cdd-402c-a4b9-073d02bd4eec",
+                "asset": "33",
+                "info": {
+                  "editorName": "pinkBoot",
+                  "x": 886,
+                  "y": 357
+                }
+              },
+              {
+                "type": "image",
+                "id": "f2234857-4eba-423d-ac35-7a47a06253c2",
+                "asset": "34",
+                "info": {
+                  "editorName": "pinkGlasses1",
+                  "x": 886,
+                  "y": 204
+                }
+              },
+              {
+                "type": "image",
+                "id": "5304c9f0-1de3-430b-ac1f-4a2261f1009b",
+                "asset": "35",
+                "info": {
+                  "editorName": "pinkShirt1",
+                  "x": 722,
+                  "y": 357
+                }
+              },
+              {
+                "type": "image",
+                "id": "d6c8791f-d7c2-43cb-a169-074295644375",
+                "asset": "36",
+                "info": {
+                  "editorName": "pinkShoe",
+                  "x": 560,
+                  "y": 1599
+                }
+              },
+              {
+                "type": "image",
+                "id": "4cdaa7b4-d9c3-49bf-8282-b226765ca222",
+                "asset": "37",
+                "info": {
+                  "editorName": "purpleShirt1",
+                  "x": 722,
+                  "y": 1599
+                }
+              },
+              {
+                "type": "image",
+                "id": "ed352197-c761-4d89-a45b-1e47c3f1c5c8",
+                "asset": "38",
+                "info": {
+                  "editorName": "ravTie1",
+                  "x": 886,
+                  "y": 1599
+                }
+              },
+              {
+                "type": "image",
+                "id": "f04131e0-e919-48d4-9585-320601df620b",
+                "asset": "39",
+                "info": {
+                  "editorName": "redGlasses1",
+                  "x": 560,
+                  "y": 1746
+                }
+              },
+              {
+                "type": "image",
+                "id": "1c50b4b7-0fc8-4228-8254-023c183c9589",
+                "asset": "40",
+                "info": {
+                  "editorName": "redShirt1",
+                  "x": 560,
+                  "y": 1899
+                }
+              },
+              {
+                "type": "image",
+                "id": "b0b7af6d-a847-45e6-8045-52706ef17c7b",
+                "asset": "41",
+                "info": {
+                  "editorName": "sheep",
+                  "x": 886,
+                  "y": 2413
+                }
+              },
+              {
+                "type": "image",
+                "id": "5cb3ceb1-33ec-483d-8581-c9626d5c8985",
+                "asset": "42",
+                "info": {
+                  "editorName": "slyTie1",
+                  "x": 722,
+                  "y": 718
+                }
+              },
+              {
+                "type": "image",
+                "id": "db37f06b-137b-42e3-89d3-1c35e696d3f8",
+                "asset": "43",
+                "info": {
+                  "editorName": "topHat1",
+                  "x": 722,
+                  "y": 1746
+                }
+              },
+              {
+                "type": "image",
+                "id": "1b2383c6-c415-4ce5-a2da-1aeb08ed35e7",
+                "asset": "44",
+                "info": {
+                  "editorName": "whiteShirt1",
+                  "x": 886,
+                  "y": 1746
+                }
+              },
+              {
+                "type": "image",
+                "id": "878e6c76-5caf-41ad-b26e-2075da5278dd",
+                "asset": "45",
+                "info": {
+                  "editorName": "yellowBoot",
+                  "x": 886,
+                  "y": 1899
+                }
+              },
+              {
+                "type": "image",
+                "id": "d8a6f74e-7781-429f-90d7-60d747d0d6d6",
+                "asset": "46",
+                "info": {
+                  "editorName": "yellowShirt1",
+                  "x": 722,
+                  "y": 1899
+                }
+              },
+              {
+                "type": "image",
+                "id": "a3dc1652-ff83-4de0-a6a5-b5bcfed9e201",
+                "asset": "47",
+                "info": {
+                  "editorName": "zebra",
+                  "x": 722,
+                  "y": 2413
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "824fed47-8777-4616-a2fd-63c1925ac5b3",
+          "info": {
+            "editorName": "feet",
+            "setAll": [],
+            "children": [
+              {
+                "type": "spritesheet",
+                "id": "fa5837b3-db6f-4bd2-9f4f-c2b4d9ef5622",
+                "asset": "48",
+                "info": {
+                  "editorName": "blackBoots",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "9959f03a-a6b2-4be1-8149-9d71af0d5820",
+                "asset": "49",
+                "info": {
+                  "editorName": "blackShoes",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "95539991-b600-4182-aa2e-15ace6d77a90",
+                "asset": "50",
+                "info": {
+                  "editorName": "blueShoes",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "7da4078e-8936-451e-98c5-5542b9d89a0b",
+                "asset": "51",
+                "info": {
+                  "editorName": "brownBoots",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "befa34ba-fb4d-4363-b2b7-afe60ecdd93e",
+                "asset": "52",
+                "info": {
+                  "editorName": "greenShoes",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "5eab55f5-5ed2-4d2c-b19d-66fb1f478b06",
+                "asset": "53",
+                "info": {
+                  "editorName": "highHeels",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "58d56402-b0b9-48ed-9bf0-12a09dc2c6e9",
+                "asset": "54",
+                "info": {
+                  "editorName": "pinkBoots",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "8473ebe9-8531-4595-8fad-a37139a847b0",
+                "asset": "55",
+                "info": {
+                  "editorName": "pinkShoes",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "d2165217-3de7-4e0f-98bb-302f56878a96",
+                "asset": "56",
+                "info": {
+                  "editorName": "yellowBoots",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "aa00d7ba-7691-4ccf-9f77-9615ae0bbde0",
+          "info": {
+            "editorName": "body",
+            "setAll": [],
+            "children": [
+              {
+                "type": "spritesheet",
+                "id": "e538973c-9c6d-418b-b2e3-153db0c2f222",
+                "asset": "57",
+                "info": {
+                  "editorName": "blueShirt",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "2511d508-9ebe-4025-a4e1-a21f2e431d8a",
+                "asset": "58",
+                "info": {
+                  "editorName": "greenShirt",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "021abfe9-a85e-4c30-a81b-93041025549c",
+                "asset": "59",
+                "info": {
+                  "editorName": "orangeShirt",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "d9cd1f55-7c41-430e-890d-122724e1690e",
+                "asset": "60",
+                "info": {
+                  "editorName": "pinkShirt",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "69c41be3-edd3-4f6a-b79d-7c9ce53c92f5",
+                "asset": "61",
+                "info": {
+                  "editorName": "purpleShirt",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "3fa9fd0b-a7cf-428b-8be3-aa52a1229816",
+                "asset": "62",
+                "info": {
+                  "editorName": "redShirt",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "113628f4-08e5-4970-9401-37105ddf4d93",
+                "asset": "63",
+                "info": {
+                  "editorName": "whiteShirt",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "5fe05e4b-582f-41f2-ae8c-810c33ba0956",
+                "asset": "64",
+                "info": {
+                  "editorName": "yellowShirt",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "e16c1447-51d7-4fdf-ad75-d8b260225462",
+          "info": {
+            "editorName": "neck",
+            "setAll": [],
+            "children": [
+              {
+                "type": "spritesheet",
+                "id": "db7f887c-156c-4903-8726-40ffc966b1dd",
+                "asset": "65",
+                "info": {
+                  "editorName": "blackTie",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "96f362ee-5c96-4232-95fb-22e5d93f811b",
+                "asset": "66",
+                "info": {
+                  "editorName": "bowTie",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "83bb85cb-81ec-4e82-ab19-8554d50b1e36",
+                "asset": "67",
+                "info": {
+                  "editorName": "gryTie",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "50dabc30-ac23-42f8-845a-21d42bc91d28",
+                "asset": "68",
+                "info": {
+                  "editorName": "hufTie",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "d5be0dda-4054-43a2-84a0-7f2d750c68c5",
+                "asset": "69",
+                "info": {
+                  "editorName": "necklace",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "15c39183-169e-492a-adaa-37b08d6fbdec",
+                "asset": "70",
+                "info": {
+                  "editorName": "ravTie",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "4d919473-4b02-4696-aa28-2084e6a9a170",
+                "asset": "71",
+                "info": {
+                  "editorName": "slyTie",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "7a903ccf-9559-4253-aebf-744f325abc92",
+          "info": {
+            "editorName": "eye",
+            "setAll": [],
+            "children": [
+              {
+                "type": "spritesheet",
+                "id": "6dfdb734-d86a-4c67-b524-cdaaea1b7030",
+                "asset": "72",
+                "info": {
+                  "editorName": "blueSunglasses",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "91146668-9c64-44db-97f8-022fb37c23f7",
+                "asset": "73",
+                "info": {
+                  "editorName": "monocole",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "c95224d1-e329-41bb-b459-c9c8a89450aa",
+                "asset": "74",
+                "info": {
+                  "editorName": "redGlasses",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "6e7c9fcd-1135-4b83-a746-2fe1a2c40a4a",
+                "asset": "75",
+                "info": {
+                  "editorName": "blackSunglasses",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "03c41f01-5d65-4c1e-a0d7-a18545ea039e",
+                "asset": "76",
+                "info": {
+                  "editorName": "pinkGlasses",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "f1fadce1-d204-4f7e-b00e-da2e1a1e3969",
+                "asset": "77",
+                "info": {
+                  "editorName": "hpGlasses",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "292caa71-080e-401a-a201-ec8135cc8a31",
+          "info": {
+            "editorName": "nose",
+            "setAll": [],
+            "children": [
+              {
+                "type": "spritesheet",
+                "id": "b4ae8979-b05a-4436-994d-c229bcc01c94",
+                "asset": "78",
+                "info": {
+                  "editorName": "clownNose",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "f6d056fe-930d-4b3b-a905-736921094c49",
+                "asset": "79",
+                "info": {
+                  "editorName": "moustache",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "dbc0a514-a583-4bb5-896e-ca7e5def670a",
+          "info": {
+            "editorName": "head",
+            "setAll": [],
+            "children": [
+              {
+                "type": "spritesheet",
+                "id": "370f09a9-7f5c-4ac4-a751-50ef5ed9f419",
+                "asset": "80",
+                "info": {
+                  "editorName": "bowlerHat",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "912e752c-9d0a-4c03-9bb0-8b6836d97b3c",
+                "asset": "81",
+                "info": {
+                  "editorName": "cowboyHat",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "aad08ab4-245c-4b5f-9628-345c6ee61b7d",
+                "asset": "82",
+                "info": {
+                  "editorName": "hardHat",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "b812dc28-8deb-4170-97e2-ce997ad54f2c",
+                "asset": "83",
+                "info": {
+                  "editorName": "topHat",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "378b5d5a-63c0-4588-991c-4e295df284b0",
+                "asset": "84",
+                "info": {
+                  "editorName": "crown",
+                  "scale.x": 1.2,
+                  "scale.y": 1.2,
+                  "alpha": 0
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "background"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "upDown"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "animals",
+      "sprite": "0"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blackBoot"
+    },
+    "4": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blackGlasses"
+    },
+    "5": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blackShoe"
+    },
+    "6": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blueGlasses"
+    },
+    "7": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blueShirt1"
+    },
+    "8": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blueShoe"
+    },
+    "9": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "bowTie1"
+    },
+    "10": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "bowlerHat1"
+    },
+    "11": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "brownBoot"
+    },
+    "12": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "clownNose1"
+    },
+    "13": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "clownWIg"
+    },
+    "14": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "cowboyHat1"
+    },
+    "15": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "crown1"
+    },
+    "16": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "elephant"
+    },
+    "17": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "giraffe"
+    },
+    "18": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "greenShirt1"
+    },
+    "19": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "greenShoe"
+    },
+    "20": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "gryTie1"
+    },
+    "21": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "hardHat1"
+    },
+    "22": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "highHeel"
+    },
+    "23": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "hpGlasses1"
+    },
+    "24": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "hufTie1"
+    },
+    "25": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "lion"
+    },
+    "26": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "monocle"
+    },
+    "27": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "moustache1"
+    },
+    "28": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "necklace1"
+    },
+    "29": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "octopus"
+    },
+    "30": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "orangeShirt1"
+    },
+    "31": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "owl"
+    },
+    "32": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "panda"
+    },
+    "33": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "pinkBoot"
+    },
+    "34": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "pinkGlasses1"
+    },
+    "35": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "pinkShirt1"
+    },
+    "36": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "pinkShoe"
+    },
+    "37": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "purpleShirt1"
+    },
+    "38": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "ravTie1"
+    },
+    "39": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "redGlasses1"
+    },
+    "40": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "redShirt1"
+    },
+    "41": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "sheep"
+    },
+    "42": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "slyTie1"
+    },
+    "43": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "topHat1"
+    },
+    "44": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "whiteShirt1"
+    },
+    "45": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "yellowBoot"
+    },
+    "46": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "yellowShirt1"
+    },
+    "47": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "zebra"
+    },
+    "48": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blackBoots",
+      "sprite": "0"
+    },
+    "49": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blackShoes",
+      "sprite": "0"
+    },
+    "50": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blueShoes",
+      "sprite": "0"
+    },
+    "51": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "brownBoots",
+      "sprite": "0"
+    },
+    "52": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "greenShoes",
+      "sprite": "0"
+    },
+    "53": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "highHeels",
+      "sprite": "0"
+    },
+    "54": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "pinkBoots",
+      "sprite": "0"
+    },
+    "55": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "pinkShoes",
+      "sprite": "0"
+    },
+    "56": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "yellowBoots",
+      "sprite": "0"
+    },
+    "57": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blueShirt",
+      "sprite": "0"
+    },
+    "58": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "greenShirt",
+      "sprite": "0"
+    },
+    "59": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "orangeShirt",
+      "sprite": "0"
+    },
+    "60": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "pinkShirt",
+      "sprite": "0"
+    },
+    "61": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "purpleShirt",
+      "sprite": "0"
+    },
+    "62": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "redShirt",
+      "sprite": "0"
+    },
+    "63": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "whiteShirt",
+      "sprite": "0"
+    },
+    "64": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "yellowShirt",
+      "sprite": "0"
+    },
+    "65": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blackTie",
+      "sprite": "0"
+    },
+    "66": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "bowTie",
+      "sprite": "0"
+    },
+    "67": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "gryTie",
+      "sprite": "0"
+    },
+    "68": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "hufTie",
+      "sprite": "0"
+    },
+    "69": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "necklace",
+      "sprite": "0"
+    },
+    "70": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "ravTie",
+      "sprite": "0"
+    },
+    "71": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "slyTie",
+      "sprite": "0"
+    },
+    "72": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blueSunglasses",
+      "sprite": "0"
+    },
+    "73": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "monocole",
+      "sprite": "0"
+    },
+    "74": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "redGlasses",
+      "sprite": "0"
+    },
+    "75": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "blackSunglasses",
+      "sprite": "0"
+    },
+    "76": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "pinkGlasses",
+      "sprite": "0"
+    },
+    "77": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "hpGlasses",
+      "sprite": "0"
+    },
+    "78": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "clownNose",
+      "sprite": "0"
+    },
+    "79": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "moustache",
+      "sprite": "0"
+    },
+    "80": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "bowlerHat",
+      "sprite": "0"
+    },
+    "81": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "cowboyHat",
+      "sprite": "0"
+    },
+    "82": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "hardHat",
+      "sprite": "0"
+    },
+    "83": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "topHat",
+      "sprite": "0"
+    },
+    "84": {
+      "file": "WebContent/assets/pack.json",
+      "section": "main",
+      "asset": "crown",
+      "sprite": "0"
+    }
+  },
+  "prefab-table": {}
+}
