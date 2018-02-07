@@ -23,7 +23,8 @@ PlayScreen.prototype.init = function ()
 
 PlayScreen.prototype.preload = function ()
 {
-	this.load.pack('PlayScreen', 'http://localhost:1337/sheepgame/assets/pack.json');
+	//this.load.pack('PlayScreen', 'http://localhost:1337/sheepgame/assets/pack.json');
+	this.load.pack('PlayScreen', 'assets/pack.json');
 
 	// Set up pens array + fill with blanks
 	pens = new Array();
@@ -587,69 +588,18 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 };
 
 // Record statistical data from game
-PlayScreen.prototype.recordData = function()
+PlayScreen.prototype.recordData = function() 
 {
-	// Calculate game duration
-    var time = new Date();
-    var gameEndTime = time.toUTCString();
-	var duration = gameStartTime - gameEndTime;
-	var earnedCoins = score;
-	var totalCoins = earnedCoins + startingCoins;
-
-
-	// Prep + load data
-	//var formData = new FormData();
-	//formData.append("gameName", "Lion");
-	//formData.append("score", score);
-	//formData.append("duration", duration);
-	//formData.append("screenPresses", clickHistory);
-	//formData.append("wordResults", wordHistory);
-
-	var data = {
-        'gameName': "Sheep",
-        'score': score,
-        'coins': totalCoins,
-        'duration': duration,
-        'screenPresses': clickHistory,
-        'wordResults': wordHistory
-	};
-
-
-
-
-	// GET
-	$.ajax(
-	{
-		type: "GET",
-	  	url: "http://localhost:1982/server.asp",
-	  	data: data,
-	  	success: function(resp)
-		{
-	  		console.log("Woo ");//+resp);
-
-	  		//this.printReturn(resp);
-	    	return resp;
-	  	},
-	  	error: function()
-	  	{
-			console.log("Boo");
-	  	}
-	});
+	// Save gameStartTime
+	// Save score
+	// Save playerHealth
+	// Save opponentHealth
+	// Save wordHistory
+	// Save clickHistory 
 };
-
-
-// Game has finished, move to finish state
-PlayScreen.prototype.printReturn = function(data)
-{
-	console.log(data);
-};
-
-
-
 
 // Game has finished, move to finish state
 PlayScreen.prototype.endGame = function()
 {
-	console.log('finish');
 	this.state.start('finish');
 };

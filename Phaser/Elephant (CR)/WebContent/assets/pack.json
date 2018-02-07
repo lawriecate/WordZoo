@@ -20,8 +20,14 @@
     },
     {
       "type": "image",
-      "key": "Empty",
-      "url": "assets/preloader.gif",
+      "key": "BackButton",
+      "url": "assets/backButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ButtonBackground",
+      "url": "assets/buttonBackground.png",
       "overwrite": false
     }
   ],
@@ -68,12 +74,6 @@
     },
     {
       "type": "image",
-      "key": "Unlucky",
-      "url": "assets/unluckyText.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
       "key": "PlayAgain",
       "url": "assets/playAgainButton.png",
       "overwrite": false
@@ -81,7 +81,13 @@
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "assets/moreGamesButton.png",
+      "url": "assets/homeButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "GameOver",
+      "url": "assets/gameOverLayOver.png",
       "overwrite": false
     }
   ],
@@ -129,14 +135,18 @@
       "overwrite": false
     },
     {
-      "type": "image",
+      "type": "spritesheet",
       "key": "preloader",
-      "url": "assets/preloader.gif",
-      "overwrite": false
+      "url": "assets/loading.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
     }
   ],
   "meta": {
-    "generated": "1517488819024",
+    "generated": "1518010065261",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

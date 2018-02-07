@@ -5,8 +5,6 @@ var octopus = octopus|| {};
 // Words
 var words = ["Apple", "Bear", "Bird", "Boat", "Book", "Car", "Cheese", "Cone", "Dog", "Hat"];
 
-
-
 //Game assets
 var game;
 var assets;
@@ -32,6 +30,12 @@ var scoreText;
 var remainingItems;
 
 
+// Text Style
+var biggerStyle = {font: "bold 120px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+
+
+
+
 
 window.onload = function()
 {
@@ -46,8 +50,8 @@ window.onload = function()
 			game.state.add('finish', FinishScreen);
 
 			// Show loading screen
-			game.state.start('loading');
-
+			game.state.start('start');
+/*
 	$.get('http://localhost:1337/student/testdata', function(data)
 	{
 		//console.log("GET" + data);
@@ -69,5 +73,5 @@ window.onload = function()
 
 		// Start game
 		game.state.start('start');
-	});
+	});*/
 };

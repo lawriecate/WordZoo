@@ -18,32 +18,44 @@ StartScreen.prototype.init = function ()
 
 StartScreen.prototype.preload = function ()
 {
-	this.load.pack('startScreen', 'http://localhost:1337/sheepgame/assets/pack.json');	
+	//this.load.pack('startScreen', 'http://localhost:1337/sheepgame/assets/pack.json');	
+	this.load.pack('startScreen', 'assets/pack.json');	
 };
 
-StartScreen.prototype.create = function ()
+StartScreen.prototype.create = function () 
 {
 	// Add background
-	var _background = this.add.tileSprite(0, 0, 1920, 1080, 'background', null);
+	var _background = this.add.sprite(0, 0, 'background', null);
+	_background.scale.setTo(1, 1.16);
+
+	// Add back button
+	var _buttonBackground = this.add.sprite(0, 733, 'ButtonBackground', null);
+
+	// Add back button
+	var _backButton = this.add.button(22, 912, 'BackButton', this.onClickBack, this, null, null, null, null);
 
 	// Add play button
-	var _playButton = this.add.button(160, 480, 'PlayButton', this.onClickPlay, this, null, null, null, null);
-	_playButton.scale.setTo(1.5, 1.5);
-
+	var _playButton = this.add.button(616, 780, 'PlayButton', this.onClickPlay, this, null, null, null, null);
+	
 	// Add rules button
-	var _rulesButton = this.add.button(160, 672, 'RulesButton', this.onClickRules, this, null, null, null, null);
-	_rulesButton.scale.setTo(1.5, 1.5);
+	var _rulesButton = this.add.button(1332, 912, 'RulesButton', this.onClickRules, this, null, null, null, null);
 };
 
 
+// on click back button, 
+StartScreen.prototype.onClickPlay = function() 
+{
+	// go back
+}
+
 // on click play button, proceed to play screen
-StartScreen.prototype.onClickPlay = function()
+StartScreen.prototype.onClickPlay = function() 
 {
 	this.state.start('play');
 };
 
 //on click rules button, proceed to rules screen
-StartScreen.prototype.onClickRules = function()
+StartScreen.prototype.onClickRules = function() 
 {
 	this.state.start('rules');
 };

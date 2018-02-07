@@ -393,6 +393,13 @@ function increaseScore()
 function decreaseScore()
 {
 	score -= 5;
+	
+	// Lower limit on score
+	if(score < 0)
+	{
+		score = 0;
+	}
+
 	scoreText.text = "Score: " + score;
 	//TODO -5 animation
 }

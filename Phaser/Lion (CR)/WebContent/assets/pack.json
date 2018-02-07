@@ -9,19 +9,35 @@
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "assets/1 StartScreen/play.png",
+      "url": "assets/1 StartScreen/playButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "assets/1 StartScreen/rules.png",
+      "url": "assets/1 StartScreen/rulesButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "preloader",
+      "url": "assets/1 StartScreen/preloader.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "BackButton",
+      "url": "assets/1 StartScreen/backButton.png",
       "overwrite": false
     },
     {
       "type": "image",
-      "key": "preloader",
-      "url": "assets/1 StartScreen/preloader.gif",
+      "key": "ButtonBackground",
+      "url": "assets/1 StartScreen/buttonBackground.png",
       "overwrite": false
     }
   ],
@@ -110,14 +126,8 @@
   "FinishScreen": [
     {
       "type": "image",
-      "key": "FinishBackgroun",
+      "key": "FinishBackground",
       "url": "assets/4 EndScreen/endBackGround.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Unlucky",
-      "url": "assets/4 EndScreen/unlucky.png",
       "overwrite": false
     },
     {
@@ -130,6 +140,12 @@
       "type": "image",
       "key": "MoreGames",
       "url": "assets/4 EndScreen/moreGames.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "GameOver",
+      "url": "assets/4 EndScreen/gameOver.png",
       "overwrite": false
     }
   ],
@@ -214,7 +230,7 @@
     }
   ],
   "meta": {
-    "generated": "1517489794468",
+    "generated": "1518011874375",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

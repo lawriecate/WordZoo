@@ -22,39 +22,29 @@ FinishScreen.prototype.init = function ()
 
 FinishScreen.prototype.preload = function ()
 {
-	this.load.pack('FinishScreen', 'http://localhost:1337/sheepgame/assets/pack.json');	
+	//this.load.pack('FinishScreen', 'http://localhost:1337/sheepgame/assets/pack.json');	
+	this.load.pack('FinishScreen', 'assets/pack.json');	
 };
 
-FinishScreen.prototype.create = function ()
+FinishScreen.prototype.create = function () 
 {
 	// Add background
-	var _FinishBackgroun = this.add.sprite(-1, -1, 'FinishBackgroun');
+	var _FinishBackground = this.add.sprite(0, 0, 'FinishBackground');
+	_FinishBackground.scale.setTo(1.5, 1.50);
 
-	// *** Change text? ***
-	// Add 'unlucky text'
-	var _Unlucky = this.add.sprite(576, 96, 'Unlucky');
-	_Unlucky.scale.setTo(1.5, 1.5);
-
-
-	// Add score + score text
-	var _Score = this.add.sprite(32, 20, 'score_background');
-	_Score.scale.setTo(2, 1.5);
-	scoreText = this.add.text(90, 50, "Score: "+score, medStyle);
+	// Add gameOver overlay
+	var _GameOver = this.add.sprite(296, 58, 'GameOver');
+	
+	// Add score
+	scoreText = this.add.text(800, 520, score, biggerStyle);
+	scoreText.anchor.setTo(0.5, 0.5);
 	scoreText.addColor('#FF9933', 0);
-
-
-
-	// Show earned coins + total coins
-
-
-
+	
 	// Play again button
-	var _PlayAgain = this.add.button(672, 384, 'PlayAgain', this.playAgain, this, null, null, null, null);
-	_PlayAgain.scale.setTo(1.5, 1.5);
-
+	var _PlayAgain = this.add.button(335, 839, 'PlayAgain', this.playAgain, this, null, null, null, null);
+	
 	// Other games button
-	var _MoreGames = this.add.button(672, 576, 'MoreGames', this.moreGames, this, null, null, null, null);
-	_MoreGames.scale.setTo(1.5, 1.5);
+	var _MoreGames = this.add.button(1019, 839, 'MoreGames', this.moreGames, this, null, null, null, null);
 };
 
 

@@ -96,35 +96,33 @@
       "spacing": 0
     },
     {
-      "type": "image",
+      "type": "spritesheet",
       "key": "preloader",
-      "url": "assets/preloader.gif",
-      "overwrite": false
+      "url": "assets/preloader.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
     }
   ],
   "Finish": [
     {
       "type": "image",
-      "key": "FinishBackgroun",
+      "key": "FinishBackground",
       "url": "assets/endBackGround.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayAgain",
-      "url": "assets/playAgain.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Unlucky",
-      "url": "assets/unlucky.png",
+      "url": "assets/playAgainButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "assets/moreGames.png",
+      "url": "assets/homeButton.png",
       "overwrite": false
     },
     {
@@ -132,44 +130,54 @@
       "key": "ScoreBackground",
       "url": "assets/score_background.png",
       "overwrite": false
-    }
-  ],
-  "Rules": [
-    {
-      "type": "image",
-      "key": "rulesMenu",
-      "url": "assets/rulesMenu.png",
-      "overwrite": false
     },
     {
       "type": "image",
-      "key": "okButton",
-      "url": "assets/ok.png",
+      "key": "GameOver",
+      "url": "assets/gameOver.png",
       "overwrite": false
     }
   ],
+  "Rules": [{
+    "type": "image",
+    "key": "okButton",
+    "url": "assets/ok.png",
+    "overwrite": false
+  }],
   "Start": [
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "assets/play.png",
+      "url": "assets/playButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "assets/rules.png",
+      "url": "assets/rulesButton.png",
       "overwrite": false
     },
     {
       "type": "image",
-      "key": "background",
+      "key": "mainBackground",
       "url": "assets/MainMenu.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "BackButton",
+      "url": "assets/backButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ButtonBackground",
+      "url": "assets/buttonBackground.png",
       "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1517497114697",
+    "generated": "1518030360825",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

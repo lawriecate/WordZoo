@@ -956,6 +956,7 @@ PlayScreen.prototype.genIncorrect = function (preSetNum)
 			var positionIndex = Math.floor((Math.random() * correctWord.length) + 0);
 		
 			// Random index of letters array
+			var letters = ['a','e','i','o','u'];
 			var letterIndex = Math.floor(Math.random() * letters.length);
 
 			// if too high, try again

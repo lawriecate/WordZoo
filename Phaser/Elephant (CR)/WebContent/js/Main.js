@@ -52,7 +52,8 @@
 	// Text styles
 	var medStyle = {font: "bold 50px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	var bigStyle = {font: "bold 80px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-	
+	var biggerStyle = {font: "bold 120px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+
 	
 window.onload = function()
 {
@@ -67,8 +68,8 @@ window.onload = function()
 			game.state.add('finish', FinishScreen);
 
 			// Show loading screen
-			game.state.start('loading');
-
+			game.state.start('start');																// ******* CHANGED FOR TESTING *******
+/*
 	$.get('http://localhost:1337/student/testdata', function(data)
 	{
 		//console.log("GET" + data);
@@ -90,5 +91,5 @@ window.onload = function()
 
 		// Start game
 		game.state.start('start');
-	});
+	});*/
 };

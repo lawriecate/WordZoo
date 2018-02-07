@@ -17,6 +17,15 @@ var numClickHistory;
 var startTime;
 var gameStartTime;
 
+// Health
+var startingHealth = 5;
+var playerHealth;
+var opponentHealth;
+
+
+// Text style
+var biggerStyle = {font: "bold 120px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+
 
 
 window.onload = function()
@@ -32,8 +41,8 @@ window.onload = function()
 			game.state.add('finish', FinishScreen);
 
 			// Show loading screen
-			game.state.start('loading');
-
+			game.state.start('start');
+/*
 	$.get('http://localhost:1337/student/testdata', function(data)
 	{
 		//console.log("GET" + data);
@@ -55,5 +64,5 @@ window.onload = function()
 
 		// Start game
 		game.state.start('start');
-	});
+	});*/
 };

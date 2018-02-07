@@ -29,20 +29,22 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	// 	this.load.pack('Main', 'assets/pack.json');
-	this.load.pack('startScreen', 'http://localhost:1337/octopusgame/assets/pack.json');
+	 this.load.pack('startScreen', 'assets/pack.json');
+	//this.load.pack('startScreen', 'http://localhost:1337/octopusgame/assets/pack.json');
 };
 
 LoadingScreen.prototype.create = function ()
 {
 	var _background = this.add.sprite(0, 0, 'background');
-	_background.scale.setTo(1.5, 1.5);
 
-	_preloader = this.add.sprite(704, 864, 'preloader');
-	_preloader.scale.setTo(2.5, 2.5);
+	// preloader + animation
+	var _preloader = this.game.add.sprite(965,880,'preloader',0);
+	_preloader.anchor.setTo(0.5, 0.5);
 
-	//_timeoutMessage = this.add.sprite(500, 500, 'timeoutMessage');
-	//_timeoutMessage.visible = false;
+	// preloader animation
+ 	var _preloaderAni = _preloader.animations.add('preloader',
+ 		[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28],30,true);
+	_preloaderAni.play();
 
 
 	// Time (record timeout)

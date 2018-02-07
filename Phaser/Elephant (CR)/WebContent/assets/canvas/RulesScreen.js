@@ -95,13 +95,7 @@ RulesScreen.prototype.create = function ()
 	handClick = hand.animations.add('Red', [0,1,2,3,4,5]);
 
 
-/*
-    //If user closes window, score is still recorded
-    window.onbeforeunload = function() 
-    {
-        // Record data
-    }
-*/
+
     // Start game
     livesLeft = startingLives;
     score = 0;

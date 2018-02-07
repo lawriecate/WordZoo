@@ -20,8 +20,24 @@
     },
     {
       "type": "image",
+      "key": "BackButton",
+      "url": "assets/1 StartScreen/back.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
       "key": "preloader",
-      "url": "assets/1 StartScreen/preloader.gif",
+      "url": "assets/1 StartScreen/preloader.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "ButtonBackground",
+      "url": "assets/1 StartScreen/buttonBackground.png",
       "overwrite": false
     }
   ],
@@ -104,26 +120,26 @@
   "FinishScreen": [
     {
       "type": "image",
-      "key": "FinishBackgroun",
+      "key": "FinishBackground",
       "url": "assets/4 EndScreen/endBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
-      "key": "Unlucky",
-      "url": "assets/4 EndScreen/unlucky.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
       "key": "PlayAgain",
-      "url": "assets/4 EndScreen/playAgain.png",
+      "url": "assets/4 EndScreen/playAgainButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "assets/4 EndScreen/moreGames.png",
+      "url": "assets/4 EndScreen/homeButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "GameOver",
+      "url": "assets/4 EndScreen/gameOver.png",
       "overwrite": false
     }
   ],
@@ -200,7 +216,7 @@
     }
   ],
   "meta": {
-    "generated": "1517489444183",
+    "generated": "1518010453548",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

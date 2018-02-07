@@ -49,9 +49,6 @@ var previousOpponentSpell;
 var highLightCircle;
 
 //Player Health
-var startingHealth = 5;
-var playerHealth;
-var opponentHealth;
 var playerHealthText;
 var opponentHealthText;
 
@@ -434,7 +431,7 @@ function addLetter()
 
 
 
-	console.log('enxpand');
+	console.log('expand');
 	game.world.bringToTop(this.button);
 
 

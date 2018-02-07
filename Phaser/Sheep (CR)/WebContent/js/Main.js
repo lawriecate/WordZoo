@@ -1,11 +1,6 @@
 //global variables
 var sheep = sheep|| {};
 
-// --------------------------------------------
-// *** To be pulled from server not static ***
-// --------------------------------------------
-
-
 
 //word groups
 var groupWords = 	[["A1","A2","A3","A4","A5","A6","A7","A8"],
@@ -81,7 +76,7 @@ var livesBox;
 
 // time
 var timeLeft;
-var startingTime = 5;
+var startingTime = 30;
 var timeText = "";
 
 // timer
@@ -91,6 +86,8 @@ var timer;
 var smallStyle = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 var medStyle = {font: "bold 45px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 var bigStyle = {font: "bold 100px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+var biggerStyle = {font: "bold 120px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+
 
 
 window.onload = function()
@@ -106,8 +103,8 @@ window.onload = function()
 			game.state.add('finish', FinishScreen);
 
 			// Show loading screen
-			game.state.start('loading');
-
+			game.state.start('start');
+/*
 	$.get('http://localhost:1337/student/testdata', function(data)
 	{
 		//console.log("GET" + data);
@@ -129,5 +126,5 @@ window.onload = function()
 
 		// Start game
 		game.state.start('start');
-	});
+	});*/
 };

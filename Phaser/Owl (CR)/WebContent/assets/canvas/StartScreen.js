@@ -24,23 +24,33 @@ StartScreen.prototype.preload = function ()
 StartScreen.prototype.create = function () 
 {
 	// Add background
-	var _background = this.add.tileSprite(-2, -2, 1280, 720, 'background', null);
-	_background.scale.setTo(1.51, 1.51);
+	var _background = this.add.sprite(0, 0, 'mainBackground', null);
+	_background.scale.setTo(1, 1.16);
+
+	// Add back button
+	var _buttonBackground = this.add.sprite(0, 733, 'ButtonBackground', null);
+
+	// Add back button
+	var _backButton = this.add.button(22, 912, 'BackButton', this.onClickBack, this, null, null, null, null);
 
 	// Add play button
-	var _playButton = this.add.button(160, 480, 'PlayButton', this.onClickPlay, this, null, null, null, null);
-	_playButton.scale.setTo(1.5, 1.5);
+	var _playButton = this.add.button(616, 780, 'PlayButton', this.onClickPlay, this, null, null, null, null);
 	
 	// Add rules button
-	var _rulesButton = this.add.button(160, 672, 'RulesButton', this.onClickRules, this, null, null, null, null);
-	_rulesButton.scale.setTo(1.5, 1.5);
+	var _rulesButton = this.add.button(1332, 912, 'RulesButton', this.onClickRules, this, null, null, null, null);
 };
 
+
+// on click back button, 
+StartScreen.prototype.onClickPlay = function() 
+{
+	// go back
+}
 
 // on click play button, proceed to play screen
 StartScreen.prototype.onClickPlay = function() 
 {
-	this.state.start('level');
+	this.state.start('play');
 };
 
 //on click rules button, proceed to rules screen

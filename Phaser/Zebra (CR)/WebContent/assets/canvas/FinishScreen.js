@@ -28,28 +28,22 @@ FinishScreen.prototype.preload = function ()
 FinishScreen.prototype.create = function () 
 {
 	// Add background
-	var _FinishBackgroun = this.add.sprite(-1, -1, 'FinishBackgroun');
-	_FinishBackgroun.scale.setTo(1.51, 1.51);
+	var _FinishBackground = this.add.sprite(0, 0, 'FinishBackground');
+	_FinishBackground.scale.setTo(1.5, 1.50);
 
-	// *** Change text? ***
-	// Add 'unlucky text'
-	var _Unlucky = this.add.sprite(576, 96, 'Unlucky');
-	_Unlucky.scale.setTo(1.5, 1.5);
+	// Add gameOver overlay
+	var _GameOver = this.add.sprite(296, 58, 'GameOver');
 	
-	
-	// Add score + score text
-	var _Score = this.add.sprite(32, 32, 'ScoreBackground');
-	_Score.scale.setTo(1.5, 1.5);
-	scoreText = this.add.text(90, 75, "Score: "+score, smallStyle);
+	// Add score
+	scoreText = this.add.text(800, 520, score, biggerStyle);
+	scoreText.anchor.setTo(0.5, 0.5);
 	scoreText.addColor('#FF9933', 0);
 	
 	// Play again button
-	var _PlayAgain = this.add.button(672, 384, 'PlayAgain', this.playAgain, this, null, null, null, null);
-	_PlayAgain.scale.setTo(1.5, 1.5);
+	var _PlayAgain = this.add.button(335, 839, 'PlayAgain', this.playAgain, this, null, null, null, null);
 	
 	// Other games button
-	var _MoreGames = this.add.button(672, 576, 'MoreGames', this.moreGames, this, null, null, null, null);
-	_MoreGames.scale.setTo(1.5, 1.5);
+	var _MoreGames = this.add.button(1019, 839, 'MoreGames', this.moreGames, this, null, null, null, null);
 };
 
 
