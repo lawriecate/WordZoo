@@ -1,9 +1,7 @@
 	//global variables
 	var elephant = elephant|| {}; 
 
-	// --------------------------------------------
-	// *** To be pulled from server not static ***
-	// --------------------------------------------
+
 	//word bank
 	var matchingWords = [['Apple','Apple'],['Bear','Bear'],['Bird','Bird'],['Boat','Boat'],['Book','Book'],
 						['Car','Car'],['Cheese','Cheese'],['Cone','Cone'],['Dog','Dog'],['Hat','Hat']];
@@ -12,6 +10,7 @@
 	var easel1, easel2, easel3;
 
 	// correct word vales
+	var matchingRandom; // Correct word index
 	var winningLane;
 	var winnerItemText;
 	var winnerText;
@@ -20,16 +19,14 @@
 	var item2Text;
 
 	// Record word answers
-		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+		// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
 	var wordHistory = [];
-	var numWordHistory;
 	var gameStartTime;
 	var startTime;
 	
 	// Record click history
 		// [(int) x, (int) y, (UTCString) timeStamp]
 	var clickHistory = [];
-	var numClickHistory;
 	var gameStartTime;
 	
 	// score
@@ -42,7 +39,7 @@
 	var livesBox;
 	
 	// time
-	var startingTime = 60;
+	var startingTime = 30;//60;
 	var timeLeft;
 	var timeText = "";
 

@@ -1,35 +1,33 @@
 	//global variables
 	var lion = lion|| {}; 
 
-	// --------------------------------------------
-	// *** To be pulled from server not static ***
-	// --------------------------------------------
 	//word bank
 	var words = 	["Apple","Bear","Car","Day","Eye","Fox",
 	            	"Golf","Hotel","Igloo","Jam","Kite","Lolly",
 	            	"Moose","Nose","Octopus","Pot","Quest","Rice",
 	         		"Seat","Table","Unicorn","Violin","Wax"];
 	
+
 	// Record word answers
-		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+		// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
 	var wordHistory = [];
-	var numWordHistory;
+	var gameStartTime;
+	var startTime;
+	
+	// Record click history
+		// [(int) x, (int) y, (UTCString) timeStamp]
+	var clickHistory = [];
+	var gameStartTime;
+
 
 	// raw text of each button
 	var TLraw;
 	var TRraw;
 	var BLraw;
 	var BRraw;
-
-	
-	// Record click history
-		// [(int) x, (int) y, (UTCString) timeStamp]
-	var clickHistory = [];
-	var numClickHistory;
-	var startTime;
-	var gameStartTime;
 	
 	// correct word
+	var correctWordIndex; 
 	var correctWord;
 	var correctLocation = "";
 	
@@ -38,6 +36,8 @@
 	var scoreText = "";
 	
 	// lives
+	var startingLives = 3;
+	var livesLeft;
 	var livesBox;
 	
 	// time

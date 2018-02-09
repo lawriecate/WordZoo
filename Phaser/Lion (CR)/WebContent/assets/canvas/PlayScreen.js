@@ -1,7 +1,5 @@
 // Global variables
 var lion = lion || {};
-var timeLeft;
-var livesLeft = 3;
 
 
 function PlayScreen() 
@@ -24,7 +22,15 @@ PlayScreen.prototype.init = function ()
 
 PlayScreen.prototype.preload = function () 
 {	
-	this.load.pack('PlayScreen', 'assets/pack.json');	
+	this.load.pack('PlayScreen', 'assets/pack.json');
+
+	// Clear + expand words list
+	wordHistory = new Array ();
+	clickHistory = new Array ();
+	for(var i = 0; i < words.length; i++)
+	{
+		wordHistory[i] = new Array ();
+	}		
 };
 
 PlayScreen.prototype.create = function () 
@@ -162,13 +168,14 @@ PlayScreen.prototype.create = function ()
 	
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
+	livesLeft = startingLives;
 		
 
     //If user closes window, record data
-    window.onbeforeunload = function() 
-    {
-        this.recordData();
-    };
+    //window.onbeforeunload = function() 
+    //{
+    //    this.recordData();
+    //};
     
     // Record screen clicks
     this.game.input.onDown.add(function(touchStart) { 
@@ -185,7 +192,6 @@ PlayScreen.prototype.create = function ()
 	timer = this.time.create(false);
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timer.start();
-	
 
 
 	// Football roll in -> Start
@@ -289,7 +295,8 @@ PlayScreen.prototype.setWords = function ()
 	this.showButtons(true);
 	
 	// get word from word bank at random position
-	correctWord = words[Math.floor(Math.random() * words.length)];
+	correctWordIndex = Math.floor(Math.random() * words.length);
+	correctWord = words[correctWordIndex];
 
 	// Random number between 0 and 3 for position of correct
 	// Set correct word in that position, generate incorrect for others
@@ -440,8 +447,7 @@ PlayScreen.prototype.clickTL = function ()
 	{		
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [TLraw, null, true, finishTime - startTime];	
-		numWordHistory++;
+		wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
 
 		// correct answer, increase score
@@ -458,8 +464,7 @@ PlayScreen.prototype.clickTL = function ()
 	{	
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [correctWord, TLraw, false, finishTime - startTime];		
-		numWordHistory++;
+		wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [TLraw, false, finishTime - startTime];
 
 		// incorrect answer, loose a life
 		livesLeft--;
@@ -486,8 +491,7 @@ PlayScreen.prototype.clickTR = function ()
 	{	
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [TRraw, null, true, finishTime - startTime];		
-		numWordHistory++;
+		wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
 		// correct answer, increase score
 		score++;
@@ -503,8 +507,7 @@ PlayScreen.prototype.clickTR = function ()
 	{
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [correctWord, TRraw, true, finishTime - startTime];		
-		numWordHistory++;
+		wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [TRraw, false, finishTime - startTime];
 
 		// incorrect answer, loose a life
 		livesLeft--;
@@ -531,8 +534,7 @@ PlayScreen.prototype.clickBL = function ()
 	{
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [BLraw, null, true, finishTime - startTime];		
-		numWordHistory++;
+		wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
 		// correct answer, increase score
 		score++;
@@ -548,8 +550,7 @@ PlayScreen.prototype.clickBL = function ()
 	{
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [correctWord, BLraw, true, finishTime - startTime];		
-		numWordHistory++;
+		wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [BLraw, false, finishTime - startTime];
 
 		// incorrect answer, loose a life
 		livesLeft--;
@@ -565,11 +566,6 @@ PlayScreen.prototype.clickBL = function ()
 //onClick bottom right button
 PlayScreen.prototype.clickBR = function ()
 {			
-	// record word answers
-	var finishTime = Math.floor(Date.now());
-	wordHistory[numWordHistory] = [BRraw, null, true, finishTime - startTime];		
-	numWordHistory++;
-
 	// hide all selection buttons
 	this.showButtons(false);
 	
@@ -579,6 +575,10 @@ PlayScreen.prototype.clickBR = function ()
 	// check if answer is correct
 	if(correctLocation == "BR")
 	{	
+		// record word answers
+		var finishTime = Math.floor(Date.now());
+		wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
+
 		// correct answer, increase score
 		score++;
 		
@@ -593,8 +593,7 @@ PlayScreen.prototype.clickBR = function ()
 	{
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [correctWord, BRraw, true, finishTime - startTime];		
-		numWordHistory++;
+		wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [BRraw, false, finishTime - startTime];
 
 		// incorrect answer, loose a life
 		livesLeft--;
@@ -971,7 +970,6 @@ PlayScreen.prototype.genIncorrect = function (preSetNum)
 				+ correctWord.substr((positionIndex + 2), (correctWord.length));
 		}
 
-		console.log(newWord);
 		finished = true;
 	}
 
@@ -1008,7 +1006,7 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 	timeStamp.toUTCString();
 
 	// Add to records
-	clickHistory[numClickHistory++] = [x, y, timeStamp];
+	clickHistory[clickHistory.length] = [x, y, timeStamp];
 };
 
 // Record statistical data from game
@@ -1020,6 +1018,24 @@ PlayScreen.prototype.recordData = function()
 	// Save livesLeft
 	// Save wordHistory
 	// Save clickHistory 
+
+
+	// Test print
+	for(var i=0; i<wordHistory.length; i++)
+	{
+		for(var j=0; j<wordHistory[i].length; j++)
+		{
+			console.log(wordHistory[i][j]);
+		}
+		console.log('\n');
+	}
+
+console.log('\n\n\n');
+
+	for(var i=0; i<clickHistory.length; i++)
+	{
+		console.log(clickHistory[i]);
+	}
 };
 
 

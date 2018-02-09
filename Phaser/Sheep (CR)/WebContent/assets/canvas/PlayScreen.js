@@ -23,14 +23,22 @@ PlayScreen.prototype.init = function ()
 
 PlayScreen.prototype.preload = function ()
 {
-	//this.load.pack('PlayScreen', 'http://localhost:1337/sheepgame/assets/pack.json');
 	this.load.pack('PlayScreen', 'assets/pack.json');
 
 	// Set up pens array + fill with blanks
 	pens = new Array();
-	for(var i = 0; i < 4; i++){
+	for(var i = 0; i < 4; i++)
+	{
 		pens[i] = new Object();
 	}
+
+	// Clear + expand words list
+	wordHistory = new Array ();
+	clickHistory = new Array ();
+	for(var i = 0; i < groupWords.length; i++)
+	{
+		wordHistory[i] = new Array ();
+	}	
 };
 
 
@@ -126,10 +134,10 @@ PlayScreen.prototype.create = function ()
 
 
     //If user closes window, record data
-    window.onbeforeunload = function()
-    {
-        this.recordData();
-    };
+    //window.onbeforeunload = function()
+    //{
+    //    this.recordData();
+    //};
 
     // Record screen clicks
     this.game.input.onDown.add(function(touchStart) {
@@ -167,7 +175,7 @@ PlayScreen.prototype.updateTime = function ()
 	// If no time remaining, game finished
 	if(timeLeft <= 0){
 		this.recordData();
-		//this.endGame();
+		this.endGame();
 	}
 
 	timeText.setText("Time: "+(--timeLeft), true);
@@ -207,7 +215,7 @@ PlayScreen.prototype.dropSheep = function ()
 
 			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctWordB, null, true, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
 			// Increase score
 			score++;
@@ -220,7 +228,7 @@ PlayScreen.prototype.dropSheep = function ()
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctWordB, TLraw, false, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [TLraw, false, finishTime - startTime];
 
 			// Lose a life
 			livesLeft--;
@@ -238,7 +246,7 @@ PlayScreen.prototype.dropSheep = function ()
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctWordB, null, true, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
 			this.addSheepToPen(1);
 
@@ -253,7 +261,7 @@ PlayScreen.prototype.dropSheep = function ()
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctWordB, TRraw, false, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [TRraw, false, finishTime - startTime];
 
 			// Lose a life
 			livesLeft--;
@@ -271,7 +279,7 @@ PlayScreen.prototype.dropSheep = function ()
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctWordB, null, true, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
 			this.addSheepToPen(2);
 
@@ -286,7 +294,7 @@ PlayScreen.prototype.dropSheep = function ()
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctWordB, BLraw, false, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [BLraw, false, finishTime - startTime];
 
 			// Lose a life
 			livesLeft--;
@@ -304,7 +312,7 @@ PlayScreen.prototype.dropSheep = function ()
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctWordB, null, true, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
 			this.addSheepToPen(3);
 
@@ -319,7 +327,7 @@ PlayScreen.prototype.dropSheep = function ()
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctWordB, BRraw, false, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [BRraw, false, finishTime - startTime];
 
 			// Lose a life
 			livesLeft--;
@@ -425,7 +433,8 @@ PlayScreen.prototype.spawnItems = function ()
 	correctPen = Math.floor(Math.random() * 4);
 
 	// random indexs for words
-	correctRow = groupWords[Math.floor(Math.random() * groupWords.length)];
+	correctWordIndex = Math.floor(Math.random() * groupWords.length);
+	correctRow = groupWords[correctWordIndex];
 
 
 	// Get random words to fill incorrect text boxes
@@ -584,7 +593,7 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 	timeStamp.toUTCString();
 
 	// Add to records
-	clickHistory[numClickHistory++] = [x, y, timeStamp];
+	clickHistory[clickHistory.length] = [x, y, timeStamp];
 };
 
 // Record statistical data from game
@@ -596,6 +605,24 @@ PlayScreen.prototype.recordData = function()
 	// Save opponentHealth
 	// Save wordHistory
 	// Save clickHistory 
+
+
+	// Test print
+	for(var i=0; i<wordHistory.length; i++)
+	{
+		for(var j=0; j<wordHistory[i].length; j++)
+		{
+			console.log(wordHistory[i][j]);
+		}
+		console.log('\n');
+	}
+
+console.log('\n\n\n');
+
+	for(var i=0; i<clickHistory.length; i++)
+	{
+		console.log(clickHistory[i]);
+	}
 };
 
 // Game has finished, move to finish state

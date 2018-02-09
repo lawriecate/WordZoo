@@ -14,15 +14,14 @@ var groupWords = 	[["A1","A2","A3","A4","A5","A6","A7","A8"],
 
 
 // Record word answers
-	// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+	// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
 var wordHistory = [];
-var numWordHistory;
+var gameStartTime;
 var startTime;
-
+	
 // Record click history
 	// [(int) x, (int) y, (UTCString) timeStamp]
 var clickHistory = [];
-var numClickHistory;
 var gameStartTime;
 
 // Player coins
@@ -47,6 +46,7 @@ var pens;
 
 
 // Correct values
+var correctWordIndex;
 var correctPen;
 var correctWordA;
 var correctWordB;

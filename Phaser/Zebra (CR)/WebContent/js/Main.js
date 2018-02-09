@@ -10,23 +10,21 @@
 	         		"Pear","Police","Rabbit","Rake","Soap","Squirrel"];
 	
 	// Record word answers
-		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+		// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
 	var wordHistory = [];
-	var numWordHistory;
+	var gameStartTime;
 	var startTime;
+	
+	// Record click history
+		// [(int) x, (int) y, (UTCString) timeStamp]
+	var clickHistory = [];
+	var gameStartTime;
+
 
 	// Record text values
 	var TOPraw;
 	var MIDraw;
 	var BOTraw;
-
-	// Record click history
-		// [(int) x, (int) y, (UTCString) timeStamp]
-	var clickHistory = [];
-	var numClickHistory;
-	var startTime;
-	var gameStartTime;
-
 
 	//zebra walking
 	var background;
@@ -44,6 +42,7 @@
 	var currentLane = 0;
 
 	//Define winner variables
+	var correctWordIndex;
 	var correctLane;
 	var correctName;
 	var correctItemText;

@@ -29,6 +29,14 @@ PlayScreen.prototype.preload = function ()
 	{
 		this.load.image(words[i],'assets/Items/'+words[i]+'.png');
 	}		
+
+	// Clear + expand words list
+	wordHistory = new Array ();
+	clickHistory = new Array ();
+	for(var i = 0; i < words.length; i++)
+	{
+		wordHistory[i] = new Array ();
+	}	
 };
 
 PlayScreen.prototype.create = function () 
@@ -204,7 +212,8 @@ PlayScreen.prototype.spawnItems = function ()
 	correctLane = Math.floor(Math.random() * 3);
 
 	// random indexs for words
-	correctName = words[Math.floor(Math.random() * words.length)];
+	correctWordIndex = Math.floor(Math.random() * words.length);
+	correctName = words[correctWordIndex];
 	var incorrectItem1 = words[Math.floor(Math.random() * words.length)];
 	var incorrectItem2 = words[Math.floor(Math.random() * words.length)];
 
@@ -274,9 +283,9 @@ PlayScreen.prototype.update = function ()
     	// if correct
     	if(correctLane == currentLane)
     	{
-    		// record word answers
+			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctName, null, true, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
     		// increase score + normalSpeed
     		score++;
@@ -294,7 +303,7 @@ PlayScreen.prototype.update = function ()
     	// if incorrect
     	else
     	{
-    		// record word answers
+    		// get incorrect answer
     		var actualWord;
     		if(currentLane == 0)
     		{
@@ -308,8 +317,10 @@ PlayScreen.prototype.update = function ()
     		{
     			actualWord = BOTraw;
     		}
+
+			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory++] = [correctName, actualWord, false, finishTime - startTime];
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [actualWord, false, finishTime - startTime];
 
     		// lose a life
     		livesLeft--;
@@ -357,30 +368,6 @@ PlayScreen.prototype.update = function ()
     this.updateScore();
 }
 
-
-// Record screen clicks
-PlayScreen.prototype.recordScreenPress = function(x, y) 
-{
-	// Get current time
-	var timeStamp = new Date(); 
-	timeStamp.toUTCString();
-
-	// Add to records
-	clickHistory[numClickHistory++] = [x, y, timeStamp];
-};
-
-// Record statistical data from game
-PlayScreen.prototype.recordData = function() 
-{
-	// Save gameStartTime
-	// Save score
-	// Save timeLeft
-	// Save livesLeft
-	// Save wordHistory
-	// Save clickHistory 
-};
-
-
 // Check how many lives remaining, show correct frame
 PlayScreen.prototype.checkLives = function() 
 {
@@ -400,6 +387,45 @@ PlayScreen.prototype.checkLives = function()
 	}
 };
 
+// Record screen clicks
+PlayScreen.prototype.recordScreenPress = function(x, y) 
+{
+	// Get current time
+	var timeStamp = new Date(); 
+	timeStamp.toUTCString();
+
+	// Add to records
+	clickHistory[clickHistory.length] = [x, y, timeStamp];
+};
+
+// Record statistical data from game
+PlayScreen.prototype.recordData = function() 
+{
+	// Save gameStartTime
+	// Save score
+	// Save timeLeft
+	// Save livesLeft
+	// Save wordHistory
+	// Save clickHistory 
+
+
+	// Test print
+	for(var i=0; i<wordHistory.length; i++)
+	{
+		for(var j=0; j<wordHistory[i].length; j++)
+		{
+			console.log(wordHistory[i][j]);
+		}
+		console.log('\n');
+	}
+
+console.log('\n\n\n');
+
+	for(var i=0; i<clickHistory.length; i++)
+	{
+		console.log(clickHistory[i]);
+	}
+};
 
 // Game has finished, move to finish state
 PlayScreen.prototype.endGame = function() 

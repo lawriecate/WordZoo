@@ -9,16 +9,14 @@
 							
 	
 	// Record word answers
-		// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+		// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
 	var wordHistory = [];
-	var numWordHistory;
+	var gameStartTime;
 	var startTime;
-
+	
 	// Record click history
 		// [(int) x, (int) y, (UTCString) timeStamp]
 	var clickHistory = [];
-	var numClickHistory;
-	var startTime;
 	var gameStartTime;
 	
 	// input lock
@@ -64,6 +62,7 @@
 
 	//Define winner variables
 	var correctLane = [0, 0, 0];
+	var correctLaneIndex = [0, 0, 0];
 	var currentLane;
 
 	var wordsOnStones = [['0,0', '0,1', '0,2', '0,3'],['1,0', '1,1', '1,2', '1,3'],['2,0', '2,1', '2,2', '0,3']];

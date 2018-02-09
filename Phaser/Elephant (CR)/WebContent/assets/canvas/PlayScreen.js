@@ -30,6 +30,14 @@ PlayScreen.prototype.preload = function ()
 		var temp = matchingWords[i];
 		this.load.image(temp[0],'assets/Items/'+temp[0]+'.png');
 	}	
+
+	// Clear + expand words list
+	wordHistory = new Array ();
+	clickHistory = new Array ();
+	for(var i = 0; i < matchingWords.length; i++)
+	{
+		wordHistory[i] = new Array ();
+	}	
 };
 
 PlayScreen.prototype.create = function () 
@@ -72,10 +80,10 @@ PlayScreen.prototype.create = function ()
 
 
     //If user closes window, record data
-    window.onbeforeunload = function() 
-    {
-        this.recordData();
-    };
+    //window.onbeforeunload = function() 
+    //{
+    //    this.recordData();
+    //};
     
     // Record screen clicks
     this.game.input.onDown.add(function(touchStart) { 
@@ -89,8 +97,6 @@ PlayScreen.prototype.create = function ()
     // Start Game
     livesLeft = startingLives;
     score = 0;
-    numWordHistory = 0;
-    numClickHistory = 0;
 	this.reset();
 	timer.start();
 };
@@ -100,12 +106,12 @@ PlayScreen.prototype.create = function ()
 PlayScreen.prototype.reset = function (clickedLane)
 {	
 	// Get random matching pair
-	var matchingRandom = Math.floor((Math.random() * matchingWords.length) + 0);
+	matchingRandom = Math.floor((Math.random() * matchingWords.length) + 0);
 	var matchingPair = matchingWords[matchingRandom];
 
 	// Get random position to put pair on
-	var position = Math.floor((Math.random() * 3) + 0);
-	
+	winningLane = Math.floor((Math.random() * 3) + 0);
+
 	// Which word to show in text vs show in picture
 	var binary = Math.floor((Math.random() * 1) + 0);
 
@@ -135,11 +141,10 @@ PlayScreen.prototype.reset = function (clickedLane)
 
 
 	// Set pics/text
-	switch(position){
-		case 0: position == 0;
+	switch(winningLane){
+		case 0: winningLane == 0;
 			
 			// Set correct
-			winningLane = 0;
 			if(binary == 0)
 			{
 				winnerItemText.setText(matchingPair[0]);
@@ -160,10 +165,9 @@ PlayScreen.prototype.reset = function (clickedLane)
 			item2Text = RandomB[0];
 			break;
 
-		case 1: position == 1;
+		case 1: winningLane == 1;
 		
 			// Set correct
-			winningLane = 1;
 			if(binary == 0)
 			{
 				winnerItemText.setText(matchingPair[0]);
@@ -184,10 +188,9 @@ PlayScreen.prototype.reset = function (clickedLane)
 			item2Text = RandomB[0];
 			break;
 
-		case 2: position == 2;
+		case 2: winningLane == 2;
 		
 			// Set correct
-			winningLane = 2;
 			if(binary == 0)
 			{
 				winnerItemText.setText(matchingPair[0]);
@@ -254,8 +257,7 @@ PlayScreen.prototype.validate = function (clickedLane)
 
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [winnerText, null, true, finishTime - startTime];
-		numWordHistory++;
+		wordHistory[matchingRandom][wordHistory[matchingRandom].length] = [null, true, finishTime - startTime];
 		
 		// reset
 		this.reset();
@@ -281,9 +283,9 @@ PlayScreen.prototype.validate = function (clickedLane)
 			clickedItemText = item2Text;
 		}
 		
+		// record answer
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [winnerText, clickedItemText, false, finishTime - startTime];		
-		numWordHistory++;
+		wordHistory[matchingRandom][wordHistory[matchingRandom].length] = [clickedItemText, false, finishTime - startTime];
 
 		// reset
 		this.reset();
@@ -298,8 +300,9 @@ PlayScreen.prototype.validate = function (clickedLane)
 PlayScreen.prototype.updateTime = function ()
 {	
 	// If no time remaining, game finished
-	if(timeLeft <= 0){
-		this.recordData();
+	if(timeLeft <= 0)
+	{
+		// Exit
 		this.endGame();
 	}
 	
@@ -322,8 +325,7 @@ PlayScreen.prototype.checkLives = function()
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
 		
-		// Record Data + Exit
-		this.recordData();
+		// Exit
 		this.endGame();
 	}
 	else if(livesLeft == 1)
@@ -345,7 +347,7 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 	timeStamp.toUTCString();
 
 	// Add to records
-	clickHistory[numClickHistory++] = [x, y, timeStamp];
+	clickHistory[clickHistory.length] = [x, y, timeStamp];
 };
 
 // Record statistical data from game
@@ -357,11 +359,36 @@ PlayScreen.prototype.recordData = function()
 	// Save livesLeft
 	// Save wordHistory
 	// Save clickHistory 
+
+
+
+	// Test print
+	for(var i=0; i<wordHistory.length; i++)
+	{
+		for(var j=0; j<wordHistory[i].length; j++)
+		{
+			console.log(wordHistory[i][j]);
+		}
+		console.log('\n');
+	}
+
+console.log('\n\n\n');
+
+	for(var i=0; i<clickHistory.length; i++)
+	{
+		console.log(clickHistory[i]);
+	}
+
+
+
+
+	// End
+	this.state.start('finish');
 };
 
 
-// Game has finished, move to finish state
+// Game has finished, record data + move to finish state
 PlayScreen.prototype.endGame = function() 
 {
-	this.state.start('finish');
+	this.recordData();
 };
