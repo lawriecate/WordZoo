@@ -5,6 +5,24 @@ var octopus = octopus|| {};
 // Words
 var words = ["Apple", "Bear", "Bird", "Boat", "Book", "Car", "Cheese", "Cone", "Dog", "Hat"];
 
+
+
+// Record word answers
+	// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+var wordHistory = [];
+var gameStartTime;
+var startTime;
+	
+// Record click history
+	// [(int) x, (int) y, (UTCString) timeStamp]
+var clickHistory = [];
+var gameStartTime;
+
+// Correct word index
+var correctWordIndex;
+
+
+
 //Game assets
 var game;
 var assets;

@@ -6,16 +6,19 @@ var owl = owl || {};
 var words = ["Apple", "Bear", "Bird", "Boat", "Book", "Car", "Cheese", "Cone", "Dog", "Hat"];
 
 // Record word answers
-	// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+	// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
 var wordHistory = [];
-var numWordHistory;
-
+var gameStartTime;
+var startTime;
+	
 // Record click history
 	// [(int) x, (int) y, (UTCString) timeStamp]
 var clickHistory = [];
-var numClickHistory;
-var startTime;
 var gameStartTime;
+
+// Correct word index
+var correctWordIndex;
+
 
 // Health
 var startingHealth = 5;

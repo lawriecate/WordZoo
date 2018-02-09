@@ -11,20 +11,6 @@ function Level()
 }
 
 
-// Record word answers
-	// [(string) targetWord, (string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
-var wordHistory = [];
-var numWordHistory;
-	
-// Record click history
-	// [(int) x, (int) y, (UTCString) timeStamp]
-var clickHistory = [];
-var numClickHistory;
-var startTime;
-var gameStartTime;
-
-
-
 /** @type Phaser.State */
 var Level_proto = Object.create(Phaser.State.prototype);
 Level.prototype = Level_proto;
@@ -71,6 +57,15 @@ Level.prototype.preload = function ()
 	 * | 8 | 9 |
 	 *
 	 */
+
+
+	 // Clear + expand words list
+	wordHistory = new Array ();
+	clickHistory = new Array ();
+	for(var i = 0; i < words.length; i++)
+	{
+		wordHistory[i] = new Array ();
+	}	
 };
 
 
@@ -270,10 +265,10 @@ Level.prototype.create = function ()
 	
 
     //If user closes window, record data
-    window.onbeforeunload = function() 
-    {
-        this.recordData();
-    };
+    //window.onbeforeunload = function() 
+    //{
+    //    this.recordData();
+    //};
     
     // Record screen clicks
     this.game.input.onDown.add(function(touchStart) { 
@@ -440,8 +435,7 @@ function checkAnswer()
 		{
 			// record word answers
 			var finishTime = Math.floor(Date.now());
-			wordHistory[numWordHistory] = [selectedAnswer, null, true, finishTime - startTime];	
-			numWordHistory++;
+			wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
 			//Strike through
 			strikes[i].position.x = 100;
@@ -459,10 +453,9 @@ function checkAnswer()
 		}
 	}	
 	
-	// record word answers
+	// record answer
 	var finishTime = Math.floor(Date.now());
-	wordHistory[numWordHistory] = [order, selectedAnswer, false, finishTime - startTime];	
-	numWordHistory++;
+	wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [selectedAnswer, false, finishTime - startTime];
 
 	decreaseScore();
 	dragItem.destroy();
@@ -490,11 +483,7 @@ function spawnClock()
  */
 function addFood(x,y,asset)
 {
-console.log("X:"+x+" Y:"+y+" A:"+asset+"     T:"+temp);
-
 	var temp = game.add.sprite(x,y,asset);
-
-console.log("NT:"+temp);
 
 	temp.anchor.setTo(0.5,0.5);
 	temp.scale.set(1.5,1.5);	
@@ -563,6 +552,9 @@ function generateOrder()
 		
 		//Add to the Order
 		order[i] = chosen;
+
+		// Record which is a correct option
+		correctWordIndex = randomChoice
 	}
 	
 	//Print out order
@@ -586,7 +578,7 @@ Level.prototype.recordScreenPress = function(x, y)
 	timeStamp.toUTCString();
 
 	// Add to records
-	clickHistory[numClickHistory++] = [x, y, timeStamp];
+	clickHistory[clickHistory.length] = [x, y, timeStamp];
 };
 
 // Record statistical data from game
@@ -596,6 +588,25 @@ Level.prototype.recordData = function()
 	// Save score
 	// Save wordHistory
 	// Save clickHistory 
+
+
+
+	// Test print
+	for(var i=0; i<wordHistory.length; i++)
+	{
+		for(var j=0; j<wordHistory[i].length; j++)
+		{
+			console.log(wordHistory[i][j]);
+		}
+		console.log('\n');
+	}
+
+console.log('\n\n\n');
+
+	for(var i=0; i<clickHistory.length; i++)
+	{
+		console.log(clickHistory[i]);
+	}
 };
 
 // Game has finished, move to finish state

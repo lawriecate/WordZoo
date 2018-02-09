@@ -84,6 +84,15 @@ Level.prototype.preload = function ()
     this.load.spritesheet('deathExplosion','assets/deathExplosion.png',148.1,187,27);
     this.load.image('highLightCircle','assets/highlightCircle.png');
     this.load.spritesheet('explosion', 'assets/explosionFull.png', 256, 256, 32);
+
+
+    // Clear + expand words list
+	wordHistory = new Array ();
+	clickHistory = new Array ();
+	for(var i = 0; i < words.length; i++)
+	{
+		wordHistory[i] = new Array ();
+	}	
 };
 
 Level.prototype.create = function () 
@@ -428,15 +437,7 @@ function addLetter()
 	}
 
 	//Makes Key expand, When completes, reset's to the original Size
-
-
-
-	console.log('expand');
 	game.world.bringToTop(this.button);
-
-
-
-
 
 
 	var tween1 = game.add.tween(this.button.scale).to({x:2 , y:2},70,"Linear",true);
@@ -485,6 +486,10 @@ function selectInitialSpell(button,selected)
 	lengthOfWord = targetWord.length;
 	clearLetters();
 
+
+	// Record which spell is selected
+	correctWordIndex = selected;
+
 	// Reset word colour
 	for(var i=0; i < lengthOfWord; i++)
 	{		
@@ -500,12 +505,17 @@ function selectSpell()
 	//Animation for selecting button
 	var tween1 = game.add.tween(this.button.scale).to({x:4 , y:4},70,"Linear",true);
 	tween1.onComplete.add(resetButtonSize,{button: this.button});
+	
 	//Change the word to this
 	selectedSpell = assets[this.selected];
 	highLightSpell(this.button);
 	targetWord = "" + assets[this.selected].word;
 	lengthOfWord = targetWord.length;
 	clearLetters();
+
+
+	// Record which spell is selected
+	correctWordIndex = this.selected;
 
 	// Reset word colour
 	for(var i=0; i < lengthOfWord; i++)
@@ -578,8 +588,7 @@ function enterAnswer()
 	{
 		// record word answers
 		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [target, null, true, finishTime - startTime];	
-		numWordHistory++;
+		wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [null, true, finishTime - startTime];
 
 
 		//Blur out the bottoms
@@ -597,10 +606,9 @@ function enterAnswer()
 	} 
 	else 
 	{		
-		// record word answers
-		var finishTime = Math.floor(Date.now());
-		wordHistory[numWordHistory] = [target, answer, false, finishTime - startTime];		
-		numWordHistory++;
+	// record answer
+	var finishTime = Math.floor(Date.now());
+	wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [answer, false, finishTime - startTime];
 
 
 		//Highlight the incorrect letters
@@ -1204,7 +1212,7 @@ Level.prototype.recordScreenPress = function(x, y)
 	timeStamp.toUTCString();
 
 	// Add to records
-	clickHistory[numClickHistory++] = [x, y, timeStamp];
+	clickHistory[clickHistory.length] = [x, y, timeStamp];
 };
 
 // Record statistical data from game
@@ -1216,6 +1224,25 @@ Level.prototype.recordData = function()
 	// Save opponentHealth
 	// Save wordHistory
 	// Save clickHistory 
+
+
+
+	// Test print
+	for(var i=0; i<wordHistory.length; i++)
+	{
+		for(var j=0; j<wordHistory[i].length; j++)
+		{
+			console.log(wordHistory[i][j]);
+		}
+		console.log('\n');
+	}
+
+console.log('\n\n\n');
+
+	for(var i=0; i<clickHistory.length; i++)
+	{
+		console.log(clickHistory[i]);
+	}
 };
 
 
