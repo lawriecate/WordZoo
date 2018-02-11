@@ -1,0 +1,115 @@
+{
+  "startScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayButton",
+      "url": "assets/playButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "HomeButton",
+      "url": "assets/homeButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "BackButton",
+      "url": "assets/backButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ButtonBackground",
+      "url": "assets/buttonBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "score",
+      "url": "assets/score.png",
+      "overwrite": false
+    }
+  ],
+  "PlayScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "score",
+      "url": "assets/score.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Chop",
+      "url": "assets/Items/chop.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Dress",
+      "url": "assets/Items/dress.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pancake",
+      "url": "assets/Items/pancake.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Puzzle",
+      "url": "assets/Items/puzzle.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Weather",
+      "url": "assets/Items/weather.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Yolk",
+      "url": "assets/Items/yolk.png",
+      "overwrite": false
+    }
+  ],
+  "loadingScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/background.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "preloader",
+      "url": "assets/loading.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
+  "meta": {
+    "generated": "1518377236932",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}
