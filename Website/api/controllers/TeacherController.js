@@ -11,7 +11,7 @@ module.exports = {
 			 if (err) {
 				 return res.serverError(err);
 			 }
-			 return res.view('teacher/home.ejs', {'title':'Hello', school: school});
+			 return res.view('teacher/home.ejs', {'title':'Hello', school: school,  layout: 'layout_teacher'});
 
 		 });
 		},
@@ -25,8 +25,8 @@ module.exports = {
 	 				 return res.serverError(err);
 	 			 }
 
-				 sails.log(schoolClass);
-	 			 return res.view('teacher/class.ejs', {'title':schoolClass.name, school: school,schoolClass:schoolClass});
+				// sails.log(schoolClass);
+	 			 return res.view('teacher/class.ejs', {'title':schoolClass.name, school: school,schoolClass:schoolClass,  layout: 'layout_teacher'});
 
 	 		 });
 		 });

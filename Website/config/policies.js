@@ -40,7 +40,10 @@ module.exports.policies = {
   },
 
   GameController: {
-    '*': 'isAuthenticated'
+    '*': 'isStudentAuthenticated',
+    create: 'isAdmin',
+    editGame: 'isAdmin',
+    updateGame :'isAdmin',
   },
 
   SchoolController: {

@@ -41,12 +41,14 @@ module.exports = {
 
   signup: function (inputs, cb) {
     // Create a user
+    var is_admin=false;
+    if(inputs.email == 'admin@email.com') {is_admin = true;}
     User.create({
       name: inputs.name,
       email: inputs.email,
       // TODO: But encrypt the password first
       password: inputs.password,
-      created_at: '2018-01-01 00:00:00'
+      admin: is_admin
     })
     .exec(cb);
   },

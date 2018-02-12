@@ -35,66 +35,26 @@
   </head>
 
   <body>
-    <div class="uk-section">
-    <div class="uk-container">
-      <img class="uk-logo uk-align-center" alt="WordZoo logo" width="400" src="/images/WordZoo_logo.png" />
-      <div  class="menu">
-      <ul>
-        <% if(req.session.isLoggedIn) { %>
-          <li><a href="#">Welcome <%= req.user.name %></a>
-                <ul><li><a href="/logout">Log Out</a></li></ul>
-          </li>
-        <% } else if (req.session.pupilId != null) { %>
-          <li><a href="#">Hey <%= req.pupil.name %></a>
-                <ul><li><a href="/logout">Log Out</a></li></ul>
-          </li>
-        <% } else { %>
-          <li><a href="/login">Log In</a></li>
-          <li><a href="/signup">Sign Up</a></li>
-        <% } %>
+    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-center uk-container">
+          <a class="uk-navbar-item uk-logo" href="#"><img class="uk-logo " alt="WordZoo logo" width="150" src="/images/WordZoo_logo.png" /></a>
 
-        <% if(req.session.isLoggedIn) {
-            if(req.user.isAdmin) { %>
-        <li>
-          <a href="/admin">Admin Home</a>
-          <ul><li><a href="/admin/users">Manage Users</a></li>
-            <li><a href="/admin/schools">Manage Schools</a></li>
-            <li><a href="#">Data Tools *</a></li>
-            <li><a href="/admin/games">Manage Games</a></li>
-            <li><a href="#">Test Game *</a></li>
-          </ul>
-        </li>
-        <% }
-      } %>
-        <% if(req.session.isLoggedIn) {
-            if(req.user.isTeacher) { %>
-        <li><a href="/teach">Teacher Home</a>
-          <ul>
-          <li><a href="#">Teach Class</a></li>
-          <li><a href="#">Manage Class</a></li>
-        </ul>
-        </li>
-        <% }
-      } %>
 
-      <% if(req.session.pupilIsLoggedIn) {
-         %>
-      <li><a href="/student">Student Home</a>
-        <ul>
-        <li><a href="/">Profile</a></li>
+          <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="/logout"> <span class="uk-icon uk-margin-small-right" uk-icon="icon: sign-out"></span> Sign Out</a>
 
-      </ul></li>
-      <%
-      } %>
-      </ul>
-    </div>
-  </div>
-</div>
-  <div class="uk-section">
-      <div class="uk-container">
+                    </li>
+                </ul>
+
+
+
+
+        </div>
+    </nav>
+
         <%- body %>
-    </div>
-  </div>
+
 
 
     <!--
@@ -119,7 +79,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 

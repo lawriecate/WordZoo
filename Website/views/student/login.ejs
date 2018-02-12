@@ -1,29 +1,22 @@
-<div class="uk-section uk-light uk-background-cover " style="background:url('/images/bg1.jpg'); min-height:1400px;">
+<div class="uk-section uk-background-cover uk-light " style="background:url('https://blog.wordzoo.co.uk/wp-content/uploads/revslider/splash-creative-light-01-animated/Slider-CL01-Background.png'); min-height:1400px;">
     <div class="uk-container">
       <h1><img class="uk-logo uk-align-center" alt="WordZoo logo" width="800" src="/images/WordZoo_logo.png" />
       </h1>
 
     </div>
-    <div class="uk-container uk-container-small">
-      <% if (req.session.flash && req.session.flash.error) { %>
-      <div class="uk-alert-danger" uk-alert>
-          <a class="uk-alert-close" uk-close></a>
-          <p><%=req.flash('error')%></p>
-      </div>
-      <% } %>
+    <div class="uk-container uk-container-small " style="">
       <p class="uk-text-center"><a class="uk-button" href="/">&laquo; Return to homepage</a></p>
-
-      <form  action="/login" method="post" class="uk-form-stacked">
+      <form  action="/student/login" method="post" class="uk-form-stacked">
         <div class="uk-margin">
-            <label class="uk-form-label" for="form-stacked-text">Email</label>
+            <label class="uk-form-label" for="form-stacked-text">Username</label>
             <div class="uk-form-controls">
-                <input class="uk-input  uk-form-large" id="email" name="email" type="email" placeholder="Email">
+                <input class="uk-input  uk-form-large" id="username" name="username" type="text" placeholder="Username">
             </div>
         </div>
         <div class="uk-margin">
             <label class="uk-form-label" for="form-stacked-text">Password</label>
             <div class="uk-form-controls">
-                <input class="uk-input  uk-form-large" id="password" name="password" type="password" placeholder="Password">
+                <input class="uk-input  uk-form-large" id="passcode" name="passcode" type="password" placeholder="Password">
             </div>
         </div>
         <div class="uk-margin">

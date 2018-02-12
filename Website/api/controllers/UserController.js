@@ -16,7 +16,7 @@ module.exports = {
     return res.login({
       email: req.param('email'),
       password: req.param('password'),
-      successRedirect: '/',
+      successRedirect: '/teach',
       invalidRedirect: '/login'
     });
   },
@@ -30,6 +30,7 @@ module.exports = {
     // "Forget" the user from the session.
     // Subsequent requests from this user agent will NOT have `req.session.me`.
     req.session.me = null;
+    req.session.pupilId = null;
     req.session.isLoggedIn = false;
     // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
     // send a simple response letting the user agent know they were logged out
@@ -90,7 +91,7 @@ module.exports = {
 				if (err) {
 					return res.serverError(err);
 				}
-				return res.view('admin/userDetails', {'title':'Edit User',user: user, schools:schools});
+				return res.view('admin/userDetails', {'title':'Edit User',user: user, schools:schools,  layout: 'layout_admin'});
       });
 		})
 

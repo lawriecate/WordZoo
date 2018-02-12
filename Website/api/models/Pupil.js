@@ -75,5 +75,14 @@ module.exports = {
       {
 			passcode: passcode
     }).exec(cb);
+  },
+  attemptLogin: function (inputs, cb) {
+    // Create a user
+    Pupil.findOne({
+      username: inputs.username,
+      // TODO: But encrypt the password first
+      passcode: inputs.passcode
+    })
+    .exec(cb);
   }
 };

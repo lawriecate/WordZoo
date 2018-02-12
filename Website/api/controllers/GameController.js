@@ -12,20 +12,20 @@ module.exports = {
 				return res.serverError(err);
 			}
 
-				return res.view('student/home.ejs', {'title':'Start Screen',games:games});
+				return res.view('student/home.ejs', {'title':'Start Screen',games:games,  layout: 'layout_student'});
 
 		});
 
   },
 
 	play: function(req,res) {
-		
+
 		game = Game.findOne({slug:req.params.gameslug}).exec(function(err,game) {
 			if (err) {
 				return res.serverError(err);
 			}
 
-				return res.view('student/play.ejs', {'title':'Play '+game.name,game:game});
+				return res.view('student/play.ejs', {'title':'Play '+game.name,game:game,  layout: 'layout_student'});
 
 		});
 	},
@@ -66,7 +66,7 @@ module.exports = {
 				return res.serverError(err);
 			}
 
-				return res.view('admin/games.ejs', {'title':'Manage Games',games:games});
+				return res.view('admin/games.ejs', {'title':'Manage Games',games:games,  layout: 'layout_admin'});
 
 		});
 	},
@@ -92,7 +92,7 @@ module.exports = {
 				return res.serverError(err);
 			}
 
-				return res.view('admin/gameDetails.ejs', {'title':'Edit Game',game:game});
+				return res.view('admin/gameDetails.ejs', {'title':'Edit Game',game:game,  layout: 'layout_admin'});
 
 		});
 	},

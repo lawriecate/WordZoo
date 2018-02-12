@@ -27,9 +27,10 @@ module.exports = function login(inputs) {
       // send a 200 response letting the user agent know the login was successful.
       // (also do this if no `invalidRedirect` was provided)
       if (req.wantsJSON || !inputs.invalidRedirect) {
-        return res.badRequest('Invalid username/password combination.');
+        return res.badRequest('Invalid email/password combination.');
       }
       // Otherwise if this is an HTML-wanting browser, redirect to /login.
+      req.flash('error', 'Invalid email/password combination.');
       return res.redirect(inputs.invalidRedirect);
     }
 
@@ -37,6 +38,10 @@ module.exports = function login(inputs) {
     // Subsequent requests from this user agent will have `req.session.me` set.
     req.session.me = user.id;
     req.session.isLoggedIn = true;
+
+    if(user.admin) {
+    return res.redirect('/admin');
+    }
 
     // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
     // send a 200 response letting the user agent know the login was successful.

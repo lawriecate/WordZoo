@@ -11,7 +11,7 @@ module.exports = {
 				if (err) {
 					return res.serverError(err);
 				}
-				return res.view('admin/schools.ejs', {'title':'Manage Schools', schools: schools});
+				return res.view('admin/schools.ejs', {'title':'Manage Schools', schools: schools,  layout: 'layout_admin'});
 			});
   },
 
@@ -40,7 +40,7 @@ module.exports = {
 					return res.serverError(err);
 				}
 //				sails.log(school.teachers);
-				return res.view('admin/schoolDetails', {'title':'Edit School',school: school, users: users});
+				return res.view('admin/schoolDetails', {'title':'Edit School',school: school, users: users,  layout: 'layout_admin'});
 			});
 		})
 
@@ -97,7 +97,7 @@ module.exports = {
 			}
 			sails.log(school);
 			//school.classes.populate('pupils');
-			return res.view('admin/schoolPupils', {'title':'Manage School',school: school});
+			return res.view('admin/schoolPupils', {'title':'Manage School',school: school,  layout: 'layout_admin'});
 		});
 	},
 
@@ -132,7 +132,7 @@ module.exports = {
 					return res.serverError(err);
 				}
 
-				return res.view('admin/schoolClass', {'title':'Manage Class',school: school,schoolClass:schoolClass});
+				return res.view('admin/schoolClass', {'title':'Manage Class',school: school,schoolClass:schoolClass,  layout: 'layout_admin'});
 
 			//school.classes.populate('pupils');
 		});

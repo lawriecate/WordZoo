@@ -1,19 +1,37 @@
+<div class="uk-section uk-background-cover uk-light " style="background:url('https://blog.wordzoo.co.uk/wp-content/uploads/revslider/splash-creative-light-01-animated/Slider-CL01-Background.png'); min-height:1400px;">
+    <div class="uk-container">
 <h1>Hello <%= req.user.name %></h1>
 <h2>Classes at <%= school.name %></h2>
-<table>
-  <tr>
-    <td>
-      <form method="post" action="/teach/newclass">
-        <input type="text" name="name" placeholder="Class Name"/>
-        <input type="submit" value="Create New Class" />
-      </form>
-    </td>
-  </tr>
+
+<div class="uk-grid-small uk-child-width-1-4@s uk-flex-center uk-text-center" uk-grid>
   <% _.each(school.classes, function (schoolClass) { %>
-  <tr>
-    <td>
-    <a href="/teach/class/<%=schoolClass.id%>/"><%= schoolClass.name %> &raquo;</a>
-    </td>
-  </tr>
+    <div>
+        <div class="uk-card uk-card-primary uk-card-body">
+        <h3 class="uk-card-title">  <a href="/teach/class/<%=schoolClass.id%>/"><%= schoolClass.name %> &raquo;</a></h3>
+      </div>
+    </div>
   <% }) %>
-</table>
+
+  <div>
+      <div class="uk-card uk-card-primary uk-card-body ">
+      <h3 class="uk-card-title">  <a  href="#modal-new-class" uk-toggle>New Class</a></h3>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div id="modal-new-class" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">New Class</h2>
+        <form method="post" action="/teach/newclass">
+          <input type="text" name="name" placeholder="Class Name"/>
+
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <input type="submit" class="uk-button uk-button-primary" >
+        </p>
+          </form>
+    </div>
+</div>

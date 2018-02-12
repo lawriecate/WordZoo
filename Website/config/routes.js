@@ -55,11 +55,20 @@ module.exports.routes = {
     'post /signup': 'UserController.signup',
     '/logout': 'UserController.logout',
 
-    'get /admin': { view: 'admin/home' },
+    'get /admin': { view: 'admin/home',
+    locals: {
+      layout: 'layout_admin'
+    } },
     'get /admin/schools': 'SchoolController.list' ,
-    'get /admin/schools/new': { view: 'admin/school_new' },
+    'get /admin/schools/new': { view: 'admin/school_new',
+    locals: {
+      layout: 'layout_admin'
+    } },
     'post /admin/schools/new': 'SchoolController.create' ,
-    'get /admin/schools/manage': { view: 'admin/schoolDetails' },
+    'get /admin/schools/manage': { view: 'admin/schoolDetails' ,
+    locals: {
+      layout: 'layout_admin'
+    }},
     'get /admin/schools/:id/classes': 'SchoolController.viewClasses',
     'get /admin/schools/:schoolid/classes/:classid': 'SchoolController.manageClass',
     'post /admin/schools/:schoolid/classes/:classid/addpupil': 'SchoolController.addPupil',
@@ -72,7 +81,10 @@ module.exports.routes = {
     'post /admin/users/:id': 'UserController.update',
     'post /admin/users/:id/assignto': 'UserController.assignSchool',
     'get /admin/games': 'GameController.list' ,
-    'get /admin/games/new': {view:'admin/gameNew'},
+    'get /admin/games/new': {view:'admin/gameNew',
+    locals: {
+      layout: 'layout_admin'
+    }},
     'post /admin/games/new': 'GameController.create' ,
     'get /admin/games/:gameid': 'GameController.editGame' ,
     'post /admin/games/:gameid': 'GameController.updateGame' ,
@@ -92,5 +104,6 @@ module.exports.routes = {
     'get /student/play/:gameslug': 'GameController.play',
     'get /student/testdata': 'GameController.testdata',
     'post /student/savedata': 'GameController.savetestdata',
-    'get /student/login': { view: 'auth/register' },
+    'get /student/login': { view: 'student/login' },
+    'post /student/login': 'StudentController.login',
 };

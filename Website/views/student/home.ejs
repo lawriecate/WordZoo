@@ -1,6 +1,13 @@
+<div class="uk-section uk-background-cover uk-light " style="background:url('https://blog.wordzoo.co.uk/wp-content/uploads/revslider/splash-creative-light-01-animated/Slider-CL01-Background.png'); min-height:1400px;">
+    <div class="uk-container">
 <h1>Select a game!</h1>
-<ul>
+<div class="uk-grid-small uk-child-width-1-4@s uk-flex-center uk-text-center" uk-grid>
   <% _.each(games, function (game) { %>
-  <li><a href="/student/play/<%= game.slug %>/"><%= game.name %> </a></li>
+    <div>
+        <div class="uk-card uk-card-primary uk-card-body">
+          <a href="/student/play/<%= game.slug %>/"><%= game.name %> </a></div>
+    </div>
   <% }) %>
-</ul>
+</div>
+</div>
+</div>
