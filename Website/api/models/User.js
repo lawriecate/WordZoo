@@ -16,7 +16,6 @@ module.exports = {
       type: 'string',
       required: true
     },
-
     admin: {
       type: 'boolean',
       defaultsTo: false
@@ -52,6 +51,7 @@ module.exports = {
     })
     .exec(cb);
   },
+
 
 
 

@@ -94,6 +94,8 @@ module.exports.routes = {
 
 
     'get /teach': 'TeacherController.home',
+    'get /teach/account': 'TeacherController.accountEdit',
+    'post /teach/account': 'TeacherController.accountUpdate',
     'post /teach/newclass': 'TeacherController.newClass',
     'get /teach/class/:classid': 'TeacherController.viewClass',
     'post /teach/class/:classid/newpupil': 'TeacherController.addPupil',

@@ -15,6 +15,35 @@ module.exports = {
 
 		 });
 		},
+		accountEdit: function(req,res) {
+
+			 return res.view('teacher/editAccount.ejs', {'title':'Edit Account',  layout: 'layout_teacher'});
+
+
+		},
+		accountUpdate: function(req,res) {
+
+			params = {
+	      name: req.param('name'),
+				email: req.param('email'),
+
+	    };
+
+			if(req.param('password') != '') {
+				params.password = req.param('password');
+			}
+			sails.log(params);
+
+			User.update({id:req.user.id},params).exec(function(err,user) {
+				if (err) {
+					return res.serverError(err);
+				}
+				sails.log(user);
+				return res.redirect('/teach/account/');
+			})
+
+
+		},
 		viewClass: function(req,res) {
 			schools = School.findOne({id:req.user.teaches_at[0].id}).populate('classes').exec(function(err,school) {
 			 if (err) {
