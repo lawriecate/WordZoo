@@ -1,0 +1,11 @@
+<h1>Modify Game</h1>
+<form method="post" >
+  <input type="text" name="name" placeholder=" Name" value="<%= game.name ? game.name : ''  %>" />
+  <input type="text" name="slug" placeholder="URL" value="<%= game.slug ? game.slug : ''  %>" />
+  <textarea  name="source" placeholder="Source Code" ><%= game.source ? game.source : ''  %></textarea>
+  Status: <select name="live">
+  <option value="false">Draft</option>
+  <option value="true" <% if(game.live) { %>selected="selected"<% } %>>Live</option>
+  </select>
+  <input type="submit" value="Save" />
+</form>

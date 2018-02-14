@@ -1,0 +1,16 @@
+<h1>Manage Class</h1>
+<h2><a href="/admin/schools/<%= school.id %>/classes">Manage All Classes</a></h2>
+
+<h2>New Pupil</h2>
+<form method="post" action="/admin/schools/<%= school.id %>/classes/<%=schoolClass.id%>/addPupil" >
+  <input type="text" name="name" placeholder=" Name" value="" />
+  <input type="text" name="dob" placeholder="01/01/2014" value="" />
+  <input type="hidden" name="assignToClass" value="<%= schoolClass.id %>">
+  <input type="submit" value="Save" />
+</form>
+<h2>All Pupils (<%= schoolClass.pupils.length %>)</h2>
+<ul>
+  <% _.each(schoolClass.pupils, function (pupil) { %>
+  <li><%= pupil.name %></li>
+  <% }) %>
+</ul>

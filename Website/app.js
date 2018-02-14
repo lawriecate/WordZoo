@@ -1,116 +1,60 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-
-var index = require('./routes/index');
-var users = require('./routes/users');
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-
-//login script from here
-
-var flash    = require('connect-flash');
-var crypto   = require('crypto');
-var connection     = require('./lib/dbconn');
-
-var sess  = require('express-session');
-var Store = require('express-session').Store;
-var BetterMemoryStore = require('session-memory-store')(sess);
-var store = new BetterMemoryStore({ expires: 60 * 60 * 1000, debug: true });
-app.use(sess({
-    name: 'JSESSION',
-    secret: 'MYSECRETISVERYSECRET',
-    resave: true,
-    saveUninitialized: true
-}));
-
-// uncomment after placing your favicon in /public
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(flash());
-
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.use('/', index);
-app.use('/users', users);
-app.use('/signup', signup);
-app.use('/manager', manager);
-app.use('/teacher', teacher);
+/**
+ * app.js
+ *
+ * Use `app.js` to run your app without `sails lift`.
+ * To start the server, run: `node app.js`.
+ *
+ * This is handy in situations where the sails CLI is not relevant or useful.
+ *
+ * For example:
+ *   => `node app.js`
+ *   => `forever start app.js`
+ *   => `node debug app.js`
+ *   => `modulus deploy`
+ *   => `heroku scale`
+ *
+ *
+ * The same command-line arguments are supported, e.g.:
+ * `node app.js --silent --port=80 --prod`
+ */
 
 
+// Ensure we're in the project directory, so cwd-relative paths work as expected
+// no matter where we actually lift from.
+// > Note: This is not required in order to lift, but it is a convenient default.
+process.chdir(__dirname);
 
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'
-  },
-  function(username, password, done) {
-    return done(null, false, { message: 'No connection.' });
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
+// Attempt to import `sails`.
+var sails;
+try {
+  sails = require('sails');
+} catch (e) {
+  console.error('To run an app using `node app.js`, you usually need to have a version of `sails` installed in the same directory as your app.');
+  console.error('To do that, run `npm install sails`');
+  console.error('');
+  console.error('Alternatively, if you have sails installed globally (i.e. you did `npm install -g sails`), you can use `sails lift`.');
+  console.error('When you run `sails lift`, your app will still use a local `./node_modules/sails` dependency if it exists,');
+  console.error('but if it doesn\'t, the app will run with the global sails instead!');
+  return;
+}
+
+// --•
+// Try to get `rc` dependency (for loading `.sailsrc` files).
+var rc;
+try {
+  rc = require('rc');
+} catch (e0) {
+  try {
+    rc = require('sails/node_modules/rc');
+  } catch (e1) {
+    console.error('Could not find dependency: `rc`.');
+    console.error('Your `.sailsrc` file(s) will be ignored.');
+    console.error('To resolve this, run:');
+    console.error('npm install rc --save');
+    rc = function () { return {}; };
   }
-));
-
-app.get('/signin', function(req, res){
-//  console.log(req.flash('error'));
-  res.render('login',{message :req.flash('error')});
-});
-
-app.post("/signin",
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/signin',
-                                   failureFlash: true
-                                 })
-                      );
-
-app.get('/logout', function(req, res){
-    req.session.destroy();
-    req.logout();
-    res.redirect('/signin');
-});
+}
 
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;
+// Start server
+sails.lift(rc('sails'));

@@ -1,0 +1,180 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "PlayScreen",
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
+    "generateOnSave": true,
+    "enableStepping": true,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": false,
+    "create_after": "// Add score\nscoreText = this.add.text(90, 75, \"Score: \"+score);\n\t\n// Add time\ntimeText = this.add.text(1720, 75, \"Time: \"+time);\n\n\t\n// Time\n// *** Called only once ***\ntimer = this.time.create(false);\ntimer.loop(1000, this.updateTime(), this);\ntimer.start(0);"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "8533e6bc-66b6-4859-affa-1562c115cb57",
+          "asset": "0",
+          "info": {
+            "editorName": "Background",
+            "scale.x": 1.51,
+            "scale.y": 1.51
+          }
+        },
+        {
+          "type": "image",
+          "id": "c861a039-b874-4b4e-bb92-d319a8c39b54",
+          "asset": "1",
+          "info": {
+            "editorName": "goalkeeper_center",
+            "editorShow": false,
+            "x": 768,
+            "y": 320,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "e0c98d17-eec2-48f6-b896-a8d768631f39",
+          "asset": "2",
+          "info": {
+            "editorName": "Score",
+            "x": 32,
+            "y": 32,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "8b33738c-46cc-40eb-b80a-972a1b578a20",
+          "asset": "2",
+          "info": {
+            "editorName": "Time",
+            "x": 1664,
+            "y": 32,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "button",
+          "id": "cfa52030-2741-4af4-a724-67a8769d3373",
+          "asset": "2",
+          "info": {
+            "editorName": "TopLeft",
+            "x": 544,
+            "y": 128,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "button",
+          "id": "0b0e62f2-c904-4ffe-954d-3c6404695296",
+          "asset": "2",
+          "info": {
+            "editorName": "TopRight",
+            "x": 1184,
+            "y": 128,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
+            "callback": ""
+          }
+        },
+        {
+          "type": "button",
+          "id": "68520017-e116-405f-97cd-2541cc3f6dca",
+          "asset": "2",
+          "info": {
+            "editorName": "BottomLeft",
+            "x": 544,
+            "y": 576,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "button",
+          "id": "b674d77f-99d5-4cfa-a092-4d1ddc2b2185",
+          "asset": "2",
+          "info": {
+            "editorName": "BottomRight",
+            "x": 1184,
+            "y": 576,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "spritesheet",
+          "id": "3ccb8558-a7c6-449b-a1d1-c97d901c85e1",
+          "asset": "3",
+          "info": {
+            "editorName": "soccer_ball",
+            "x": -160,
+            "y": 864,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "Background"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "goalkeeper_center"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "ScoreBackground"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "PlayScreen",
+      "asset": "soccer_ball",
+      "sprite": "0"
+    }
+  },
+  "prefab-table": {}
+}

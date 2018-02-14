@@ -1,0 +1,14 @@
+<h1>Manage School</h1>
+<h2><a href="/admin/schools/<%= school.id %>/edit">Manage School</a></h2>
+<h2>New Class</h2>
+<form method="post" >
+  <input type="text" name="name" placeholder="Name" value="" />
+  <input type="submit" value="Save" />
+</form>
+
+<h2>All Classes (<%= school.classes.length %>)</h2>
+<ul>
+  <% _.each(school.classes, function (group) { %>
+  <li><%= group.name %> <a href="/admin/schools/<%= school.id %>/classes/<%= group.id %>">Manage Class</a></li>
+  <% }) %>
+</ul>

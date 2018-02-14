@@ -1,0 +1,29 @@
+<div class="uk-section uk-background-cover uk-light " style="background:url('https://blog.wordzoo.co.uk/wp-content/uploads/revslider/splash-creative-light-01-animated/Slider-CL01-Background.png'); min-height:1400px;">
+    <div class="uk-container">
+
+<h1><%= schoolClass.name %></h1>
+<h2><%= schoolClass.pupils.length %> pupils </h2>
+<form method="post" action="/teach/class/<%=schoolClass.id%>/newpupil">
+  <input type="text" name="name" placeholder=" Name" value="" />
+  <input type="text" name="dob" placeholder="01/01/2014" value="" />
+  <input type="submit" value="Save" />
+</form>
+<table class="uk-table">
+  <tr>
+    <td>Name</td>
+    <td>Login</td>
+    <td>Passcode</td>
+    <td>Actions</td>
+  </tr>
+  <% _.each(schoolClass.pupils, function (pupil) { %>
+  <tr>
+    <td><%= pupil.name %> </td>
+    <td><%= pupil.username %> </td>
+    <td><%= pupil.passcode %> </td>
+    <td><a href="/teach/start/<%=pupil.id%>"> Start Session &raquo;</a> <form method="post" action="/teach/class/<%=schoolClass.id%>/regenerate"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input type="submit" value="New Password"/></form></td>
+  </tr>
+  <% }) %>
+</table>
+
+</div>
+</div>
