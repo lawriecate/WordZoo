@@ -6,6 +6,12 @@ var photo = photo|| {};
 var spriteSheets = new Array();
 
 
+// Backgrounds
+// Shuffle buttons + function
+
+
+
+
 
 function PlayScreen() 
 {	
@@ -148,8 +154,6 @@ PlayScreen.prototype.create = function ()
 			// Add next to shortest array with offset included
 			classData[i].push(temp);
 
-console.log("I:"+i+" "+classData[i][0][1]);
-
 			// Increment
 			inputDataIndex++
 		}
@@ -181,19 +185,15 @@ console.log("I:"+i+" "+classData[i][0][1]);
 			var offset = sizeTable[prevAnimalIndex][nextAnimalIndex];
 
 
-//console.log("L:"+shortestArrayIndex+" "+classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1]+" + "+offset[0]);
-
 
 			// Record next character
 			var temp = new Array();
 			temp[0] = inputData[i-1 % inputData.length];
-			temp[1] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1] += offset[0];
-			temp[2] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][2] += offset[1];
+			temp[1] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1] += offset[0]/2;
+			temp[2] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][2];// += offset[1]/2;
 			temp[3] = nextAnimalIndex;
 
-
-console.log("L:"+shortestArrayIndex+" "+classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1]);			
-
+		
 			// Add next to shortest array with offset included
 			classData[shortestArrayIndex].push(temp);
 
@@ -206,43 +206,23 @@ console.log("L:"+shortestArrayIndex+" "+classData[shortestArrayIndex][classData[
 		// For each row
 		for(var i=0; i<classData.length; i++)
 		{
-			// Print first
-//			var temp = classData[i][0];
-//			this.setSingleCharacter(0, temp[2], null, temp[0]);
 
-//			temp = classData[i][1];
-//			this.setSingleCharacter(150, temp[2], null, temp[0]);
 
-//			temp = classData[i][2];
-//			this.setSingleCharacter(250, temp[2], null, temp[0]);
 
-//			temp = classData[i][3];
-//			this.setSingleCharacter(temp[1], temp[2], null, temp[0]);
+
+			temp = classData[i][classData.length-1];
+			this.setSingleCharacter(0, yValues[i], null, temp[0]);
+
+
 
 			// For each value within that row
-			for(var j=0; j<classData[i].length; j++)
+			for(var j=0; j<classData[i].length-1; j++)
 			{
-console.log("J: "+j+" "+classData[i][j][1]);
-
 				// Get character details
 				temp = classData[i][j];
 
-
-				// Hackz
-				if(j == (classData[i].length-1))
-				{
-					// Print to screen
-					console.log();
-					console.log(temp[3]);
-					this.setSingleCharacter(0, yValues[i], null, temp[0]);
-				}
-				else 
-				{
-					// Print to screen
-					console.log();
-					console.log(temp[3]);
-					this.setSingleCharacter(temp[1], temp[2], null, temp[0]);
-				}
+				// Print to screen
+				this.setSingleCharacter(temp[1], temp[2], null, temp[0]);
 			}
 		}
 	}
@@ -288,7 +268,43 @@ PlayScreen.prototype.getCharacterIndex = function(index)
 		return 5;
 };
 
+/*
+// Show characters
+PlayScreen.prototype.getPositionModifiers = function(index) 
+{
+	// Giraffe
+	if(index == 0)
+		return [132,90];
 
+	// Owl
+	else if(index == 1)
+		return [140,52];
+
+	// Octopus
+	else if(index == 2)
+		return [53,72];
+
+	// Zebra
+	else if(index == 3)
+		return [67,78];
+
+	// Panda	
+	else if(index == 4)
+		return [131,79];
+
+	// Sheep
+	else if(index == 5)
+		return [72,145];
+
+	// Elephant
+	else if(index == 6)
+		return [50, 127];
+
+	// Lion
+	else if(index == 7)
+		return [30,144];
+};
+*/
 
 
 // Show a single character at a certian position on the screen
@@ -307,29 +323,29 @@ console.log(x+" "+y+" "+data);
 	if(data[36] == 2)
 	{
 		animalIndex = 6;
-		scale += 0.1;
+		//scale += 0.1;
 		//x += 10;
-		y -= 25;
+		//y -= 25;
 	}
 	// Lion
 	else if(data[37] == 2)
 	{
 		animalIndex = 7;
-		x += 25;
+		//x += 25;
 	}
 	// Octopus
 	else if(data[38] == 2)
 	{
 		animalIndex = 2;
-		x += 25;
+		//x += 25;
 	}
 	// Owl
 	else if(data[39] == 2)
 	{
 		animalIndex = 1;
-		scale -= 0.1;
-		x += 40;
-		y += 40;
+		//scale -= 0.1;
+		//x += 40;
+		//y += 40;
 	}
 	// Panda	
 	else if(data[41] == 2)
