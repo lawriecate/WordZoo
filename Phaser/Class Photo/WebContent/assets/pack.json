@@ -1,0 +1,419 @@
+{
+  "main": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/background.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "animals",
+      "url": "assets/animals.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackBoots",
+      "url": "assets/blackBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackShoes",
+      "url": "assets/blackShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackTie",
+      "url": "assets/blackTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blueShirt",
+      "url": "assets/blueShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blueShoes",
+      "url": "assets/blueShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blueSunglasses",
+      "url": "assets/blueSunglasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "bowTie",
+      "url": "assets/bowTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "bowlerHat",
+      "url": "assets/bowlerHat.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "brownBoots",
+      "url": "assets/brownBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "clownNose",
+      "url": "assets/clownNose.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "clownWig",
+      "url": "assets/clownWig.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "cowboyHat",
+      "url": "assets/cowboyHat.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "crown",
+      "url": "assets/crown.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "greenShirt",
+      "url": "assets/greenShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "greenShoes",
+      "url": "assets/greenShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "gryTie",
+      "url": "assets/gryTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "hardHat",
+      "url": "assets/hardHat.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "highHeels",
+      "url": "assets/highHeels.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "hpGlasses",
+      "url": "assets/hpGlasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "hufTie",
+      "url": "assets/hufTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "monocole",
+      "url": "assets/monocole.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "moustache",
+      "url": "assets/moustache.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "necklace",
+      "url": "assets/necklace.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "orangeShirt",
+      "url": "assets/orangeShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkBoots",
+      "url": "assets/pinkBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkGlasses",
+      "url": "assets/pinkGlasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkShirt",
+      "url": "assets/pinkShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkShoes",
+      "url": "assets/pinkShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "purpleShirt",
+      "url": "assets/purpleShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "ravTie",
+      "url": "assets/ravTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "redGlasses",
+      "url": "assets/redGlasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "redShirt",
+      "url": "assets/redShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "slyTie",
+      "url": "assets/slyTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "topHat",
+      "url": "assets/topHat.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "whiteShirt",
+      "url": "assets/whiteShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "yellowBoots",
+      "url": "assets/yellowBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "yellowShirt",
+      "url": "assets/yellowShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackSunglasses",
+      "url": "assets/blackSunglasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "backButton",
+      "url": "assets/backButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "score",
+      "url": "assets/score.png",
+      "overwrite": false
+    }
+  ],
+  "meta": {
+    "generated": "1518447184348",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}

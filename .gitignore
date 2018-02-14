@@ -7,3 +7,4 @@ Website/node_modules/*
 WebsiteOld/node_modules/*
 *.log
 .DS_Store
+.DS_Store

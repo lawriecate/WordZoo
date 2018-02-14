@@ -1,0 +1,83 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "StartScreen",
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
+    "generateOnSave": true,
+    "enableStepping": true,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": false,
+    "create_after": "// on click play button, proceed to play screen\nfunction onClickPlay () {\n\tthis.state.start('play');\n}\n\t\n// on click rules button, proceed to rules screen\nfunction onClickRules () {\n\tthis.state.start('rules');\n}"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "c2a1cddf-c9b0-4788-91fe-9d890b904a5e",
+          "asset": "0",
+          "info": {
+            "editorName": "background",
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "image",
+          "id": "abd248b7-f96b-4c58-bf70-47ac4431a1b8",
+          "asset": "1",
+          "info": {
+            "editorName": "preloader",
+            "x": 704,
+            "y": 864,
+            "scale.x": 2.5,
+            "scale.y": 2.5
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "loadingScreen",
+      "asset": "background"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "loadingScreen",
+      "asset": "preloader"
+    }
+  },
+  "prefab-table": {}
+}

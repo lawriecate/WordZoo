@@ -1,0 +1,108 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "StartScreen",
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
+    "generateOnSave": true,
+    "enableStepping": true,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": false,
+    "create_after": "// on click play button, proceed to play screen\nfunction onClickPlay () {\n\tthis.state.start('play');\n}\n\t\n// on click rules button, proceed to rules screen\nfunction onClickRules () {\n\tthis.state.start('rules');\n}"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "tileSprite",
+          "id": "db6d3c55-bad9-4194-9918-3dc3330c4f8a",
+          "asset": "0",
+          "info": {
+            "editorName": "background",
+            "x": -2,
+            "y": -2,
+            "scale.x": 1.51,
+            "scale.y": 1.51,
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "type": "button",
+          "id": "eb70dca9-b0e9-4936-a4e3-fae68f31713e",
+          "asset": "1",
+          "info": {
+            "editorName": "playButton",
+            "name": "playButton",
+            "x": 160,
+            "y": 480,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
+            "callback": "onClickPlay"
+          }
+        },
+        {
+          "type": "button",
+          "id": "b232e135-d8aa-46c8-b083-8a14d8f97c9a",
+          "asset": "2",
+          "info": {
+            "editorName": "rulesButton",
+            "name": "rulesButton",
+            "x": 160,
+            "y": 672,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
+            "callback": "onClickRules"
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "startScreen",
+      "asset": "background"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "startScreen",
+      "asset": "PlayButton"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "startScreen",
+      "asset": "RulesButton"
+    }
+  },
+  "prefab-table": {}
+}
