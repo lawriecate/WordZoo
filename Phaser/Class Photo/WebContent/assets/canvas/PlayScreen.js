@@ -6,9 +6,11 @@ var photo = photo|| {};
 var spriteSheets = new Array();
 
 
+// Character names
+// Class title
 // Backgrounds
 // Shuffle buttons + function
-
+// Take picture -> email to us
 
 
 
@@ -90,6 +92,7 @@ PlayScreen.prototype.create = function ()
 
     // Read index
     // Random between 0 and inputData.length
+    //inputDataIndex = Math.floor(Math.random() * inputData.length);
 	inputDataIndex = 0;
 
 
@@ -135,7 +138,6 @@ PlayScreen.prototype.create = function ()
 		}
 
 
-
 		// Get Y values for rows
 		var yValues = startingYValues[classData.length - 1];
 		//var createdRows = 0;
@@ -159,11 +161,10 @@ PlayScreen.prototype.create = function ()
 		}
 
 
-
 		// Distribute rest of characters
 		var shortestArrayIndex;
 		var shortestX = 10000;
-		for(var i=inputDataIndex % inputData.length; i<inputData.length; i++)
+		for(var i=inputDataIndex % inputData.length; i<inputData.length-1; i++)
 		{
 			// Get shortest array
 			for(var j=0; j<classData.length; j++)
@@ -176,14 +177,12 @@ PlayScreen.prototype.create = function ()
 				}
 			}
 
-
 			// Get next and previous animal types
 			var nextAnimalIndex =  this.getCharacterIndex(i % inputData.length);
 			var prevAnimalIndex = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][3];
 
 			// Get offset of the animals
 			var offset = sizeTable[prevAnimalIndex][nextAnimalIndex];
-
 
 
 			// Record next character
@@ -202,27 +201,28 @@ PlayScreen.prototype.create = function ()
 			shortestX = 10000;
 		}
 
-
 		// For each row
 		for(var i=0; i<classData.length; i++)
 		{
+			// Get max distance of this row
+			var maxDistance = classData[i][classData[i].length-1][1];
+			maxDistance += 475 / 2;
 
+			// Calculate how far 'off' middle screen
+			var addition = 1920 - maxDistance;
 
-
-
+			// Get character details + print (for first value)
 			temp = classData[i][classData.length-1];
-			this.setSingleCharacter(0, yValues[i], null, temp[0]);
+			this.setSingleCharacter(addition / 2, yValues[i], null, temp[0]);
 
 
 
 			// For each value within that row
 			for(var j=0; j<classData[i].length-1; j++)
 			{
-				// Get character details
+				// Get character details + print
 				temp = classData[i][j];
-
-				// Print to screen
-				this.setSingleCharacter(temp[1], temp[2], null, temp[0]);
+				this.setSingleCharacter(temp[1] + (addition / 2), temp[2], null, temp[0]);
 			}
 		}
 	}
@@ -268,112 +268,54 @@ PlayScreen.prototype.getCharacterIndex = function(index)
 		return 5;
 };
 
-/*
-// Show characters
-PlayScreen.prototype.getPositionModifiers = function(index) 
-{
-	// Giraffe
-	if(index == 0)
-		return [132,90];
-
-	// Owl
-	else if(index == 1)
-		return [140,52];
-
-	// Octopus
-	else if(index == 2)
-		return [53,72];
-
-	// Zebra
-	else if(index == 3)
-		return [67,78];
-
-	// Panda	
-	else if(index == 4)
-		return [131,79];
-
-	// Sheep
-	else if(index == 5)
-		return [72,145];
-
-	// Elephant
-	else if(index == 6)
-		return [50, 127];
-
-	// Lion
-	else if(index == 7)
-		return [30,144];
-};
-*/
 
 
 // Show a single character at a certian position on the screen
 PlayScreen.prototype.setSingleCharacter = function(x, y, _, data) 
 {
-console.log(x+" "+y+" "+data);
+//console.log(x+" "+y+" "+data);
 
+	// Pre-set scale for animal size
 	scale = 0.5;
 
 
-
-	// Which base animal?
-	var animalIndex = 0;
-
 	// Elephant
 	if(data[36] == 2)
-	{
 		animalIndex = 6;
-		//scale += 0.1;
-		//x += 10;
-		//y -= 25;
-	}
+
 	// Lion
 	else if(data[37] == 2)
-	{
 		animalIndex = 7;
-		//x += 25;
-	}
+	
 	// Octopus
 	else if(data[38] == 2)
-	{
 		animalIndex = 2;
-		//x += 25;
-	}
+	
 	// Owl
 	else if(data[39] == 2)
-	{
 		animalIndex = 1;
-		//scale -= 0.1;
-		//x += 40;
-		//y += 40;
-	}
+	
 	// Panda	
 	else if(data[41] == 2)
-	{
 		animalIndex = 4;
-	}
+	
 	// Giraffe
 	else if(data[42] == 2)
-	{
 		animalIndex = 0;
-	}
+	
 	// Zebra
 	else if(data[43] == 2)
-	{
-		//x += 50;
 		animalIndex = 3;
-	}
+	
 	// Sheep
 	else if(data[44] == 2)
-	{
 		animalIndex = 5;
-	}
+	
 
 
 	// Main animal	
 	_animals = this.add.sprite(x, y, 'animals', animalIndex);
 	_animals.scale.setTo(scale, scale);
-
 
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -622,36 +564,6 @@ console.log(x+" "+y+" "+data);
 		}
 	}
 };
-
-
-/*
-// Show characters
-PlayScreen.prototype.showCharacters = function() 
-{
-	if(classData.length == 1)
-    { 
-    	var temp = locations[0];
-    	this.setSingleCharacter(temp[0], temp[1], temp[2], classData[0]); 
-    }
-    else
-    { 
-    	// Stuffle position
-		var random = Math.floor(Math.random() * classData.length);
-
-    	var postions = locations[classData.length -1];
-		for(var i=0; i<classData.length; i++)
-		{
-			var temp = postions[i];
-    		this.setSingleCharacter(temp[0], temp[1], temp[2], classData[(i+random) % classData.length]);
-		}
-    }
-
-    console.log("length -> "+classData.length);
-};
-*/
-
-
-
 
 
 
