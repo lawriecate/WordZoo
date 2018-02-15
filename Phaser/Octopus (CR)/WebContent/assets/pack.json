@@ -45,6 +45,12 @@
       "key": "ok",
       "url": "assets/ok.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "tutorialOverlay",
+      "url": "assets/tutorialOverlay.png",
+      "overwrite": false
     }
   ],
   "StartScreen": [
@@ -92,14 +98,14 @@
   "RulesScreen": [
     {
       "type": "image",
-      "key": "rulesBackground",
-      "url": "assets/rulesMenu.png",
+      "key": "ok",
+      "url": "assets/ok.png",
       "overwrite": false
     },
     {
       "type": "image",
-      "key": "ok",
-      "url": "assets/ok.png",
+      "key": "tutorialOverlay",
+      "url": "assets/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -130,7 +136,7 @@
     }
   ],
   "meta": {
-    "generated": "1518019107568",
+    "generated": "1518719438492",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

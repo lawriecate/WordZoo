@@ -135,6 +135,12 @@
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "tutorialOverlay",
+      "url": "assets/2 Rules/tutorialOverlay.png",
+      "overwrite": false
     }
   ],
   "FinishScreen": [
@@ -448,7 +454,7 @@
     }
   ],
   "meta": {
-    "generated": "1518040301785",
+    "generated": "1518719633005",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

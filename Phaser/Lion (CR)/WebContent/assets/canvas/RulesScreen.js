@@ -68,6 +68,10 @@ RulesScreen.prototype.create = function ()
 	// Add background
 	var background = this.add.sprite(0, 0, 'Background');
 	
+	// Add faded tutorial overlay
+	var _tutorialOverlay = this.add.sprite(0, 0, 'tutorialOverlay');
+	_tutorialOverlay.alpha = 0.1;
+
 	// Add normal (no-diving) goal keeper
 	GK_Mid = this.add.sprite(790, 320, 'goalkeeper_center');
 	GK_Mid.scale.setTo(1.5, 1.5);

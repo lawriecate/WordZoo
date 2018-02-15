@@ -5,13 +5,15 @@ var photo = photo|| {};
 // SpriteSheets
 var spriteSheets = new Array();
 
+// Animal / Item / Text records -> for deletion
+var charcterRecords = new Array();
+var textRecords = new Array();
 
-// Character names
-// Class title
-// Backgrounds
-// Shuffle buttons + function
-// Take picture -> email to us
-
+// Dynamic background
+var backgroundIndex;
+var backgrounds = new Array();
+var backgroundNames = ["steppingStones", "artClassroom", "brickWall", "footballBalls", "footballEmpty", "grassHill", 
+		"pinkClassroom", "riverStones", "runningPath", "cookingRoom"];
 
 
 
@@ -85,145 +87,244 @@ PlayScreen.prototype.preload = function ()
 
 PlayScreen.prototype.create = function () 
 {	
-	// load background
-    var background = this.game.add.tileSprite(0, 0, 1920, 1080, 'background');
-    background.scale.setTo(1.5, 1.5);
+	// load background -> make all invisible
+	for(var i=0; i<backgroundNames.length; i++)
+	{
+		backgrounds[i] = this.add.sprite(0, 0, backgroundNames[i]);
+		if(backgrounds[i].width < 1920)
+		{
+			backgrounds[i].scale.setTo(1.5, 1.5);
+		}
+
+		backgrounds[i].visible = false;
+	}
+
+	// make first background visible
+	backgroundIndex = 0;
+	backgrounds[0].visible = true;
 
 
-    // Read index
-    // Random between 0 and inputData.length
-    //inputDataIndex = Math.floor(Math.random() * inputData.length);
-	inputDataIndex = 0;
+	// Title text
+	var titleText = this.add.text(960, 80, "Miss Smith's Class", bigStyle);
+	titleText.stroke = '#FF9933';
+	titleText.strokeThickness = 15;	
+	titleText.anchor.setTo(0.5, 0.5);
+	titleText.addColor('#FFCE07', 0);	
 
 
+	// Show names button
+	var nameButton = this.add.button(0, 925, 'score', this.onClickNames, this, null, null, null, null);
+	nameButton.scale.setTo(1.3, 2);
 
+		// Back button text
+		var nameButtonText = this.add.text(240, 1005, "  Show \n Names", smallStyle);
+		nameButtonText.anchor.setTo(0.5, 0.5);
+		nameButtonText.addColor('#FF9933', 0);	
+
+
+	// Add Change Background button
+	var backgroundButton = this.add.button(480, 925, 'score', this.onClickChangeBack, this, null, null, null, null);
+	backgroundButton.scale.setTo(1.3, 2);
+
+		// Change Background button text
+		var changeButtonText = this.add.text(720, 1005, "    Change \n Background", smallStyle);
+		changeButtonText.anchor.setTo(0.5, 0.5);
+		changeButtonText.addColor('#FF9933', 0);	
+
+
+	// Add Shuffle button
+	var shuffleButton = this.add.button(965, 925, 'score', this.onClickShuffle, this, null, null, null, null);
+	shuffleButton.scale.setTo(1.3, 2);
+
+		// Shuffle Characters button text
+		var shuffleButtonText = this.add.text(1190, 1005, "    Shuffle \n Characters", smallStyle);
+		shuffleButtonText.anchor.setTo(0.5, 0.5);
+		shuffleButtonText.addColor('#FF9933', 0);
+
+	// Add Photo button
+	var photoButton = this.add.button(1445, 925, 'score', this.onClickTakePhoto, this, null, null, null, null);
+	photoButton.scale.setTo(1.3, 2);
+
+		// Take Photo button text
+		var photoButtonText = this.add.text(1680, 1005, "  Take \n Photo", smallStyle);
+		photoButtonText.anchor.setTo(0.5, 0.5);
+		photoButtonText.addColor('#FF9933', 0);
+
+
+	
     // if no characters in class, show text + return;
-    var length = inputData.length;
-    if(length <= 0)
+    if(inputData.length <= 0)
     {
     	var text = this.game.add.text(960, 180, "No characters to display", bigStyle);  
     	text.anchor.setTo(0.5, 0.5);
     	text.addColor('#FF9933', 0); 
     }
-    // Else, allocate arrays to hold values for screen print
-    else
-    {
-		classData = new Array();
 
-		if(length <= 2)
-		{
-			// Create one row
-			classData[0] = new Array();
-		}
-		else if(length <= 8)
-		{
-			// Create two rows
-			classData[0] = new Array();
-			classData[1] = new Array();
-		}
-		else if(length <= 17)
-		{
-			// Create three rows
-			classData[0] = new Array();
-			classData[1] = new Array();
-			classData[2] = new Array();			
-		}
-		else
-		{
-			// Create four rows
-			classData[0] = new Array();
-			classData[1] = new Array();
-			classData[2] = new Array();	
-			classData[3] = new Array();		
-		}
+	// Start
+	this.generateOrder();
 
 
-		// Get Y values for rows
-		var yValues = startingYValues[classData.length - 1];
-		//var createdRows = 0;
+
+	//var image = this.game.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+	//window.location.href = image;
+};
 
 
-		// Add first characters into rows
-		for(var i=0; i<classData.length; i++)
-		{
-			// Record next character
-			var temp = new Array();
-			temp[0] = inputData[inputDataIndex % inputData.length];					// Data
-			temp[1] = 0;															// X
-			temp[2] = yValues[i];													// Y
-			temp[3] = this.getCharacterIndex(inputDataIndex % inputData.length);	// Character Index
+
+// Put characters into order
+PlayScreen.prototype.generateOrder = function() 
+{
+    // Allocate arrays to hold values for screen print
+	classData = new Array();
+
+	var length = inputData.length;
+	if(length == 0)
+	{
+		return;
+	}
+	else if(length <= 2)
+	{
+		// Create one row
+		classData[0] = new Array();
+	}
+	else if(length <= 8)
+	{
+		// Create two rows
+		classData[0] = new Array();
+		classData[1] = new Array();
+	}
+	else if(length <= 17)
+	{
+		// Create three rows
+		classData[0] = new Array();
+		classData[1] = new Array();
+		classData[2] = new Array();			
+	}
+	else
+	{
+		// Create four rows
+		classData[0] = new Array();
+		classData[1] = new Array();
+		classData[2] = new Array();	
+		classData[3] = new Array();		
+	}
+
+
+
+    // Random start position in array
+    var random = Math.floor(Math.random() * inputData.length);
+	for(var i=0; i<random; i++)
+	{
+		var temp = inputData[0];
+		inputData.shift();
+		inputData.push(temp);
+	}
+	
+
+	// Get Y values for rows
+	var yValues = startingYValues[classData.length - 1];
+	//var createdRows = 0;
+
+
+	// Add first characters into rows
+	for(var i=0; i<classData.length; i++)
+	{
+		// Record next character
+		var temp = new Array();
+		temp[0] = inputData[i];													// Data
+		temp[1] = 0;															// X
+		temp[2] = yValues[i];													// Y
+		temp[3] = this.getCharacterIndex(i);									// Character Index
 			
-			// Add next to shortest array with offset included
-			classData[i].push(temp);
+		// Add next to shortest array with offset included
+		classData[i].push(temp);
+	}
 
-			// Increment
-			inputDataIndex++
+
+	// Distribute rest of characters
+	var shortestArrayIndex;
+	var shortestX = 10000;
+	for(var i=classData.length; i<inputData.length; i++)
+	{
+		// Get shortest array
+		for(var j=0; j<classData.length; j++)
+		{
+			// if shorter than shortest found -> record
+			if(classData[j][classData[j].length - 1][1] < shortestX)
+			{
+				shortestX = classData[j][classData[j].length - 1][1];
+				shortestArrayIndex = j;
+			}
 		}
 
+		// Get next and previous animal types
+		var nextAnimalIndex =  this.getCharacterIndex(i % inputData.length);
+		var prevAnimalIndex = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][3];
 
-		// Distribute rest of characters
-		var shortestArrayIndex;
-		var shortestX = 10000;
-		for(var i=inputDataIndex % inputData.length; i<inputData.length-1; i++)
-		{
-			// Get shortest array
-			for(var j=0; j<classData.length; j++)
-			{
-				// if shorter than shortest found -> record
-				if(classData[j][classData[j].length - 1][1] < shortestX)
-				{
-					shortestX = classData[j][classData[j].length - 1][1];
-					shortestArrayIndex = j;
-				}
-			}
-
-			// Get next and previous animal types
-			var nextAnimalIndex =  this.getCharacterIndex(i % inputData.length);
-			var prevAnimalIndex = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][3];
-
-			// Get offset of the animals
-			var offset = sizeTable[prevAnimalIndex][nextAnimalIndex];
+		// Get offset of the animals
+		var offset = sizeTable[prevAnimalIndex][nextAnimalIndex];
 
 
-			// Record next character
-			var temp = new Array();
-			temp[0] = inputData[i-1 % inputData.length];
-			temp[1] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1] += offset[0]/2;
-			temp[2] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][2];// += offset[1]/2;
-			temp[3] = nextAnimalIndex;
+		// Record next character
+		var temp = new Array();
+		temp[0] = inputData[i-1 % inputData.length];
+		temp[1] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1] += offset[0]/2;
+		temp[2] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][2];// += offset[1]/2;
+		temp[3] = nextAnimalIndex;
 
 		
-			// Add next to shortest array with offset included
-			classData[shortestArrayIndex].push(temp);
+		// Add next to shortest array with offset included
+		classData[shortestArrayIndex].push(temp);
 
 
-			// Move to next character
-			shortestX = 10000;
-		}
+		// Move to next character
+		shortestX = 10000;
+	}
 
-		// For each row
-		for(var i=0; i<classData.length; i++)
+
+
+	// For each row
+	for(var i=0; i<classData.length; i++)
+	{
+		// Get max distance of this row
+		var maxDistance = classData[i][classData[i].length-1][1];
+		maxDistance += 475 / 2;
+
+		// Calculate how far 'off' middle screen
+		var addition = 1920 - maxDistance;
+
+		// Get character details + print (for first value)
+		temp = classData[i][classData.length-1];
+		this.setSingleCharacter(addition / 2, yValues[i], null, temp[0]);
+
+		// Add player name
+		var tempText = this.add.text((addition / 2)+100, yValues[i]+50, temp[0][temp[0].length-1]);
+		tempText.stroke = '#fff';
+		tempText.strokeThickness = 5;
+		tempText.anchor.setTo(0.5, 0.5);
+		tempText.addColor('#000', 0);	
+
+		// Add text to records
+		textRecords.push(tempText);
+
+
+
+		// For each value within that row
+		for(var j=0; j<classData[i].length-1; j++)
 		{
-			// Get max distance of this row
-			var maxDistance = classData[i][classData[i].length-1][1];
-			maxDistance += 475 / 2;
+			// Get character details + print
+			temp = classData[i][j];
+			this.setSingleCharacter(temp[1] + (addition / 2), temp[2], null, temp[0]);
 
-			// Calculate how far 'off' middle screen
-			var addition = 1920 - maxDistance;
+			// Add player name
+			tempText = this.add.text(temp[1] + (addition / 2) + 100, temp[2]+50, temp[0][temp[0].length-1]);
+			tempText.stroke = '#fff';
+			tempText.strokeThickness = 5;			
+			tempText.anchor.setTo(0.5, 0.5);
+			tempText.addColor('#000', 0);	
 
-			// Get character details + print (for first value)
-			temp = classData[i][classData.length-1];
-			this.setSingleCharacter(addition / 2, yValues[i], null, temp[0]);
-
-
-
-			// For each value within that row
-			for(var j=0; j<classData[i].length-1; j++)
-			{
-				// Get character details + print
-				temp = classData[i][j];
-				this.setSingleCharacter(temp[1] + (addition / 2), temp[2], null, temp[0]);
-			}
+			// Add text to records
+			textRecords.push(tempText);
 		}
 	}
 };
@@ -273,8 +374,6 @@ PlayScreen.prototype.getCharacterIndex = function(index)
 // Show a single character at a certian position on the screen
 PlayScreen.prototype.setSingleCharacter = function(x, y, _, data) 
 {
-//console.log(x+" "+y+" "+data);
-
 	// Pre-set scale for animal size
 	scale = 0.5;
 
@@ -554,6 +653,59 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 
 
 
+	// record animal / items -> if need to delete in future;
+	var temp = new Array();
+	temp.push(_animals);
+
+	temp.push(_blackBoots);
+	temp.push(_blackShoes);
+	temp.push(_blueShoes);
+	temp.push(_brownBoots);
+	temp.push(_blackBoots);
+	temp.push(_greenShoes);
+	temp.push(_highHeels);
+	temp.push(_pinkBoots);
+	temp.push(_pinkShoes);	
+	temp.push(_yellowBoots);
+
+	temp.push(_blueShirt);
+	temp.push(_greenShirt);
+	temp.push(_orangeShirt);		
+	temp.push(_pinkShirt);
+	temp.push(_purpleShirt);
+	temp.push(_redShirt);
+	temp.push(_whiteShirt);
+	temp.push(_yellowShirt);
+
+	temp.push(_blackTie);
+	temp.push(_bowTie);
+	temp.push(_gryTie);
+	temp.push(_hufTie);
+	temp.push(_necklace);
+	temp.push(_ravTie);
+
+	temp.push(_blueSunglasses);
+	temp.push(_monocole);
+	temp.push(_redGlasses);
+	temp.push(_blackSunglasses);
+	temp.push(_pinkGlasses);
+	temp.push(_hpGlasses);
+
+	temp.push(_clownNose);
+	temp.push(_moustache);
+
+	temp.push(_bowlerHat);
+	temp.push(_cowboyHat);
+	temp.push(_hardHat);
+	temp.push(_topHat);
+	temp.push(_crown);
+	temp.push(_clownWig);
+
+	// push to records
+	charcterRecords.push(temp);
+
+
+
 	// Show items that are equiped
 	for(var i = 0; i < 36; i++)
 	{
@@ -567,15 +719,70 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 
 
 
-
-// Shuffle characters
-PlayScreen.prototype.shuffleCharacters = function() 
+// onClick toggle show names
+PlayScreen.prototype.onClickNames = function() 
 {
-	
+	// For each text, toggle
+	for(var i=0; i<textRecords.length; i++)
+	{
+		textRecords[i].visible = !textRecords[i].visible;
+	}
 };
 
-// Take photo
-PlayScreen.prototype.takePhoto = function() 
+// onClick Change Background Button
+PlayScreen.prototype.onClickChangeBack = function() 
 {
+	// Change background 
+	backgrounds[backgroundIndex % backgrounds.length].visible = false;
+	backgrounds[(backgroundIndex+1) % backgrounds.length].visible = true;
+	backgroundIndex++;
+};
 
+// onClick Shuffle Characters Button
+PlayScreen.prototype.onClickShuffle = function() 
+{
+	// for all characters / items -> kill
+	for(var i=0; i<charcterRecords.length; i++)
+	{
+		for(var j=0; j<charcterRecords[i].length; j++)
+		{
+			charcterRecords[i][j].kill();
+		}
+	}
+	// for all character names -> kill
+	for(var i=0; i<textRecords.length; i++)
+	{
+		textRecords[i].kill();
+	}
+
+
+	// Reset Arrays
+	charcterRecords = new Array();
+	textRecords = new Array();
+
+
+	// Generate new characters
+    if(inputData.length > 0)
+    {
+		// Start
+		this.generateOrder();
+    }
+};
+
+// onClick Take Photo Button
+PlayScreen.prototype.onClickTakePhoto = function() 
+{
+	// Take photo
+	// ** TO DO **
+
+
+
+
+
+	//var link = document.createElement('a');
+//	link.href = this.game.canvas.toDataURL('image/png');
+//	link.download = 'Highscore.jpg';
+//	document.body.appendChild(link);
+//	link.click();
+//	document.body.removeChild(link);
 };

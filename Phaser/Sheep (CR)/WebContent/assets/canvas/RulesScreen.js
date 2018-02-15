@@ -42,9 +42,12 @@ RulesScreen.prototype.preload = function ()
 
 RulesScreen.prototype.create = function ()
 {
-// Add background
+	// Add background
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
 
+	// Add faded tutorial overlay
+	var _tutorialOverlay = this.add.sprite(0, 0, 'tutorialOverlay');
+	_tutorialOverlay.alpha = 0.1;
 
 	// Add back to pens
 	pens[0].back =  this.add.sprite(374, 387, 'penBack');

@@ -41,6 +41,10 @@ RulesScreen.prototype.create = function ()
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
 	background.scale.setTo(1.51, 1.51);
 
+	// Add faded tutorial overlay
+	var _tutorialOverlay = this.add.sprite(0, 0, 'tutorialOverlay');
+	_tutorialOverlay.alpha = 0.1;
+
     // Add word headings
     titleA = this.add.sprite(260, 110, 'wordDisplay');
     titleA.scale.setTo(1.5, 1.5);
@@ -135,8 +139,8 @@ RulesScreen.prototype.create = function ()
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
 	
 	// Add Time value
-	timeText = this.add.text(1040, 40, "Time: "+(timeCounter / backgroundScrollSpeed), smallStyle);
-	timeText.anchor.setTo(0.5);
+	//timeText = this.add.text(1040, 40, "Time: "+(timeCounter / backgroundScrollSpeed), smallStyle);
+	//timeText.anchor.setTo(0.5);
 
 	// Add Score value
 	scoreText = this.add.text(1700, 40, "Score: 0", smallStyle);
@@ -401,7 +405,7 @@ RulesScreen.prototype.updateTime = function ()
 	}
 	
 	// show current time
-	timeText.setText("Time: "+(Math.floor(timeLeft/backgroundScrollSpeed)), true);	
+	//timeText.setText("Time: "+(Math.floor(timeLeft/backgroundScrollSpeed)), true);	
 
 	// decrease time remaining
 	--timeLeft;

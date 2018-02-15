@@ -100,6 +100,10 @@ RulesScreen.prototype.create = function ()
 	//Load Assets
 	this.add.sprite(0, 0, 'background');
 	
+	// Add faded tutorial overlay
+	var _tutorialOverlay = this.add.sprite(0, 0, 'tutorialOverlay');
+	_tutorialOverlay.alpha = 0.1;
+	
 	_goodOwlBody = this.add.sprite(413, 390, 'goodOwlBody');
 	_badOwlBody = this.add.sprite(1295, 391, 'badOwlBody');
 	

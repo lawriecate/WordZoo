@@ -121,6 +121,12 @@
       "key": "ScoreBackground",
       "url": "assets/2 Rules/score_background.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "tutorialOverlay",
+      "url": "assets/2 Rules/tutorialOverlay.png",
+      "overwrite": false
     }
   ],
   "FinishScreen": [
@@ -230,7 +236,7 @@
     }
   ],
   "meta": {
-    "generated": "1518011874375",
+    "generated": "1518719223620",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

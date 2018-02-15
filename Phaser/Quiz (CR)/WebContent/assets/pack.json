@@ -85,6 +85,16 @@
       "key": "Yolk",
       "url": "assets/Items/yolk.png",
       "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "animals",
+      "url": "assets/animals.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
     }
   ],
   "loadingScreen": [
@@ -106,7 +116,7 @@
     }
   ],
   "meta": {
-    "generated": "1518377236932",
+    "generated": "1518442876121",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

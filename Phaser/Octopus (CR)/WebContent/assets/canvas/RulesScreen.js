@@ -69,7 +69,11 @@ RulesScreen.prototype.create = function ()
 {
 	var _background = this.add.sprite(960, 540, 'background');
 	_background.anchor.setTo(0.5, 0.5);
-	
+
+	// Add faded tutorial overlay
+	var _tutorialOverlay = this.add.sprite(0, 0, 'tutorialOverlay');
+	_tutorialOverlay.alpha = 0.1;	
+
 	game = this;
 	
 	 _pizza = this.add.sprite(1530, 825, 'pizza');

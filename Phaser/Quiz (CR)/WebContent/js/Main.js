@@ -4,7 +4,8 @@ var quiz = quiz|| {};
 
 	// current question
 	var questionIndex;
-	var numOfQuestions = 16;
+	var numOfQuestions = 17;
+	var animalSeclectIndex = 15;
 	var pictureSpellingIndex = 10;
 
 
@@ -18,7 +19,7 @@ var quiz = quiz|| {};
 						"Choose the adverb.",
 						"Choose the noun phrase.",
 
-						"Which correctly uses an !",
+						"Which correctly uses an '!'",
 
 						"Which sentence is in the present tense?",
 						"Which sentence is in the past tense?",
@@ -52,16 +53,15 @@ var quiz = quiz|| {};
 
 						["Chop", "Cop", "Shop", "Cope"],
 						["Dres", "Dreas", "Dress", "Dess"],
-						["Pacake", "Pancacke", "Pancache", "Pancake"],
+						["Pancaik", "Pancacke", "Pancache", "Pancake"],
 						["Puzzle", "Pussle", "Possle", "Puzzel"],
 						["Weathre","Wether","Whether","Weather"],
-						["Egg", "Yolk", "Yolck", "Yulk"]
+						["Yoke", "Yolk", "Yolck", "Yulk"]
 						];
 
 
 	// correct answers
 	var correctAnswers 	= [3,2,	1,1,2,3,0, 	2,	1,0,	0,2,3,0,3,1];
-
 
 	// correct word vales
 	var titleBox;
@@ -77,11 +77,29 @@ var quiz = quiz|| {};
 	var BLText;
 
 
+	// selected animal
+	var selectedAnimal;
+
+	// animal sprite assets
+	var giraffe;
+	var owl;
+	var octopus;
+	var zebra;
+	var panda;
+	var sheep;
+	var elephant;
+	var lion;
+
+
 	// Record word answers
 		// wordHistory[questionIndex] = True/False
 	var wordHistory = [];
 
-	
+	// Time records to prevent double clicking
+	var timeQuestionShown;
+	var inputDelay = 600;
+
+
 	// Text styles
 	var medStyle = {font: "bold 50px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	var bigStyle = {font: "bold 80px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };

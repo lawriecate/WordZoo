@@ -47,6 +47,10 @@ RulesScreen.prototype.create = function ()
     background = this.game.add.tileSprite(0, 0, 1920, 1080, 'Background');
     background.scale.setTo(1.51, 1.51);
 
+	// Add faded tutorial overlay
+	var _tutorialOverlay = this.add.sprite(0, 0, 'tutorialOverlay');
+	_tutorialOverlay.alpha = 0.1;
+
 
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);

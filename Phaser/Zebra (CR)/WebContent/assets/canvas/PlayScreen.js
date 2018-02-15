@@ -420,11 +420,114 @@ PlayScreen.prototype.recordData = function()
 	}
 
 console.log('\n\n\n');
+console.log('\n\n\n');
 
-	for(var i=0; i<clickHistory.length; i++)
+
+
+
+
+	//for(var i=0; i<clickHistory.length; i++)
+	//{
+	//	console.log(clickHistory[i]);
+	//}
+
+//console.log('\n\n\n');
+//console.log('\n\n\n');
+
+
+
+
+
+	// Create + prep output array
+	var resultsArray = new Array ();
+	for(var i=0; i<wordHistory.length; i++)
 	{
-		console.log(clickHistory[i]);
+		resultsArray[i] = new Array ();
 	}
+
+
+	// for each word
+	for(var i=0; i<wordHistory.length; i++)
+	{
+		// Counters
+		var first = null;
+		var second = null;
+		var third = null;
+
+		// Get last 3 from all entries
+		for(var j=0; j<wordHistory[i].length; j++)
+		{
+			first = second;
+			second = third;
+			third = wordHistory[i][j];
+		}
+		
+
+		// If no entries -> False
+		if(first == null && second == null && third == null)
+		{
+			console.log('Empty '+words[i]);
+			resultsArray[i][0] = words[i];
+			resultsArray[i][1] = false;
+		}
+
+		// If only one entry -> That entry's result
+		else if(first == null && second == null && third != null)
+		{
+			console.log('One '+words[i]+" "+third[1]);
+			resultsArray[i][0] = words[i];
+			resultsArray[i][1] = third[1];
+		}
+
+		// If two entries -> False unless both are true
+		else if(first == null && second != null && third != null)
+		{
+			if(second[1] == true && third[1] == true)
+			{
+				console.log('Two true '+words[i]);
+				resultsArray[i][0] = words[i];
+				resultsArray[i][1] = true;
+			}
+			else
+			{
+				console.log('Two false '+words[i]);
+				resultsArray[i][0] = words[i];
+				resultsArray[i][1] = false;
+			}
+		}
+
+		// If three entries -> Majority
+		else
+		{
+			if(first[1] == true && second[1] == true && third[1] == true ||
+				first[1] != true && second[1] == true && third[1] == true ||
+				first[1] == true && second[1] != true && third[1] == true ||
+				first[1] == true && second[1] == true && third[1] != true)
+			{
+				console.log('Three true '+words[i]);
+				resultsArray[i][0] = words[i];
+				resultsArray[i][1] = true;
+			}
+			else
+			{
+				console.log('Three false '+words[i]);
+				resultsArray[i][0] = words[i];
+				resultsArray[i][1] = false;
+			}
+		}
+	}
+
+//console.log('\n\n\n');
+//console.log('\n\n\n');
+
+
+
+
+
+//	for(var i=0; i<resultsArray.length; i++)
+//	{
+//		console.log(resultsArray[i][0]+" "+resultsArray[i][1]);
+//	}
 };
 
 // Game has finished, move to finish state

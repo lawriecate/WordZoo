@@ -1,12 +1,6 @@
 {
   "main": [
     {
-      "type": "image",
-      "key": "background",
-      "url": "assets/background.png",
-      "overwrite": false
-    },
-    {
       "type": "spritesheet",
       "key": "animals",
       "url": "assets/animals.png",
@@ -398,19 +392,83 @@
     },
     {
       "type": "image",
-      "key": "backButton",
-      "url": "assets/backButton.png",
+      "key": "score",
+      "url": "assets/score.png",
       "overwrite": false
     },
     {
       "type": "image",
-      "key": "score",
-      "url": "assets/score.png",
+      "key": "artClassroom",
+      "url": "assets/artClassroom.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "brickWall",
+      "url": "assets/brickWall.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cookingRoom",
+      "url": "assets/cookingRoom.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "footballBalls",
+      "url": "assets/footballBalls.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "footballEmpty",
+      "url": "assets/footballEmpty.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "grassHill",
+      "url": "assets/grassHill.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pinkClassroom",
+      "url": "assets/pinkClassroom.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "riverStones",
+      "url": "assets/riverStones.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "runningPath",
+      "url": "assets/runningPath.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "steppingStones",
+      "url": "assets/steppingStones.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "circle",
+      "url": "assets/preloader.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
     }
   ],
   "meta": {
-    "generated": "1518447184348",
+    "generated": "1518728835011",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

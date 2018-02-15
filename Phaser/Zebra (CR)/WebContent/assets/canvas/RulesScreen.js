@@ -49,6 +49,10 @@ RulesScreen.prototype.create = function ()
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
 	background.scale.setTo(1.51, 1.51);
 	
+	// Add faded tutorial overlay
+	var _tutorialOverlay = this.add.sprite(0, 0, 'tutorialOverlay');
+	_tutorialOverlay.alpha = 0.1;
+	
 	// Add zebra + walking animation
 	zebra = this.game.add.sprite(50, playerLanePositions[0], 'Zebra');
 	zebra.scale.setTo(1.5, 1.5);
