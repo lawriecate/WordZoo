@@ -323,7 +323,7 @@ var groups = [0,
 107,
 ];
 
-var words =     words = ["back",
+var words = ["back",
     "bake",
     "meat",
     "beaches",
@@ -653,7 +653,6 @@ function import(){
 
   //Take the two arrays, and shuffle
   shuffleBoth();
-
 }
 
 function shuffleBoth(){
@@ -671,7 +670,6 @@ function shuffleBoth(){
     }
 }
 
-
 function getRhymingPair(word){
   //Get the rhyming group of a given word
   var rhymingGroup = -1;
@@ -681,7 +679,6 @@ function getRhymingPair(word){
       break;
     }
   }
-
 
   //Loop through rhyming groups list until we have a word with the same rhyming group
   for(var i = 0; i < groups.length; i++){

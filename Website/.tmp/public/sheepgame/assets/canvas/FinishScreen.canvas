@@ -1,0 +1,121 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "FinishScreen",
+    "sceneWidth": 1920,
+    "sceneHeight": 1080,
+    "generateOnSave": true,
+    "enableStepping": true,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "// on click play again, proceed to play screen\nfunction onClickPlay () {\n//\tgame.state.start('play');\n}\n\t\n// on click more games, proceed to game selection screen\nfunction onClickMore () {\n// To be added\n}"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "setAll": [],
+      "children": [
+        {
+          "type": "image",
+          "id": "3f6429ae-1b30-45af-99b6-40a2ea3e0136",
+          "asset": "0",
+          "info": {
+            "editorName": "FinishBackgroun",
+            "x": -1,
+            "y": -1,
+            "scale.x": 1.51,
+            "scale.y": 1.51
+          }
+        },
+        {
+          "type": "image",
+          "id": "64020941-0f7a-405c-a302-69fb22c6e9a7",
+          "asset": "1",
+          "info": {
+            "editorName": "Unlucky",
+            "x": 576,
+            "y": 96,
+            "scale.x": 1.5,
+            "scale.y": 1.5
+          }
+        },
+        {
+          "type": "button",
+          "id": "7edca7b1-c9f9-4f67-a491-50fbb9f4781f",
+          "asset": "2",
+          "info": {
+            "editorName": "PlayAgain",
+            "x": 672,
+            "y": 384,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
+            "callback": "onClickPlay"
+          }
+        },
+        {
+          "type": "button",
+          "id": "05a1f7bd-b893-4f8a-b319-1665d5bdcc19",
+          "asset": "3",
+          "info": {
+            "editorName": "MoreGames",
+            "x": 672,
+            "y": 576,
+            "scale.x": 1.5,
+            "scale.y": 1.5,
+            "callback": "onClickMore"
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "FinishScreen",
+      "asset": "FinishBackgroun"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "FinishScreen",
+      "asset": "Unlucky"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "FinishScreen",
+      "asset": "PlayAgain"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "FinishScreen",
+      "asset": "MoreGames"
+    }
+  },
+  "prefab-table": {}
+}
