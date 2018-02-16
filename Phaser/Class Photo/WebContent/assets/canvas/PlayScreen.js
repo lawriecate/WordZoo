@@ -15,6 +15,9 @@ var backgrounds = new Array();
 var backgroundNames = ["steppingStones", "artClassroom", "brickWall", "footballBalls", "footballEmpty", "grassHill", 
 		"pinkClassroom", "riverStones", "runningPath", "cookingRoom"];
 
+// Are names currently visible
+var isVisible;
+
 
 
 function PlayScreen() 
@@ -32,7 +35,7 @@ PlayScreen.prototype.init = function ()
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#ffffff';	
+	this.stage.backgroundColor = '#fff';	
 };
 
 PlayScreen.prototype.preload = function () 
@@ -42,6 +45,8 @@ PlayScreen.prototype.preload = function ()
 	inputData = new Array();
 	classData = new Array();
 
+
+	// ** FOR TESTING **
 	inputData[0] = data;
 	inputData[1] = data2;
 	inputData[2] = data3;
@@ -105,7 +110,7 @@ PlayScreen.prototype.create = function ()
 
 
 	// Title text
-	var titleText = this.add.text(960, 80, "Miss Smith's Class", bigStyle);
+	var titleText = this.add.text(960, 80, className, bigStyle);
 	titleText.stroke = '#FF9933';
 	titleText.strokeThickness = 15;	
 	titleText.anchor.setTo(0.5, 0.5);
@@ -159,6 +164,9 @@ PlayScreen.prototype.create = function ()
     	text.anchor.setTo(0.5, 0.5);
     	text.addColor('#FF9933', 0); 
     }
+
+    // Names are hidden to start
+    isVisible = false;
 
 	// Start
 	this.generateOrder();
@@ -303,6 +311,7 @@ PlayScreen.prototype.generateOrder = function()
 		tempText.strokeThickness = 5;
 		tempText.anchor.setTo(0.5, 0.5);
 		tempText.addColor('#000', 0);	
+		tempText.visible = isVisible;
 
 		// Add text to records
 		textRecords.push(tempText);
@@ -322,6 +331,7 @@ PlayScreen.prototype.generateOrder = function()
 			tempText.strokeThickness = 5;			
 			tempText.anchor.setTo(0.5, 0.5);
 			tempText.addColor('#000', 0);	
+			tempText.visible = isVisible;
 
 			// Add text to records
 			textRecords.push(tempText);
@@ -722,10 +732,13 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 // onClick toggle show names
 PlayScreen.prototype.onClickNames = function() 
 {
+	// Switch isVisible boolean
+	isVisible = !isVisible;
+
 	// For each text, toggle
 	for(var i=0; i<textRecords.length; i++)
 	{
-		textRecords[i].visible = !textRecords[i].visible;
+		textRecords[i].visible = isVisible;
 	}
 };
 
@@ -777,12 +790,13 @@ PlayScreen.prototype.onClickTakePhoto = function()
 
 
 
+	//var canvas = this.Phaser.Canvas;
 
-
-	//var link = document.createElement('a');
-//	link.href = this.game.canvas.toDataURL('image/png');
-//	link.download = 'Highscore.jpg';
-//	document.body.appendChild(link);
-//	link.click();
-//	document.body.removeChild(link);
+	var link = document.createElement('a');
+//	link.href = $("canvas").toDataURL('image/png');
+	link.href = Phaser.Canvas.toDataURL('image/png');
+	link.download = 'ClassPhoto.png';
+	document.body.appendChild(link);
+	link.click();
+	document.body.removeChild(link);
 };

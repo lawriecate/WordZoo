@@ -31,7 +31,7 @@ var startingYValues = [	[400],
 var inputData;
 var inputDataIndex;
 var classData;
-
+var className = "Miss Smith's Class";
 
 
 
@@ -72,18 +72,18 @@ window.onload = function()
 			game.state.add('play', PlayScreen);
 
 			// Show loading screen
-			game.state.start('loading');																// ******* CHANGED FOR TESTING *******
+			game.state.start('play');																// ******* CHANGED FOR TESTING *******
 /*
 	$.get('http://localhost:1337/student/testdata', function(data)
 	{
 		//console.log("GET" + data);
-		groupWords = data;
-
-			// Multiple inputs
-		// playerName = data;
+		inputData = data[0];
+		className = data[1];
 
 
-	}).fail(function() {
+
+	}).fail(function() 
+	{
 		console.log('i failed');
 	});
 
