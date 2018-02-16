@@ -35,7 +35,7 @@ FinishScreen.prototype.create = function ()
 	var _GameOver = this.add.sprite(296, 58, 'GameOver');
 	
 	// Add score
-	scoreText = this.add.text(800, 520, score, biggerStyle);
+	scoreText = this.add.text(800, 520, score * 2, biggerStyle);
 	scoreText.anchor.setTo(0.5, 0.5);
 	scoreText.addColor('#FF9933', 0);
 	

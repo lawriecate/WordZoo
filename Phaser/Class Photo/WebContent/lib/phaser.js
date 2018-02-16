@@ -16022,6 +16022,8 @@ PIXI.CanvasPool = {
     * @param height {number} The height of the canvas element.
     * @return {HTMLCanvasElement} The canvas element.
     */
+
+
     create: function (parent, width, height) {
 
         var idx = PIXI.CanvasPool.getFirst();
@@ -16050,7 +16052,6 @@ PIXI.CanvasPool = {
             canvas.width = width;
             canvas.height = height;
         }
-
         return canvas;
 
     },
@@ -61592,6 +61593,7 @@ Phaser.Canvas = {
     */
     create: function (parent, width, height, id, skipPool) {
 
+
         width = width || 256;
         height = height || 256;
 
@@ -61605,6 +61607,13 @@ Phaser.Canvas = {
         canvas.width = width;
         canvas.height = height;
         canvas.style.display = 'block';
+
+        if(this.locky != 2){
+            console.log("executed");
+            this.locky = 2;
+            this.FUCK = canvas;
+        }
+
 
         return canvas;
 

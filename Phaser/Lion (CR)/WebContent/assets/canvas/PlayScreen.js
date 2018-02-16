@@ -1,6 +1,9 @@
 // Global variables
 var lion = lion || {};
 
+// Input lock
+var inputLocked;
+
 
 function PlayScreen() 
 {	
@@ -170,12 +173,6 @@ PlayScreen.prototype.create = function ()
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
 	livesLeft = startingLives;
 		
-
-    //If user closes window, record data
-    //window.onbeforeunload = function() 
-    //{
-    //    this.recordData();
-    //};
     
     // Record screen clicks
     this.game.input.onDown.add(function(touchStart) { 
@@ -195,6 +192,7 @@ PlayScreen.prototype.create = function ()
 
 
 	// Football roll in -> Start
+	inputLocked = true;
 	this.ballRollIn();
 };
 
@@ -290,10 +288,7 @@ PlayScreen.prototype.showButtons = function (isVisible)
 
 //setWords
 PlayScreen.prototype.setWords = function ()
-{		
-	// show selection buttons
-	this.showButtons(true);
-	
+{			
 	// get word from word bank at random position
 	correctWordIndex = Math.floor(Math.random() * words.length);
 	correctWord = words[correctWordIndex];
@@ -367,7 +362,13 @@ PlayScreen.prototype.setWords = function ()
 				break;
 	}
 
-	// Set timer for time taken to answer
+	// show selection buttons
+	this.showButtons(true);
+
+	// allow user input
+    inputLocked = false;
+
+    // Set timer for time taken to answer
     startTime = Math.floor(Date.now());
 };
 
@@ -377,6 +378,12 @@ PlayScreen.prototype.setWords = function ()
 // expand topLeft button
 PlayScreen.prototype.expandTL = function ()
 {			
+	// Input lock
+	if(inputLocked)
+		return;
+	else
+		inputLocked = true;
+
 	// Add tweens
 	var tween1 = this.game.add.tween(topLeft.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
 	var tween2 = this.game.add.tween(topLeft.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
@@ -391,6 +398,12 @@ PlayScreen.prototype.expandTL = function ()
 // expand topRight button
 PlayScreen.prototype.expandTR = function ()
 {			
+	// Input lock
+	if(inputLocked)
+		return;
+	else
+		inputLocked = true;
+
 	// Add tweens
 	var tween1 = this.game.add.tween(topRight.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
 	var tween2 = this.game.add.tween(topRight.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
@@ -405,6 +418,12 @@ PlayScreen.prototype.expandTR = function ()
 // expand bottomLeft button
 PlayScreen.prototype.expandBL = function ()
 {			
+	// Input lock
+	if(inputLocked)
+		return;
+	else
+		inputLocked = true;
+
 	// Add tweens
 	var tween1 = this.game.add.tween(bottomLeft.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
 	var tween2 = this.game.add.tween(bottomLeft.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
@@ -418,7 +437,13 @@ PlayScreen.prototype.expandBL = function ()
 };
 // expand bottomRight button
 PlayScreen.prototype.expandBR = function ()
-{			
+{		
+	// Input lock
+	if(inputLocked)
+		return;
+	else
+		inputLocked = true;
+
 	// Add tweens
 	var tween1 = this.game.add.tween(bottomRight.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
 	var tween2 = this.game.add.tween(bottomRight.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
@@ -651,7 +676,7 @@ PlayScreen.prototype.genIncorrect = function (preSetNum)
 	
 	while(!finished)
 	{
-		// Split into 4 different trees
+		// ** Split into 4 different trees **
 
 		// Tree 0
 		if(tree == 0)

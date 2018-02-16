@@ -110,10 +110,10 @@ PlayScreen.prototype.create = function ()
   	
 
     //If user closes window, record data
-    window.onbeforeunload = function() 
-    {
-        this.recordData();
-    };
+    //window.onbeforeunload = function() 
+    //{
+    //    this.recordData();
+    //};
    
     // Record Game Start Time
     var time = new Date();

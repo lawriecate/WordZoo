@@ -15,6 +15,18 @@ var backgrounds = new Array();
 var backgroundNames = ["steppingStones", "artClassroom", "brickWall", "footballBalls", "footballEmpty", "grassHill", 
 		"pinkClassroom", "riverStones", "runningPath", "cookingRoom"];
 
+// Buttons + text
+var nameButton;
+var nameButtonText
+var changeButton;
+var changeButtonText;
+var shuffleButton;
+var shuffleButtonText;
+var photoButton;
+var photoButtonText;
+var wordZooImage;
+
+
 // Are names currently visible
 var isVisible;
 
@@ -48,12 +60,12 @@ PlayScreen.prototype.preload = function ()
 
 	// ** FOR TESTING **
 	inputData[0] = data;
-	inputData[1] = data2;
+	inputData[1] = data2;/*
 	inputData[2] = data3;
 	inputData[3] = data4;
 	inputData[4] = data5;
 	inputData[5] = data6;
-	inputData[6] = data7;
+	inputData[6] = data7;/*
 	inputData[7] = data8;
 	inputData[8] = data;
 	inputData[9] = data2;
@@ -63,8 +75,8 @@ PlayScreen.prototype.preload = function ()
 	inputData[13] = data6;
 	inputData[14] = data7;
 	inputData[15] = data8;
-	inputData[16] = data;
-	inputData[17] = data2;
+	inputData[16] = data;/*
+	inputData[17] = data2;/*
 	inputData[18] = data3;
 	inputData[19] = data4;
 	inputData[20] = data5;
@@ -76,7 +88,7 @@ PlayScreen.prototype.preload = function ()
 	inputData[26] = data3;
 	inputData[27] = data4;
 	inputData[28] = data5;
-	inputData[29] = data6;
+	inputData[29] = data6;/*
 	inputData[30] = data7;
 	inputData[31] = data8;
 	inputData[32] = data;
@@ -87,7 +99,7 @@ PlayScreen.prototype.preload = function ()
 	inputData[37] = data5;
 	inputData[38] = data6;
 	inputData[39] = data7;
-	inputData[40] = data8;
+	inputData[40] = data8;*/
 };
 
 PlayScreen.prototype.create = function () 
@@ -118,43 +130,58 @@ PlayScreen.prototype.create = function ()
 
 
 	// Show names button
-	var nameButton = this.add.button(0, 925, 'score', this.onClickNames, this, null, null, null, null);
+	nameButton = this.add.button(0, 925, 'score', this.onClickNames, this, null, null, null, null);
 	nameButton.scale.setTo(1.3, 2);
 
 		// Back button text
-		var nameButtonText = this.add.text(240, 1005, "  Show \n Names", smallStyle);
+		nameButtonText = this.add.text(240, 1005, "  Show \n Names", smallStyle);
 		nameButtonText.anchor.setTo(0.5, 0.5);
 		nameButtonText.addColor('#FF9933', 0);	
 
 
 	// Add Change Background button
-	var backgroundButton = this.add.button(480, 925, 'score', this.onClickChangeBack, this, null, null, null, null);
-	backgroundButton.scale.setTo(1.3, 2);
+	changeButton = this.add.button(480, 925, 'score', this.onClickChangeBack, this, null, null, null, null);
+	changeButton.scale.setTo(1.3, 2);
 
 		// Change Background button text
-		var changeButtonText = this.add.text(720, 1005, "    Change \n Background", smallStyle);
+		changeButtonText = this.add.text(720, 1005, "    Change \n Background", smallStyle);
 		changeButtonText.anchor.setTo(0.5, 0.5);
 		changeButtonText.addColor('#FF9933', 0);	
 
 
 	// Add Shuffle button
-	var shuffleButton = this.add.button(965, 925, 'score', this.onClickShuffle, this, null, null, null, null);
+	shuffleButton = this.add.button(965, 925, 'score', this.onClickShuffle, this, null, null, null, null);
 	shuffleButton.scale.setTo(1.3, 2);
 
 		// Shuffle Characters button text
-		var shuffleButtonText = this.add.text(1190, 1005, "    Shuffle \n Characters", smallStyle);
+		shuffleButtonText = this.add.text(1190, 1005, "    Shuffle \n Characters", smallStyle);
 		shuffleButtonText.anchor.setTo(0.5, 0.5);
 		shuffleButtonText.addColor('#FF9933', 0);
 
 	// Add Photo button
-	var photoButton = this.add.button(1445, 925, 'score', this.onClickTakePhoto, this, null, null, null, null);
+	photoButton = this.add.sprite(1445, 925, 'score');
 	photoButton.scale.setTo(1.3, 2);
 
 		// Take Photo button text
-		var photoButtonText = this.add.text(1680, 1005, "  Take \n Photo", smallStyle);
+		photoButtonText = this.add.text(1680, 1005, "   To Take a Photo \n Right Click -> Save", smallStyle);
 		photoButtonText.anchor.setTo(0.5, 0.5);
 		photoButtonText.addColor('#FF9933', 0);
 
+
+	// Add Photo button
+	wordZooImage = this.add.sprite(920, 950, 'wordZoo');
+	wordZooImage.anchor.setTo(0.5, 0.5);
+	wordZooImage.visible = false;
+
+
+	// On Right Click -> hide buttons
+    this.game.input.activePointer.rightButton.onDown.add(function(touchStart) { 
+    	this.toggleButtons(false);
+    }, this);
+    // On Left Click -> show buttons
+    this.game.input.activePointer.leftButton.onDown.add(function(touchStart) { 
+    	this.toggleButtons(true);
+    }, this);
 
 	
     // if no characters in class, show text + return;
@@ -170,11 +197,6 @@ PlayScreen.prototype.create = function ()
 
 	// Start
 	this.generateOrder();
-
-
-
-	//var image = this.game.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-	//window.location.href = image;
 };
 
 
@@ -184,7 +206,6 @@ PlayScreen.prototype.generateOrder = function()
 {
     // Allocate arrays to hold values for screen print
 	classData = new Array();
-
 	var length = inputData.length;
 	if(length == 0)
 	{
@@ -217,6 +238,31 @@ PlayScreen.prototype.generateOrder = function()
 		classData[3] = new Array();		
 	}
 
+
+	// Size / Scale modifier for less populated samples
+	var modifier = 1;
+	switch(length){
+		case 1: modifier = 4;
+				break;
+		case 2: modifier = 3;
+				break;
+		case 3: modifier = 3;
+				break;
+		case 4: modifier = 3;
+				break;
+		case 5: modifier = 3;
+				break;
+		case 6: modifier = 3;
+				break;
+		case 7: modifier = 3;
+				break;
+		case 8: modifier = 3;
+				break;
+		case 9: modifier = 3;
+				break;
+		case 10: modifier = 3;
+				break;
+	}
 
 
     // Random start position in array
@@ -276,7 +322,7 @@ PlayScreen.prototype.generateOrder = function()
 		// Record next character
 		var temp = new Array();
 		temp[0] = inputData[i-1 % inputData.length];
-		temp[1] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1] += offset[0]/2;
+		temp[1] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1] += (offset[0] / 2) * modifier * 1.5;
 		temp[2] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][2];// += offset[1]/2;
 		temp[3] = nextAnimalIndex;
 
@@ -296,17 +342,17 @@ PlayScreen.prototype.generateOrder = function()
 	{
 		// Get max distance of this row
 		var maxDistance = classData[i][classData[i].length-1][1];
-		maxDistance += 475 / 2;
+		maxDistance += (475 * modifier / 2) / 2;
 
 		// Calculate how far 'off' middle screen
 		var addition = 1920 - maxDistance;
 
 		// Get character details + print (for first value)
 		temp = classData[i][classData.length-1];
-		this.setSingleCharacter(addition / 2, yValues[i], null, temp[0]);
+		this.setSingleCharacter((addition / 2), yValues[i], null, temp[0], modifier);
 
 		// Add player name
-		var tempText = this.add.text((addition / 2)+100, yValues[i]+50, temp[0][temp[0].length-1]);
+		var tempText = this.add.text((addition / 2) + 100, yValues[i]+50, temp[0][temp[0].length-1]);
 		tempText.stroke = '#fff';
 		tempText.strokeThickness = 5;
 		tempText.anchor.setTo(0.5, 0.5);
@@ -323,7 +369,7 @@ PlayScreen.prototype.generateOrder = function()
 		{
 			// Get character details + print
 			temp = classData[i][j];
-			this.setSingleCharacter(temp[1] + (addition / 2), temp[2], null, temp[0]);
+			this.setSingleCharacter(temp[1] + (addition / 2), temp[2], null, temp[0], modifier);
 
 			// Add player name
 			tempText = this.add.text(temp[1] + (addition / 2) + 100, temp[2]+50, temp[0][temp[0].length-1]);
@@ -382,10 +428,12 @@ PlayScreen.prototype.getCharacterIndex = function(index)
 
 
 // Show a single character at a certian position on the screen
-PlayScreen.prototype.setSingleCharacter = function(x, y, _, data) 
+PlayScreen.prototype.setSingleCharacter = function(x, y, _, data, modifier) 
 {
+console.log(x+" "+y+" "+modifier);
+
 	// Pre-set scale for animal size
-	scale = 0.5;
+	scale = 0.5 * modifier;
 
 
 	// Elephant
@@ -425,6 +473,7 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 	// Main animal	
 	_animals = this.add.sprite(x, y, 'animals', animalIndex);
 	_animals.scale.setTo(scale, scale);
+	_animals.anchor.setTo(0.5, 0.5);
 
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -436,46 +485,55 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 	var _blackBoots = this.add.sprite(x, y, 'blackBoots', animalIndex, _feet);
 	_blackBoots.scale.setTo(scale, scale);
 	_blackBoots.alpha = 0.0;
+	_blackBoots.anchor.setTo(0.5, 0.5);
 	spriteSheets[18] = _blackBoots;
 	
 	var _blackShoes = this.add.sprite(x, y, 'blackShoes', animalIndex, _feet);
 	_blackShoes.scale.setTo(scale, scale);
 	_blackShoes.alpha = 0.0;
+	_blackShoes.anchor.setTo(0.5, 0.5);
 	spriteSheets[22] = _blackShoes;
 	
 	var _blueShoes = this.add.sprite(x, y, 'blueShoes', animalIndex, _feet);
 	_blueShoes.scale.setTo(scale, scale);
 	_blueShoes.alpha = 0.0;
+	_blueShoes.anchor.setTo(0.5, 0.5);
 	spriteSheets[25] = _blueShoes;
 	
 	var _brownBoots = this.add.sprite(x, y, 'brownBoots', animalIndex, _feet);
 	_brownBoots.scale.setTo(scale, scale);
 	_brownBoots.alpha = 0.0;
+	_brownBoots.anchor.setTo(0.5, 0.5);
 	spriteSheets[15] = _brownBoots;
 	
 	var _greenShoes = this.add.sprite(x, y, 'greenShoes', animalIndex, _feet);
 	_greenShoes.scale.setTo(scale, scale);
 	_greenShoes.alpha = 0.0;
+	_greenShoes.anchor.setTo(0.5, 0.5);
 	spriteSheets[20] = _greenShoes;
 
 	var _highHeels = this.add.sprite(x, y, 'highHeels', animalIndex, _feet);
 	_highHeels.scale.setTo(scale, scale);
 	_highHeels.alpha = 0.0;
+	_highHeels.anchor.setTo(0.5, 0.5);
 	spriteSheets[11] = _highHeels;
 	
 	var _pinkBoots = this.add.sprite(x, y, 'pinkBoots', animalIndex, _feet);
 	_pinkBoots.scale.setTo(scale, scale);
 	_pinkBoots.alpha = 0.0;
+	_pinkBoots.anchor.setTo(0.5, 0.5);
 	spriteSheets[8] = _pinkBoots;
 	
 	var _pinkShoes = this.add.sprite(x, y, 'pinkShoes', animalIndex, _feet);
 	_pinkShoes.scale.setTo(scale, scale);
 	_pinkShoes.alpha = 0.0;
+	_pinkShoes.anchor.setTo(0.5, 0.5);
 	spriteSheets[27] = _pinkShoes;
 	
 	var _yellowBoots = this.add.sprite(x, y, 'yellowBoots', animalIndex, _feet);
 	_yellowBoots.scale.setTo(scale, scale);
 	_yellowBoots.alpha = 0.0;
+	_yellowBoots.anchor.setTo(0.5, 0.5);
 	spriteSheets[35] = _yellowBoots;
 	
 
@@ -489,41 +547,49 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 	var _blueShirt = this.add.sprite(x, y, 'blueShirt', animalIndex, _body);
 	_blueShirt.scale.setTo(scale, scale);
 	_blueShirt.alpha = 0.0;
+	_blueShirt.anchor.setTo(0.5, 0.5);
 	spriteSheets[24] = _blueShirt;
 	
 	var _greenShirt = this.add.sprite(x, y, 'greenShirt', animalIndex, _body);
 	_greenShirt.scale.setTo(scale, scale);
 	_greenShirt.alpha = 0.0;
+	_greenShirt.anchor.setTo(0.5, 0.5);
 	spriteSheets[17] = _greenShirt;
 	
 	var _orangeShirt = this.add.sprite(x, y, 'orangeShirt', animalIndex, _body);
 	_orangeShirt.scale.setTo(scale, scale);
 	_orangeShirt.alpha = 0.0;
+	_orangeShirt.anchor.setTo(0.5, 0.5);
 	spriteSheets[3] = _orangeShirt;
 	
 	var _pinkShirt = this.add.sprite(x, y, 'pinkShirt', animalIndex, _body);
 	_pinkShirt.scale.setTo(scale, scale);
 	_pinkShirt.alpha = 0.0;
+	_pinkShirt.anchor.setTo(0.5, 0.5);
 	spriteSheets[7] = _pinkShirt;
 	
 	var _purpleShirt = this.add.sprite(x, y, 'purpleShirt', animalIndex, _body);
 	_purpleShirt.scale.setTo(scale, scale);
 	_purpleShirt.alpha = 0.0;
+	_purpleShirt.anchor.setTo(0.5, 0.5);
 	spriteSheets[28] = _purpleShirt;
 	
 	var _redShirt = this.add.sprite(x, y, 'redShirt', animalIndex, _body);
 	_redShirt.scale.setTo(scale, scale);
 	_redShirt.alpha = 0.0;
+	_redShirt.anchor.setTo(0.5, 0.5);
 	spriteSheets[33] = _redShirt;
 	
 	var _whiteShirt = this.add.sprite(x, y, 'whiteShirt', animalIndex, _body);
 	_whiteShirt.scale.setTo(scale, scale);
 	_whiteShirt.alpha = 0.0;
+	_whiteShirt.anchor.setTo(0.5, 0.5);
 	spriteSheets[32] = _whiteShirt;
 	
 	var _yellowShirt = this.add.sprite(x, y, 'yellowShirt', animalIndex, _body);
 	_yellowShirt.scale.setTo(scale, scale);
 	_yellowShirt.alpha = 0.0;
+	_yellowShirt.anchor.setTo(0.5, 0.5);
 	spriteSheets[34] = _yellowShirt;
 	
 
@@ -537,35 +603,42 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 	var _blackTie = this.add.sprite(x, y, 'blackTie', animalIndex, _neck);
 	_blackTie.scale.setTo(scale, scale);
 	_blackTie.alpha = 0.0;
-	
+	_blackTie.anchor.setTo(0.5, 0.5);
+
 	var _bowTie = this.add.sprite(x, y, 'bowTie', animalIndex, _neck);
 	_bowTie.scale.setTo(scale, scale);
 	_bowTie.alpha = 0.0;
+	_bowTie.anchor.setTo(0.5, 0.5);
 	spriteSheets[9] = _bowTie;
 	
 	var _gryTie = this.add.sprite(x, y, 'gryTie', animalIndex, _neck);
 	_gryTie.scale.setTo(scale, scale);
 	_gryTie.alpha = 0.0;
+	_gryTie.anchor.setTo(0.5, 0.5);
 	spriteSheets[21] = _gryTie;
 	
 	var _hufTie = this.add.sprite(x, y, 'hufTie', animalIndex, _neck);
 	_hufTie.scale.setTo(scale, scale);
 	_hufTie.alpha = 0.0;
+	_hufTie.anchor.setTo(0.5, 0.5);
 	spriteSheets[1] = _hufTie;
 	
 	var _necklace = this.add.sprite(x, y, 'necklace', animalIndex, _neck);
 	_necklace.scale.setTo(scale, scale);
 	_necklace.alpha = 0.0;
+	_necklace.anchor.setTo(0.5, 0.5);
 	spriteSheets[6] = _necklace;
 	
 	var _ravTie = this.add.sprite(x, y, 'ravTie', animalIndex, _neck);
 	_ravTie.scale.setTo(scale, scale);
 	_ravTie.alpha = 0.0;
+	_ravTie.anchor.setTo(0.5, 0.5);
 	spriteSheets[29] = _ravTie;
 	
 	var _slyTie = this.add.sprite(x, y, 'slyTie', animalIndex, _neck);
 	_slyTie.scale.setTo(scale, scale);
 	_slyTie.alpha = 0.0;
+	_slyTie.anchor.setTo(0.5, 0.5);
 	spriteSheets[13] = _slyTie;
 	
 
@@ -579,31 +652,37 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 	var _blueSunglasses = this.add.sprite(x, y, 'blueSunglasses', animalIndex, _eye);
 	_blueSunglasses.scale.setTo(scale, scale);
 	_blueSunglasses.alpha = 0.0;
+	_blueSunglasses.anchor.setTo(0.5, 0.5);
 	spriteSheets[23] = _blueSunglasses;
 	
 	var _monocole = this.add.sprite(x, y, 'monocole', animalIndex, _eye);
 	_monocole.scale.setTo(scale, scale);
 	_monocole.alpha = 0.0;
+	_monocole.anchor.setTo(0.5, 0.5);
 	spriteSheets[4] = _monocole;
 	
 	var _redGlasses = this.add.sprite(x, y, 'redGlasses', animalIndex, _eye);
 	_redGlasses.scale.setTo(scale, scale);
 	_redGlasses.alpha = 0.0;
+	_redGlasses.anchor.setTo(0.5, 0.5);
 	spriteSheets[30] = _redGlasses;
 	
 	var _blackSunglasses = this.add.sprite(x, y, 'blackSunglasses', animalIndex, _eye);
 	_blackSunglasses.scale.setTo(scale, scale);
 	_blackSunglasses.alpha = 0.0;
+	_blackSunglasses.anchor.setTo(0.5, 0.5);
 	spriteSheets[19] = _blackSunglasses;
 	
 	var _pinkGlasses = this.add.sprite(x, y, 'pinkGlasses', animalIndex, _eye);
 	_pinkGlasses.scale.setTo(scale, scale);
 	_pinkGlasses.alpha = 0.0;
+	_pinkGlasses.anchor.setTo(0.5, 0.5);
 	spriteSheets[5] = _pinkGlasses;
 	
 	var _hpGlasses = this.add.sprite(x, y, 'hpGlasses', animalIndex, _eye);
 	_hpGlasses.scale.setTo(scale, scale);
 	_hpGlasses.alpha = 0.0;
+	_hpGlasses.anchor.setTo(0.5, 0.5);
 	spriteSheets[14] = _hpGlasses;
 	
 
@@ -617,11 +696,13 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 	var _clownNose = this.add.sprite(x, y, 'clownNose', animalIndex, _nose);
 	_clownNose.scale.setTo(scale, scale);
 	_clownNose.alpha = 0.0;
+	_clownNose.anchor.setTo(0.5, 0.5);
 	spriteSheets[12] = _clownNose;
 	
 	var _moustache = this.add.sprite(x, y, 'moustache', animalIndex, _nose);
 	_moustache.scale.setTo(scale, scale);
 	_moustache.alpha = 0.0;
+	_moustache.anchor.setTo(0.5, 0.5);
 	spriteSheets[2] = _moustache;
 	
 
@@ -635,30 +716,36 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data)
 	var _bowlerHat = this.add.sprite(x, y, 'bowlerHat', animalIndex, _head);
 	_bowlerHat.scale.setTo(scale, scale);
 	_bowlerHat.alpha = 0.0;
+	_bowlerHat.anchor.setTo(0.5, 0.5);
 	spriteSheets[26] = _bowlerHat;
 	
 	var _cowboyHat = this.add.sprite(x, y, 'cowboyHat', animalIndex, _head);
 	_cowboyHat.scale.setTo(scale, scale);
 	_cowboyHat.alpha = 0.0;
+	_cowboyHat.anchor.setTo(0.5, 0.5);
 	spriteSheets[10] = _cowboyHat;
 	
 	var _hardHat = this.add.sprite(x, y, 'hardHat', animalIndex, _head);
 	_hardHat.scale.setTo(scale, scale);
 	_hardHat.alpha = 0.0;
+	_hardHat.anchor.setTo(0.5, 0.5);
 	spriteSheets[0] = _hardHat;
 	
 	var _topHat = this.add.sprite(x, y, 'topHat', animalIndex, _head);
 	_topHat.scale.setTo(scale, scale);
 	_topHat.alpha = 0.0;
+	_topHat.anchor.setTo(0.5, 0.5);
 	spriteSheets[31] = _topHat;
 	
 	var _crown = this.add.sprite(x, y, 'crown', animalIndex, _head);
 	_crown.scale.setTo(scale, scale);
 	_crown.alpha = 0.0;
+	_crown.anchor.setTo(0.5, 0.5);
 	
 	var _clownWig = this.add.sprite(x, y, 'clownWig', animalIndex, _head);
 	_clownWig.scale.setTo(scale, scale);
 	_clownWig.alpha = 0.0;
+	_clownWig.anchor.setTo(0.5, 0.5);
 	spriteSheets[16] = _clownWig;
 
 
@@ -782,21 +869,46 @@ PlayScreen.prototype.onClickShuffle = function()
     }
 };
 
-// onClick Take Photo Button
-PlayScreen.prototype.onClickTakePhoto = function() 
+// toggleButtons/buttonText -> Bool if to be shown
+PlayScreen.prototype.toggleButtons = function(toShow) 
 {
+	// Buttons / text
+	nameButton.visible = toShow;
+	nameButtonText.visible = toShow;
+	changeButton.visible = toShow;
+	changeButtonText.visible = toShow;
+	shuffleButton.visible = toShow;
+	shuffleButtonText.visible = toShow;
+	photoButton.visible = toShow;
+	photoButtonText.visible = toShow;
+
+	// wordZoo logo
+	wordZooImage.visible = !toShow;
+};
+
+
+
+// onClick Take Photo Button
+//PlayScreen.prototype.onClickTakePhoto = function() 
+//{
 	// Take photo
 	// ** TO DO **
+//console.log('click');
 
 
 
-	//var canvas = this.Phaser.Canvas;
+//	var link = document.createElement('a');
+//	link.href = $("HTML.body.canvas").toDataURL('image/png');
+//	link.download = 'ClassPhoto.png';
+//	link.href = Phaser.Canvas.FUCK.toDataURL('image/png;base64');
+//console.log(link.href);	
 
-	var link = document.createElement('a');
-//	link.href = $("canvas").toDataURL('image/png');
-	link.href = Phaser.Canvas.toDataURL('image/png');
-	link.download = 'ClassPhoto.png';
-	document.body.appendChild(link);
-	link.click();
-	document.body.removeChild(link);
-};
+//	document.body.appendChild(link);
+//	link.click();
+//	document.body.removeChild(link);
+
+
+	//var dt = Phaser.Canvas.FUCK;//.toDataURL('image/png');
+
+	//dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
+//};

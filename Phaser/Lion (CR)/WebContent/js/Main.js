@@ -41,7 +41,7 @@
 	var livesBox;
 	
 	// time
-	var startingTime = 60;
+	var startingTime = 45;
 	var timeLeft;
 	var timeText = "";
 

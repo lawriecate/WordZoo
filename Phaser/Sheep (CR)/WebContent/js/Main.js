@@ -76,7 +76,7 @@ var livesBox;
 
 // time
 var timeLeft;
-var startingTime = 30;
+var startingTime = 40;
 var timeText = "";
 
 // timer

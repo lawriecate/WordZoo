@@ -713,10 +713,16 @@
       "key": "lock",
       "url": "assets/canvas/lock.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "preloader",
+      "url": "assets/preloader.gif",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1517510287236",
+    "generated": "1517598515546",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

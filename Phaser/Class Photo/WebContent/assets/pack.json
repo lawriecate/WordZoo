@@ -465,10 +465,16 @@
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "wordZoo",
+      "url": "assets/wordZoo.png",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1518728835011",
+    "generated": "1518794392720",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
