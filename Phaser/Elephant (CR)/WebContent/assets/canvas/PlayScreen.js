@@ -355,30 +355,19 @@ PlayScreen.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
-	// Save timeLeft
-	// Save livesLeft
-	// Save wordHistory
 	// Save clickHistory 
-
-//console.log(wordHistory.length +" "+wordHistory[0].length)
 
 
 
 	// Prep array
 	var output = new Array();
 
-console.log("S "+wordHistory.length);
-
 	// for each word tested
 	for(var i=0; i<wordHistory.length; i++)
 	{
-		console.log(i+" "+wordHistory[i].length);
-
 		// if never tested, set to default
 		if(wordHistory[i].length == 0)
 		{
-console.log(i+" undefined");
-
 			output[i] = 0.5
 		}
 		else 
@@ -409,8 +398,12 @@ console.log(i+" undefined");
 	}
 
 	// Send out
-	//output.send();
 	console.log(output);
+	$.post('end',{words:output}, function(data)
+	{
+  		// Log returned data
+  		console.log("RETURNED" + data);
+	});
 
 
 

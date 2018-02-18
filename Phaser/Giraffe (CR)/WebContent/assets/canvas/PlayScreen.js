@@ -1123,29 +1123,60 @@ PlayScreen.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
-	// Save timeLeft
-	// Save livesLeft
-	// Save wordHistory
 	// Save clickHistory 
 
 
 
-	// Test print
+	// Prep array
+	var output = new Array();
+
+	// for each word tested
 	for(var i=0; i<wordHistory.length; i++)
 	{
-		for(var j=0; j<wordHistory[i].length; j++)
+		// if never tested, set to default
+		if(wordHistory[i].length == 0)
 		{
-			console.log(wordHistory[i][j]);
+			output[i] = 0.5
 		}
-		console.log('\n');
+		else 
+		{
+			var rightCounter = 0;
+			var wrongCounter = 0;
+
+			// for each answer of a word
+			for(var j=0; j<wordHistory[i].length; j++)
+			{
+				// if correct, record correct
+				if(wordHistory[i][j][1])
+				{
+					rightCounter++;
+				}
+				else 
+				{
+					wrongCounter++;
+				}
+			}
+
+			// Calculate output value
+			var raw = rightCounter / (rightCounter+ wrongCounter);
+			console.log("Raw "+raw);
+			
+			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
+		}
 	}
 
-console.log('\n\n\n');
-
-	for(var i=0; i<clickHistory.length; i++)
+	// Send out
+	console.log(output);
+	$.post('end',{words:output}, function(data)
 	{
-		console.log(clickHistory[i]);
-	}
+  		// Log returned data
+  		console.log("RETURNED" + data);
+	});
+
+
+
+	// End
+	this.state.start('finish');
 };
 
 // Game has finished, move to finish state
