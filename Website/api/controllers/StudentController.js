@@ -46,5 +46,15 @@ module.exports = {
       return res.redirect(successRedirect);
     });
 
+  },
+
+  quiz: function(req,res) {
+    return res.view('student/welcome.ejs', {'title':'Welcome to WordZoo',games:games,  layout: 'layout_student'});
+
+  },
+  finishQuiz: function(req,res) {
+    Pupil.finishWelcome(res.pupil.id,function() {
+      return res.redirect('/student');
+    })
   }
 };

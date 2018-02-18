@@ -7,14 +7,21 @@
 
 module.exports = {
 	home: function (req, res) {
-		games = Game.find().exec(function(err,games) {
-			if (err) {
-				return res.serverError(err);
+			
+			if(!req.pupil.completedWelcome) {
+				return res.redirect('/student/welcome');
 			}
 
-				return res.view('student/home.ejs', {'title':'Start Screen',games:games,  layout: 'layout_student'});
+			games = Game.find().exec(function(err,games) {
+				if (err) {
+					return res.serverError(err);
+				}
 
-		});
+					return res.view('student/home.ejs', {'title':'Start Screen',games:games,  layout: 'layout_student'});
+
+			});
+
+
 
   },
 
@@ -25,7 +32,7 @@ module.exports = {
 				return res.serverError(err);
 			}
 
-				return res.view('student/play.ejs', {'title':'Play '+game.name,game:game,  layout: 'layout_student'});
+				return res.view('student/play.ejs', {'title':'Play '+game.name,game:game,  layout: 'student/game_layout'});
 
 		});
 	},
@@ -54,6 +61,26 @@ module.exports = {
 	savetestdata: function (req,res) {
 		data = req.param('gamename');
 		return res.send(data);
+	},
+
+	endgame: function(req,res) {
+		/*wordHistory = req.param('wordHistory');
+		// save data from game to student record
+		// generate session
+		session = Play.create({
+
+		}).exec(function(err,records) {
+
+		});
+		_each(wordHistroy,function(wordRecord) {
+			//["K1", false, 3277]
+			var params = {
+				word = wordRecord[0],
+				response = wordRecord[1],
+				timeToResponse = wordRecord[2]
+			}
+		});
+		return res.ok();*/
 	},
 
 	sheepgame: function( req,res) {

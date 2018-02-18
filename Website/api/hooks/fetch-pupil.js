@@ -1,4 +1,4 @@
-module.exports = function fetchUserHook(sails) {
+module.exports = function fetchPupilHook(sails) {
 
   return {
 
