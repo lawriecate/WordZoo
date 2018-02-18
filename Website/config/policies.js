@@ -44,6 +44,7 @@ module.exports.policies = {
     create: 'isAdmin',
     editGame: 'isAdmin',
     updateGame :'isAdmin',
+    list: 'isAdmin'
   },
 
   SchoolController: {
