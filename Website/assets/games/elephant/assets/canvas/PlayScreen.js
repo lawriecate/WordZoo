@@ -1,9 +1,9 @@
 //global variables
-var elephant = elephant|| {};  
+var elephant = elephant|| {};
 
 
-function PlayScreen() 
-{	
+function PlayScreen()
+{
 	Phaser.State.call(this);
 }
 
@@ -12,24 +12,24 @@ var PlayScreen_proto = Object.create(Phaser.State.prototype);
 PlayScreen.prototype = PlayScreen_proto;
 PlayScreen.prototype.constructor = PlayScreen;
 
-PlayScreen.prototype.init = function () 
-{	
+PlayScreen.prototype.init = function ()
+{
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#ffffff';	
+	this.stage.backgroundColor = '#ffffff';
 };
 
-PlayScreen.prototype.preload = function () 
-{	
-	this.load.pack('PlayScreen', 'assets/pack.json');
+PlayScreen.prototype.preload = function ()
+{
+	this.load.pack('PlayScreen', '/games/elephant/assets/pack.json');
 
 	// Load items
 	for(var i = 0; i < matchingWords.length; i++)
 	{
 		var temp = matchingWords[i];
-		this.load.image(temp[0],'assets/Items/'+temp[0]+'.png');
-	}	
+		this.load.image(temp[0],'/games/elephant/assets/Items/'+temp[0]+'.png');
+	}
 
 	// Clear + expand words list
 	wordHistory = new Array ();
@@ -37,11 +37,11 @@ PlayScreen.prototype.preload = function ()
 	for(var i = 0; i < matchingWords.length; i++)
 	{
 		wordHistory[i] = new Array ();
-	}	
+	}
 };
 
-PlayScreen.prototype.create = function () 
-{	
+PlayScreen.prototype.create = function ()
+{
 	// load background
     background = this.game.add.tileSprite(0, 0, 1920, 1080, 'Background');
     background.scale.setTo(1.51, 1.51);
@@ -50,7 +50,7 @@ PlayScreen.prototype.create = function ()
 	easel1 = this.add.button(98, 225, 'easel', this.click0, this, null, null, null, null);
 	easel2 = this.add.button(528, 225, 'easel', this.click1, this, null, null, null, null);
 	easel3 = this.add.button(963, 225, 'easel', this.click2, this, null, null, null, null);
-    
+
     easel1.scale.setTo(1.35, 1.3);
     easel2.scale.setTo(1.35, 1.3);
     easel3.scale.setTo(1.35, 1.3);
@@ -66,27 +66,27 @@ PlayScreen.prototype.create = function ()
 
 
     //Add in text
-    scoreText = this.game.add.text(1000, 1000, "Score: 0", bigStyle);    
+    scoreText = this.game.add.text(1000, 1000, "Score: 0", bigStyle);
     scoreText.anchor.setTo(0.5);
-    scoreText.addColor('#FF9933', 0);	
+    scoreText.addColor('#FF9933', 0);
 
     winnerItemText = this.game.add.text(1590, 315, "", medStyle);
     winnerItemText.anchor.setTo(0.5);
-    winnerItemText.addColor('#FF9933', 0);	
+    winnerItemText.addColor('#FF9933', 0);
 
     timeText = this.game.add.text(400, 1000, "Time Remaining: "+startingTime, bigStyle);
     timeText.anchor.setTo(0.5);
-	timeText.addColor('#FF9933', 0);	
+	timeText.addColor('#FF9933', 0);
 
 
     //If user closes window, record data
-    //window.onbeforeunload = function() 
+    //window.onbeforeunload = function()
     //{
     //    this.recordData();
     //};
-    
+
     // Record screen clicks
-    this.game.input.onDown.add(function(touchStart) { 
+    this.game.input.onDown.add(function(touchStart) {
     		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
     	}, this);
 
@@ -104,7 +104,7 @@ PlayScreen.prototype.create = function ()
 
 // onClick any stones
 PlayScreen.prototype.reset = function (clickedLane)
-{	
+{
 	// Get random matching pair
 	matchingRandom = Math.floor((Math.random() * matchingWords.length) + 0);
 	var matchingPair = matchingWords[matchingRandom];
@@ -143,7 +143,7 @@ PlayScreen.prototype.reset = function (clickedLane)
 	// Set pics/text
 	switch(winningLane){
 		case 0: winningLane == 0;
-			
+
 			// Set correct
 			if(binary == 0)
 			{
@@ -156,7 +156,7 @@ PlayScreen.prototype.reset = function (clickedLane)
 				winnerItemText.setText(matchingPair[1]);
 				winnerText = matchingPair[1];
 				item0 = this.game.add.sprite(120, 250, matchingPair[0]);
-			}		
+			}
 
 			// Set incorrect
 			item1 = this.game.add.sprite(555, 250, RandomA[0]);
@@ -166,7 +166,7 @@ PlayScreen.prototype.reset = function (clickedLane)
 			break;
 
 		case 1: winningLane == 1;
-		
+
 			// Set correct
 			if(binary == 0)
 			{
@@ -179,7 +179,7 @@ PlayScreen.prototype.reset = function (clickedLane)
 				winnerItemText.setText(matchingPair[1]);
 				winnerText = matchingPair[1];
 				item1 = this.game.add.sprite(555, 250, matchingPair[0]);
-			}		
+			}
 
 			// Set incorrect
 			item0 = this.game.add.sprite(120, 250, RandomA[0]);
@@ -189,7 +189,7 @@ PlayScreen.prototype.reset = function (clickedLane)
 			break;
 
 		case 2: winningLane == 2;
-		
+
 			// Set correct
 			if(binary == 0)
 			{
@@ -202,7 +202,7 @@ PlayScreen.prototype.reset = function (clickedLane)
 				winnerItemText.setText(matchingPair[1]);
 				winnerText = matchingPair[1];
 				item2 = this.game.add.sprite(998, 250, matchingPair[0]);
-			}		
+			}
 
 			// Set incorrect
 			item0 = this.game.add.sprite(120, 250, RandomA[0]);
@@ -216,8 +216,8 @@ PlayScreen.prototype.reset = function (clickedLane)
     item0.scale.setTo(3, 3);
     item1.scale.setTo(3, 3);
     item2.scale.setTo(3, 3);
-    
-    
+
+
     // Set timer for time taken to answer
     startTime = Math.floor(Date.now());
 };
@@ -226,22 +226,22 @@ PlayScreen.prototype.reset = function (clickedLane)
 
 // onClick buttons
 PlayScreen.prototype.click0 = function ()
-{	
+{
 	this.validate(0);
 };
 PlayScreen.prototype.click1 = function ()
-{	
+{
 	this.validate(1);
 };
 PlayScreen.prototype.click2 = function ()
-{	
+{
 	this.validate(2);
 };
 
 
 // validate user choice
 PlayScreen.prototype.validate = function (clickedLane)
-{	
+{
 	// Kill items
 	item0.kill();
 	item1.kill();
@@ -258,7 +258,7 @@ PlayScreen.prototype.validate = function (clickedLane)
 		// record word answers
 		var finishTime = Math.floor(Date.now());
 		wordHistory[matchingRandom][wordHistory[matchingRandom].length] = [null, true, finishTime - startTime];
-		
+
 		// reset
 		this.reset();
 	}
@@ -267,7 +267,7 @@ PlayScreen.prototype.validate = function (clickedLane)
 		// lose a life
 		livesLeft--;
 		this.checkLives();
-		
+
 		// record word answers
 		var clickedItemText;
 		if(clickedLane == 0)
@@ -282,7 +282,7 @@ PlayScreen.prototype.validate = function (clickedLane)
 		{
 			clickedItemText = item2Text;
 		}
-		
+
 		// record answer
 		var finishTime = Math.floor(Date.now());
 		wordHistory[matchingRandom][wordHistory[matchingRandom].length] = [clickedItemText, false, finishTime - startTime];
@@ -298,33 +298,33 @@ PlayScreen.prototype.validate = function (clickedLane)
 
 // display current time to screen (with --)
 PlayScreen.prototype.updateTime = function ()
-{	
+{
 	// If no time remaining, game finished
 	if(timeLeft <= 0)
 	{
 		// Exit
 		this.endGame();
 	}
-	
+
 	// show current time
-	timeText.setText("Time Remaining: "+ --timeLeft, true);	
+	timeText.setText("Time Remaining: "+ --timeLeft, true);
 };
 
 
 // display current score to screen
 PlayScreen.prototype.updateScore = function ()
-{	
+{
 	scoreText.setText("Score: "+score, true);
 };
 
 
 // Check how many lives remaining, show correct frame
-PlayScreen.prototype.checkLives = function() 
+PlayScreen.prototype.checkLives = function()
 {
 	if(livesLeft <= 0)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
-		
+
 		// Exit
 		this.endGame();
 	}
@@ -340,10 +340,10 @@ PlayScreen.prototype.checkLives = function()
 
 
 // Record screen clicks
-PlayScreen.prototype.recordScreenPress = function(x, y) 
+PlayScreen.prototype.recordScreenPress = function(x, y)
 {
 	// Get current time
-	var timeStamp = new Date(); 
+	var timeStamp = new Date();
 	timeStamp.toUTCString();
 
 	// Add to records
@@ -351,14 +351,14 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 };
 
 // Record statistical data from game
-PlayScreen.prototype.recordData = function() 
+PlayScreen.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
 	// Save timeLeft
 	// Save livesLeft
 	// Save wordHistory
-	// Save clickHistory 
+	// Save clickHistory
 
 
 
@@ -388,7 +388,7 @@ console.log('\n\n\n');
 
 
 // Game has finished, record data + move to finish state
-PlayScreen.prototype.endGame = function() 
+PlayScreen.prototype.endGame = function()
 {
 	this.recordData();
 };

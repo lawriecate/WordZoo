@@ -26,7 +26,7 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	this.load.pack('startScreen', 'assets/pack.json');	
+	this.load.pack('startScreen', '/games/giraffe/assets/pack.json');
 };
 
 LoadingScreen.prototype.create = function ()

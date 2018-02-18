@@ -103,9 +103,12 @@ module.exports.routes = {
     'get /teach/start/:pupilid': 'TeacherController.startSession',
 
     'get /student':'GameController.home' ,
+    'get /student/welcome':'StudentController.quiz' ,
+    'post /student/welcome':'StudentController.finishQuiz' ,
     'get /student/play/:gameslug': 'GameController.play',
     'get /student/testdata': 'GameController.testdata',
     'post /student/savedata': 'GameController.savetestdata',
+    'post /student/endgame': 'GameController.endgame',
     'get /student/login': { view: 'student/login' },
     'post /student/login': 'StudentController.login',
 };

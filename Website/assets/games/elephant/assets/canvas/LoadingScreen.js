@@ -26,7 +26,7 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	this.load.pack('loadingScreen', 'assets/pack.json');
+	this.load.pack('loadingScreen', '/games/elephant/assets/pack.json');
 };
 
 LoadingScreen.prototype.create = function ()

@@ -4,10 +4,11 @@
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
-
+var shortid = require('shortid');
 module.exports = {
 
   attributes: {
+      shortid: { type: 'String', required: true},
       name : { type: 'String', required: true },
       username: { type: 'String', required: true },
       dob: { type: 'Date'},
@@ -21,6 +22,14 @@ module.exports = {
       passcode: {
         type: 'String',
         required: true
+      },
+      points: {
+        type: 'Integer'
+      },
+
+      completedWelcome: {
+        type: 'Boolean',
+        defaultsTo: false
       }
 
   },
@@ -41,6 +50,7 @@ module.exports = {
     var params ={
       name: inputs.name,
 			username:username,
+      shortid: shortid.generate(),
 			dob: inputs.address,
 			school: inputs.school,
 			passcode: passcode,
@@ -74,6 +84,13 @@ module.exports = {
     Pupil.update({id:pupilid},
       {
 			passcode: passcode
+    }).exec(cb);
+  },
+  finishWelcome: function(pupilid,cb) {
+
+    Pupil.update({id:pupilid},
+      {
+			completedWelcome: true
     }).exec(cb);
   },
   attemptLogin: function (inputs, cb) {

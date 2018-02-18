@@ -1,5 +1,5 @@
 	//global variables
-	var elephant = elephant|| {}; 
+	var elephant = elephant|| {};
 
 
 	//word bank
@@ -23,21 +23,21 @@
 	var wordHistory = [];
 	var gameStartTime;
 	var startTime;
-	
+
 	// Record click history
 		// [(int) x, (int) y, (UTCString) timeStamp]
 	var clickHistory = [];
 	var gameStartTime;
-	
+
 	// score
 	var score;
 	var scoreText = "";
-	
+
 	// lives
 	var startingLives = 3;
 	var livesLeft;
 	var livesBox;
-	
+
 	// time
 	var startingTime = 30;//60;
 	var timeLeft;
@@ -45,13 +45,14 @@
 
 	// timer
 	var timer;
-	
+
 	// Text styles
 	var medStyle = {font: "bold 50px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	var bigStyle = {font: "bold 80px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	var biggerStyle = {font: "bold 120px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 
-	
+var sendData;
+
 window.onload = function()
 {
 	// Create game
@@ -89,4 +90,18 @@ window.onload = function()
 		// Start game
 		game.state.start('start');
 	});*/
+
+	sendData = function() {
+		console.log("SENDING");
+		console.log(wordHistory);
+		$.post('/student/endgame',{wh:wordHistory}, function(data)
+		{
+			// Log returned data
+			console.log("RETURNED" + data);
+
+
+		});
+	}
+
+
 };

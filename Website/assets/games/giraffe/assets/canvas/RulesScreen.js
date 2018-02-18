@@ -1,5 +1,5 @@
 // Global variables
-var giraffe = giraffe|| {}; 
+var giraffe = giraffe|| {};
 var giraffeFalling;
 
 var counter;
@@ -11,9 +11,9 @@ var handTween;
 
 
 
-function RulesScreen() 
-{	
-	Phaser.State.call(this);	
+function RulesScreen()
+{
+	Phaser.State.call(this);
 }
 
 /** @type Phaser.State */
@@ -21,21 +21,21 @@ var RulesScreen_proto = Object.create(Phaser.State.prototype);
 RulesScreen.prototype = RulesScreen_proto;
 RulesScreen.prototype.constructor = RulesScreen;
 
-RulesScreen.prototype.init = function () 
-{	
+RulesScreen.prototype.init = function ()
+{
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#ffffff';	
+	this.stage.backgroundColor = '#ffffff';
 };
 
-RulesScreen.prototype.preload = function () 
-{	
-	this.load.pack('PlayScreen', 'assets/pack.json');	
-	this.load.pack('RulesScreen', 'assets/pack.json');	
+RulesScreen.prototype.preload = function ()
+{
+	this.load.pack('PlayScreen', '/games/giraffe/assets/pack.json');
+	this.load.pack('RulesScreen', '/games/giraffe/assets/pack.json');
 };
 
-RulesScreen.prototype.create = function () 
+RulesScreen.prototype.create = function ()
 {
 	// Add background
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
@@ -73,7 +73,7 @@ RulesScreen.prototype.create = function ()
     wordA2.anchor.setTo(0.5);
 	wordA3 = this.add.text(460, 960, "", medStyle);
     wordA3.anchor.setTo(0.5);
-	
+
     // Second stones word text
     wordB0 = this.add.text(1060, 370, "", medStyle);
     wordB0.anchor.setTo(0.5);
@@ -83,7 +83,7 @@ RulesScreen.prototype.create = function ()
     wordB2.anchor.setTo(0.5);
 	wordB3 = this.add.text(1060, 980, "", medStyle);
     wordB3.anchor.setTo(0.5);
-	
+
     // Third stones word text
     wordC0 = this.add.text(1680, 370, "", medStyle);
     wordC0.anchor.setTo(0.5);
@@ -93,9 +93,9 @@ RulesScreen.prototype.create = function ()
     wordC2.anchor.setTo(0.5);
     wordC3 = this.add.text(1680, 980, "", medStyle);
     wordC3.anchor.setTo(0.5);
-   
 
-	
+
+
 	// Add giraffe walking sprites
 	giraffeWalk = this.game.add.sprite(0, playerLanePositionsY[0], 'giraffeWalking', 1);
 	giraffeWalk.scale.setTo(0.5, 0.5);
@@ -124,9 +124,9 @@ RulesScreen.prototype.create = function ()
 	giraffeMove1 = this.game.add.tween(giraffeWalk).to({x: '+150'}, 600, Phaser.Easing.Linear.None, false);
 	giraffeMove1.onComplete.add(function (){
 		currentColoumn++; this.moveGiraffe(playerLanePositionsX[(currentColoumn * 2)], playerLanePositionsY[currentLane]);
-		giraffeWalking.stop(); 
+		giraffeWalking.stop();
 	}, this);
-	
+
 	// giraffe tween off stone 2
 	giraffeMove2 = this.game.add.tween(giraffeWalk).to({x: '+150'}, 600, Phaser.Easing.Linear.None, false);
 	giraffeMove2.onComplete.add(function (){
@@ -134,10 +134,10 @@ RulesScreen.prototype.create = function ()
 	}, this);
 
 
-	
+
 	// Add Lives box
 	livesBox = this.add.sprite(0, 0, 'Lives', 0);
-	
+
 	// Add Time value
 	//timeText = this.add.text(1040, 40, "Time: "+(timeCounter / backgroundScrollSpeed), smallStyle);
 	//timeText.anchor.setTo(0.5);
@@ -150,7 +150,7 @@ RulesScreen.prototype.create = function ()
 	// Add OK button
 	var _okButton = this.add.button(1200, 900, 'okButton', this.onClickOK, this, null, null, null, null);
 	_okButton.scale.setTo(1.5, 1.5);
-	
+
 	// Add Circle
 	circle = this.add.sprite(1150, 40, 'circle');
 	circle.scale.setTo(1.5, 1.25);
@@ -193,7 +193,7 @@ RulesScreen.prototype.create = function ()
 
 
 // Set words onto the stones
-RulesScreen.prototype.setStones = function() 
+RulesScreen.prototype.setStones = function()
 {
 	titleTextA.setText("A");
 	wordA0.setText("0");
@@ -218,7 +218,7 @@ RulesScreen.prototype.setStones = function()
 
 // display current time to screen (with --)
 RulesScreen.prototype.updateTime = function ()
-{	
+{
 	// Demo
 	if((timeLeft % backgroundScrollSpeed) == 0)
 	{
@@ -268,7 +268,7 @@ RulesScreen.prototype.updateTime = function ()
 
 		// 6 -> move giraffe
 		else if(counter == 6)
-		{	
+		{
 			this.moveGiraffe(playerLanePositionsX[1], playerLanePositionsY[1]);
 			currentLane = 1;
 
@@ -292,13 +292,13 @@ RulesScreen.prototype.updateTime = function ()
 		{
 			scoreText.setText("Score: 1");
 		}
-		
+
 		// 9 -> hide circle
 		else if(counter == 9)
 		{
 			circle.visible = false;
 		}
-		
+
 		// 10 -> highlight title
 		if(counter == 10)
 		{
@@ -325,7 +325,7 @@ RulesScreen.prototype.updateTime = function ()
 			handTween = this.game.add.tween(hand).to({x: '+210', y: '-1120'}, 900, Phaser.Easing.Linear.None, false);
 			handTween.start();
 		}
-		
+
 		// 13 -> click hand
 		else if(counter == 13)
 		{
@@ -339,10 +339,10 @@ RulesScreen.prototype.updateTime = function ()
 			handTween = this.game.add.tween(hand).to({x: '-100', y: '+1120'}, 800, Phaser.Easing.Linear.None, false);
 			handTween.start();
 		}
-		
+
 		// 15 -> move giraffe
 		else if(counter == 15)
-		{			
+		{
 			this.moveGiraffe(playerLanePositionsX[3], playerLanePositionsY[0]);
 			currentLane = 0;
 		}
@@ -353,7 +353,7 @@ RulesScreen.prototype.updateTime = function ()
 			giraffe.visible = true;
 			giraffeWalk.visible = false;
 
-		    giraffeFalling.onComplete.add(function () 
+		    giraffeFalling.onComplete.add(function ()
 		    {
 		    	giraffeWalking.play(10, true);
 				giraffeMove1.start();
@@ -385,7 +385,7 @@ RulesScreen.prototype.updateTime = function ()
 		{
 			circleBig.visible = false;
 		}
-		
+
 		// 20 -> Exit
 		else if(counter == 20)
 		{
@@ -403,9 +403,9 @@ RulesScreen.prototype.updateTime = function ()
 	if(timeLeft <= 0){
 		this.onClickOK();
 	}
-	
+
 	// show current time
-	//timeText.setText("Time: "+(Math.floor(timeLeft/backgroundScrollSpeed)), true);	
+	//timeText.setText("Time: "+(Math.floor(timeLeft/backgroundScrollSpeed)), true);
 
 	// decrease time remaining
 	--timeLeft;
@@ -415,7 +415,7 @@ RulesScreen.prototype.updateTime = function ()
 
 // Move giraffe to new position
 RulesScreen.prototype.moveGiraffe = function (posX, posY)
-{	
+{
 	giraffe.x = posX - 144;
 	giraffe.y = posY;
 
@@ -426,7 +426,7 @@ RulesScreen.prototype.moveGiraffe = function (posX, posY)
 
 
 // On click OK button, return to start screen
-RulesScreen.prototype.onClickOK = function() 
+RulesScreen.prototype.onClickOK = function()
 {
 	this.state.start('start');
 };

@@ -3,31 +3,31 @@
     {
       "type": "image",
       "key": "background",
-      "url": "assets/menuBackground.png",
+      "url": "/games/elephant/assets/menuBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "assets/playButton.png",
+      "url": "/games/elephant/assets/playButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "assets/rulesButton.png",
+      "url": "/games/elephant/assets/rulesButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "BackButton",
-      "url": "assets/backButton.png",
+      "url": "/games/elephant/assets/backButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ButtonBackground",
-      "url": "assets/buttonBackground.png",
+      "url": "/games/elephant/assets/buttonBackground.png",
       "overwrite": false
     }
   ],
@@ -35,19 +35,19 @@
     {
       "type": "image",
       "key": "okButton",
-      "url": "assets/okButton.png",
+      "url": "/games/elephant/assets/okButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "highlightCircle",
-      "url": "assets/highlightCircle.png",
+      "url": "/games/elephant/assets/highlightCircle.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Red",
-      "url": "assets/Red.png",
+      "url": "/games/elephant/assets/Red.png",
       "frameWidth": 312,
       "frameHeight": 474,
       "frameMax": -1,
@@ -57,7 +57,7 @@
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "assets/Lives.png",
+      "url": "/games/elephant/assets/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": -1,
@@ -67,7 +67,7 @@
     {
       "type": "image",
       "key": "tutorialOverlay",
-      "url": "assets/tutorialOverlay.png",
+      "url": "/games/elephant/assets/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -75,25 +75,25 @@
     {
       "type": "image",
       "key": "FinishBackground",
-      "url": "assets/finishBackground.png",
+      "url": "/games/elephant/assets/finishBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayAgain",
-      "url": "assets/playAgainButton.png",
+      "url": "/games/elephant/assets/playAgainButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "assets/homeButton.png",
+      "url": "/games/elephant/assets/homeButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "GameOver",
-      "url": "assets/gameOverLayOver.png",
+      "url": "/games/elephant/assets/gameOverLayOver.png",
       "overwrite": false
     }
   ],
@@ -101,31 +101,31 @@
     {
       "type": "image",
       "key": "Background",
-      "url": "assets/playBackground.png",
+      "url": "/games/elephant/assets/playBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ScoreBackground",
-      "url": "assets/score.png",
+      "url": "/games/elephant/assets/score.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "easel",
-      "url": "assets/easel.png",
+      "url": "/games/elephant/assets/easel.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "chosenEasel",
-      "url": "assets/chosenEasel.png",
+      "url": "/games/elephant/assets/chosenEasel.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "assets/Lives.png",
+      "url": "/games/elephant/assets/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": -1,
@@ -137,13 +137,13 @@
     {
       "type": "image",
       "key": "background",
-      "url": "assets/menuBackground.png",
+      "url": "/games/elephant/assets/menuBackground.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "preloader",
-      "url": "assets/loading.png",
+      "url": "/games/elephant/assets/loading.png",
       "frameWidth": 250,
       "frameHeight": 250,
       "frameMax": -1,

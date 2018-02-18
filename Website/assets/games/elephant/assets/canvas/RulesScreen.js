@@ -1,5 +1,5 @@
 //global variables
-var elephant = elephant|| {}; 
+var elephant = elephant|| {};
 
 var counter;
 var circle;
@@ -10,9 +10,9 @@ var handTween;
 
 
 
-function RulesScreen() 
-{	
-	Phaser.State.call(this);	
+function RulesScreen()
+{
+	Phaser.State.call(this);
 }
 
 /** @type Phaser.State */
@@ -20,28 +20,28 @@ var RulesScreen_proto = Object.create(Phaser.State.prototype);
 RulesScreen.prototype = RulesScreen_proto;
 RulesScreen.prototype.constructor = RulesScreen;
 
-RulesScreen.prototype.init = function () 
-{	
+RulesScreen.prototype.init = function ()
+{
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#ffffff';	
+	this.stage.backgroundColor = '#ffffff';
 };
 
-RulesScreen.prototype.preload = function () 
-{	
-	this.load.pack('RulesScreen', 'assets/pack.json');	
-	this.load.pack('PlayScreen', 'assets/pack.json');	
+RulesScreen.prototype.preload = function ()
+{
+	this.load.pack('RulesScreen', '/games/elephant/assets/pack.json');
+	this.load.pack('PlayScreen', '/games/elephant/assets/pack.json');
 
 	// Load items
 	for(var i = 0; i < matchingWords.length; i++)
 	{
 		var temp = matchingWords[i];
-		this.load.image(temp[0],'assets/Items/'+temp[0]+'.png');
-	}	
+		this.load.image(temp[0],'/games/elephant/assets/Items/'+temp[0]+'.png');
+	}
 };
 
-RulesScreen.prototype.create = function () 
+RulesScreen.prototype.create = function ()
 {
 	// load background
     background = this.game.add.tileSprite(0, 0, 1920, 1080, 'Background');
@@ -62,23 +62,23 @@ RulesScreen.prototype.create = function ()
 
 
     //Add in text
-    scoreText = this.game.add.text(1000, 1000, "Score: 0", bigStyle);    
+    scoreText = this.game.add.text(1000, 1000, "Score: 0", bigStyle);
     scoreText.anchor.setTo(0.5);
-    scoreText.addColor('#FF9933', 0);	
+    scoreText.addColor('#FF9933', 0);
 
     winnerItemText = this.game.add.text(1590, 315, "", medStyle);
     winnerItemText.anchor.setTo(0.5);
-    winnerItemText.addColor('#FF9933', 0);	
+    winnerItemText.addColor('#FF9933', 0);
 
     timeText = this.game.add.text(400, 1000, "Time Remaining: "+startingTime, bigStyle);
     timeText.anchor.setTo(0.5);
-	timeText.addColor('#FF9933', 0);	
+	timeText.addColor('#FF9933', 0);
 
 
 	// Add OK button
 	var _okButton = this.add.button(1400, 930, 'okButton', this.onClickOK, this, null, null, null, null);
 	_okButton.scale.setTo(1.5, 1.5);
-	
+
 	// Add Circle
 	circle = this.add.sprite(1338, 200, 'highlightCircle');
 	circle.scale.setTo(3.5, 1.6);
@@ -115,7 +115,7 @@ RulesScreen.prototype.create = function ()
 
 // display current time to screen (with --)
 RulesScreen.prototype.updateTime = function ()
-{	
+{
 	// Increase counter
 	counter++;
 
@@ -164,7 +164,7 @@ RulesScreen.prototype.updateTime = function ()
 	else if(counter == 7)
 	{
 		scoreText.setText("Score: 1");
-	} 
+	}
 	// 8 -> hide circle
 	else if(counter == 8)
 	{
@@ -225,7 +225,7 @@ RulesScreen.prototype.updateTime = function ()
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 1);
 		this.world.bringToTop(circle);
-	} 
+	}
 	// 17 -> hide circle
 	else if(counter == 17)
 	{
@@ -243,16 +243,16 @@ RulesScreen.prototype.updateTime = function ()
 	if(timeLeft <= 0){
 		this.onClickOK();
 	}
-	
+
 	// show current time
-	timeText.setText("Time Remaining: "+ --timeLeft, true);	
+	timeText.setText("Time Remaining: "+ --timeLeft, true);
 };
 
 
 
 // set first text/picture values
 RulesScreen.prototype.setFirst = function ()
-{	
+{
 	// Get a matching pair
     var matchingPair = matchingWords[0];
     var incorrect1 = matchingWords[1];
@@ -274,7 +274,7 @@ RulesScreen.prototype.setFirst = function ()
 
 // set second text/picture values
 RulesScreen.prototype.setSecond = function ()
-{	
+{
 	// Kill old items
 	item0.kill();
 	item1.kill();
@@ -302,7 +302,7 @@ RulesScreen.prototype.setSecond = function ()
 
 
 // On click OK button, return to start screen
-RulesScreen.prototype.onClickOK = function() 
+RulesScreen.prototype.onClickOK = function()
 {
 	this.state.start('start');
 };
