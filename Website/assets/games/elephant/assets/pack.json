@@ -1,0 +1,161 @@
+{
+  "startScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/menuBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayButton",
+      "url": "assets/playButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "RulesButton",
+      "url": "assets/rulesButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "BackButton",
+      "url": "assets/backButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ButtonBackground",
+      "url": "assets/buttonBackground.png",
+      "overwrite": false
+    }
+  ],
+  "RulesScreen": [
+    {
+      "type": "image",
+      "key": "okButton",
+      "url": "assets/okButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "highlightCircle",
+      "url": "assets/highlightCircle.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Red",
+      "url": "assets/Red.png",
+      "frameWidth": 312,
+      "frameHeight": 474,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "tutorialOverlay",
+      "url": "assets/tutorialOverlay.png",
+      "overwrite": false
+    }
+  ],
+  "FinishScreen": [
+    {
+      "type": "image",
+      "key": "FinishBackground",
+      "url": "assets/finishBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayAgain",
+      "url": "assets/playAgainButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "MoreGames",
+      "url": "assets/homeButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "GameOver",
+      "url": "assets/gameOverLayOver.png",
+      "overwrite": false
+    }
+  ],
+  "PlayScreen": [
+    {
+      "type": "image",
+      "key": "Background",
+      "url": "assets/playBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ScoreBackground",
+      "url": "assets/score.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "easel",
+      "url": "assets/easel.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "chosenEasel",
+      "url": "assets/chosenEasel.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
+  "loadingScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/menuBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "preloader",
+      "url": "assets/loading.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
+  "meta": {
+    "generated": "1518718944474",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}

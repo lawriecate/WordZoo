@@ -1,0 +1,145 @@
+{
+  "Main": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pizza",
+      "url": "assets/pizza.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "selectItem",
+      "url": "assets/selectItem.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "strikeThrough",
+      "url": "assets/strikeThrough.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "highlightCircle",
+      "url": "assets/highlightCircle.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Red",
+      "url": "assets/Red.png",
+      "frameWidth": 312,
+      "frameHeight": 474,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "ok",
+      "url": "assets/ok.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "tutorialOverlay",
+      "url": "assets/tutorialOverlay.png",
+      "overwrite": false
+    }
+  ],
+  "StartScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/MainMenu.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayButton",
+      "url": "assets/playButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "RulesButton",
+      "url": "assets/rulesButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "preloader",
+      "url": "assets/preloader.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "BackButton",
+      "url": "assets/backButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ButtonBackground",
+      "url": "assets/buttonBackground.png",
+      "overwrite": false
+    }
+  ],
+  "RulesScreen": [
+    {
+      "type": "image",
+      "key": "ok",
+      "url": "assets/ok.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "tutorialOverlay",
+      "url": "assets/tutorialOverlay.png",
+      "overwrite": false
+    }
+  ],
+  "FinishScreen": [
+    {
+      "type": "image",
+      "key": "FinishBackground",
+      "url": "assets/endBackGround.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "MoreGames",
+      "url": "assets/homeButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayAgain",
+      "url": "assets/playAgainButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "GameOver",
+      "url": "assets/gameOver.png",
+      "overwrite": false
+    }
+  ],
+  "meta": {
+    "generated": "1518719438492",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}
