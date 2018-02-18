@@ -7,10 +7,10 @@
 
 module.exports = {
 	home: function (req, res) {
-			
-			if(!req.pupil.completedWelcome) {
+
+			/*if(!req.pupil.completedWelcome) {
 				return res.redirect('/student/welcome');
-			}
+			}*/
 
 			games = Game.find().exec(function(err,games) {
 				if (err) {
