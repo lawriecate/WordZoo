@@ -26,6 +26,9 @@ module.exports = {
       points: {
         type: 'Integer'
       },
+      state: {
+        model: 'State'
+      },
 
       completedWelcome: {
         type: 'Boolean',
@@ -57,6 +60,7 @@ module.exports = {
     };
     sails.log(params);
     Pupil.create(params).exec(cb);
+
 
   },
   edit: function(pupilid,inputs,cb) {

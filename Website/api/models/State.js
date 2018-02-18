@@ -14,5 +14,9 @@ module.exports = {
     state: {
       'type': 'String'
     }
-  }
+  },
+
+   applyWords: function(state,words,cb) {
+     
+   }
 };

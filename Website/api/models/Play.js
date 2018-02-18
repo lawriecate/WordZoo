@@ -5,6 +5,7 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
+var shortid = require('shortid');
 module.exports = {
 
   attributes: {
@@ -18,6 +19,17 @@ module.exports = {
       type:'string'
     }
   },
+
+  new: function (inputs, cb) {
+    // Create a user
+
+    Play.create({
+      pupil: inputs.pupil,
+      game: inputs.game,
+      shortid:shortid.generate(),
+    })
+    .exec(cb);
+  }
 
 
 };

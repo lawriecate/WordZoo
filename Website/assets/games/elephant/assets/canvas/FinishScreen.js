@@ -22,7 +22,7 @@ FinishScreen.prototype.init = function ()
 
 FinishScreen.prototype.preload = function ()
 {
-	sendData();
+	//sendData();
 	this.load.pack('FinishScreen', '/games/elephant/assets/pack.json');
 };
 

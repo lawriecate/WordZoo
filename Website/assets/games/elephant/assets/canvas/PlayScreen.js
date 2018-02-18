@@ -360,26 +360,63 @@ PlayScreen.prototype.recordData = function()
 	// Save wordHistory
 	// Save clickHistory
 
+//console.log(wordHistory.length +" "+wordHistory[0].length)
 
 
-	// Test print
+
+	// Prep array
+	var output = new Array();
+
+console.log("S "+wordHistory.length);
+
+	// for each word tested
 	for(var i=0; i<wordHistory.length; i++)
 	{
-		for(var j=0; j<wordHistory[i].length; j++)
+		console.log(i+" "+wordHistory[i].length);
+
+		// if never tested, set to default
+		if(wordHistory[i].length == 0)
 		{
-			console.log(wordHistory[i][j]);
+console.log(i+" undefined");
+
+			output[i] = 0.5
 		}
-		console.log('\n');
+		else
+		{
+			var rightCounter = 0;
+			var wrongCounter = 0;
+
+			// for each answer of a word
+			for(var j=0; j<wordHistory[i].length; j++)
+			{
+				// if correct, record correct
+				if(wordHistory[i][j][1])
+				{
+					rightCounter++;
+				}
+				else
+				{
+					wrongCounter++;
+				}
+			}
+
+			// Calculate output value
+			var raw = rightCounter / (rightCounter+ wrongCounter);
+			console.log("Raw "+raw);
+
+			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
+		}
 	}
 
-console.log('\n\n\n');
-
-	for(var i=0; i<clickHistory.length; i++)
+	// Send out
+	//output.send();
+	console.log(output);
+	$.post('end',{words:output}, function(data)
 	{
-		console.log(clickHistory[i]);
-	}
+		// Log returned data
+		console.log("RETURNED" + data);
 
-
+	});
 
 
 	// End

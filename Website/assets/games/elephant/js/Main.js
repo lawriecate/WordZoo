@@ -1,107 +1,92 @@
-	//global variables
-	var elephant = elephant|| {};
+//global variables
+var elephant = elephant|| {};
 
 
-	//word bank
-	var matchingWords = [['Apple','Apple'],['Bear','Bear'],['Bird','Bird'],['Boat','Boat'],['Book','Book'],
-						['Car','Car'],['Cheese','Cheese'],['Cone','Cone'],['Dog','Dog'],['Hat','Hat']];
+//word bank
+var matchingWords = [['Apple','Apple'],['Bear','Bear'],['Bird','Bird'],['Boat','Boat'],['Book','Book'],
+					['Car','Car'],['Cheese','Cheese'],['Cone','Cone'],['Dog','Dog'],['Hat','Hat']];
 
-	// define items
-	var easel1, easel2, easel3;
+// define items
+var easel1, easel2, easel3;
 
-	// correct word vales
-	var matchingRandom; // Correct word index
-	var winningLane;
-	var winnerItemText;
-	var winnerText;
-	var item0Text;
-	var item1Text;
-	var item2Text;
+// correct word vales
+var matchingRandom; // Correct word index
+var winningLane;
+var winnerItemText;
+var winnerText;
+var item0Text;
+var item1Text;
+var item2Text;
 
-	// Record word answers
-		// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
-	var wordHistory = [];
-	var gameStartTime;
-	var startTime;
+// Record word answers
+	// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
+var wordHistory = [];
+var gameStartTime;
+var startTime;
 
-	// Record click history
-		// [(int) x, (int) y, (UTCString) timeStamp]
-	var clickHistory = [];
-	var gameStartTime;
+// Record click history
+	// [(int) x, (int) y, (UTCString) timeStamp]
+var clickHistory = [];
+var gameStartTime;
 
-	// score
-	var score;
-	var scoreText = "";
+// score
+var score;
+var scoreText = "";
 
-	// lives
-	var startingLives = 3;
-	var livesLeft;
-	var livesBox;
+// lives
+var startingLives = 3;
+var livesLeft;
+var livesBox;
 
-	// time
-	var startingTime = 30;//60;
-	var timeLeft;
-	var timeText = "";
+// time
+var startingTime = 30;//60;
+var timeLeft;
+var timeText = "";
 
-	// timer
-	var timer;
+// timer
+var timer;
 
-	// Text styles
-	var medStyle = {font: "bold 50px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-	var bigStyle = {font: "bold 80px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-	var biggerStyle = {font: "bold 120px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+// Text styles
+var medStyle = {font: "bold 50px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+var bigStyle = {font: "bold 80px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+var biggerStyle = {font: "bold 120px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 
-var sendData;
 
 window.onload = function()
 {
-	// Create game
-	var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
+// Create game
+var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
 
-			// Add states
-			game.state.add('loading', LoadingScreen);
-			game.state.add('start', StartScreen);
-			game.state.add('rules', RulesScreen);
-			game.state.add('play', PlayScreen);
-			game.state.add('finish', FinishScreen);
+		// Add states
+		game.state.add('loading', LoadingScreen);
+		game.state.add('start', StartScreen);
+		game.state.add('rules', RulesScreen);
+		game.state.add('play', PlayScreen);
+		game.state.add('finish', FinishScreen);
 
-			// Show loading screen
-			game.state.start('start');																// ******* CHANGED FOR TESTING *******
+		// Show loading screen
+		game.state.start('start');																// ******* CHANGED FOR TESTING *******
 /*
-	$.get('http://localhost:1337/student/testdata', function(data)
-	{
-		//console.log("GET" + data);
-		groupWords = data;
+$.get('http://localhost:1337/student/testdata', function(data)
+{
+	//console.log("GET" + data);
+	groupWords = data;
 
-			// Multiple inputs
-		// groupWords = data[0];
-		// startingCoins = data[1];
-
-
-	}).fail(function() {
-		console.log('i failed');
-	});
-
-	$.post('http://localhost:1337/student/savedata',{gamename:'The Elephant Game'}, function(data)
-	{
-		// Log returned data
-		//console.log("POST" + data);
-
-		// Start game
-		game.state.start('start');
-	});*/
-
-	sendData = function() {
-		console.log("SENDING");
-		console.log(wordHistory);
-		$.post('/student/endgame',{wh:wordHistory}, function(data)
-		{
-			// Log returned data
-			console.log("RETURNED" + data);
+		// Multiple inputs
+	// groupWords = data[0];
+	// startingCoins = data[1];
 
 
-		});
-	}
+}).fail(function() {
+	console.log('i failed');
+});
 
+$.post('http://localhost:1337/student/savedata',{gamename:'The Elephant Game'}, function(data)
+{
+	// Log returned data
+	//console.log("POST" + data);
 
+	// Start game
+	game.state.start('start');
+});*/
 };
