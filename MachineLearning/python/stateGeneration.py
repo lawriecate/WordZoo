@@ -360,7 +360,7 @@ g = open(fileName2,'w')
 
 for i in range(len(words)):
     ##If i >= 144 , then increase by Once
-    if( i >= 144):
+    if( i >= 171):
         output = "case \"" + words[i] + "\":\n return " + str(i+1) + ";\n"
         pythonOut = "elif \"" + words[i] + "\" == word:\n return " + str(i+1) + "\n"
     else:

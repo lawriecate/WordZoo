@@ -45,6 +45,10 @@ class Network:
         #Save the network
         self.network = network
 
+        #Input for new q values
+        self.newQValues = tf.placeholder(tf.float32, shape = [None, numberOfWords], name='newQValues')
+
+
         #For Running
         self.session = tf.Session()
 
@@ -53,7 +57,7 @@ class Network:
         sumErrorSquared = tf.reduce_sum(errorSquared,axis=1)
         self.loss = tf.reduce_mean(sumErrorSquared)
 
-        self.optimizer = tf.train.RMSPropOptimizer(learning_rate=0.97).minimize(self.loss)
+        self.optimizer = tf.train.RMSPropOptimizer(learning_rate=self.learningRate).minimize(self.loss)
 
 
     '''
@@ -65,6 +69,13 @@ class Network:
         #Run session with qValues Network, and the feed dictionary, and return it
         qValues = self.session.run(self.network,feed_dict = feedDict)
         return qValues;
+
+    def optimise(self,learningRate,replayMemory):
+        #Gonna assume a sample of 100
+        stateBatch, qValueBatch = replayMemory.randomBatch()
+        feed_dict = {self.input: stateBatch, self.newQValues: qValueBatch, self.learningRate: learningRate}
+        #Run the optimisation
+        lossValue, _ = self.session.run([self.loss,self.optimizer],feed_dict=feed_dict)
 
 class Agent:
     '''
@@ -98,15 +109,28 @@ class Agent:
         #The "Gym" - Where we create states, and query what effect certain actions will have
         gym = Gym();
 
+        generateEpisolonValue(episodes = episodes)
+        #Number of States looked at
+        counter = 0
+
+        '''
+        Training Variables
+        '''
+        self.learning_rate_control = LinearControlSignal(start_value=1e-3, end_value=1e-5, num_iterations=5e6)
+        self.loss_limit_control = LinearControlSignal(start_value=0.1,end_value=0.015,num_iterations=5e6)
+        self.max_epochs_control = LinearControlSignal(start_value=5.0,end_value=10.0, num_iterations=5e6)
+
         #Main training loop
         for i in range(episodes):
+            #Clear the replay Memory
+            d.clear()
             #Initial State
             state = gym.createEmptyState()
             #Time step into the future
             for t in range (timeSteps):
                 #Calculate Q values for the State
                 qValues = functionQ.calculateQValues(states=[state])[0]
-                epsilon = generateEpisolonValue(iteration=i)
+                epsilon = epslionValue(iteration=i)
                 #With prob epislon
                 if (np.random.random() < epsilon):
                     #Random Action
@@ -116,20 +140,29 @@ class Agent:
                     action = np.argmax(qValues)
 
                 #Execute Action in Gym and observe reward
-                    #Create 2 new states, run both by the Discriminator
-                    #Which ever has the higher prob. is the more "real"
-                    #From this, calculate the netchange - i.e. - the reward
+                newState = gym.executeAction(previousState = state, action = action)
+                reward = gym.calculateReward(oldState = state, newState = newState)
+                #Store transition in d
+                d.add(state = state , qValue = qValues, action = action, reward = reward)
+                #Set this new State as our current state
+                state = newState
 
-                    #Set this new State as our current state
+                #Increase State Counter
+                counter = counter + 1
 
-                    #Store transition in M
-
-
+                #Every X TimeSteps, update replay Memory Q Values
+                if(t % 100 == 0):
+                    d.updateQValues()
                     #Select minibatch of transitions from D
                     #Perform gradient desent step on the network
+                    # These are changed linearly depending on the state-counter.
+                    learning_rate = self.learning_rate_control.get_value(iteration=counter)
+                    loss_limit = self.loss_limit_control.get_value(iteration=counter)
+                    max_epochs = self.max_epochs_control.get_value(iteration=counter)
+                    self.functionQ.optimise(learningRate = learning_rate, replayMemory = d)
 
-    def generateEpisolonValue(self):
-        self.epsilon = LinearControlSignal(num_itterations=, start_value=1, end_value=0.01, repeat=)
+    def generateEpisolonValue(self,episodes):
+        self.epsilon = LinearControlSignal(num_itterations=episodes, start_value=1, end_value=0.01)
 
     def epslionValue(self,iteration):
         return self.epsilon.get_value(iteration=iteration)
@@ -146,30 +179,70 @@ class Agent:
 '''
 class ReplayMemory:
 
-    def __init__(self,capacity,stateShape):
+    def __init__(self,capacity,stateShape, discountFactor):
         self.index = 0
         self.capacity = capacity
-        self.states = np.zeros(shape = [capacity] + stateShape, dtype = np.int8)
-        self.qValuesOld = np.zeros(shape = capacity, dtype = np.float)
+        self.states = np.zeros(shape = [capacity] + stateShape, dtype = np.float)
         self.qValues = np.zeros(shape = capacity, dtype = np.float)
         self.actions = np.zeros(shape = capacity, dtype = np.int8)
         self.rewards = np.zeros(shape = capacity, dtype = np.int8)
-        self.estimates = np.zeros(shape = capacity, dtype = np.float)
+        self.estimateError = np.zeros(shape = capacity, dtype = np.float)
+        self.discountFactor = discountFactor
 
     #Clear the Memory
     def clear(self):
         self.index = 0;
 
     #Add a value into memory
-    def add(self,state,qValueOld,qValue,action,reward):
+    def add(self,state,qValue,action,reward):
         #Input into Memory
         self.states[self.index] = state
-        self.qValuesOld[self.index] = qValueOld
         self.qValues[self.index] = qValue
         self.actions[self.index] = action
         self.rewards[self.index] = reward
         #IncreaseIndex
         self.index = self.index + 1
+
+    #Update the Q Values
+    def updateQValues(self):
+        '''
+        Uses the formula of reward = reward(state) + discount * reward(state + 1)
+
+        Since replay memory is in order, i.e. , position i + 1 is the state after i, we can just itterate through and update the Q values
+
+        This is also the function to calculate the error
+
+        Itterates backwards
+        <----------
+        [ | | | | ]
+        '''
+
+        for i in reversed(range(self.index - 1)):
+            #IF at the start of end of erray, value is equal to the rewards, else it's the discount factor
+            if (i == 0) or (i == (self.index - 1)):
+                value = rewards[i]
+            else:
+                value = rewards[i] + (self.discountFactor * np.max(self.qValues[k + 1]))
+
+            #Error between the Estimate of the Q-Network and the true calculated value
+            self.estimateError[i] = abs(value - self.qValues[i,self.actions[i]])
+
+            #Update Q value
+            self.qValues[i,self.actions[i]] = value
+
+    def randomBatch(self):
+        '''
+        Of the Replay Memory, returns a random batch of all elements in memory
+        '''
+        batchSample = np.random.choice(self.index - 1, 100)
+        stateBatch = []
+        qValuesBatch = []
+        #Generate the State and q_values batches for these values
+        for i in range(len(batchSample)):
+            np.append(stateBatch,states[batchSample[i]])
+            np.append(qValuesBatch,qValues[batchSample[i]])
+
+        return stateBatch, qValuesBatch
 
 
 '''
@@ -184,7 +257,7 @@ class Gym:
         self.userTypes = userTypes
 
         #Load Values
-        self.values = 0
+        self.values = 0 '''COMEBACK TO'''
 
         #Centre Point of the Array - where the userType is stored
         self.centrePoint = np.floor(self.stateShape[0]/2)
@@ -192,34 +265,36 @@ class Gym:
         self.decay = np.full(self.stateShape,0.96)
         self.decay[self.centrePoint][self.centrePoint] = 1
 
+    def executeAction(self,previousState,action):
+        #Executes the given action on a state
+        #Returns the new State
+        newState = updateState(state=previousState,action=action,value = 1)
+        realisticValue = gan XXXX(newState)
+        #Update the State with the new value
+        newState = updateState(state=previousState,action=action,value = realisticValue)
 
-    def calculateRewardOfAction(self,previousState,action):
-        #The original State
-        sumOfOriginalState = valueOfState(state=previousState)
-        #Query The GAN, with the chance they get this chosen word 100% correct or 0%
-        #Whichever is more likely, is our result of this action
-        correct, failed = createNewStates(action=action,previousState=previousState)
-        outcome = queryState(correctState = correct, failedState = failed)
-        sumOfNewState = valueOfState(state=outcome)
-        #The Reward is the net difference between the previous state and the predicted new state
+        return newState
+
+    def updateState(self,state,action,value):
         '''
-        Possibly a thing here about the difference between the two values -> Close together, more likely to be 50/50
-        Far Apart, very confident with the value
-
-        Perhaps just go with the prob. it's real of the one that's more likely?
-        I.e. - if it's 90 percent certain with correct, then it should be 0.9
-
-        Would rely on seeing the results of the GAN
+        Takes in a state, and flattens it
+        action is equal to the index
+        Value is the value to update that index
         '''
-        return (sumOfNewState - sumOfOriginalState)
+        tempState = state.flatten()
+        tempState[action] = value
+        tempState.reShape(self.stateShape)
 
+        return tempState
 
-    def queryState(self,correctState,failedState):
-        #Which ever is larger (prob. of real), return that state
-        if(gan.XXXX > gan.YYYY):
-            return correctState
-        else:
-            return failedState
+    def calculateReward(self,oldState,newState):
+        '''
+        The reward is the differece of the values between the two states
+        '''
+        x = valueOfState(state=oldState)
+        y = valueOfState(state=newState)
+
+        return (y - x)
 
     def valueOfState(self,state):
         #The Confidence values multiplied by the reward for each word
@@ -235,19 +310,22 @@ class Gym:
         #return the state
         return state
 
-    def createNewStates(self,action,previousState):
-        wordCorrectState = previousState[:]
-        wordFailedState = previousState[:]
-        #Get the Word ID
-        wordId = wordToID(word=action)
+class LinearControlSignal:
 
-        wordCorrectState[wordId] = 1;
-        wordFailedState[wordId] = 0;
+    def __init__(self, start_value, end_value, num_iterations):
+        self.start_value = start_value
+        self.end_value = end_value
+        self.num_iterations = num_iterations
 
-        return wordCorrectState, wordFailedState
+        # Calculate the linear coefficient.
+        self._coefficient = (end_value - start_value) / num_iterations
 
-    def decayState(self,state):
-        return np.multiply(state,self.decay)
+    def get_value(self, iteration):
+    """Get the value of the control signal for the given iteration."""
 
-    def wordToID(self,word):
-        #Script From Python Script
+    if iteration < self.num_iterations:
+        value = iteration * self._coefficient + self.start_value
+    else:
+        value = self.end_value
+
+    return value
