@@ -4,7 +4,7 @@
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
-
+var bcrypt = require('bcrypt');
 module.exports = {
 
   attributes: {
@@ -42,14 +42,20 @@ module.exports = {
     // Create a user
     var is_admin=false;
     if(inputs.email == 'admin@email.com') {is_admin = true;}
-    User.create({
-      name: inputs.name,
-      email: inputs.email,
-      // TODO: But encrypt the password first
-      password: inputs.password,
-      admin: is_admin
-    })
-    .exec(cb);
+
+    bcrypt.hash( inputs.password, 5, function( err, bcryptedPassword) {
+      User.create({
+        name: inputs.name,
+        email: inputs.email,
+        // TODO: But encrypt the password first
+        password:bcryptedPassword,
+        admin: is_admin
+      })
+      .exec(cb);
+    });
+
+
+
   },
 
 
@@ -66,13 +72,27 @@ module.exports = {
    */
 
   attemptLogin: function (inputs, cb) {
-    // Create a user
+
     User.findOne({
       email: inputs.email,
-      // TODO: But encrypt the password first
-      password: inputs.password
+
     })
     .populate('teaches_at')
-    .exec(cb);
+    .exec(function(err,user) {
+      bcrypt.compare(inputs.password, user.password, function(err, doesMatch){
+      //  sails.log(doesMatch)
+      //  sails.log(inputs.password + " vs " + user.password)
+        if (doesMatch){
+          cb(false,user);
+        }else{
+           cb(err,null);
+        }
+       });
+    });
+
+
+
+
+
   }
 };
