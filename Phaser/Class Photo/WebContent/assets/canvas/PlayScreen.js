@@ -60,47 +60,48 @@ PlayScreen.prototype.preload = function ()
 
 	// ** FOR TESTING **
 	inputData[0] = data;
-	inputData[1] = data2;/*
+	inputData[1] = data2;
 	inputData[2] = data3;
 	inputData[3] = data4;
 	inputData[4] = data5;
 	inputData[5] = data6;
-	inputData[6] = data7;/*
+	inputData[6] = data7;
 	inputData[7] = data8;
-	inputData[8] = data;
-	inputData[9] = data2;
-	inputData[10] = data3;
-	inputData[11] = data4;
-	inputData[12] = data5;
-	inputData[13] = data6;
-	inputData[14] = data7;
-	inputData[15] = data8;
-	inputData[16] = data;/*
-	inputData[17] = data2;/*
-	inputData[18] = data3;
-	inputData[19] = data4;
-	inputData[20] = data5;
-	inputData[21] = data6;
-	inputData[22] = data7;
-	inputData[23] = data8;
-	inputData[24] = data;
-	inputData[25] = data2;
-	inputData[26] = data3;
-	inputData[27] = data4;
-	inputData[28] = data5;
-	inputData[29] = data6;/*
-	inputData[30] = data7;
-	inputData[31] = data8;
-	inputData[32] = data;
-	inputData[33] = data2;
-	inputData[34] = data3;
-	inputData[35] = data3;
-	inputData[36] = data4;
-	inputData[37] = data5;
-	inputData[38] = data6;
-	inputData[39] = data7;
-	inputData[40] = data8;*/
+	inputData[8] = data11;
+	inputData[9] = data12;
+	inputData[10] = data13;
+	inputData[11] = data14;
+	inputData[12] = data15;
+	inputData[13] = data16;
+	inputData[14] = data17;
+	inputData[15] = data18;
+	inputData[16] = data21;
+	inputData[17] = data22;
+	inputData[18] = data23;
+	inputData[19] = data24;
+	inputData[20] = data25;
+	inputData[21] = data26;
+	inputData[22] = data27;
+	inputData[23] = data28;
+	inputData[24] = data31;
+	inputData[25] = data32;
+	inputData[26] = data33;
+	inputData[27] = data34;
+	inputData[28] = data35;
+	inputData[29] = data36;
+	inputData[30] = data37;
+	inputData[31] = data38;
+	inputData[32] = data41;
+	inputData[33] = data42;
+	inputData[34] = data43;
+	inputData[35] = data44;
+	inputData[36] = data45;
+	inputData[37] = data46;
+	inputData[38] = data47;
+	inputData[39] = data48;
 };
+
+
 
 PlayScreen.prototype.create = function () 
 {	
@@ -242,42 +243,42 @@ PlayScreen.prototype.generateOrder = function()
 	// Size / Scale modifier for less populated samples
 	var modifier = 1;
 	switch(length){
-		case 1: modifier = 4;
+		case 1: 
+		case 2:
+			modifier = 3;
 				break;
-		case 2: modifier = 3;
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7: 
+			modifier = 2;
 				break;
-		case 3: modifier = 3;
-				break;
-		case 4: modifier = 3;
-				break;
-		case 5: modifier = 3;
-				break;
-		case 6: modifier = 3;
-				break;
-		case 7: modifier = 3;
-				break;
-		case 8: modifier = 3;
-				break;
-		case 9: modifier = 3;
-				break;
-		case 10: modifier = 3;
+		case 8:
+		case 9:
+		case 10: 
+			modifier = 1.5;
 				break;
 	}
 
 
     // Random start position in array
-    var random = Math.floor(Math.random() * inputData.length);
+    var random = (Math.floor(Math.random() * (inputData.length-1))) + 1;
+	var newList = new Array();
+	for(var i=random; i<inputData.length; i++)
+	{
+		newList.push(inputData[i]);
+	}
 	for(var i=0; i<random; i++)
 	{
-		var temp = inputData[0];
-		inputData.shift();
-		inputData.push(temp);
+		newList.push(inputData[i]);
 	}
-	
+	inputData = newList;
+
+
 
 	// Get Y values for rows
 	var yValues = startingYValues[classData.length - 1];
-	//var createdRows = 0;
 
 
 	// Add first characters into rows
@@ -298,7 +299,7 @@ PlayScreen.prototype.generateOrder = function()
 	// Distribute rest of characters
 	var shortestArrayIndex;
 	var shortestX = 10000;
-	for(var i=classData.length; i<inputData.length; i++)
+	for(var i=classData.length+1; i<=inputData.length; i++)
 	{
 		// Get shortest array
 		for(var j=0; j<classData.length; j++)
@@ -322,14 +323,13 @@ PlayScreen.prototype.generateOrder = function()
 		// Record next character
 		var temp = new Array();
 		temp[0] = inputData[i-1 % inputData.length];
-		temp[1] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1] += (offset[0] / 2) * modifier * 1.5;
-		temp[2] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][2];// += offset[1]/2;
+		temp[1] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][1] += (offset[0] / 2) * modifier;
+		temp[2] = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][2];
 		temp[3] = nextAnimalIndex;
 
 		
 		// Add next to shortest array with offset included
 		classData[shortestArrayIndex].push(temp);
-
 
 		// Move to next character
 		shortestX = 10000;
@@ -342,37 +342,31 @@ PlayScreen.prototype.generateOrder = function()
 	{
 		// Get max distance of this row
 		var maxDistance = classData[i][classData[i].length-1][1];
-		maxDistance += (475 * modifier / 2) / 2;
+		maxDistance += (440 * modifier / 2) / 2;
 
 		// Calculate how far 'off' middle screen
 		var addition = 1920 - maxDistance;
 
-		// Get character details + print (for first value)
-		temp = classData[i][classData.length-1];
-		this.setSingleCharacter((addition / 2), yValues[i], null, temp[0], modifier);
-
 		// Add player name
-		var tempText = this.add.text((addition / 2) + 100, yValues[i]+50, temp[0][temp[0].length-1]);
-		tempText.stroke = '#fff';
-		tempText.strokeThickness = 5;
-		tempText.anchor.setTo(0.5, 0.5);
-		tempText.addColor('#000', 0);	
-		tempText.visible = isVisible;
-
-		// Add text to records
-		textRecords.push(tempText);
-
+		var tempText;
 
 
 		// For each value within that row
-		for(var j=0; j<classData[i].length-1; j++)
+		for(var j=0; j<classData[i].length; j++)
 		{
 			// Get character details + print
 			temp = classData[i][j];
+
+			// Move last value to first
+			if(j == classData[i].length-1)
+			{
+				temp[1] = 0;
+			}
+
 			this.setSingleCharacter(temp[1] + (addition / 2), temp[2], null, temp[0], modifier);
 
 			// Add player name
-			tempText = this.add.text(temp[1] + (addition / 2) + 100, temp[2]+50, temp[0][temp[0].length-1]);
+			tempText = this.add.text(temp[1] + (addition / 2), temp[2]-80, temp[0][temp[0].length-1]);
 			tempText.stroke = '#fff';
 			tempText.strokeThickness = 5;			
 			tempText.anchor.setTo(0.5, 0.5);
@@ -430,7 +424,7 @@ PlayScreen.prototype.getCharacterIndex = function(index)
 // Show a single character at a certian position on the screen
 PlayScreen.prototype.setSingleCharacter = function(x, y, _, data, modifier) 
 {
-console.log(x+" "+y+" "+modifier);
+//console.log(x+" "+y+" "+modifier);
 
 	// Pre-set scale for animal size
 	scale = 0.5 * modifier;
@@ -885,30 +879,3 @@ PlayScreen.prototype.toggleButtons = function(toShow)
 	// wordZoo logo
 	wordZooImage.visible = !toShow;
 };
-
-
-
-// onClick Take Photo Button
-//PlayScreen.prototype.onClickTakePhoto = function() 
-//{
-	// Take photo
-	// ** TO DO **
-//console.log('click');
-
-
-
-//	var link = document.createElement('a');
-//	link.href = $("HTML.body.canvas").toDataURL('image/png');
-//	link.download = 'ClassPhoto.png';
-//	link.href = Phaser.Canvas.FUCK.toDataURL('image/png;base64');
-//console.log(link.href);	
-
-//	document.body.appendChild(link);
-//	link.click();
-//	document.body.removeChild(link);
-
-
-	//var dt = Phaser.Canvas.FUCK;//.toDataURL('image/png');
-
-	//dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
-//};
