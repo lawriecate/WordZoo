@@ -325,9 +325,107 @@ RulesScreen.prototype.updateTime = function ()
 	else if(counter == 33)
 	{	
 		circle.visible = false;
+		this.setMixed();
+		pause = false;
+		zebraWalk.play(10,true);
 	}
-	// 34 -> Exit
+	// 34 -> pause
 	else if(counter == 34)
+	{	
+		pause = true;
+		zebraWalk.stop();
+	}
+
+	
+	// 35 -> Circle Title
+	else if(counter == 35)
+	{		
+		// Circle Title
+		circleBig.x = 670;
+		circleBig.y = 20;
+		circleBig.visible = true;
+	}
+	// 36 -> Circle Correct
+	else if(counter == 36)
+	{		
+		// Circle Correct
+		circle.x = 1520;
+		circle.y = 480;
+		circle.visible = true;
+	}
+	// 37 -> Hide circle
+	else if(counter == 37)
+	{		
+		circle.visible = false;
+		circleBig.visible = false;
+	
+		// Show Hand
+		hand.x = 500;
+		var handTween = this.game.add.tween(hand).to({y: '-600'}, 600, Phaser.Easing.Linear.None, false);
+		hand.visible = true;
+		handTween.start();
+	}
+	// 38 -> Click hand
+	else if(counter == 38)
+	{		
+		// Click hand
+		hand.animations.currentAnim.onComplete.add(function () { hand.animations.frame = 5; }, this);
+		handClick.play(10);
+	}
+	// 39 -> Drag up
+	else if(counter == 39)
+	{		
+		// Drag up
+		var handTween = this.game.add.tween(hand).to({x: '+400'}, 400, Phaser.Easing.Linear.None, false);
+		handTween.onComplete.add(function () { hand.animations.frame = 0; this.moveUp(); }, this);
+		handTween.start();
+	}
+	// 40 -> Move away
+	else if(counter == 40)
+	{		
+		// Drag away
+		var handTween = this.game.add.tween(hand).to({x: '-300', y: '+800'}, 800, Phaser.Easing.Linear.None, false);
+		handTween.start();
+	}
+	// 41 -> Unpause
+	else if(counter == 41)
+	{	
+		pause = false;
+		zebraWalk.play(10,true);
+		this.moveRight();
+	}
+	// 43 -> Pause
+	else if(counter == 43)
+	{	
+		pause = true;
+		zebraWalk.stop();
+
+	}
+	
+	// 44 -> Highlight score
+	else if(counter == 44)
+	{	
+		// Circle score
+		circle.scale.setTo(2, 1.2);
+		circle.x = 1630;
+		circle.y = 160;
+		circle.visible = true;
+	}
+	// 45 -> Update score
+	else if(counter == 45)
+	{
+		score++;
+		this.updateScore();
+	}
+	// 46 -> Hide circle
+	else if(counter == 46)
+	{
+		circle.visible = false;
+	}
+
+
+	// 47 -> Exit
+	else if(counter == 47)
 	{	
 		this.onClickOK();
 	}
@@ -346,6 +444,7 @@ RulesScreen.prototype.updateTime = function ()
 	}
 	
 	timeText.setText("Time: "+ --timeLeft , true);	
+	console.log(counter);
 };
 
 
@@ -390,6 +489,35 @@ RulesScreen.prototype.setIncorrect = function ()
 	correctName = 'Mouse';
 	var incorrectItem1 = 'Flag';
 	var incorrectItem2 = 'Desk';
+
+	// Set item0 (correctItem)
+    correctItemText.text = correctName;
+    item0 = this.game.add.sprite(1920, itemLanePositions[correctLane], correctName);
+	item0.scale.setTo(1.5, 1.5);
+
+    // Set item1 (incorrectItem1)
+    item1 = this.add.sprite(1920, itemLanePositions[(correctLane+1) % 3], incorrectItem1);
+	item1.scale.setTo(1.5, 1.5);
+
+    // Set item2 (incorrectItem2)
+    item2 = this.add.sprite(1920, itemLanePositions[(correctLane+2) % 3], incorrectItem2);
+	item2.scale.setTo(1.5, 1.5);
+	
+
+    //This ensures the player never goes behind the objects once they are spawned
+    this.world.bringToTop(zebra);
+};
+
+// Third items
+RulesScreen.prototype.setMixed = function ()
+{	
+	// Correct land
+	correctLane = 0;
+
+	// random indexs for words
+	correctName = 'Brain';
+	var incorrectItem1 = 'Mouse';
+	var incorrectItem2 = 'Flag';
 
 	// Set item0 (correctItem)
     correctItemText.text = correctName;
