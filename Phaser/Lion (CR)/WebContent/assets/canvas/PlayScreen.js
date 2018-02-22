@@ -34,6 +34,15 @@ PlayScreen.prototype.preload = function ()
 	{
 		wordHistory[i] = new Array ();
 	}		
+
+	// Load items
+	for(var i = 0; i < words.length; i++)
+	{
+		var temp = words[i];
+
+			// *** CHANGE TO IMAGE DIRECTORY ***
+		this.load.image(temp,'assets/Images/'+temp+'.png');
+	}	
 };
 
 PlayScreen.prototype.create = function () 
@@ -293,6 +302,17 @@ PlayScreen.prototype.setWords = function ()
 	correctWordIndex = Math.floor(Math.random() * words.length);
 	correctWord = words[correctWordIndex];
 
+
+	// set image
+	if(imageExample != undefined)
+	{
+		imageExample.kill();
+	}
+	imageExample = this.add.sprite(980, 190, correctWord);
+	imageExample.anchor.setTo(0.5,0.5);
+	imageExample.scale.setTo(0.75,0.75);
+
+
 	// Random number between 0 and 3 for position of correct
 	// Set correct word in that position, generate incorrect for others
 	var random = Math.floor((Math.random() * 4) + 0);
@@ -384,6 +404,9 @@ PlayScreen.prototype.expandTL = function ()
 	else
 		inputLocked = true;
 
+	// Hide image
+	imageExample.visible = false;
+
 	// Add tweens
 	var tween1 = this.game.add.tween(topLeft.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
 	var tween2 = this.game.add.tween(topLeft.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
@@ -403,6 +426,9 @@ PlayScreen.prototype.expandTR = function ()
 		return;
 	else
 		inputLocked = true;
+
+	// Hide image
+	imageExample.visible = false;
 
 	// Add tweens
 	var tween1 = this.game.add.tween(topRight.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
@@ -424,6 +450,9 @@ PlayScreen.prototype.expandBL = function ()
 	else
 		inputLocked = true;
 
+	// Hide image
+	imageExample.visible = false;
+
 	// Add tweens
 	var tween1 = this.game.add.tween(bottomLeft.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
 	var tween2 = this.game.add.tween(bottomLeft.scale).to({x:1.5, y:1.5}, 70, Phaser.Easing.Linear.None, false);
@@ -443,6 +472,9 @@ PlayScreen.prototype.expandBR = function ()
 		return;
 	else
 		inputLocked = true;
+
+	// Hide image
+	imageExample.visible = false;
 
 	// Add tweens
 	var tween1 = this.game.add.tween(bottomRight.scale).to({x:2.5, y:2.5}, 70, Phaser.Easing.Linear.None, false);
@@ -1080,7 +1112,7 @@ PlayScreen.prototype.recordData = function()
 			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
 		}
 	}
-
+/*
 	// Send out
 	console.log(output);
 	$.post('end',{words:output}, function(data)
@@ -1088,7 +1120,7 @@ PlayScreen.prototype.recordData = function()
   		// Log returned data
   		console.log("RETURNED" + data);
 	});
-
+*/
 
 
 	// End

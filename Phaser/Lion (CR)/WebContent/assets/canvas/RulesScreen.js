@@ -6,6 +6,8 @@ var GK_Mid;
 var GK_TL;
 var GK_BR;
 
+var imageExample;
+
 var GK_TL_Dive;
 var GK_BR_Dive;
 
@@ -61,6 +63,10 @@ RulesScreen.prototype.init = function ()
 RulesScreen.prototype.preload = function () 
 {	
 	this.load.pack('RulesScreen', 'assets/pack.json');	
+
+	// Load images
+	this.load.image("cat",'assets/Images/cat.png');
+	this.load.image("puzzle",'assets/Images/puzzle.png');
 };
 
 RulesScreen.prototype.create = function () 
@@ -217,6 +223,10 @@ RulesScreen.prototype.create = function ()
 // display current time to screen (with --)
 RulesScreen.prototype.setTextCorrect = function ()
 {	
+	imageExample = this.add.sprite(980, 190, "cat");
+	imageExample.anchor.setTo(0.5,0.5);
+	imageExample.scale.setTo(0.75,0.75);
+
 	TLtext.setText("Czt");
 	TRtext.setText("Cat");
 	BLtext.setText("Qat");
@@ -226,10 +236,14 @@ RulesScreen.prototype.setTextCorrect = function ()
 // display current time to screen (with --)
 RulesScreen.prototype.setTextIncorrect = function ()
 {	
-	TLtext.setText("Apple");
-	TRtext.setText("Epple");
-	BLtext.setText("Appre");
-	BRtext.setText("Aplle");
+	imageExample = this.add.sprite(980, 190, "puzzle");
+	imageExample.anchor.setTo(0.5,0.5);
+	imageExample.scale.setTo(0.75,0.75);
+
+	TLtext.setText("Puzzle");
+	TRtext.setText("Puze");
+	BLtext.setText("Pussle");
+	BRtext.setText("Puzzel");
 };
 
 
@@ -284,6 +298,8 @@ RulesScreen.prototype.updateTime = function ()
 	// At 11 seconds, kick ball / score
 	else if(counter == 11)
 	{
+		imageExample.kill();
+
 		GK_Mid.visible = false;
 		GK_TL.visible = true;
 		GK_TL_Dive.play(5);
@@ -346,6 +362,8 @@ RulesScreen.prototype.updateTime = function ()
 	// At 20 seconds, kick ball / save
 	else if(counter == 20)
 	{
+		imageExample.kill();
+
 		GK_Mid.visible = false;
 		GK_BR.visible = true;
 		GK_BR_Dive.play(5);

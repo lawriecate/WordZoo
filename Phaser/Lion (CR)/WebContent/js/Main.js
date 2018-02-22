@@ -2,10 +2,8 @@
 	var lion = lion|| {}; 
 
 	//word bank
-	var words = 	["Apple","Bear","Car","Day","Eye","Fox",
-	            	"Golf","Hotel","Igloo","Jam","Kite","Lolly",
-	            	"Moose","Nose","Octopus","Pot","Quest","Rice",
-	         		"Seat","Table","Unicorn","Violin","Wax"];
+	var words = 	["balloon","bat","cat","chop","cream","fountain",
+					"gnome","knight","monkey","noodle","puzzle"];
 	
 
 	// Record word answers
@@ -19,6 +17,9 @@
 	var clickHistory = [];
 	var gameStartTime;
 
+
+	// image
+	var imageExample;
 
 	// raw text of each button
 	var TLraw;
