@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing games
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var zmq = require('zmq');
  function word2pos(word) {
 	 switch (word) {
 		 case "smoke":
@@ -669,6 +669,28 @@ function generateState() {
   return a;
 }
 
+function getData() {
+  sails.log('Calling python');
+  var port = 3000;
+  var socket = zmq.socket('req');
+  socket.identity = 'client' + process.pid;
+  socket.connect("tcp://127.0.0.1:"+port);
+  var data = {};
+  // Ask Question
+  socket.send(JSON.stringify(data));
+
+  reply = function(data) {
+    var answer = data.toString();
+    //console.log(answer);
+    sails.log(answer);
+    obj = JSON.parse(answer);
+    sails.log(obj);
+    return obj;
+  }
+  // Receizve Answer
+   socket.on('message', reply);
+}
+
 module.exports = {
 	home: function (req, res) {
 
@@ -681,8 +703,8 @@ module.exports = {
 					return res.serverError(err);
 				}
 
-					return res.view('student/home.ejs', {'title':'Start Screen',games:games,  layout: 'layout_student'});
-
+					//return res.view('student/home.ejs', {'title':'Start Screen',games:games,  layout: 'layout_student'});
+          return res.view('student/inner_home.ejs', {'title': 'Start Screen',games:games,  layout: 'student/home2'});
 			});
 
 
@@ -758,15 +780,21 @@ module.exports = {
 
 				//apply new values
 				//var words = req.session.game.words;
+				// apply decay value to state
+				var decayValue = 0.9;
+
+
 				var words = ["smoke","cat","club","gnome","cold","hog","lip","goat"];
 				var i = 0;
-				var decayValue = 0.9;
+
 				_.each(wordPercents,function(percent) {
 					pos = word2pos(words[i]);
-					state[pos] = state[pos] * percent * decayValue;
+					state[pos] = state[pos] * percent ;
 					i++;
 				});
 				sails.log(state);
+
+				// change to make a new state for each word
 
 				// save back
 				/*State.update({id:req.pupil.state.id},function(err,state) {
@@ -851,5 +879,10 @@ module.exports = {
 			}
 			return res.redirect('/admin/games/'+game[0].id+'/');
 		})
-	}
+	},
+
+  pythonTest: function(httpreq,res) {
+
+    return res.json(getData());
+  }
 };
