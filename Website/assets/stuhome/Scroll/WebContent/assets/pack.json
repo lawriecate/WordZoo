@@ -1,0 +1,65 @@
+{
+  "main": [
+    {
+      "type": "image",
+      "key": "carBackground",
+      "url": "/stuhome/Scroll/WebContent/assets/carBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Lion",
+      "url": "/stuhome/Scroll/WebContent/assets/lion.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "upDown",
+      "url": "/stuhome/Scroll/WebContent/assets/upDownButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Elephant",
+      "url": "/stuhome/Scroll/WebContent/assets/elephant.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Giraffe",
+      "url": "/stuhome/Scroll/WebContent/assets/giraffe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Owl",
+      "url": "/stuhome/Scroll/WebContent/assets/owl.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Octopus",
+      "url": "/stuhome/Scroll/WebContent/assets/octopus.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Zebra",
+      "url": "/stuhome/Scroll/WebContent/assets/zebra.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Sheep",
+      "url": "/stuhome/Scroll/WebContent/assets/sheep.png",
+      "overwrite": false
+    }
+  ],
+  "meta": {
+    "generated": "1518970368549",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}

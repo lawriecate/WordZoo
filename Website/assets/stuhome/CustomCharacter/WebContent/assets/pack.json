@@ -1,0 +1,731 @@
+{
+  "main": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/backgroundImage.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "upDown",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/upDownButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "animals",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/animals.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackBoots",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/blackBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackShoes",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/blackShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackTie",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/blackTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blueShirt",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/blueShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blueShoes",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/blueShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blueSunglasses",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/blueSunglasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "bowTie",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/bowTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "bowlerHat",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/bowlerHat.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "brownBoots",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/brownBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "clownNose",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/clownNose.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "clownWig",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/clownWig.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "cowboyHat",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/cowboyHat.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "crown",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/crown.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "greenShirt",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/greenShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "greenShoes",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/greenShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "gryTie",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/gryTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "hardHat",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/hardHat.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "highHeels",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/highHeels.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "hpGlasses",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/hpGlasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "hufTie",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/hufTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "monocole",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/monocole.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "moustache",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/moustache.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "necklace",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/necklace.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "orangeShirt",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/orangeShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkBoots",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/pinkBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkGlasses",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/pinkGlasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkShirt",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/pinkShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "pinkShoes",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/pinkShoes.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "purpleShirt",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/purpleShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "ravTie",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/ravTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "redGlasses",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/redGlasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "redShirt",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/redShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "slyTie",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/slyTie.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "topHat",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/topHat.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "whiteShirt",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/whiteShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "yellowBoots",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/yellowBoots.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "yellowShirt",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/yellowShirt.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "blackSunglasses",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/blackSunglasses.png",
+      "frameWidth": 437,
+      "frameHeight": 475,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "blackBoot",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/blackBoot.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blackGlasses",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/blackGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blackShoe",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/blackShoe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blueGlasses",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/blueGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blueShirt1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/blueShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "blueShoe",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/blueShoe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bowTie1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/bowTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "bowlerHat1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/bowlerHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "brownBoot",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/brownBoot.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "clownNose1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/clownNose.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "clownWIg",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/clownWIg.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "cowboyHat1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/cowboyHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "crown1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/crown.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "elephant",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/elephant.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "giraffe",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/giraffe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "greenShirt1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/greenShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "greenShoe",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/greenShoe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "gryTie1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/gryTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "hardHat1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/hardHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "highHeel",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/highHeel.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "hpGlasses1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/hpGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "hufTie1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/hufTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lion",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/lion.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "monocle",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/monocle.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "moustache1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/moustache.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "necklace1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/necklace.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "octopus",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/octopus.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "orangeShirt1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/orangeShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "owl",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/owl.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "panda",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/panda.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pinkBoot",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/pinkBoot.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pinkGlasses1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/pinkGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pinkShirt1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/pinkShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "pinkShoe",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/pinkShoe.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "purpleShirt1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/purpleShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ravTie1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/ravTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "redGlasses1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/redGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "redShirt1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/redShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "sheep",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/sheep.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "slyTie1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/slyTie.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "topHat1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/topHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "whiteShirt1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/whiteShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "yellowBoot",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/yellowBoot.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "yellowShirt1",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/yellowShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "zebra",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/zebra.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeGlasses",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/removeGlasses.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeHat",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/removeHat.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeNeck",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/removeNeck.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeNose",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/removeNose.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeShirt",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/removeShirt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "removeShoes",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/removeShoes.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "lock",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/canvas/lock.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "preloader",
+      "url": "/stuhome/CustomCharacter/WebContent/assets/preloader.gif",
+      "overwrite": false
+    }
+  ],
+  "meta": {
+    "generated": "1517598515546",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}

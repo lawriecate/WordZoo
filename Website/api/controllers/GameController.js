@@ -4,6 +4,8 @@
  * @description :: Server-side logic for managing games
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+
+/*
 var zmq = require('zmq');
  function word2pos(word) {
 	 switch (word) {
@@ -689,8 +691,7 @@ function getData() {
   }
   // Receizve Answer
    socket.on('message', reply);
-}
-
+}*/
 module.exports = {
 	home: function (req, res) {
 
@@ -757,7 +758,7 @@ module.exports = {
 	},
 
 	endGame: function(req,res) {
-		var wordPercents = req.param('words');
+		/*var wordPercents = req.param('words');
 		var game = Game.findOne({slug:req.params.gameslug}).exec(function(err,game) {
 			session = Play.new({
 				game: game.id,
@@ -797,9 +798,9 @@ module.exports = {
 				// change to make a new state for each word
 
 				// save back
-				/*State.update({id:req.pupil.state.id},function(err,state) {
+				State.update({id:req.pupil.state.id},function(err,state) {
 
-				});*/
+				});
 
 				// null out session data for games
 				req.session.game = null;
@@ -880,9 +881,9 @@ module.exports = {
 			return res.redirect('/admin/games/'+game[0].id+'/');
 		})
 	},
-
+/*
   pythonTest: function(httpreq,res) {
 
     return res.json(getData());
-  }
+  }*/
 };
