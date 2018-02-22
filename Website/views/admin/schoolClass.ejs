@@ -11,6 +11,6 @@
 <h2>All Pupils (<%= schoolClass.pupils.length %>)</h2>
 <ul>
   <% _.each(schoolClass.pupils, function (pupil) { %>
-  <li><%= pupil.name %></li>
+  <li><%= pupil.name %>  <%= pupil.passcode %></li>
   <% }) %>
 </ul>
