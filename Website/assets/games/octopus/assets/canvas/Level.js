@@ -29,11 +29,11 @@ Level.prototype.preload = function ()
 {
 	// Load pack
 	this.load.pack('Main', '/games/octopus/assets/pack.json');
-
+	
 	// Load assets
 	for(var i = 0; i < words.length; i++)
 	{
-		this.load.image(words[i] ,'/games/octopus/assets/test/games/octopus/assets/'+words[i]+'.png');
+		this.load.image(words[i] ,'/images/words/'+words[i]+'.png');
 	}
 
 
@@ -486,7 +486,7 @@ function addFood(x,y,asset)
 	var temp = game.add.sprite(x,y,asset);
 
 	temp.anchor.setTo(0.5,0.5);
-	temp.scale.set(1.5,1.5);
+	temp.scale.set(0.5,0.5);
 }
 
 

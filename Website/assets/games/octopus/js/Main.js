@@ -3,7 +3,7 @@ var octopus = octopus|| {};
 
 
 // Words
-//var words = ["Apple", "Bear", "Bird", "Boat", "Book", "Car", "Cheese", "Cone", "Dog", "Hat"];
+var testWords = ["Apple", "Bear", "Bird", "Boat", "Book", "Car", "Cheese", "Cone", "Dog", "Hat"];
 var words;
 
 
@@ -70,26 +70,4 @@ window.onload = function()
 			// Show loading screen
 			game.state.start('start');
 
-	$.get('/student/getWords', function(data)
-	{
-		//console.log("GET" + data);
-		words = data;
-		console.log(words);
-			// Multiple inputs
-		// groupWords = data[0];
-		// startingCoins = data[1];
-
-
-	}).fail(function() {
-		console.log('i failed');
-	});
-
-	$.post('/student/play/octopus/end', function(data)
-	{
-		// Log returned data
-		console.log("POST" + data);
-
-		// Start game
-		game.state.start('start');
-	});
 };

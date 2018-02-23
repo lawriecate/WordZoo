@@ -37,9 +37,9 @@ RulesScreen.prototype.preload = function ()
 	this.load.pack('Main', '/games/octopus/assets/pack.json');
 
 	// Load assets
-	for(var i = 0; i < words.length; i++)
+	for(var i = 0; i < testWords.length; i++)
 	{
-		this.load.image(words[i] ,'/games/octopus/assets/test/games/octopus/assets/'+words[i]+'.png');
+		this.load.image(testWords[i] ,'/games/octopus/assets/testAssets/'+testWords[i]+'.png');
 	}
 
 
@@ -48,10 +48,10 @@ RulesScreen.prototype.preload = function ()
 	toppings = new Array();
 
 	//Creates the asset array of blank objects
-	for(var i = 0; i < words.length; i++)
+	for(var i = 0; i < testWords.length; i++)
 	{
 		assets[i] = new Object();
-		assets[i].word = words[i];
+		assets[i].word = testWords[i];
 	}
 
 

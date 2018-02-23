@@ -1,3 +1,6 @@
+//global variables
+var octopus = octopus|| {};
+
 // Global variables
 var timeCounter;
 var timeoutPoint = 15;
@@ -35,6 +38,9 @@ LoadingScreen.prototype.preload = function ()
 
 LoadingScreen.prototype.create = function ()
 {
+
+
+
 	var _background = this.add.sprite(0, 0, 'background');
 
 	// preloader + animation
@@ -52,6 +58,23 @@ LoadingScreen.prototype.create = function ()
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timeCounter = 0;
 	timer.start();
+var something = this;
+
+		$.get('/student/getWords', function(data)
+		{
+			//console.log("GET" + data);
+			words = data;
+			console.log(words);
+				// Multiple inputs
+			// groupWords = data[0];
+			// startingCoins = data[1];
+			something.state.start('play');
+
+		}).fail(function() {
+			console.log('i failed');
+		});
+
+
 };
 
 
