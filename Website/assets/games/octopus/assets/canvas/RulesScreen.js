@@ -1,5 +1,5 @@
 //global variables
-var octopus = octopus|| {}; 
+var octopus = octopus|| {};
 
 
 // Global variables
@@ -13,9 +13,9 @@ var hand;
 var handClick;
 
 
-function RulesScreen() 
-{	
-	Phaser.State.call(this);	
+function RulesScreen()
+{
+	Phaser.State.call(this);
 }
 
 /** @type Phaser.State */
@@ -23,37 +23,37 @@ var RulesScreen_proto = Object.create(Phaser.State.prototype);
 RulesScreen.prototype = RulesScreen_proto;
 RulesScreen.prototype.constructor = RulesScreen;
 
-RulesScreen.prototype.init = function () 
-{	
+RulesScreen.prototype.init = function ()
+{
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#ffffff';	
+	this.stage.backgroundColor = '#ffffff';
 };
 
-RulesScreen.prototype.preload = function () 
-{	
+RulesScreen.prototype.preload = function ()
+{
 	// Load pack
-	this.load.pack('Main', 'assets/pack.json');
-	
+	this.load.pack('Main', '/games/octopus/assets/pack.json');
+
 	// Load assets
 	for(var i = 0; i < words.length; i++)
 	{
-		this.load.image(words[i] ,'assets/testAssets/'+words[i]+'.png');
+		this.load.image(words[i] ,'/games/octopus/assets/test/games/octopus/assets/'+words[i]+'.png');
 	}
 
 
 	assets = new Array();
 	strikes = new Array();
 	toppings = new Array();
-	
+
 	//Creates the asset array of blank objects
 	for(var i = 0; i < words.length; i++)
 	{
 		assets[i] = new Object();
 		assets[i].word = words[i];
 	}
-	
+
 
 	/**
 	 * Layout of Select Items
@@ -65,28 +65,28 @@ RulesScreen.prototype.preload = function ()
 	 */
 };
 
-RulesScreen.prototype.create = function () 
+RulesScreen.prototype.create = function ()
 {
 	var _background = this.add.sprite(960, 540, 'background');
 	_background.anchor.setTo(0.5, 0.5);
 
 	// Add faded tutorial overlay
 	var _tutorialOverlay = this.add.sprite(0, 0, 'tutorialOverlay');
-	_tutorialOverlay.alpha = 0.1;	
+	_tutorialOverlay.alpha = 0.1;
 
 	game = this;
-	
+
 	 _pizza = this.add.sprite(1530, 825, 'pizza');
 	_pizza.anchor.setTo(0.5, 0.5);
-		
-	
+
+
 	//Order
 	var style = { font: "60px Arial", fill: "#000000", align: "left"};
     orderText = game.add.text(115, 200, "• item1 \n• item2 \n• item3 \n• item4 \n• item5\n", style);
 
     style = { font: "70px Arial", fill: "#FF0000", align: "left" , fontWeight: "bold"};
     game.add.text(190,120, "ORDER",style);
-    
+
     //The Strike throughs
     //	var _selectItem = this.add.sprite(718, 262, 'selectItem');
     strikes[0] = game.add.sprite(-1100,215,'strikeThrough');
@@ -94,7 +94,7 @@ RulesScreen.prototype.create = function ()
     strikes[2] = game.add.sprite(-1100,365,'strikeThrough');
     strikes[3] = game.add.sprite(-1100,440,'strikeThrough');
     strikes[4] = game.add.sprite(-1100,515,'strikeThrough');
-   
+
 
     //Spawn the Clock
 	style = {font: "70px Arial", fill: '#FF9933', align: "left", fontWeight: 'bold'};
@@ -103,7 +103,7 @@ RulesScreen.prototype.create = function ()
 	//Spawn Score
 	scoreText = this.add.text(1700,80,"Score: ",style);
 	scoreText.anchor.setTo(0.5,0.5);
-   
+
 
 
 	//Decorative items
@@ -116,7 +116,7 @@ RulesScreen.prototype.create = function ()
 	addFood(956,378,assets[0].word); //+134
 	addFood(817,390,assets[0].word); //-5
 	addFood(900,390,assets[0].word); //+78
-	
+
 	addFood(1140,304,assets[1].word);
 	addFood(1140+88,310,assets[1].word);
 	addFood(1140+154,318,assets[1].word);
@@ -125,7 +125,7 @@ RulesScreen.prototype.create = function ()
 	addFood(1140+134,378,assets[1].word);
 	addFood(1140-5,390,assets[1].word);
 	addFood(1140+78,390,assets[1].word);
-	
+
 	addFood(1480,304,assets[2].word);
 	addFood(1480+88,310,assets[2].word);
 	addFood(1480+154,318,assets[2].word);
@@ -134,7 +134,7 @@ RulesScreen.prototype.create = function ()
 	addFood(1480+134,378,assets[2].word);
 	addFood(1480-5,390,assets[2].word);
 	addFood(1480+78,390,assets[2].word);
-	
+
 	addFood(1810,304,assets[3].word);
 	addFood(1810+88,310,assets[3].word);
 	addFood(1810+154,318,assets[3].word);
@@ -143,7 +143,7 @@ RulesScreen.prototype.create = function ()
 	addFood(1810+134,378,assets[3].word);
 	addFood(1810-5,390,assets[3].word);
 	addFood(1810+78,390,assets[3].word);
-	
+
 	//2nd Row
 	addFood(722,540,assets[4].word);
 	addFood(722+78,540+6,assets[4].word);
@@ -153,7 +153,7 @@ RulesScreen.prototype.create = function ()
 	addFood(722+64,540+62,assets[4].word);
 	addFood(722+18,540+90,assets[4].word);
 	addFood(722+128,540+90,assets[4].word);
-	
+
 	addFood(1070,540,assets[5].word);
 	addFood(1070+78,540+6,assets[5].word);
 	addFood(1070+164,540+8,assets[5].word);
@@ -162,7 +162,7 @@ RulesScreen.prototype.create = function ()
 	addFood(1070+64,540+62,assets[5].word);
 	addFood(1070+18,540+90,assets[5].word);
 	addFood(1070+128,540+90,assets[5].word);
-	
+
 	addFood(1400,540,assets[6].word);
 	addFood(1400+78,540+6,assets[6].word);
 	addFood(1400+164,540+8,assets[6].word);
@@ -171,7 +171,7 @@ RulesScreen.prototype.create = function ()
 	addFood(1400+64,540+62,assets[6].word);
 	addFood(1400+18,540+90,assets[6].word);
 	addFood(1400+128,540+90,assets[6].word);
-	
+
 	addFood(1720,540,assets[7].word);
 	addFood(1720+78,540+6,assets[7].word);
 	addFood(1720+164,540+8,assets[7].word);
@@ -180,7 +180,7 @@ RulesScreen.prototype.create = function ()
 	addFood(1720+64,540+62,assets[7].word);
 	addFood(1720+18,540+90,assets[7].word);
 	addFood(1720+128,540+90,assets[7].word);
-	
+
 	//3rd Row
 	addFood(650,745,assets[8].word);
 	addFood(650+78,745+6,assets[8].word);
@@ -190,7 +190,7 @@ RulesScreen.prototype.create = function ()
 	addFood(650+64,745+62,assets[8].word);
 	addFood(650+18,745+90,assets[8].word);
 	addFood(650+128,745+90,assets[8].word);
-	
+
 	addFood(975,745,assets[9].word);
 	addFood(975+78,745+6,assets[9].word);
 	addFood(975+164,745+8,assets[9].word);
@@ -199,7 +199,7 @@ RulesScreen.prototype.create = function ()
 	addFood(975+64,745+62,assets[9].word);
 	addFood(975+18,745+90,assets[9].word);
 	addFood(975+128,745+90,assets[9].word);
-	
+
 
 	// Time
 	timeLeft = 60;
@@ -227,7 +227,7 @@ RulesScreen.prototype.create = function ()
 	var _okButton = this.add.button(840, 935, 'ok', this.onClickOK, this, null, null, null, null);
 	_okButton.scale.setTo(1.5, 1.5);
 
-	
+
 	// Start
 	//generateOrder();
 	//spawnClock();
@@ -245,7 +245,7 @@ RulesScreen.prototype.create = function ()
 
 // updateTime + demo
 RulesScreen.prototype.updateTime = function ()
-{	
+{
 	console.log(counter);
 
 
@@ -291,7 +291,7 @@ RulesScreen.prototype.updateTime = function ()
 		var handTween = this.game.add.tween(hand).to({x: '+650', y: '+450'}, 800, Phaser.Easing.Linear.None, false);
 		var dragTween = this.game.add.tween(dragItem).to({x: '+650', y: '+450'}, 800, Phaser.Easing.Linear.None, false);
 
-		handTween.onComplete.add(function () { hand.animations.frame = 0; dragItem.visible = false; 
+		handTween.onComplete.add(function () { hand.animations.frame = 0; dragItem.visible = false;
 			addFood(dragItem.x, dragItem.y, assets[0].word); }, this);
 
 		dragTween.start();
@@ -420,7 +420,7 @@ RulesScreen.prototype.updateTime = function ()
 	else if(counter == 22)
 	{
 		dragItem = game.add.sprite(hand.x+10, hand.y+10, assets[6].word);
-		
+
 		this.world.bringToTop(hand);
 		hand.animations.currentAnim.onComplete.add(function () { hand.animations.frame = 5; }, this);
 		handClick.play(10);
@@ -431,7 +431,7 @@ RulesScreen.prototype.updateTime = function ()
 		var handTween = this.game.add.tween(hand).to({x: '+80', y: '+280'}, 500, Phaser.Easing.Linear.None, false);
 		var dragTween = this.game.add.tween(dragItem).to({x: '+80', y: '+280'}, 500, Phaser.Easing.Linear.None, false);
 
-		handTween.onComplete.add(function () { hand.animations.frame = 0; dragItem.visible = false; 
+		handTween.onComplete.add(function () { hand.animations.frame = 0; dragItem.visible = false;
 			addFood(dragItem.x, dragItem.y, assets[6].word); }, this);
 
 		dragTween.start();
@@ -481,7 +481,7 @@ RulesScreen.prototype.updateTime = function ()
 
 	// 32 -> Exit
 	else if(counter == 32)
-	{	
+	{
 		this.onClickOK();
 	}
 
@@ -495,7 +495,7 @@ RulesScreen.prototype.updateTime = function ()
 	if(timeLeft <= 0){
 		this.onClickOK();
 	}
-	
+
 	clock.text = "Time Remaining: " + --timeLeft;
 };
 
@@ -503,7 +503,7 @@ RulesScreen.prototype.updateTime = function ()
 
 
 // On click OK button, return to start screen
-RulesScreen.prototype.onClickOK = function() 
+RulesScreen.prototype.onClickOK = function()
 {
 	this.state.start('start');
 };

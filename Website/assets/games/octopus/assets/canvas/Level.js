@@ -1,13 +1,13 @@
 //global variables
-var octopus = octopus|| {}; 
+var octopus = octopus|| {};
 
 
 /**
  * Level.
  */
-function Level() 
-{	
-	Phaser.State.call(this);	
+function Level()
+{
+	Phaser.State.call(this);
 }
 
 
@@ -16,38 +16,38 @@ var Level_proto = Object.create(Phaser.State.prototype);
 Level.prototype = Level_proto;
 Level.prototype.constructor = Level;
 
-Level.prototype.init = function () 
-{	
+Level.prototype.init = function ()
+{
 	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	this.scale.pageAlignHorizontally = true;
 	this.scale.pageAlignVertically = true;
-	this.stage.backgroundColor = '#ffffff';	
+	this.stage.backgroundColor = '#ffffff';
 };
 
 
-Level.prototype.preload = function () 
-{	
+Level.prototype.preload = function ()
+{
 	// Load pack
-	this.load.pack('Main', 'assets/pack.json');
-	
+	this.load.pack('Main', '/games/octopus/assets/pack.json');
+
 	// Load assets
 	for(var i = 0; i < words.length; i++)
 	{
-		this.load.image(words[i] ,'assets/testAssets/'+words[i]+'.png');
+		this.load.image(words[i] ,'/games/octopus/assets/test/games/octopus/assets/'+words[i]+'.png');
 	}
 
 
 	assets = new Array();
 	strikes = new Array();
 	toppings = new Array();
-	
+
 	//Creates the asset array of blank objects
 	for(var i = 0; i < words.length; i++)
 	{
 		assets[i] = new Object();
 		assets[i].word = words[i];
 	}
-	
+
 
 	/**
 	 * Layout of Select Items
@@ -65,29 +65,29 @@ Level.prototype.preload = function ()
 	for(var i = 0; i < words.length; i++)
 	{
 		wordHistory[i] = new Array ();
-	}	
+	}
 };
 
 
 
-Level.prototype.create = function () 
+Level.prototype.create = function ()
 {
 	var _background = this.add.sprite(960, 540, 'background');
 	_background.anchor.setTo(0.5, 0.5);
-	
+
 	game = this;
-	
+
 	 _pizza = this.add.sprite(1530, 825, 'pizza');
 	_pizza.anchor.setTo(0.5, 0.5);
-		
-	
+
+
 	//Order
 	var style = { font: "60px Arial", fill: "#000000", align: "left"};
     orderText = game.add.text(115, 200, "• item1 \n• item2 \n• item3 \n• item4 \n• item5\n", style);
 
     style = { font: "70px Arial", fill: "#FF0000", align: "left" , fontWeight: "bold"};
     game.add.text(190,120, "ORDER",style);
-    
+
     //The Strike throughs
     //	var _selectItem = this.add.sprite(718, 262, 'selectItem');
     strikes[0] = game.add.sprite(-1100,215,'strikeThrough');
@@ -95,7 +95,7 @@ Level.prototype.create = function ()
     strikes[2] = game.add.sprite(-1100,365,'strikeThrough');
     strikes[3] = game.add.sprite(-1100,440,'strikeThrough');
     strikes[4] = game.add.sprite(-1100,515,'strikeThrough');
-  
+
 
     //Spawn the Clock
 	style = {font: "70px Arial", fill: '#FF9933', align: "left", fontWeight: 'bold'};
@@ -104,7 +104,7 @@ Level.prototype.create = function ()
 	//Spawn Score
 	scoreText = this.add.text(1700,80,"Score: ",style);
 	scoreText.anchor.setTo(0.5,0.5);
-   
+
 
 	//Decorative items
 	//x, y, asset
@@ -116,7 +116,7 @@ Level.prototype.create = function ()
 	addFood(956,378,assets[0].word); //+134
 	addFood(817,390,assets[0].word); //-5
 	addFood(900,390,assets[0].word); //+78
-	
+
 	addFood(1140,304,assets[1].word);
 	addFood(1140+88,310,assets[1].word);
 	addFood(1140+154,318,assets[1].word);
@@ -125,7 +125,7 @@ Level.prototype.create = function ()
 	addFood(1140+134,378,assets[1].word);
 	addFood(1140-5,390,assets[1].word);
 	addFood(1140+78,390,assets[1].word);
-	
+
 	addFood(1480,304,assets[2].word);
 	addFood(1480+88,310,assets[2].word);
 	addFood(1480+154,318,assets[2].word);
@@ -134,7 +134,7 @@ Level.prototype.create = function ()
 	addFood(1480+134,378,assets[2].word);
 	addFood(1480-5,390,assets[2].word);
 	addFood(1480+78,390,assets[2].word);
-	
+
 	addFood(1810,304,assets[3].word);
 	addFood(1810+88,310,assets[3].word);
 	addFood(1810+154,318,assets[3].word);
@@ -143,7 +143,7 @@ Level.prototype.create = function ()
 	addFood(1810+134,378,assets[3].word);
 	addFood(1810-5,390,assets[3].word);
 	addFood(1810+78,390,assets[3].word);
-	
+
 	//2nd Row
 	addFood(722,540,assets[4].word);
 	addFood(722+78,540+6,assets[4].word);
@@ -153,7 +153,7 @@ Level.prototype.create = function ()
 	addFood(722+64,540+62,assets[4].word);
 	addFood(722+18,540+90,assets[4].word);
 	addFood(722+128,540+90,assets[4].word);
-	
+
 	addFood(1070,540,assets[5].word);
 	addFood(1070+78,540+6,assets[5].word);
 	addFood(1070+164,540+8,assets[5].word);
@@ -162,7 +162,7 @@ Level.prototype.create = function ()
 	addFood(1070+64,540+62,assets[5].word);
 	addFood(1070+18,540+90,assets[5].word);
 	addFood(1070+128,540+90,assets[5].word);
-	
+
 	addFood(1400,540,assets[6].word);
 	addFood(1400+78,540+6,assets[6].word);
 	addFood(1400+164,540+8,assets[6].word);
@@ -171,7 +171,7 @@ Level.prototype.create = function ()
 	addFood(1400+64,540+62,assets[6].word);
 	addFood(1400+18,540+90,assets[6].word);
 	addFood(1400+128,540+90,assets[6].word);
-	
+
 	addFood(1720,540,assets[7].word);
 	addFood(1720+78,540+6,assets[7].word);
 	addFood(1720+164,540+8,assets[7].word);
@@ -180,7 +180,7 @@ Level.prototype.create = function ()
 	addFood(1720+64,540+62,assets[7].word);
 	addFood(1720+18,540+90,assets[7].word);
 	addFood(1720+128,540+90,assets[7].word);
-	
+
 	//3rd Row
 	addFood(650,745,assets[8].word);
 	addFood(650+78,745+6,assets[8].word);
@@ -190,7 +190,7 @@ Level.prototype.create = function ()
 	addFood(650+64,745+62,assets[8].word);
 	addFood(650+18,745+90,assets[8].word);
 	addFood(650+128,745+90,assets[8].word);
-	
+
 	addFood(975,745,assets[9].word);
 	addFood(975+78,745+6,assets[9].word);
 	addFood(975+164,745+8,assets[9].word);
@@ -199,7 +199,7 @@ Level.prototype.create = function ()
 	addFood(975+64,745+62,assets[9].word);
 	addFood(975+18,745+90,assets[9].word);
 	addFood(975+128,745+90,assets[9].word);
-	
+
 	/**
 	 * 	addFood(900-100,540+6,assets[4].word); //+6
 	addFood(976-100,540+8,assets[4].word); //+8
@@ -211,67 +211,67 @@ Level.prototype.create = function ()
 	 */
 
 
-	
+
 	//Select Items
 	var _selectItem = this.add.sprite(718, 262, 'selectItem');
 	_selectItem.alpha = 0.0;
 	_selectItem.inputEnabled = true;
 	_selectItem.events.onInputDown.add(spawnDraggableItem,{selectedItem: 0});
-	
+
 	var _selectItem1 = this.add.sprite(1050, 263, 'selectItem');
 	_selectItem1.alpha = 0.0;
 	_selectItem1.inputEnabled = true;
 	_selectItem1.events.onInputDown.add(spawnDraggableItem,{selectedItem: 1});
-	
+
 	var _selectItem2 = this.add.sprite(1380, 265, 'selectItem');
 	_selectItem2.alpha = 0.0;
 	_selectItem2.inputEnabled = true;
 	_selectItem2.events.onInputDown.add(spawnDraggableItem,{selectedItem: 2});
-	
+
 	var _selectItem3 = this.add.sprite(1708, 261, 'selectItem');
 	_selectItem3.alpha = 0.0;
 	_selectItem3.inputEnabled = true;
 	_selectItem3.events.onInputDown.add(spawnDraggableItem,{selectedItem: 3});
-	
+
 	var _selectItem4 = this.add.sprite(637, 491, 'selectItem');
 	_selectItem4.alpha = 0.0;
 	_selectItem4.inputEnabled = true;
 	_selectItem4.events.onInputDown.add(spawnDraggableItem,{selectedItem: 4});
-	
+
 	var _selectItem5 = this.add.sprite(969, 491, 'selectItem');
 	_selectItem5.alpha = 0.0;
 	_selectItem5.inputEnabled = true;
 	_selectItem5.events.onInputDown.add(spawnDraggableItem,{selectedItem: 5});
-	
+
 	var _selectItem6 = this.add.sprite(1298, 491, 'selectItem');
 	_selectItem6.alpha = 0.0;
 	_selectItem6.inputEnabled = true;
 	_selectItem6.events.onInputDown.add(spawnDraggableItem,{selectedItem: 6});
-	
+
 	var _selectItem7 = this.add.sprite(1630, 491, 'selectItem');
 	_selectItem7.alpha = 0.0;
 	_selectItem7.inputEnabled = true;
 	_selectItem7.events.onInputDown.add(spawnDraggableItem,{selectedItem: 7});
-	
+
 	var _selectItem8 = this.add.sprite(558, 718, 'selectItem');
 	_selectItem8.alpha = 0.0;
 	_selectItem8.inputEnabled = true;
 	_selectItem8.events.onInputDown.add(spawnDraggableItem,{selectedItem: 8});
-	
+
 	var _selectItem9 = this.add.sprite(887, 718, 'selectItem');
 	_selectItem9.alpha = 0.0;
 	_selectItem9.inputEnabled = true;
 	_selectItem9.events.onInputDown.add(spawnDraggableItem,{selectedItem: 9});
-	
+
 
     //If user closes window, record data
-    //window.onbeforeunload = function() 
+    //window.onbeforeunload = function()
     //{
     //    this.recordData();
     //};
-    
+
     // Record screen clicks
-    this.game.input.onDown.add(function(touchStart) { 
+    this.game.input.onDown.add(function(touchStart) {
     		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
     	}, this);
 
@@ -291,27 +291,27 @@ Level.prototype.create = function ()
 
 Level.prototype.update = function()
 {
-	
+
 	//Countdown Clock
 	var timeRemaining = Math.floor((timeAllowed - ((this.game.time.time / 1000) - initialTime)));
-	
+
 	//If Clock is less than 0, then go to failed animation
 	if(timeRemaining <= 0)
 	{
 		//Gameover
 		this.endGame();
-	} 
-	else 
+	}
+	else
 	{
 		clock.text = "Time Remaining: " + timeRemaining;
 	}
-	
+
 	//Check order has not been completed
 	if(remainingItems <= 0)
 	{
 		resetOrder();
 	}
-	
+
 	//If an object is being dragged, move the object to that position
 	if(game.input.activePointer.isDown)
 	{
@@ -320,7 +320,7 @@ Level.prototype.update = function()
 			dragItem.position.setTo(game.input.position.x,game.input.position.y);
 		}
 	}
-	
+
 	//If the object is placed somewhere, check if it's on the pizza
 	if(game.input.activePointer.isUp)
 	{
@@ -332,8 +332,8 @@ Level.prototype.update = function()
 				//Check if it's on the pizza
 				//If it is, then add it to the ingridient list and check if it's correct
 				checkAnswer();
-			} 
-			else 
+			}
+			else
 			{
 				//It's floating somewhere random, just delete it
 				dragItem.destroy();
@@ -352,26 +352,26 @@ Level.prototype.update = function()
  */
 function resetOrder()
 {
-	
+
 	//Increase Score
 	increaseScore();
-	
+
 	//Move Strikes back
 	for(var i = 0; i < 5; i++)
 	{
 		strikes[i].position.x = -1000;
 	}
-	
+
 	//Remove Pizza/Items on Pizza - 1530
 	//Move the toppings
 	for(var i = 0; i < toppings.length; i++)
 	{
 		game.add.tween(toppings[i]).to({x:2500},1000,"Linear",true);
 	}
-		
+
 	var tween = game.add.tween(_pizza).to({x:2500},1000,"Linear",true);
 	tween.onComplete.add(resetPizza);
-	
+
 	//Generate new Order
 	generateOrder();
 }
@@ -388,7 +388,7 @@ function increaseScore()
 function decreaseScore()
 {
 	score -= 5;
-	
+
 	// Lower limit on score
 	if(score < 0)
 	{
@@ -409,13 +409,13 @@ function resetPizza()
 {
 	//Reset Pizza
 	_pizza.position.x = 1530;
-	
+
 	//Delete toppings
 	for(var i = 0; i < toppings.length ;i++)
 	{
 		toppings[i].destroy();
 	}
-	
+
 	//Reset Array
 	toppings = new Array();
 
@@ -439,20 +439,20 @@ function checkAnswer()
 
 			//Strike through
 			strikes[i].position.x = 100;
-			
+
 			//Decrement the amount of remaining items
 			remainingItems--;
-			
+
 			//Remove from the order
 			order[i] = 'undefined';
-			
+
 			//Add to toppings
 			toppings.push(dragItem);
-			
+
 			return;
 		}
-	}	
-	
+	}
+
 	// record answer
 	var finishTime = Math.floor(Date.now());
 	wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [selectedAnswer, false, finishTime - startTime];
@@ -474,11 +474,11 @@ function spawnClock()
 
 
 /**
- * 
+ *
  * @param x
  * @param y
  * @param asset
- * 
+ *
  * Fills the tubs on the screen with the items
  */
 function addFood(x,y,asset)
@@ -486,20 +486,20 @@ function addFood(x,y,asset)
 	var temp = game.add.sprite(x,y,asset);
 
 	temp.anchor.setTo(0.5,0.5);
-	temp.scale.set(1.5,1.5);	
+	temp.scale.set(1.5,1.5);
 }
 
 
 
 /**
- * 
+ *
  * @param spriteA
  * @param spriteB
  * @returns true or false
- * 
+ *
  * Checks if the items are hitting each other
  */
-function checkOverlap(spriteA, spriteB) 
+function checkOverlap(spriteA, spriteB)
 {
     var boundsA = spriteA.getBounds();
     var boundsB = spriteB.getBounds();
@@ -526,7 +526,7 @@ function spawnDraggableItem()
 
 
 /**
- * Generates a new Order, between 3 and 5 items, each present 
+ * Generates a new Order, between 3 and 5 items, each present
  */
 function generateOrder()
 {
@@ -536,27 +536,27 @@ function generateOrder()
 	//Random Length of Order, between 3 and 5
 	var orderLength = Math.floor((Math.random() * 3) + 3);
 	remainingItems = orderLength;
-	
+
 	for(var i = 0; i < orderLength; i++)
 	{
 		//Random Choice of Order, that's not already been chosen
-		var randomChoice = Math.floor((Math.random() * 9)); 
+		var randomChoice = Math.floor((Math.random() * 9));
 		var chosen = assets[randomChoice].word;
-	
+
 		//Make sure we haven't already selected it
 		while(order.includes(chosen))
 		{
 			randomChoice = (randomChoice + 1) % 10;
 			chosen = assets[randomChoice].word;
-		}	
-		
+		}
+
 		//Add to the Order
 		order[i] = chosen;
 
 		// Record which is a correct option
 		correctWordIndex = randomChoice
 	}
-	
+
 	//Print out order
 	var orderString = "";
 	for(var i = 0; i < orderLength; i++)
@@ -564,17 +564,17 @@ function generateOrder()
 		//orderText = game.add.text(230, 370, "• item1 \n• item2 \n• item3 \n• item4 \n• item5\n", style);
 		orderString = orderString + "• " + order[i] + "\n";
 	}
-	
-	//Set text		
-	orderText.text = orderString;	
+
+	//Set text
+	orderText.text = orderString;
 }
 
 
 // Record screen clicks
-Level.prototype.recordScreenPress = function(x, y) 
+Level.prototype.recordScreenPress = function(x, y)
 {
 	// Get current time
-	var timeStamp = new Date(); 
+	var timeStamp = new Date();
 	timeStamp.toUTCString();
 
 	// Add to records
@@ -582,12 +582,12 @@ Level.prototype.recordScreenPress = function(x, y)
 };
 
 // Record statistical data from game
-Level.prototype.recordData = function() 
+Level.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
 	// Save wordHistory
-	// Save clickHistory 
+	// Save clickHistory
 
 
 
@@ -610,7 +610,7 @@ console.log('\n\n\n');
 };
 
 // Game has finished, move to finish state
-Level.prototype.endGame = function() 
+Level.prototype.endGame = function()
 {
 	this.recordData();
 	this.state.start('finish');

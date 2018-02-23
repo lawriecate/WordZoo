@@ -3,37 +3,37 @@
     {
       "type": "image",
       "key": "background",
-      "url": "assets/background.png",
+      "url": "/games/octopus/assets/background.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "pizza",
-      "url": "assets/pizza.png",
+      "url": "/games/octopus/assets/pizza.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "selectItem",
-      "url": "assets/selectItem.png",
+      "url": "/games/octopus/assets/selectItem.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "strikeThrough",
-      "url": "assets/strikeThrough.png",
+      "url": "/games/octopus/assets/strikeThrough.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "highlightCircle",
-      "url": "assets/highlightCircle.png",
+      "url": "/games/octopus/assets/highlightCircle.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Red",
-      "url": "assets/Red.png",
+      "url": "/games/octopus/assets/Red.png",
       "frameWidth": 312,
       "frameHeight": 474,
       "frameMax": -1,
@@ -43,13 +43,13 @@
     {
       "type": "image",
       "key": "ok",
-      "url": "assets/ok.png",
+      "url": "/games/octopus/assets/ok.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "tutorialOverlay",
-      "url": "assets/tutorialOverlay.png",
+      "url": "/games/octopus/assets/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -57,25 +57,25 @@
     {
       "type": "image",
       "key": "background",
-      "url": "assets/MainMenu.png",
+      "url": "/games/octopus/assets/MainMenu.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "assets/playButton.png",
+      "url": "/games/octopus/assets/playButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "assets/rulesButton.png",
+      "url": "/games/octopus/assets/rulesButton.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "preloader",
-      "url": "assets/preloader.png",
+      "url": "/games/octopus/assets/preloader.png",
       "frameWidth": 250,
       "frameHeight": 250,
       "frameMax": -1,
@@ -85,13 +85,13 @@
     {
       "type": "image",
       "key": "BackButton",
-      "url": "assets/backButton.png",
+      "url": "/games/octopus/assets/backButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ButtonBackground",
-      "url": "assets/buttonBackground.png",
+      "url": "/games/octopus/assets/buttonBackground.png",
       "overwrite": false
     }
   ],
@@ -99,13 +99,13 @@
     {
       "type": "image",
       "key": "ok",
-      "url": "assets/ok.png",
+      "url": "/games/octopus/assets/ok.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "tutorialOverlay",
-      "url": "assets/tutorialOverlay.png",
+      "url": "/games/octopus/assets/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -113,25 +113,25 @@
     {
       "type": "image",
       "key": "FinishBackground",
-      "url": "assets/endBackGround.png",
+      "url": "/games/octopus/assets/endBackGround.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "assets/homeButton.png",
+      "url": "/games/octopus/assets/homeButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayAgain",
-      "url": "assets/playAgainButton.png",
+      "url": "/games/octopus/assets/playAgainButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "GameOver",
-      "url": "assets/gameOver.png",
+      "url": "/games/octopus/assets/gameOver.png",
       "overwrite": false
     }
   ],

@@ -1,10 +1,10 @@
 //global variables
-var octopus = octopus|| {}; 
+var octopus = octopus|| {};
 
 
 // Words
-var words = ["Apple", "Bear", "Bird", "Boat", "Book", "Car", "Cheese", "Cone", "Dog", "Hat"];
-
+//var words = ["Apple", "Bear", "Bird", "Boat", "Book", "Car", "Cheese", "Cone", "Dog", "Hat"];
+var words;
 
 
 // Record word answers
@@ -12,7 +12,7 @@ var words = ["Apple", "Bear", "Bird", "Boat", "Book", "Car", "Cheese", "Cone", "
 var wordHistory = [];
 var gameStartTime;
 var startTime;
-	
+
 // Record click history
 	// [(int) x, (int) y, (UTCString) timeStamp]
 var clickHistory = [];
@@ -69,12 +69,12 @@ window.onload = function()
 
 			// Show loading screen
 			game.state.start('start');
-/*
-	$.get('http://localhost:1337/student/testdata', function(data)
+
+	$.get('/student/getWords', function(data)
 	{
 		//console.log("GET" + data);
 		words = data;
-
+		console.log(words);
 			// Multiple inputs
 		// groupWords = data[0];
 		// startingCoins = data[1];
@@ -84,12 +84,12 @@ window.onload = function()
 		console.log('i failed');
 	});
 
-	$.post('http://localhost:1337/student/savedata',{gamename:'The Octopus Game'}, function(data)
+	$.post('/student/play/octopus/end', function(data)
 	{
 		// Log returned data
-		//console.log("POST" + data);
+		console.log("POST" + data);
 
 		// Start game
 		game.state.start('start');
-	});*/
+	});
 };

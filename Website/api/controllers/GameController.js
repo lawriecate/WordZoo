@@ -848,6 +848,7 @@ module.exports = {
 			}
 		});
 		return res.ok();*/
+    return res.json({'status':'saved'});
 	},
 
 	sheepgame: function( req,res) {

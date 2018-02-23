@@ -29,8 +29,8 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	 this.load.pack('startScreen', 'assets/pack.json');
-	//this.load.pack('startScreen', 'http://localhost:1337/octopusgame/assets/pack.json');
+	 this.load.pack('startScreen', '/games/octopus/assets/pack.json');
+	//this.load.pack('startScreen', 'http://localhost:1337/octopusgame//games/octopus/assets/pack.json');
 };
 
 LoadingScreen.prototype.create = function ()
