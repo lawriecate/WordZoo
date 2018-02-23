@@ -132,6 +132,9 @@ Level.prototype.create = function ()
 	highLightCircle.anchor.set(0.5,0.5);
 	
 	//Health
+	playerHealth = startingHealth;
+	opponentHealth = startingHealth;
+
 	style = {font: "90px Arial", fill: '#FFFFFF', align: "center", fontWeight: 'bold'};
 	playerHealthText = this.add.text(650,1020,playerHealth,style);
 	playerHealthText.anchor.setTo(0.5,0.5);
@@ -397,12 +400,7 @@ Level.prototype.create = function ()
     var time = new Date();
     gameStartTime = time.toUTCString();
 
-
-	// Starting values
-	playerHealth = startingHealth;
-	opponentHealth = startingHealth;
 	inputLock = true;
-
 
 	//Enabled Inputs
 	for(var i = 0; i < 10; i++)
