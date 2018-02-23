@@ -5,9 +5,9 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-/*
+
 var zmq = require('zmq');
- function word2pos(word) {
+/* function word2pos(word) {
 	 switch (word) {
 		 case "smoke":
 		 return 0;
@@ -669,7 +669,7 @@ function generateState() {
   while (a.length * 2 <= len) a = a.concat(a);
   if (a.length < len) a = a.concat(a.slice(0, len - a.length));
   return a;
-}
+}*/
 
 function getData() {
   sails.log('Calling python');
@@ -678,20 +678,44 @@ function getData() {
   socket.identity = 'client' + process.pid;
   socket.connect("tcp://127.0.0.1:"+port);
   var data = {};
+	var lock = true;
   // Ask Question
   socket.send(JSON.stringify(data));
 
-  reply = function(data) {
+  reply = function(data,lock) {
     var answer = data.toString();
     //console.log(answer);
     sails.log(answer);
     obj = JSON.parse(answer);
+		data = obj;
+		lock = false;
     sails.log(obj);
-    return obj;
   }
   // Receizve Answer
    socket.on('message', reply);
-}*/
+	 while(lock);
+	 return data;
+/*
+	 socket.on('connection',function(socket) {
+		 sails.log('connected');
+		 //Send a message after a timeout of 4seconds
+	   setTimeout(function() {
+	      return 'error';
+	   }, 4000);
+
+		 socket.on('message', function(data) {
+			 var answer = data.toString();
+			 //console.log(answer);
+			 sails.log(answer);
+			 obj = JSON.parse(answer);
+			 return obj;
+		 });
+
+	   socket.on('disconnect', function () {
+	      console.log('A user disconnected');
+	   });
+	 });*/
+}
 module.exports = {
 	home: function (req, res) {
 
@@ -881,9 +905,365 @@ module.exports = {
 			return res.redirect('/admin/games/'+game[0].id+'/');
 		})
 	},
-/*
+
   pythonTest: function(httpreq,res) {
 
     return res.json(getData());
-  }*/
+  },
+
+	getWords: function(req,res) {
+		var words = ["back",
+		    "bake",
+		    "meat",
+		    "beaches",
+		    "ben",
+		    "big",
+		    "pope",
+		    "brown",
+		    "mine",
+		    "bun",
+		    "sack",
+		    "black",
+		    "crack",
+		    "brake",
+		    "cake",
+		    "lake",
+		    "rake",
+		    "feet",
+		    "sweet",
+		    "wheat",
+		    "peaches",
+		    "men",
+		    "hen",
+		    "ten",
+		    "pig",
+		    "rope",
+		    "soap",
+		    "town",
+		    "clown",
+		    "crown",
+		    "wine",
+		    "pine",
+		    "nine",
+		    "gun",
+		    "nun",
+		    "sun",
+		    "bushes",
+		    "cages",
+		    "cloak",
+		    "cold",
+		    "cream",
+		    "cub",
+		    "day",
+		    "dish",
+		    "dome",
+		    "donkey",
+		    "brushes",
+		    "pages",
+		    "oak",
+		    "yolk",
+		    "smoke",
+		    "gold",
+		    "bald",
+		    "steam",
+		    "pub",
+		    "tub",
+		    "club",
+		    "tray",
+		    "play",
+		    "fish",
+		    "home",
+		    "gnome",
+		    "monkey",
+		    "turkey",
+		    "dot",
+		    "dump",
+		    "dust",
+		    "hose",
+		    "farm",
+		    "fin",
+		    "flour",
+		    "foil",
+		    "liquid",
+		    "green",
+		    "hot",
+		    "pot",
+		    "jump",
+		    "rust",
+		    "nose",
+		    "clothes",
+		    "arm",
+		    "bin",
+		    "pin",
+		    "tin",
+		    "tower",
+		    "flower",
+		    "shower",
+		    "soil",
+		    "oil",
+		    "squid",
+		    "queen",
+		    "clean",
+		    "hair",
+		    "hall",
+		    "head",
+		    "hell",
+		    "hip",
+		    "hop",
+		    "house",
+		    "lead",
+		    "kick",
+		    "kid",
+		    "stair",
+		    "square",
+		    "chair",
+		    "bear",
+		    "tall",
+		    "fall",
+		    "ball",
+		    "wall",
+		    "red",
+		    "bed",
+		    "shed",
+		    "bread",
+		    "smell",
+		    "spell",
+		    "well",
+		    "bell",
+		    "lip",
+		    "tip",
+		    "zip",
+		    "ship",
+		    "mop",
+		    "pop",
+		    "top",
+		    "stop",
+		    "chop",
+		    "shop",
+		    "mouse",
+		    "read",
+		    "seed",
+		    "weed",
+		    "sick",
+		    "tick",
+		    "click",
+		    "brick",
+		    "lid",
+		    "land",
+		    "moss",
+		    "mouth",
+		    "log",
+		    "look",
+		    "mane",
+		    "mash",
+		    "nap",
+		    "noodle",
+		    "owl",
+		    "band",
+		    "hand",
+		    "sand",
+		    "cross",
+		    "south",
+		    "cog",
+		    "dog",
+		    "fog",
+		    "hog",
+		    "frog",
+		    "book",
+		    "cook",
+		    "brain",
+		    "drain",
+		    "rain",
+		    "train",
+		    "plane",
+		    "cash",
+		    "rap",
+		    "tap",
+		    "poodle",
+		    "towel",
+		    "pink",
+		    "potato",
+		    "potatoes",
+		    "price",
+		    "rag",
+		    "ram",
+		    "roast",
+		    "page",
+		    "path",
+		    "throne",
+		    "ink",
+		    "sink",
+		    "wink",
+		    "tomato",
+		    "tomatoes",
+		    "dice",
+		    "ice",
+		    "tag",
+		    "flag",
+		    "pram",
+		    "lamb",
+		    "toast",
+		    "cage",
+		    "bath",
+		    "stone",
+		    "cone",
+		    "rug",
+		    "shape",
+		    "shark",
+		    "sheep",
+		    "toad",
+		    "king",
+		    "vest",
+		    "wax",
+		    "weather",
+		    "wet",
+		    "bug",
+		    "hug",
+		    "jug",
+		    "mug",
+		    "plug",
+		    "grape",
+		    "tape",
+		    "park",
+		    "sleep",
+		    "sweep",
+		    "road",
+		    "ring",
+		    "swing",
+		    "wing",
+		    "spring",
+		    "west",
+		    "nest",
+		    "chest",
+		    "fax",
+		    "feather",
+		    "jet",
+		    "vet",
+		    "net",
+		    "mad",
+		    "can",
+		    "bat",
+		    "hut",
+		    "car",
+		    "leg",
+		    "six",
+		    "box",
+		    "ant",
+		    "wrench",
+		    "sad",
+		    "third",
+		    "fan",
+		    "man",
+		    "pan",
+		    "cat",
+		    "hat",
+		    "mat",
+		    "rat",
+		    "nut",
+		    "foot",
+		    "star",
+		    "peg",
+		    "kiss",
+		    "fox",
+		    "plant",
+		    "bench",
+		    "dress",
+		    "lock",
+		    "duck",
+		    "bill",
+		    "gift",
+		    "plum",
+		    "glass",
+		    "bank",
+		    "shelf",
+		    "three",
+		    "chess",
+		    "rock",
+		    "sock",
+		    "clock",
+		    "truck",
+		    "hill",
+		    "mill",
+		    "pill",
+		    "grill",
+		    "lift",
+		    "thumb",
+		    "drum",
+		    "class",
+		    "tank",
+		    "elf",
+		    "tree",
+		    "wave",
+		    "plate",
+		    "wood",
+		    "kite",
+		    "fire",
+		    "cube",
+		    "beach",
+		    "bow",
+		    "girl",
+		    "deer",
+		    "grave",
+		    "eight",
+		    "mud",
+		    "knight",
+		    "tyre",
+		    "tube",
+		    "peach",
+		    "snow",
+		    "pearl",
+		    "spear",
+		    "balloon",
+		    "bird",
+		    "puzzle",
+		    "calf",
+		    "fountain",
+		    "britain",
+		    "boat",
+		    "goal",
+		    "door",
+		    "pancake",
+		    "moon",
+		    "spoon",
+		    "bubble",
+		    "half",
+		    "scarf",
+		    "mountain",
+		    "curtain",
+		    "coat",
+		    "goat",
+		    "bowl",
+		    "four",
+		    "snowflake"];
+
+		function randomWords(){
+		    var generatedList = new Array();
+		    var numberOfWords = 0;
+
+		    //Loop until we have 10 unique words
+		    while(numberOfWords != 10){
+		      var randomWord = Math.floor(Math.random() * (words.length - 1));
+		      //If the word is not already in our list
+		      if(doesNotContainWord(generatedList, words[randomWord]))
+		        generatedList.push(words[randomWord]);
+		        numberOfWords++;
+		    }
+
+		    return generatedList;
+		}
+
+
+		function doesNotContainWord(generatedList, word){
+		  for(var i = 0; i < generatedList.length; i++){
+		      if(generatedList[i] == word){
+		        return false;
+		      }
+		  }
+
+		  return true;
+		}
+		//console.log(randomWords());
+		return res.json(randomWords());
+
+	}
 };

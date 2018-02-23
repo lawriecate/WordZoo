@@ -10,7 +10,8 @@ module.exports = {
   attributes: {
     word: {
       type: 'string',
-      required: true
+      required: true,
+      unique: true
     },
     num_vowels: {
       type: 'integer',
@@ -19,10 +20,6 @@ module.exports = {
     num_syllables: {
       type: 'integer',
       required: true
-    },
-    age: {
-      type: 'integer',
-      required: true
-    },
+    }
   }
 };

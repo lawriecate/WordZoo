@@ -110,6 +110,7 @@ module.exports.routes = {
     'post /student/play/:gameslug/end': 'GameController.endGame',
     'get /student/testdata': 'GameController.testdata',
     'get /student/python': 'GameController.pythonTest',
+    'get /student/getWords': 'GameController.getWords',
     'post /student/savedata': 'GameController.savetestdata',
     'post /student/endgame': 'GameController.endgame',
     'get /student/login': { view: 'student/login' },
