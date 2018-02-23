@@ -131,6 +131,9 @@ Level.prototype.create = function ()
 	highLightCircle.anchor.set(0.5,0.5);
 	
 	//Health
+	playerHealth = startingHealth;
+	opponentHealth = startingHealth;
+
 	style = {font: "90px Arial", fill: '#FFFFFF', align: "center", fontWeight: 'bold'};
 	playerHealthText = this.add.text(650,1020,playerHealth,style);
 	playerHealthText.anchor.setTo(0.5,0.5);
@@ -397,9 +400,6 @@ Level.prototype.create = function ()
     gameStartTime = time.toUTCString();
 
 
-	// Starting values
-	playerHealth = startingHealth;
-	opponentHealth = startingHealth;
 	inputLock = true;
 
 
@@ -1216,7 +1216,7 @@ Level.prototype.recordScreenPress = function(x, y)
 };
 
 // Record statistical data from game
-PlayScreen.prototype.recordData = function() 
+Level.prototype.recordData = function() 
 {
 	// Save gameStartTime
 	// Save score
@@ -1261,7 +1261,7 @@ PlayScreen.prototype.recordData = function()
 			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
 		}
 	}
-
+/*
 	// Send out
 	console.log(output);
 	$.post('end',{words:output}, function(data)
@@ -1269,7 +1269,7 @@ PlayScreen.prototype.recordData = function()
   		// Log returned data
   		console.log("RETURNED" + data);
 	});
-
+*/
 
 
 	// End
