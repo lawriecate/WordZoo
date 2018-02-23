@@ -34,10 +34,10 @@ RulesScreen.prototype.preload = function ()
 	this.load.pack('PlayScreen', '/games/elephant/assets/pack.json');
 
 	// Load items
-	for(var i = 0; i < matchingWords.length; i++)
+	for(var i = 0; i < testWords.length; i++)
 	{
-		var temp = matchingWords[i];
-		this.load.image(temp[0],'/games/elephant/assets/Items/'+temp[0]+'.png');
+		var temp = testWords[i];
+		this.load.image(temp[0],'/images/words/'+temp[0]+'.png');
 	}
 };
 

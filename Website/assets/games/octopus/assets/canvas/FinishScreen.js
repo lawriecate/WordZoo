@@ -47,7 +47,7 @@ FinishScreen.prototype.create = function ()
 };
 
 
-//on click playAgain, proceed to play screen
+//on click playAgain, proceed to loading screen
 FinishScreen.prototype.playAgain = function()
 {
 	this.state.start('loading');

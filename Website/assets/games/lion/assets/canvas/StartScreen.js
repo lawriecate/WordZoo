@@ -18,7 +18,7 @@ StartScreen.prototype.init = function ()
 
 StartScreen.prototype.preload = function () 
 {	
-	this.load.pack('startScreen', 'assets/pack.json');	
+	this.load.pack('startScreen', '/games/lion/assets/pack.json');
 };
 
 StartScreen.prototype.create = function () 
@@ -40,16 +40,17 @@ StartScreen.prototype.create = function ()
 };
 
 
-// on click back button, 
-StartScreen.prototype.onClickPlay = function() 
+// on click back button
+StartScreen.prototype.onClickBack = function() 
 {
 	// go back
+	console.log('Go Back');
 }
 
 // on click play button, proceed to play screen
 StartScreen.prototype.onClickPlay = function() 
 {
-	this.state.start('play');
+	this.state.start('loading');
 };
 
 //on click rules button, proceed to rules screen

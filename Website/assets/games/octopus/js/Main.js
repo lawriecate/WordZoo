@@ -53,8 +53,6 @@ var biggerStyle = {font: "bold 120px Arial", fill: "#fff", boundsAlignH: "center
 
 
 
-
-
 window.onload = function()
 {
 	// Create game
@@ -69,5 +67,4 @@ window.onload = function()
 
 			// Show loading screen
 			game.state.start('start');
-
 };

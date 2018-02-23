@@ -47,6 +47,33 @@ LoadingScreen.prototype.create = function ()
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timeCounter = 0;
 	timer.start();
+
+
+	// Get random words
+	var context = this;
+	$.get('/student/getWords', function(data)
+	{
+		words = data;
+		console.log(words);
+
+		// Botch rhyming pairs
+		for(var i=0; i<words.length; i++)
+		{
+			matchingWords[i][0] = words[i];
+			matchingWords[i][1] = words[i];
+		}
+			
+		// Multiple inputs
+		// groupWords = data[0];
+		// startingCoins = data[1];
+		context.state.start('play');
+		}
+
+	}
+		).fail(function() 
+	{
+		console.log('i failed');
+	});
 };
 
 
@@ -57,8 +84,8 @@ LoadingScreen.prototype.updateTime = function ()
 	// If reached timeout point, show error
 	if(timeCounter > timeoutPoint)
 	{
-		// Exit
-		console.log('Exit');
+		// Redirect to Start Screen
+		this.state.start('start');
 	}
 
 	// increase time

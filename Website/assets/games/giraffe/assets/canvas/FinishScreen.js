@@ -50,7 +50,7 @@ FinishScreen.prototype.create = function ()
 //on click playAgain, proceed to play screen
 FinishScreen.prototype.playAgain = function()
 {
-	this.state.start('start');
+	this.state.start('loading');
 };
 
 //on click moreGames, proceed to game selection page

@@ -25,7 +25,7 @@ PlayScreen.prototype.init = function ()
 
 PlayScreen.prototype.preload = function () 
 {	
-	this.load.pack('PlayScreen', 'assets/pack.json');
+	this.load.pack('PlayScreen', '/games/lion/assets/pack.json');
 
 	// Clear + expand words list
 	wordHistory = new Array ();
@@ -34,6 +34,12 @@ PlayScreen.prototype.preload = function ()
 	{
 		wordHistory[i] = new Array ();
 	}		
+
+	// Load items
+	for(var i = 0; i < words.length; i++)
+	{
+		this.load.image(words[i] ,'/images/words/'+words[i]+'.png');
+	}	
 };
 
 PlayScreen.prototype.create = function () 
@@ -204,7 +210,6 @@ PlayScreen.prototype.updateTime = function ()
 	if(timeLeft <= 0)
 	{
 		this.recordData();
-		this.endGame();
 	}
 	
 	timeText.setText("Time: "+(--timeLeft), true);	
@@ -292,6 +297,17 @@ PlayScreen.prototype.setWords = function ()
 	// get word from word bank at random position
 	correctWordIndex = Math.floor(Math.random() * words.length);
 	correctWord = words[correctWordIndex];
+
+
+	// set image
+	if(imageExample != undefined)
+	{
+		imageExample.kill();
+	}
+	imageExample = this.add.sprite(980, 190, correctWord);
+	imageExample.anchor.setTo(0.5,0.5);
+	imageExample.scale.setTo(0.75,0.75);
+
 
 	// Random number between 0 and 3 for position of correct
 	// Set correct word in that position, generate incorrect for others
@@ -1035,32 +1051,64 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 };
 
 // Record statistical data from game
-PlayScreen.prototype.recordData = function() 
+Level.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
-	// Save timeLeft
-	// Save livesLeft
-	// Save wordHistory
 	// Save clickHistory 
 
 
-	// Test print
+
+	// Prep array
+	var output = new Array();
+
+	// for each word tested
 	for(var i=0; i<wordHistory.length; i++)
 	{
-		for(var j=0; j<wordHistory[i].length; j++)
+		// if never tested, set to default
+		if(wordHistory[i].length == 0)
 		{
-			console.log(wordHistory[i][j]);
+			output[i] = 0.5
 		}
-		console.log('\n');
+		else 
+		{
+			var rightCounter = 0;
+			var wrongCounter = 0;
+
+			// for each answer of a word
+			for(var j=0; j<wordHistory[i].length; j++)
+			{
+				// if correct, record correct
+				if(wordHistory[i][j][1])
+				{
+					rightCounter++;
+				}
+				else 
+				{
+					wrongCounter++;
+				}
+			}
+
+			// Calculate output value
+			var raw = rightCounter / (rightCounter+ wrongCounter);
+			console.log("Raw "+raw);
+			
+			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
+		}
 	}
 
-console.log('\n\n\n');
-
-	for(var i=0; i<clickHistory.length; i++)
+/*
+	// Send out
+	console.log(output);
+	$.post('end',{words:output}, function(data)
 	{
-		console.log(clickHistory[i]);
-	}
+  		// Log returned data
+  		console.log("RETURNED" + data);
+	});
+*/
+
+	// End
+	this.endGame();
 };
 
 
@@ -1071,7 +1119,6 @@ PlayScreen.prototype.checkLives = function()
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
 		this.recordData();
-		this.endGame();
 	}
 	else if(livesLeft == 1)
 	{

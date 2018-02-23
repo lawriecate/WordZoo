@@ -3,8 +3,11 @@ var elephant = elephant|| {};
 
 
 //word bank
+var testWords = [['Apple','Apple'],['Bear','Bear'],['Bird','Bird'],['Boat','Boat'],['Book','Book'],
+					['Car','Car'],['Cheese','Cheese'],['Cone','Cone'],['Dog','Dog'],['Hat','Hat']];
 var matchingWords = [['Apple','Apple'],['Bear','Bear'],['Bird','Bird'],['Boat','Boat'],['Book','Book'],
 					['Car','Car'],['Cheese','Cheese'],['Cone','Cone'],['Dog','Dog'],['Hat','Hat']];
+
 
 // define items
 var easel1, easel2, easel3;
@@ -65,28 +68,5 @@ var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
 		game.state.add('finish', FinishScreen);
 
 		// Show loading screen
-		game.state.start('start');																// ******* CHANGED FOR TESTING *******
-/*
-$.get('http://localhost:1337/student/testdata', function(data)
-{
-	//console.log("GET" + data);
-	groupWords = data;
-
-		// Multiple inputs
-	// groupWords = data[0];
-	// startingCoins = data[1];
-
-
-}).fail(function() {
-	console.log('i failed');
-});
-
-$.post('http://localhost:1337/student/savedata',{gamename:'The Elephant Game'}, function(data)
-{
-	// Log returned data
-	//console.log("POST" + data);
-
-	// Start game
-	game.state.start('start');
-});*/
+		game.state.start('start');
 };

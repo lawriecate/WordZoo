@@ -6,7 +6,6 @@
 	            	"Golf","Hotel","Igloo","Jam","Kite","Lolly",
 	            	"Moose","Nose","Octopus","Pot","Quest","Rice",
 	         		"Seat","Table","Unicorn","Violin","Wax"];
-	
 
 	// Record word answers
 		// for each word -> [(string/null) incorrectSelectedWord, (bool) pickedCorrectly, (int - ms) timeTaken]
@@ -19,6 +18,9 @@
 	var clickHistory = [];
 	var gameStartTime;
 
+
+	// image
+	var imageExample;
 
 	// raw text of each button
 	var TLraw;
@@ -104,36 +106,13 @@ window.onload = function()
 	// Create game
 	var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
 
-			// Add states
-			game.state.add('loading', LoadingScreen);
-			game.state.add('start', StartScreen);
-			game.state.add('rules', RulesScreen);
-			game.state.add('play', PlayScreen);
-			game.state.add('finish', FinishScreen);
+	// Add states
+	game.state.add('loading', LoadingScreen);
+	game.state.add('start', StartScreen);
+	game.state.add('rules', RulesScreen);
+	game.state.add('play', PlayScreen);
+	game.state.add('finish', FinishScreen);
 
-			// Show loading screen
-			game.state.start('start');
-/*
-	$.get('http://localhost:1337/student/testdata', function(data)
-	{
-		//console.log("GET" + data);
-		groupWords = data;
-
-			// Multiple inputs
-		// groupWords = data[0];
-		// startingCoins = data[1];
-
-
-	}).fail(function() {
-		console.log('i failed');
-	});
-
-	$.post('http://localhost:1337/student/savedata',{gamename:'The Lion Game'}, function(data)
-	{
-		// Log returned data
-		//console.log("POST" + data);
-
-		// Start game
-		game.state.start('start');
-	});*/
+	// Show loading screen
+	game.state.start('start');
 };

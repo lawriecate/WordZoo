@@ -393,7 +393,6 @@ RulesScreen.prototype.updateTime = function ()
 		}
 
 
-
 		// Increase counter
 		counter++;
 	}

@@ -1,6 +1,5 @@
 	//global variables
 	var giraffe = giraffe|| {};
-var sendData;
 
 	//word bank
 	var matchingWords =  	[["A1","A2"],["B1","B2"],["C1","C2"],["D1","D2"],
@@ -108,39 +107,4 @@ window.onload = function()
 
 			// Show loading screen
 			game.state.start('start');
-			sendData = function() {
-				console.log("SENDING");
-				console.log(wordHistory);
-				$.post('/student/endgame',{wh:wordHistory}, function(data)
-				{
-					// Log returned data
-					console.log("RETURNED" + data);
-
-
-				});
-			}
-
-/*
-	$.get('http://localhost:1337/student/testdata', function(data)
-	{
-		//console.log("GET" + data);
-		groupWords = data;
-
-			// Multiple inputs
-		// groupWords = data[0];
-		// startingCoins = data[1];
-
-
-	}).fail(function() {
-		console.log('i failed');
-	});
-
-	$.post('http://localhost:1337/student/savedata',{gamename:'The Giraffe Game'}, function(data)
-	{
-		// Log returned data
-		//console.log("POST" + data);
-
-		// Start game
-		game.state.start('start');
-	});*/
 };

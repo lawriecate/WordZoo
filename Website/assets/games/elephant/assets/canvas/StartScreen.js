@@ -40,16 +40,17 @@ StartScreen.prototype.create = function ()
 };
 
 
-// on click back button,
-StartScreen.prototype.onClickPlay = function()
+// on click back button
+StartScreen.prototype.onClickBack = function()
 {
 	// go back
+	console.log('Go Back');
 }
 
 // on click play button, proceed to play screen
 StartScreen.prototype.onClickPlay = function()
 {
-	this.state.start('play');
+	this.state.start('loading');
 };
 
 //on click rules button, proceed to rules screen

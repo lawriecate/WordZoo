@@ -63,7 +63,7 @@ Level.prototype.init = function ()
 Level.prototype.preload = function () 
 {
 	// load pack
-	this.load.pack('PlayState', 'assets/pack.json');
+	this.load.pack('PlayState', '/games/owl/assets/pack.json');
 	assets = new Array();
 	
 	//Creates the asset array of blank objects
@@ -75,7 +75,7 @@ Level.prototype.preload = function ()
 	// Load items
 	for(var i = 0; i < words.length; i++)
 	{
-		this.load.image(words[i],'assets/testAssets/'+words[i]+'.png');
+		this.load.image(words[i] ,'/images/words/'+words[i]+'.png');
 		assets[i].word = words[i];
 		assets[i].price = i;
 	}
@@ -99,6 +99,7 @@ Level.prototype.create = function ()
 {
 	//Create global reference of this
 	game = this;
+	
 	//Load Assets
 	this.add.sprite(0, 0, 'background');
 	
@@ -959,7 +960,7 @@ function decreasePlayerHealth()
 			
 			//END GAME - You lose
 			console.log("You lose")
-			this.endGame();
+			this.recordData();
 		});	
 	} 
 	else
@@ -1216,33 +1217,64 @@ Level.prototype.recordScreenPress = function(x, y)
 };
 
 // Record statistical data from game
-Level.prototype.recordData = function() 
+Level.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
-	// Save playerHealth
-	// Save opponentHealth
-	// Save wordHistory
 	// Save clickHistory 
 
 
 
-	// Test print
+	// Prep array
+	var output = new Array();
+
+	// for each word tested
 	for(var i=0; i<wordHistory.length; i++)
 	{
-		for(var j=0; j<wordHistory[i].length; j++)
+		// if never tested, set to default
+		if(wordHistory[i].length == 0)
 		{
-			console.log(wordHistory[i][j]);
+			output[i] = 0.5
 		}
-		console.log('\n');
+		else 
+		{
+			var rightCounter = 0;
+			var wrongCounter = 0;
+
+			// for each answer of a word
+			for(var j=0; j<wordHistory[i].length; j++)
+			{
+				// if correct, record correct
+				if(wordHistory[i][j][1])
+				{
+					rightCounter++;
+				}
+				else 
+				{
+					wrongCounter++;
+				}
+			}
+
+			// Calculate output value
+			var raw = rightCounter / (rightCounter+ wrongCounter);
+			console.log("Raw "+raw);
+			
+			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
+		}
 	}
 
-console.log('\n\n\n');
-
-	for(var i=0; i<clickHistory.length; i++)
+/*
+	// Send out
+	console.log(output);
+	$.post('end',{words:output}, function(data)
 	{
-		console.log(clickHistory[i]);
-	}
+  		// Log returned data
+  		console.log("RETURNED" + data);
+	});
+*/
+
+	// End
+	this.endGame();
 };
 
 
@@ -1261,13 +1293,12 @@ Level.prototype.updateTime = function ()
 	// Check lives
 	if(playerHealth <= 0 || opponentHealth <= 0)
 	{
-		this.endGame();
+		this.recordData();
 	}
 };
 
 // Game has finished, move to finish state
 Level.prototype.endGame = function() 
 {
-	this.recordData();
 	this.state.start('finish');
 };

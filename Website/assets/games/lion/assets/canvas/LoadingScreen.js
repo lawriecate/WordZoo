@@ -29,7 +29,7 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	this.load.pack('startScreen', 'assets/pack.json');
+	this.load.pack('startScreen', '/games/lion/assets/pack.json');
 };
 
 LoadingScreen.prototype.create = function ()
@@ -51,6 +51,25 @@ LoadingScreen.prototype.create = function ()
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timeCounter = 0;
 	timer.start();
+
+
+	// Get random words
+	var context = this;
+	$.get('/student/getWords', function(data)
+	{
+		words = data;
+		console.log(words);
+			
+		// Multiple inputs
+		// groupWords = data[0];
+		// startingCoins = data[1];
+		context.state.start('play');
+		}
+	}
+		).fail(function() 
+	{
+		console.log('i failed');
+	});
 };
 
 
@@ -61,14 +80,8 @@ LoadingScreen.prototype.updateTime = function ()
 	// If reached timeout point, show error
 	if(timeCounter > timeoutPoint)
 	{
-		// Hide loader + show timeout message
-		_preloader.visible = false;
-		//_timeoutMessage.visible = true;
-	}
-	// If have shown message for 2 seconds
-	else if(timeCounter > (timeoutPoint + 2))
-	{
 		// Exit
+		this.state.start('start');
 	}
 
 
@@ -76,5 +89,5 @@ LoadingScreen.prototype.updateTime = function ()
 	timeCounter++;
 
 	// log counter
-	console.log('Timeout in '+(timeoutPoint - timeCounter + 2));
+	console.log('Timeout in '+(timeoutPoint - timeCounter));
 };

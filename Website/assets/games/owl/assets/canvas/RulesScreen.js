@@ -70,7 +70,7 @@ RulesScreen.prototype.init = function ()
 RulesScreen.prototype.preload = function () 
 {	
 	// load pack
-	this.load.pack('PlayState', 'assets/pack.json');
+	this.load.pack('PlayState', '/games/owl/assets/pack.json');
 	assets = new Array();
 	
 	//Creates the asset array of blank objects
@@ -82,7 +82,7 @@ RulesScreen.prototype.preload = function ()
 	// Load items
 	for(var i = 0; i < words.length; i++)
 	{
-		this.load.image(words[i],'assets/tutorialAssets/'+words[i]+'.png');
+		this.load.image(words[i] ,'/images/words/'+words[i]+'.png');
 		assets[i].word = words[i];
 	}
 	   

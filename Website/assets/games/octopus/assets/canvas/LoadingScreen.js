@@ -32,15 +32,11 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	 this.load.pack('startScreen', '/games/octopus/assets/pack.json');
-	//this.load.pack('startScreen', 'http://localhost:1337/octopusgame//games/octopus/assets/pack.json');
+	 this.load.pack('StartScreen', '/games/octopus/assets/pack.json');
 };
 
 LoadingScreen.prototype.create = function ()
 {
-
-
-
 	var _background = this.add.sprite(0, 0, 'background');
 
 	// preloader + animation
@@ -58,25 +54,26 @@ LoadingScreen.prototype.create = function ()
 	timer.loop(Phaser.Timer.SECOND, this.updateTime, this);
 	timeCounter = 0;
 	timer.start();
-var something = this;
-
-		$.get('/student/getWords', function(data)
-		{
-			//console.log("GET" + data);
-			words = data;
-			console.log(words);
-				// Multiple inputs
-			// groupWords = data[0];
-			// startingCoins = data[1];
-			something.state.start('play');
-
-		}).fail(function() {
-			console.log('i failed');
-		});
 
 
+	var context = this;
+	$.get('/student/getWords', function(data)
+	{
+		//console.log("GET" + data);
+		words = data;
+		console.log(words);
+			
+		// Multiple inputs
+		// groupWords = data[0];
+		// startingCoins = data[1];
+		context.state.start('play');
+
+	}
+		).fail(function() 
+	{
+		console.log('i failed');
+	});
 };
-
 
 
 // record time on this menu, if too big -> show timeout message + exit
@@ -85,14 +82,8 @@ LoadingScreen.prototype.updateTime = function ()
 	// If reached timeout point, show error
 	if(timeCounter > timeoutPoint)
 	{
-		// Hide loader + show timeout message
-		_preloader.visible = false;
-		//_timeoutMessage.visible = true;
-	}
-	// If have shown message for 2 seconds
-	else if(timeCounter > (timeoutPoint + 2))
-	{
-		// Exit
+		// Redirect to start screen
+		this.state.start('start');
 	}
 
 
@@ -100,5 +91,5 @@ LoadingScreen.prototype.updateTime = function ()
 	timeCounter++;
 
 	// log counter
-	console.log('Timeout in '+(timeoutPoint - timeCounter + 2));
+	console.log('Timeout in '+(timeoutPoint - timeCounter));
 };

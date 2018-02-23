@@ -2,6 +2,11 @@
 var octopus = octopus|| {};
 
 
+var startingLives = 3;
+var livesLeft;
+var livesBox;
+
+
 /**
  * Level.
  */
@@ -101,9 +106,14 @@ Level.prototype.create = function ()
 	style = {font: "70px Arial", fill: '#FF9933', align: "left", fontWeight: 'bold'};
 	clock = this.add.text(1100,80,"Time Remaining:  ",style);
 	clock.anchor.setTo(0.5,0.5);
+
 	//Spawn Score
 	scoreText = this.add.text(1700,80,"Score: ",style);
 	scoreText.anchor.setTo(0.5,0.5);
+  
+	// Add Lives box
+	livesBox = this.add.sprite(1500, 20, 'Lives', 0);
+	livesBox.scale.setTo(1.5,1.5);
 
 
 	//Decorative items
@@ -299,7 +309,7 @@ Level.prototype.update = function()
 	if(timeRemaining <= 0)
 	{
 		//Gameover
-		this.endGame();
+		this.recordData();
 	}
 	else
 	{
@@ -318,6 +328,8 @@ Level.prototype.update = function()
 		if(dragging)
 		{
 			dragItem.position.setTo(game.input.position.x,game.input.position.y);
+			// *** MAYBE NEEDED ***
+			// RESCALE ITEM ADDED TO PIZZA HERE
 		}
 	}
 
@@ -519,6 +531,7 @@ function spawnDraggableItem()
 		//Adds so it can be dragged
 		dragItem = game.add.sprite(game.input.x, game.input.y, assets[this.selectedItem].word);
 		dragItem.anchor.setTo(0.5,0.5);
+		dragItem.scale.set(0.5,0.5);
 		dragging = true;
 	}
 }
@@ -581,37 +594,92 @@ Level.prototype.recordScreenPress = function(x, y)
 	clickHistory[clickHistory.length] = [x, y, timeStamp];
 };
 
+// Check how many lives remaining, show correct frame
+function checkLives()
+{
+	if(livesLeft <= 0)
+	{
+		livesBox = game.add.sprite(1500, 20, 'Lives', 3);
+		livesBox.scale.setTo(1.5, 1.5);
+
+		// Exit
+		recordData();
+	}
+	else if(livesLeft == 1)
+	{
+		livesBox = game.add.sprite(1500, 20, 'Lives', 2);
+		livesBox.scale.setTo(1.5, 1.5);
+	}
+	else if(livesLeft == 2)
+	{
+		livesBox = game.add.sprite(1500, 20, 'Lives', 1);
+		livesBox.scale.setTo(1.5, 1.5);
+	}
+};
+
 // Record statistical data from game
 Level.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
-	// Save wordHistory
-	// Save clickHistory
+	// Save clickHistory 
 
 
 
-	// Test print
+	// Prep array
+	var output = new Array();
+
+	// for each word tested
 	for(var i=0; i<wordHistory.length; i++)
 	{
-		for(var j=0; j<wordHistory[i].length; j++)
+		// if never tested, set to default
+		if(wordHistory[i].length == 0)
 		{
-			console.log(wordHistory[i][j]);
+			output[i] = 0.5
 		}
-		console.log('\n');
+		else 
+		{
+			var rightCounter = 0;
+			var wrongCounter = 0;
+
+			// for each answer of a word
+			for(var j=0; j<wordHistory[i].length; j++)
+			{
+				// if correct, record correct
+				if(wordHistory[i][j][1])
+				{
+					rightCounter++;
+				}
+				else 
+				{
+					wrongCounter++;
+				}
+			}
+
+			// Calculate output value
+			var raw = rightCounter / (rightCounter+ wrongCounter);
+			console.log("Raw "+raw);
+			
+			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
+		}
 	}
 
-console.log('\n\n\n');
-
-	for(var i=0; i<clickHistory.length; i++)
+/*
+	// Send out
+	console.log(output);
+	$.post('end',{words:output, clicks:clickHistory}, function(data)
 	{
-		console.log(clickHistory[i]);
-	}
+  		// Log returned data
+  		console.log("RETURNED" + data);
+	});
+*/
+
+	// End
+	this.endGame();
 };
 
 // Game has finished, move to finish state
 Level.prototype.endGame = function()
 {
-	this.recordData();
 	this.state.start('finish');
 };

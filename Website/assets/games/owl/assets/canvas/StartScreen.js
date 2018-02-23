@@ -18,7 +18,7 @@ StartScreen.prototype.init = function ()
 
 StartScreen.prototype.preload = function () 
 {	
-	this.load.pack('Start', 'assets/pack.json');	
+	this.load.pack('Start', '/games/owl/assets/pack.json');	
 };
 
 StartScreen.prototype.create = function () 
@@ -42,15 +42,16 @@ StartScreen.prototype.create = function ()
 
 
 // on click back button, 
-StartScreen.prototype.onClickPlay = function() 
+StartScreen.prototype.onClickBack = function() 
 {
 	// go back
+	console.log('Go Back');
 }
 
 // on click play button, proceed to play screen
 StartScreen.prototype.onClickPlay = function() 
 {
-	this.state.start('play');
+	this.state.start('loading');
 };
 
 //on click rules button, proceed to rules screen

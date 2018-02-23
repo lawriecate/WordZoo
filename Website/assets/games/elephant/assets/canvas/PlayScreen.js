@@ -28,7 +28,7 @@ PlayScreen.prototype.preload = function ()
 	for(var i = 0; i < matchingWords.length; i++)
 	{
 		var temp = matchingWords[i];
-		this.load.image(temp[0],'/games/elephant/assets/Items/'+temp[0]+'.png');
+		this.load.image(temp[0],'/images/words/'+temp[0]+'.png');
 	}
 
 	// Clear + expand words list
@@ -302,8 +302,8 @@ PlayScreen.prototype.updateTime = function ()
 	// If no time remaining, game finished
 	if(timeLeft <= 0)
 	{
-		// Exit
-		this.endGame();
+		// Record Data + Exit
+		this.recordData();
 	}
 
 	// show current time
@@ -325,8 +325,8 @@ PlayScreen.prototype.checkLives = function()
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
 
-		// Exit
-		this.endGame();
+		// Record Data + Exit
+		this.recordData();
 	}
 	else if(livesLeft == 1)
 	{
@@ -355,33 +355,22 @@ PlayScreen.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
-	// Save timeLeft
-	// Save livesLeft
-	// Save wordHistory
-	// Save clickHistory
-
-//console.log(wordHistory.length +" "+wordHistory[0].length)
+	// Save clickHistory 
 
 
 
 	// Prep array
 	var output = new Array();
 
-console.log("S "+wordHistory.length);
-
 	// for each word tested
 	for(var i=0; i<wordHistory.length; i++)
 	{
-		console.log(i+" "+wordHistory[i].length);
-
 		// if never tested, set to default
 		if(wordHistory[i].length == 0)
 		{
-console.log(i+" undefined");
-
 			output[i] = 0.5
 		}
-		else
+		else 
 		{
 			var rightCounter = 0;
 			var wrongCounter = 0;
@@ -394,7 +383,7 @@ console.log(i+" undefined");
 				{
 					rightCounter++;
 				}
-				else
+				else 
 				{
 					wrongCounter++;
 				}
@@ -403,29 +392,28 @@ console.log(i+" undefined");
 			// Calculate output value
 			var raw = rightCounter / (rightCounter+ wrongCounter);
 			console.log("Raw "+raw);
-
+			
 			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
 		}
 	}
 
+/*
 	// Send out
-	//output.send();
 	console.log(output);
-	$.post('end',{words:output}, function(data)
+	$.post('end',{words:output, clicks:clickHistory}, function(data)
 	{
-		// Log returned data
-		console.log("RETURNED" + data);
-
+  		// Log returned data
+  		console.log("RETURNED" + data);
 	});
-
+*/
 
 	// End
-	this.state.start('finish');
+	this.endGame();
 };
 
 
 // Game has finished, record data + move to finish state
 PlayScreen.prototype.endGame = function()
 {
-	this.recordData();
+	this.state.start('finish');
 };

@@ -1,0 +1,463 @@
+{
+  "startScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/1 StartScreen/MainMenu.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayButton",
+      "url": "assets/1 StartScreen/playButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "RulesButton",
+      "url": "assets/1 StartScreen/rulesButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "BackButton",
+      "url": "assets/1 StartScreen/backButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ButtonBackground",
+      "url": "assets/1 StartScreen/buttonBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "preloader",
+      "url": "assets/1 StartScreen/preloader.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
+  "RulesScreen": [
+    {
+      "type": "image",
+      "key": "okButton",
+      "url": "assets/2 Rules/ok.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Background",
+      "url": "assets/2 Rules/Background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Soap",
+      "url": "assets/2 Rules/Soap.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Flag",
+      "url": "assets/2 Rules/Flag.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "gui",
+      "url": "assets/2 Rules/gui.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "penFront",
+      "url": "assets/2 Rules/penFront.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "penBack",
+      "url": "assets/2 Rules/penBack.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "mainSheep",
+      "url": "assets/2 Rules/mainSheep.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/2 Rules/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Red",
+      "url": "assets/2 Rules/Red.png",
+      "frameWidth": 312,
+      "frameHeight": 474,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "highlightCircle",
+      "url": "assets/2 Rules/highlightCircle.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "sheepPen",
+      "url": "assets/2 Rules/sheepPen.png",
+      "frameWidth": 570,
+      "frameHeight": 320,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "sheepWobble",
+      "url": "assets/2 Rules/sheepWobble.png",
+      "frameWidth": 700,
+      "frameHeight": 700,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "tutorialOverlay",
+      "url": "assets/2 Rules/tutorialOverlay.png",
+      "overwrite": false
+    }
+  ],
+  "FinishScreen": [
+    {
+      "type": "image",
+      "key": "FinishBackground",
+      "url": "assets/4 EndScreen/endBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayAgain",
+      "url": "assets/4 EndScreen/playAgainButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "MoreGames",
+      "url": "assets/4 EndScreen/homeButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "GameOver",
+      "url": "assets/4 EndScreen/gameOverLayOver.png",
+      "overwrite": false
+    }
+  ],
+  "PlayScreen": [
+    {
+      "type": "image",
+      "key": "Background",
+      "url": "assets/3 Play/Background.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/3 Play/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": 4,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "Bench",
+      "url": "assets/3 Play/Bench.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Brain",
+      "url": "assets/3 Play/Brain.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Bread",
+      "url": "assets/3 Play/Bread.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Broccoli",
+      "url": "assets/3 Play/Broccoli.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Cage",
+      "url": "assets/3 Play/Cage.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Cannon",
+      "url": "assets/3 Play/Cannon.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Castle",
+      "url": "assets/3 Play/Castle.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Chair",
+      "url": "assets/3 Play/Chair.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Clock",
+      "url": "assets/3 Play/Clock.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Crayon",
+      "url": "assets/3 Play/Crayon.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Desk",
+      "url": "assets/3 Play/Desk.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Donkey",
+      "url": "assets/3 Play/Donkey.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Feather",
+      "url": "assets/3 Play/Feather.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Fireman",
+      "url": "assets/3 Play/Fireman.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Flag",
+      "url": "assets/3 Play/Flag.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Football",
+      "url": "assets/3 Play/Football.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Grape",
+      "url": "assets/3 Play/Grape.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Guitar",
+      "url": "assets/3 Play/Guitar.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Heart",
+      "url": "assets/3 Play/Heart.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Island",
+      "url": "assets/3 Play/Island.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Jumper",
+      "url": "assets/3 Play/Jumper.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Mouse",
+      "url": "assets/3 Play/Mouse.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Notebook",
+      "url": "assets/3 Play/Notebook.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Owl",
+      "url": "assets/3 Play/Owl.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pear",
+      "url": "assets/3 Play/Pear.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Police",
+      "url": "assets/3 Play/Police.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Rabbit",
+      "url": "assets/3 Play/Rabbit.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Rake",
+      "url": "assets/3 Play/Rake.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Soap",
+      "url": "assets/3 Play/Soap.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Squirrel",
+      "url": "assets/3 Play/Squirrel.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Stick",
+      "url": "assets/3 Play/Stick.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Table",
+      "url": "assets/3 Play/Table.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Tiger",
+      "url": "assets/3 Play/Tiger.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Toad",
+      "url": "assets/3 Play/Toad.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Tray",
+      "url": "assets/3 Play/Tray.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Vase",
+      "url": "assets/3 Play/Vase.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Wheel",
+      "url": "assets/3 Play/Wheel.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "gui",
+      "url": "assets/3 Play/gui.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "mainSheep",
+      "url": "assets/3 Play/mainSheep.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "penBack",
+      "url": "assets/3 Play/penBack.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "penFront",
+      "url": "assets/3 Play/penFront.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "sheepPen",
+      "url": "assets/3 Play/sheepPen.png",
+      "frameWidth": 570,
+      "frameHeight": 320,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "sheepWobble",
+      "url": "assets/3 Play/sheepWobble.png",
+      "frameWidth": 700,
+      "frameHeight": 700,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
+  "meta": {
+    "generated": "1518719633005",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "startScreen": [
+    {
+      "type": "image",
+      "key": "background",
+      "url": "assets/1 StartScreen/MainMenu.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayButton",
+      "url": "assets/1 StartScreen/playButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "RulesButton",
+      "url": "assets/1 StartScreen/rulesButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "BackButton",
+      "url": "assets/1 StartScreen/backButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ButtonBackground",
+      "url": "assets/1 StartScreen/buttonBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "preloader",
+      "url": "assets/1 StartScreen/preloader.png",
+      "frameWidth": 250,
+      "frameHeight": 250,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
+  "RulesScreen": [
+    {
+      "type": "image",
+      "key": "okButton",
+      "url": "assets/2 Rules/ok.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Background",
+      "url": "assets/2 Rules/Background.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Hand",
+      "url": "assets/2 Rules/Red.png",
+      "frameWidth": 312,
+      "frameHeight": 474,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Zebra",
+      "url": "assets/2 Rules/zebraSprite.png",
+      "frameWidth": 157,
+      "frameHeight": 130,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/2 Rules/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "image",
+      "key": "highlightCircle",
+      "url": "assets/2 Rules/highlightCircle.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "score",
+      "url": "assets/2 Rules/score.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "score_background",
+      "url": "assets/2 Rules/score_background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "tutorialOverlay",
+      "url": "assets/2 Rules/tutorialOverlay.png",
+      "overwrite": false
+    }
+  ],
+  "FinishScreen": [
+    {
+      "type": "image",
+      "key": "FinishBackground",
+      "url": "assets/4 EndScreen/endBackground.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PlayAgain",
+      "url": "assets/4 EndScreen/playAgainButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "MoreGames",
+      "url": "assets/4 EndScreen/homeButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "GameOver",
+      "url": "assets/4 EndScreen/GameOver.png",
+      "overwrite": false
+    }
+  ],
+  "PlayScreen": [
+    {
+      "type": "image",
+      "key": "Background",
+      "url": "assets/3 Play/Background.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ScoreBackground",
+      "url": "assets/3 Play/score_background.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "Lives",
+      "url": "assets/3 Play/Lives.png",
+      "frameWidth": 275,
+      "frameHeight": 80,
+      "frameMax": 4,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "zebra",
+      "url": "assets/3 Play/zebraSprite.png",
+      "frameWidth": 157,
+      "frameHeight": 130,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
+  "meta": {
+    "generated": "1518719678879",
+    "app": "Phaser Editor",
+    "url": "http://phasereditor.boniatillo.com",
+    "version": "1.0",
+    "copyright": "Arian Fornaris (c) 2015,2016"
+  }
+}

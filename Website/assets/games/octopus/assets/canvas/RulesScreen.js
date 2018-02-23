@@ -477,15 +477,13 @@ RulesScreen.prototype.updateTime = function ()
 	}
 
 	// 31 -> send off pizza
-	// ****** To DO ******
+	//
 
 	// 32 -> Exit
 	else if(counter == 32)
 	{
 		this.onClickOK();
 	}
-
-
 
 
 	// update game
@@ -498,8 +496,6 @@ RulesScreen.prototype.updateTime = function ()
 
 	clock.text = "Time Remaining: " + --timeLeft;
 };
-
-
 
 
 // On click OK button, return to start screen

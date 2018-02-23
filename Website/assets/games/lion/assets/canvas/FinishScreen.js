@@ -22,7 +22,7 @@ FinishScreen.prototype.init = function ()
 
 FinishScreen.prototype.preload = function () 
 {	
-	this.load.pack('FinishScreen', 'assets/pack.json');	
+	this.load.pack('FinishScreen', '/games/lion/assets/pack.json');
 };
 
 FinishScreen.prototype.create = function () 
@@ -50,7 +50,7 @@ FinishScreen.prototype.create = function ()
 //on click playAgain, proceed to play screen
 FinishScreen.prototype.playAgain = function() 
 {
-	this.state.start('start');
+	this.state.start('loading');
 };
 
 //on click moreGames, proceed to game selection page
