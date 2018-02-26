@@ -58,6 +58,14 @@ module.exports = {
 
   },
 
+  changePassword: function(user,newPassword, cb) {
+
+    bcrypt.hash( newPassword, 5, function( err, bcryptedPassword) {
+      User.update({id:user.id},{password:bcryptedPassword})
+      .exec(cb);
+    });
+  },
+
 
 
 

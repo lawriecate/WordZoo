@@ -101,14 +101,22 @@ module.exports = {
 		params = {
       name: req.param('name'),
 			email: req.param('email'),
-			password: req.param('password'),
+
       admin: (req.param('admin')=="true")
     };
 		User.update({id:req.params.id},params).exec(function(err,user) {
 			if (err) {
 				return res.serverError(err);
 			}
-			return res.redirect('/admin/users/'+user[0].id+'/');
+
+      if(req.param('password') != '') {
+        User.changePassword(user,req.param('password'),function() {
+          return res.redirect('/admin/users/'+user[0].id+'/');
+        });
+      } else {
+        			return res.redirect('/admin/users/'+user[0].id+'/');
+      }
+
 		})
 
 
