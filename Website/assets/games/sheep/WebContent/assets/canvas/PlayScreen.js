@@ -595,16 +595,15 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 };
 
 // Record statistical data from game
-PlayScreen.prototype.recordData = function() 
+PlayScreen.prototype.recordData = function()
 {
-	// Save gameStartTime
-	// Save score
-	// Save clickHistory 
-
-
-
 	// Prep array
 	var output = new Array();
+	for(var i=0; i<10; i++)
+	{
+		output[i] = 0.5;
+	}
+
 
 	// for each word tested
 	for(var i=0; i<wordHistory.length; i++)
@@ -614,7 +613,7 @@ PlayScreen.prototype.recordData = function()
 		{
 			output[i] = 0.5
 		}
-		else 
+		else
 		{
 			var rightCounter = 0;
 			var wrongCounter = 0;
@@ -627,28 +626,28 @@ PlayScreen.prototype.recordData = function()
 				{
 					rightCounter++;
 				}
-				else 
+				else
 				{
 					wrongCounter++;
 				}
 			}
 
 			// Calculate output value
-			var raw = rightCounter / (rightCounter+ wrongCounter);
-			console.log("Raw "+raw);
-			
-			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
+			output[i] = Math.round((rightCounter / (rightCounter+ wrongCounter)) * 100) / 100;;
 		}
 	}
 
+
+	console.log(output);
+/*
 	// Send out
 	console.log(output);
-	$.post('end',{words:output}, function(data)
+	$.post('end',{words:output, clicks:clickHistory, score:score}, function(data)
 	{
   		// Log returned data
   		console.log("RETURNED" + data);
 	});
-
+*/
 
 	// End
 	this.endGame();

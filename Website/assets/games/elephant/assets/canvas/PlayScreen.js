@@ -350,12 +350,6 @@ PlayScreen.prototype.recordScreenPress = function(x, y)
 // Record statistical data from game
 PlayScreen.prototype.recordData = function()
 {
-	// Save gameStartTime
-	// Save score
-	// Save clickHistory
-
-
-
 	// Prep array
 	var output = new Array();
 	for(var i=0; i<10; i++)
@@ -392,10 +386,7 @@ PlayScreen.prototype.recordData = function()
 			}
 
 			// Calculate output value
-			var raw = rightCounter / (rightCounter+ wrongCounter);
-			//console.log("Raw "+raw);
-
-			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
+			output[i] = Math.round((rightCounter / (rightCounter+ wrongCounter)) * 100) / 100;;
 		}
 	}
 
@@ -404,7 +395,7 @@ PlayScreen.prototype.recordData = function()
 /*
 	// Send out
 	console.log(output);
-	$.post('end',{words:output, clicks:clickHistory}, function(data)
+	$.post('end',{words:output, clicks:clickHistory, score:score}, function(data)
 	{
   		// Log returned data
   		console.log("RETURNED" + data);
