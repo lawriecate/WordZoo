@@ -1258,17 +1258,14 @@ PlayScreen.prototype.recordData = function()
 	}
 
 
-	console.log(output);
-/*
 	// Send out
-	console.log(output);
 	var score = (startingHealth - opponentHealth + playerHealth) * 3;
-	$.post('end',{words:output, clicks:clickHistory, score:score}, function(data)
+	$.post('end',{game:'owl', words:output, clicks:clickHistory, score:score}, function(data)
 	{
   		// Log returned data
   		console.log("RETURNED" + data);
 	});
-*/
+
 
 	// End
 	this.endGame();

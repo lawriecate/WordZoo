@@ -1093,17 +1093,13 @@ PlayScreen.prototype.recordData = function()
 		}
 	}
 
-
-	console.log(output);
-/*
 	// Send out
-	console.log(output);
-	$.post('end',{words:output, clicks:clickHistory, score:score*2}, function(data)
+	$.post('end',{game:'lion', words:output, clicks:clickHistory, score:score*2}, function(data)
 	{
   		// Log returned data
   		console.log("RETURNED" + data);
 	});
-*/
+
 
 	// End
 	this.endGame();
