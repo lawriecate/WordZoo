@@ -7,7 +7,7 @@
 
 
 var zmq = require('zmq');
-/* function word2pos(word) {
+function word2pos(word) {
 	 switch (word) {
 		 case "smoke":
 		 return 0;
@@ -669,7 +669,7 @@ function generateState() {
   while (a.length * 2 <= len) a = a.concat(a);
   if (a.length < len) a = a.concat(a.slice(0, len - a.length));
   return a;
-}*/
+}
 
 function getData() {
   sails.log('Calling python');
@@ -789,7 +789,7 @@ module.exports = {
 		var wordPercents = req.param('words');
 		var game = Game.findOne({slug:req.params.gameslug}).exec(function(err,game) {
 			session = Play.new({
-				game: game.id,
+				game: req.param('game'),
 				pupil:req.session.pupilId
 			},function(err,session) {
 				// session created
@@ -798,40 +798,54 @@ module.exports = {
 
 				// update states
 				// get old state
-				//var state = req.pupil.state;
-				// if no state generate
-				//if(state == null) {
-					var state = generateState();
-				//}
-				sails.log(state);
-				//unpack
+				var state = State.find({
+          where:{"pupil":req.session.pupilId},
+           sort: 'createdAt DESC',
+            limit: 1
+          }).exec(function(err,state) {
+            //sails.log(err);
+          //  sails.log("Q");
+            //sails.log(state);
+
+            // if no state generate
+    				if(state == null) {
+    					var state = generateState();
+    				}
+            //        sails.log("G");
+    				sails.log(state);
+    				//unpack
 
 
-				//apply new values
-				//var words = req.session.game.words;
-				// apply decay value to state
-				//var decayValue = 0.9;
+    				//apply new values
+    				//var words = req.session.game.words;
+    				// apply decay value to state
+    				//var decayValue = 0.9;
 
 
-				var words = req.session.game.words;
-				var i = 0;
+    				var words = req.session.game.words;
+    				var i = 0;
 
-				_.each(wordPercents,function(percent) {
-					pos = word2pos(words[i]);
-					state[pos] = state[pos] * percent ;
-					i++;
-				});
-				sails.log(state);
+    				_.each(wordPercents,function(percent) {
+    					pos = word2pos(words[i]);
+    					state[pos] = state[pos] * percent ;
+    					i++;
+    				});
+    				sails.log(state);
 
-				// change to make a new state for each word
+    				// change to make a new state for each word
 
-				// save back
-				State.update({id:req.pupil.state.id},function(err,state) {
+    				// save back
+            var stateRecord = {state:JSON.stringify(state),pupil:req.session.pupilId};
+            sails.log("saving");
+            sails.log(stateRecord);
+    				State.create(stateRecord,function(err,state) {
 
-				});
+    				});
 
-				// null out session data for games
-				req.session.game = null;
+    				// null out session data for games
+    				req.session.game = null;
+          });
+
 			});
 		});
 
@@ -1268,9 +1282,9 @@ module.exports = {
 		  return true;
 		}
     var words = randomWords();
+    req.session.game = {};
     req.session.game.words = words;
-		req.session.game.startTime = new Date.now();
-
+		req.session.game.startTime = new Date();
 		//console.log(randomWords());
 		return res.json(words);
 
