@@ -1288,7 +1288,7 @@ module.exports = {
 		//console.log(randomWords());
 		return res.json(words);
 
-	}
+	},
 
 
 
@@ -1296,7 +1296,7 @@ module.exports = {
 
 
 
-	getMatchingPair: function(wordIn,res) 
+	getMatchingPair: function(wordIn,res)
 	{
 		function wordToStateID(word)
 		{
@@ -1962,28 +1962,28 @@ module.exports = {
 			80,81,82,83,84,85,86,87,78,79,79,79,80,81,81,81,81,82,83,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,88,89,90,91,92,93,94,95,
 			96,97,98,99,100,101,102,103,104,105,106,107,98,98,100,101,101,102,103,104,104,105,106,107,];
 
-			var words = 
-			["back", "bake", "meat", "beaches", "ben", "big", "pope", "brown", "mine", "bun", "sack", "black", "crack", "brake", "cake", 
-			"lake", "rake", "feet", "sweet", "wheat", "peaches", "men", "hen", "ten", "pig", "rope", "soap", "town", "clown", "crown", 
-			"wine", "pine", "nine", "gun", "nun", "sun", "bushes", "cages", "cloak", "cold", "cream", "cub", "day", "dish", "dome", 
+			var words =
+			["back", "bake", "meat", "beaches", "ben", "big", "pope", "brown", "mine", "bun", "sack", "black", "crack", "brake", "cake",
+			"lake", "rake", "feet", "sweet", "wheat", "peaches", "men", "hen", "ten", "pig", "rope", "soap", "town", "clown", "crown",
+			"wine", "pine", "nine", "gun", "nun", "sun", "bushes", "cages", "cloak", "cold", "cream", "cub", "day", "dish", "dome",
 			"donkey", "brushes", "pages", "oak", "yolk", "smoke", "gold", "bald", "steam", "pub", "tub", "club", "tray", "play", "fish",
-			"home", "gnome", "monkey", "turkey", "dot", "dump", "dust", "hose", "farm", "fin", "flour", "foil", "liquid", "green", "hot", 
-			"pot", "jump", "rust", "nose", "clothes", "arm", "bin", "pin", "tin", "tower", "flower", "shower", "soil", "oil", "squid", 
-			"queen", "clean", "hair", "hall", "head", "hell", "hip", "hop", "house", "lead", "kick", "kid", "stair", "square", "chair", 
+			"home", "gnome", "monkey", "turkey", "dot", "dump", "dust", "hose", "farm", "fin", "flour", "foil", "liquid", "green", "hot",
+			"pot", "jump", "rust", "nose", "clothes", "arm", "bin", "pin", "tin", "tower", "flower", "shower", "soil", "oil", "squid",
+			"queen", "clean", "hair", "hall", "head", "hell", "hip", "hop", "house", "lead", "kick", "kid", "stair", "square", "chair",
 			"bear", "tall", "fall", "ball", "wall", "red", "bed", "shed", "bread", "smell", "spell", "well", "bell", "lip", "tip", "zip",
-			"ship", "mop", "pop", "top", "stop", "chop", "shop", "mouse", "read", "seed", "weed", "sick", "tick", "click", "brick", "lid", 
-			"land", "moss", "mouth", "log", "look", "mane", "mash", "nap", "noodle", "owl", "band", "hand", "sand", "cross", "south", 
-			"cog", "dog", "fog", "hog", "frog", "book", "cook", "brain", "drain", "rain", "train", "plane", "cash", "rap", "tap", 
-			"poodle", "towel", "pink", "potato", "potatoes", "price", "rag", "ram", "roast", "page", "path", "throne", "ink", "sink", 
-			"wink", "tomato", "tomatoes", "dice", "ice", "tag", "flag", "pram", "lamb", "toast", "cage", "bath", "stone", "cone", "rug", 
-			"shape", "shark", "sheep", "toad", "king", "vest", "wax", "weather", "wet", "bug", "hug", "jug", "mug", "plug", "grape", "tape", 
-			"park", "sleep", "sweep", "road", "ring", "swing", "wing", "spring", "west", "nest", "chest", "fax", "feather", "jet", "vet", 
-			"net", "mad", "can", "bat", "hut", "car", "leg", "six", "box", "ant", "wrench", "sad", "third", "fan", "man", "pan", "cat", 
-			"hat", "mat", "rat", "nut", "foot", "star", "peg", "kiss", "fox", "plant", "bench", "dress", "lock", "duck", "bill", "gift", 
-			"plum", "glass", "bank", "shelf", "three", "chess", "rock", "sock", "clock", "truck", "hill", "mill", "pill", "grill", "lift", 
-			"thumb", "drum", "class", "tank", "elf", "tree", "wave", "plate", "wood", "kite", "fire", "cube", "beach", "bow", "girl", 
-			"deer", "grave", "eight", "mud", "knight", "tyre", "tube", "peach", "snow", "pearl", "spear", "balloon", "bird", "puzzle", 
-			"calf", "fountain", "britain", "boat", "goal", "door", "pancake", "moon", "spoon", "bubble", "half", "scarf", "mountain", 
+			"ship", "mop", "pop", "top", "stop", "chop", "shop", "mouse", "read", "seed", "weed", "sick", "tick", "click", "brick", "lid",
+			"land", "moss", "mouth", "log", "look", "mane", "mash", "nap", "noodle", "owl", "band", "hand", "sand", "cross", "south",
+			"cog", "dog", "fog", "hog", "frog", "book", "cook", "brain", "drain", "rain", "train", "plane", "cash", "rap", "tap",
+			"poodle", "towel", "pink", "potato", "potatoes", "price", "rag", "ram", "roast", "page", "path", "throne", "ink", "sink",
+			"wink", "tomato", "tomatoes", "dice", "ice", "tag", "flag", "pram", "lamb", "toast", "cage", "bath", "stone", "cone", "rug",
+			"shape", "shark", "sheep", "toad", "king", "vest", "wax", "weather", "wet", "bug", "hug", "jug", "mug", "plug", "grape", "tape",
+			"park", "sleep", "sweep", "road", "ring", "swing", "wing", "spring", "west", "nest", "chest", "fax", "feather", "jet", "vet",
+			"net", "mad", "can", "bat", "hut", "car", "leg", "six", "box", "ant", "wrench", "sad", "third", "fan", "man", "pan", "cat",
+			"hat", "mat", "rat", "nut", "foot", "star", "peg", "kiss", "fox", "plant", "bench", "dress", "lock", "duck", "bill", "gift",
+			"plum", "glass", "bank", "shelf", "three", "chess", "rock", "sock", "clock", "truck", "hill", "mill", "pill", "grill", "lift",
+			"thumb", "drum", "class", "tank", "elf", "tree", "wave", "plate", "wood", "kite", "fire", "cube", "beach", "bow", "girl",
+			"deer", "grave", "eight", "mud", "knight", "tyre", "tube", "peach", "snow", "pearl", "spear", "balloon", "bird", "puzzle",
+			"calf", "fountain", "britain", "boat", "goal", "door", "pancake", "moon", "spoon", "bubble", "half", "scarf", "mountain",
 			"curtain", "coat", "goat", "bowl", "four", "snowflake"];
 
 
@@ -1992,15 +1992,15 @@ module.exports = {
 			function shuffleBoth()
 			{
 			    var j, x, i;
-			    for (i = groups.length - 1; i > 0; i--) 
+			    for (i = groups.length - 1; i > 0; i--)
 			    {
 			        j = Math.floor(Math.random() * (i + 1));
-			    
+
 			        //First array
 			        x = groups[i];
 			        groups[i] = groups[j];
 			        groups[j] = x;
-			    
+
 			        //Second Array
 			        x = words[i];
 			        words[i] = words[j];
@@ -2018,10 +2018,10 @@ module.exports = {
 			        	return false;
 			      	}
 			  	}
-			  	
+
 			  	return true;
 			}
-    
+
 
 
 			// MAIN
