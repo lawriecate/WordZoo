@@ -739,9 +739,13 @@ module.exports = {
 	play: function(req,res) {
 
 		game = Game.findOne({slug:req.params.gameslug}).exec(function(err,game) {
-			if (err) {
+			if (err ) {
 				return res.serverError(err);
 			}
+
+      if(game == null) {
+        return res.notFound();
+      }
 
 				return res.view('student/play.ejs', {'title':'Play '+game.name,game:game,  layout: 'student/game_layout'});
 
