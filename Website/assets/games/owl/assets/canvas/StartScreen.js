@@ -44,8 +44,7 @@ StartScreen.prototype.create = function ()
 // on click back button, 
 StartScreen.prototype.onClickBack = function() 
 {
-	// go back
-	console.log('Go Back');
+	window.location.href = "/student";
 }
 
 // on click play button, proceed to play screen

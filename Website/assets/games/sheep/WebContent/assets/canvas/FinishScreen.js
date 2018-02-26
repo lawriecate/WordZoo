@@ -56,5 +56,5 @@ FinishScreen.prototype.playAgain = function()
 //on click moreGames, proceed to game selection page
 FinishScreen.prototype.moreGames = function()
 {
-	console.log("Go to game selection page");
+	window.location.href = "/student";
 };
