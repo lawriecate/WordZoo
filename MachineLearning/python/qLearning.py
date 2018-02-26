@@ -48,9 +48,11 @@ class Network:
         #Input for new q values
         self.newQValues = tf.placeholder(tf.float32, shape = [None, numberOfWords], name='newQValues')
 
-
         #For Running
         self.session = tf.Session()
+
+        #For Saving the Model
+        self.saver = tf.train.Saver()
 
         #Loss Function from the paper
         errorSquared = tf.square(self.qValues - self.qValuesNew)
@@ -76,6 +78,10 @@ class Network:
         feed_dict = {self.input: stateBatch, self.newQValues: qValueBatch, self.learningRate: learningRate}
         #Run the optimisation
         lossValue, _ = self.session.run([self.loss,self.optimizer],feed_dict=feed_dict)
+
+
+    def saveModel(self, statesProcessed):
+        self.saver.save(save_path = '/', global_step = statesProcessed)
 
 class Agent:
     '''
@@ -159,7 +165,10 @@ class Agent:
                     learning_rate = self.learning_rate_control.get_value(iteration=counter)
                     loss_limit = self.loss_limit_control.get_value(iteration=counter)
                     max_epochs = self.max_epochs_control.get_value(iteration=counter)
-                    self.functionQ.optimise(learningRate = learning_rate, replayMemory = d)
+                    functionQ.optimise(learningRate = learning_rate, replayMemory = d)
+
+                    #Save the model
+                    functionQ.saveModel(statesProcessed = counter)
 
     def generateEpisolonValue(self,episodes):
         self.epsilon = LinearControlSignal(num_itterations=episodes, start_value=1, end_value=0.01)

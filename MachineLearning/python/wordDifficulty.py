@@ -17,7 +17,7 @@ Creates the model
 '''
 def createAndTrainModel():
     #Import Data
-    data, labels = tflearn.data_utils.load_csv(r'../input/TrainingSet.csv', target_column = 56, categorical_labels=True , n_classes= 2)
+    data, labels = tflearn.data_utils.load_csv(r'../input/trainingSet.csv', target_column = 56, categorical_labels=True , n_classes= 2)
     #Assume the Data is pre-processed by Excel
 
     #----Network Parameters ------
@@ -50,7 +50,7 @@ Loads the Words and their attributes into memory
 '''
 def loadWords():
     global wordAttributes
-    wordAttributes = pd.read_csv(r'../input/wordAttributes.csv')
+    wordAttributes = pd.read_csv(r'../input/wordAttributesFINAL.csv')
     #Create List of Words and randomly shuffle them
     global words
     words = wordAttributes.ix[:,0]
@@ -93,7 +93,7 @@ def sortWords():
             query = createQuery(getWordAtributes(words[i]),getWordAtributes(words[i+1]))
             #Query the Model
             pred = model.predict([query])
-            print(pred)
+            #print(pred)
             #Check, if this is true, then the swap if it is
             if (pred[0][0] > pred [0][1]):
                 temp = words[i]
@@ -115,7 +115,8 @@ if __name__ == "__main__":
     #For Testing
     #words = words[:5]
     #Repeat 5 times to properly make sure the list is well sorted
-    for i in range(5):
+    for i in range(20):
+        print("Itteration" + str(i))
         sortWords()
         fileName = 'output' + str(i)
         #Save the words out
