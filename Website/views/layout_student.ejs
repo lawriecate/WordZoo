@@ -6,6 +6,18 @@
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://www.wordzoo.co.uk/icons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://www.wordzoo.co.uk/icons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://www.wordzoo.co.uk/icons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.wordzoo.co.uk/icons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://www.wordzoo.co.uk/icons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://www.wordzoo.co.uk/icons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://www.wordzoo.co.uk/icons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://www.wordzoo.co.uk/icons/favicon-16x16.png" sizes="16x16" />
+<meta name="application-name" content="WordZoo"/>
+<meta name="msapplication-TileColor" content="#117BD1" />
+<meta name="msapplication-TileImage" content="https://www.wordzoo.co.uk/icons/mstile-144x144.png" />
+<meta name="msapplication-notification" content="frequency=30;polling-uri=https://notifications.buildmypinnedsite.com/?feed=https://blog.wordzoo.co.uk/feed&amp;id=1;polling-uri2=https://notifications.buildmypinnedsite.com/?feed=https://blog.wordzoo.co.uk/feed&amp;id=2;polling-uri3=https://notifications.buildmypinnedsite.com/?feed=https://blog.wordzoo.co.uk/feed&amp;id=3;polling-uri4=https://notifications.buildmypinnedsite.com/?feed=https://blog.wordzoo.co.uk/feed&amp;id=4;polling-uri5=https://notifications.buildmypinnedsite.com/?feed=https://blog.wordzoo.co.uk/feed&amp;id=5;cycle=1" />
 
     <!--
         Stylesheets and Preprocessors
@@ -35,7 +47,7 @@
   </head>
 
   <body>
-    <nav class="uk-navbar-container" uk-navbar>
+    <!--<nav class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-center uk-container">
           <a class="uk-navbar-item uk-logo" href="#"><img class="uk-logo " alt="WordZoo logo" width="150" src="/images/WordZoo_logo.png" /></a>
 
@@ -51,10 +63,23 @@
 
 
         </div>
-    </nav>
+    </nav>-->
 
-        <%- body %>
 
+        <div class="uk-section uk-margin-remove uk-padding-remove-top uk-background-image uk-light " style="text-align:center;background:url('/images/backgroundMain.png');min-height:100vh;background-size:100% 100%;">
+
+          <div class="uk-margin-large uk-container" style="background:url('/images/foregroundBackground.png'); min-height:100vh;display:block;">
+
+            <div class="" style="background:url('/images/header.png');max-width:1052px;background-size:contain;background-repeat:no-repeat;height:107px;margin:0 auto;">
+              <a href="/logout" style="border:4px solid #ff9933 ;border-radius:6px;float:right;display:block; background:linear-gradient(to bottom, #ffe168 , #ffce07);padding:10px;color:#ff9933;margin-top:10px;margin-right:10px;">
+                Log Out
+              </a>
+            </div>
+          <div>
+                  <%- body %>
+          </div>
+        </div>
+      </div>
 
 
     <!--

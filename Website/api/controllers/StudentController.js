@@ -47,10 +47,12 @@ module.exports = {
     });
 
   },
+  loginForm: function(req,res) {
+    return res.view('student/login.ejs', {'title':'Sign In to WordZoo',layout: 'layout_student'});
+  },
 
   quiz: function(req,res) {
     return res.view('student/welcome.ejs', {'title':'Welcome to WordZoo',games:games,  layout: 'layout_student'});
-
   },
   finishQuiz: function(req,res) {
     Pupil.finishWelcome(res.pupil.id,function() {

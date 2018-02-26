@@ -113,6 +113,6 @@ module.exports.routes = {
     'get /student/getWords': 'GameController.getWords',
     'post /student/savedata': 'GameController.savetestdata',
     'post /student/endgame': 'GameController.endgame',
-    'get /student/login': { view: 'student/login' },
+    'get /student/login': 'StudentController.loginForm',
     'post /student/login': 'StudentController.login',
 };
