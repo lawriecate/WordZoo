@@ -63,14 +63,14 @@ LoadingScreen.prototype.create = function ()
 			matchingWords[i][0] = words[i];
 			matchingWords[i][1] = words[i];
 		}
-			
+
 		// Multiple inputs
 		// groupWords = data[0];
 		// startingCoins = data[1];
 		context.state.start('play');
-		}
+		
 	}
-		).fail(function() 
+		).fail(function()
 	{
 		console.log('i failed');
 	});

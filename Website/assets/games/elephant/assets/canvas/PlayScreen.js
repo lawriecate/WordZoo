@@ -150,12 +150,14 @@ PlayScreen.prototype.reset = function (clickedLane)
 				winnerItemText.setText(matchingPair[0]);
 				winnerText = matchingPair[0];
 				item0 = this.game.add.sprite(120, 250, matchingPair[1]);
+				item0.scale.setTo(0.5,0.5);
 			}
 			else
 			{
 				winnerItemText.setText(matchingPair[1]);
 				winnerText = matchingPair[1];
 				item0 = this.game.add.sprite(120, 250, matchingPair[0]);
+				item0.scale.setTo(0.5,0.5);
 			}
 
 			// Set incorrect
@@ -211,11 +213,6 @@ PlayScreen.prototype.reset = function (clickedLane)
 			item1Text = RandomB[0];
 			break;
 	}
-
-	// Scale items
-    item0.scale.setTo(3, 3);
-    item1.scale.setTo(3, 3);
-    item2.scale.setTo(3, 3);
 
 
     // Set timer for time taken to answer
@@ -355,12 +352,17 @@ PlayScreen.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
-	// Save clickHistory 
+	// Save clickHistory
 
 
 
 	// Prep array
 	var output = new Array();
+	for(var i=0; i<10; i++)
+	{
+		output[i] = 0.5;
+	}
+
 
 	// for each word tested
 	for(var i=0; i<wordHistory.length; i++)
@@ -370,7 +372,7 @@ PlayScreen.prototype.recordData = function()
 		{
 			output[i] = 0.5
 		}
-		else 
+		else
 		{
 			var rightCounter = 0;
 			var wrongCounter = 0;
@@ -383,7 +385,7 @@ PlayScreen.prototype.recordData = function()
 				{
 					rightCounter++;
 				}
-				else 
+				else
 				{
 					wrongCounter++;
 				}
@@ -391,12 +393,14 @@ PlayScreen.prototype.recordData = function()
 
 			// Calculate output value
 			var raw = rightCounter / (rightCounter+ wrongCounter);
-			console.log("Raw "+raw);
-			
+			//console.log("Raw "+raw);
+
 			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
 		}
 	}
 
+
+	console.log(output);
 /*
 	// Send out
 	console.log(output);

@@ -34,7 +34,8 @@ Level.prototype.preload = function ()
 {
 	// Load pack
 	this.load.pack('Main', '/games/octopus/assets/pack.json');
-	
+	this.load.spritesheet('Lives' ,'/games/octopus/assets/Lives.png', 275, 80);
+
 	// Load assets
 	for(var i = 0; i < words.length; i++)
 	{
@@ -104,13 +105,13 @@ Level.prototype.create = function ()
 
     //Spawn the Clock
 	style = {font: "70px Arial", fill: '#FF9933', align: "left", fontWeight: 'bold'};
-	clock = this.add.text(1100,80,"Time Remaining:  ",style);
+	clock = this.add.text(900,80,"Time:  ",style);
 	clock.anchor.setTo(0.5,0.5);
 
 	//Spawn Score
-	scoreText = this.add.text(1700,80,"Score: ",style);
+	scoreText = this.add.text(1300,80,"Score: ",style);
 	scoreText.anchor.setTo(0.5,0.5);
-  
+
 	// Add Lives box
 	livesBox = this.add.sprite(1500, 20, 'Lives', 0);
 	livesBox.scale.setTo(1.5,1.5);
@@ -313,7 +314,7 @@ Level.prototype.update = function()
 	}
 	else
 	{
-		clock.text = "Time Remaining: " + timeRemaining;
+		clock.text = "Time: " + timeRemaining;
 	}
 
 	//Check order has not been completed
@@ -469,7 +470,9 @@ function checkAnswer()
 	var finishTime = Math.floor(Date.now());
 	wordHistory[correctWordIndex][wordHistory[correctWordIndex].length] = [selectedAnswer, false, finishTime - startTime];
 
-	decreaseScore();
+	// Lose a life
+	livesLeft--;
+	checkLives();
 	dragItem.destroy();
 }
 
@@ -597,6 +600,8 @@ Level.prototype.recordScreenPress = function(x, y)
 // Check how many lives remaining, show correct frame
 function checkLives()
 {
+console.log(livesLeft);
+
 	if(livesLeft <= 0)
 	{
 		livesBox = game.add.sprite(1500, 20, 'Lives', 3);
@@ -622,7 +627,7 @@ Level.prototype.recordData = function()
 {
 	// Save gameStartTime
 	// Save score
-	// Save clickHistory 
+	// Save clickHistory
 
 
 
@@ -637,7 +642,7 @@ Level.prototype.recordData = function()
 		{
 			output[i] = 0.5
 		}
-		else 
+		else
 		{
 			var rightCounter = 0;
 			var wrongCounter = 0;
@@ -650,7 +655,7 @@ Level.prototype.recordData = function()
 				{
 					rightCounter++;
 				}
-				else 
+				else
 				{
 					wrongCounter++;
 				}
@@ -659,7 +664,7 @@ Level.prototype.recordData = function()
 			// Calculate output value
 			var raw = rightCounter / (rightCounter+ wrongCounter);
 			console.log("Raw "+raw);
-			
+
 			output[i] = Math.round(raw * 100) / 100;;//.toFixed(2);
 		}
 	}

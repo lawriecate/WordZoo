@@ -786,7 +786,7 @@ module.exports = {
 	},
 
 	endGame: function(req,res) {
-		/*var wordPercents = req.param('words');
+		var wordPercents = req.param('words');
 		var game = Game.findOne({slug:req.params.gameslug}).exec(function(err,game) {
 			session = Play.new({
 				game: game.id,
@@ -810,10 +810,10 @@ module.exports = {
 				//apply new values
 				//var words = req.session.game.words;
 				// apply decay value to state
-				var decayValue = 0.9;
+				//var decayValue = 0.9;
 
 
-				var words = ["smoke","cat","club","gnome","cold","hog","lip","goat"];
+				var words = req.session.game.words;
 				var i = 0;
 
 				_.each(wordPercents,function(percent) {
@@ -835,7 +835,7 @@ module.exports = {
 			});
 		});
 
-		/*wordHistory = req.param('wordHistory');
+		wordHistory = req.param('wordHistory');
 		// save data from game to student record
 		// generate session
 		session = Play.create({
@@ -843,15 +843,15 @@ module.exports = {
 		}).exec(function(err,records) {
 
 		});
-		_each(wordHistroy,function(wordRecord) {
+		/*_each(wordHistroy,function(wordRecord) {
 			//["K1", false, 3277]
 			var params = {
 				word = wordRecord[0],
 				response = wordRecord[1],
 				timeToResponse = wordRecord[2]
 			}
-		});
-		return res.ok();*/
+		});*/
+		return res.ok();
     return res.json({'status':'saved'});
 	},
 
@@ -1267,8 +1267,12 @@ module.exports = {
 
 		  return true;
 		}
+    var words = randomWords();
+    req.session.game.words = words;
+		req.session.game.startTime = new Date.now();
+
 		//console.log(randomWords());
-		return res.json(randomWords());
+		return res.json(words);
 
 	}
 };
