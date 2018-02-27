@@ -51,7 +51,7 @@ module.exports.connections = {
    testDatabase: {
       adapter: 'sails-mysql',
       host: 'localhost',
-      user: 'wordzoo1_test2', //optional
+      user: 'wordzoo_test4', //optional
       password: '6U;5!ah8AX&S\wY#', //optional
       database: 'wordzoo_test' //optional
     },
