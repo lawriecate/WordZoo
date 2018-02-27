@@ -17,7 +17,7 @@ module.exports = {
       required: false
     },
     address: {
-      type: 'string',
+      type: 'text',
       required: false
     },
     postcode: {

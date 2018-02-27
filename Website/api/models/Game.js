@@ -13,7 +13,7 @@ module.exports = {
       required: true
     },
     source: {
-      type: 'string',
+      type: 'text',
       required: true
     },
     live: {
