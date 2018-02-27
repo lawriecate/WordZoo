@@ -51,6 +51,7 @@ LoadingScreen.prototype.create = function ()
 
 
 	// Get random words
+	var counter = 0;
 	var context = this;
 	$.get('/student/getWords', function(data)
 	{
@@ -60,15 +61,31 @@ LoadingScreen.prototype.create = function ()
 		// Botch rhyming pairs
 		for(var i=0; i<words.length; i++)
 		{
+			// Record first word
 			matchingWords[i][0] = words[i];
-			matchingWords[i][1] = words[i];
-		}
+			
 
-		// Multiple inputs
-		// groupWords = data[0];
-		// startingCoins = data[1];
-		context.state.start('play');
-		
+			// Get matching pair
+			$.get('/student/getMatchingPair', function(words[i],data)
+			{
+				// Record matching pair
+				matchingWords[i][1] = data
+				
+				// Increment counter
+				counter++;
+
+
+				// When all matchWord requests are completed
+				if(words.length == counter)
+				{
+					context.state.start('play');
+				}
+			}
+				).fail(function()
+			{
+				console.log('i failed');
+			});
+		}		
 	}
 		).fail(function()
 	{
