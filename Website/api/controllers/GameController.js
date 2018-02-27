@@ -802,13 +802,13 @@ module.exports = {
           where:{"pupil":req.session.pupilId},
            sort: 'createdAt DESC',
             limit: 1
-          }).exec(function(err,state) {
+          }).exec(function(err,stateRecord) {
             //sails.log(err);
           //  sails.log("Q");
             //sails.log(state);
 
             // if no state generate
-    				if(state == null) {
+    				if(stateRecord.state == null) {
     					var state = generateState();
     				}
             //        sails.log("G");
@@ -842,6 +842,14 @@ module.exports = {
 
     				});
 
+						// generate session
+						Play.new({
+							pupil:req.session.pupilId,
+							game:req.param('game')
+						},function(err,records) {
+							sails.log("Game session logged");
+						});
+
     				// null out session data for games
     				req.session.game = null;
           });
@@ -849,14 +857,9 @@ module.exports = {
 			});
 		});
 
-		wordHistory = req.param('wordHistory');
+		//wordHistory = req.param('wordHistory');
 		// save data from game to student record
-		// generate session
-		session = Play.create({
 
-		}).exec(function(err,records) {
-
-		});
 		/*_each(wordHistroy,function(wordRecord) {
 			//["K1", false, 3277]
 			var params = {
@@ -1290,14 +1293,9 @@ module.exports = {
 
 	},
 
-
-
-
-
-
-
-	getMatchingPair: function(wordIn,res)
+	getMatchingPair: function(req,res)
 	{
+		wordIn = req.param('wordIn');
 		function wordToStateID(word)
 		{
 			switch(word)

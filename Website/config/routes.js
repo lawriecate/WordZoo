@@ -111,6 +111,7 @@ module.exports.routes = {
     'get /student/testdata': 'GameController.testdata',
     'get /student/python': 'GameController.pythonTest',
     'get /student/getWords': 'GameController.getWords',
+    'get /student/getMatchingPair': 'GameController.getWords',
     'post /student/savedata': 'GameController.savetestdata',
     'post /student/play/end': 'GameController.endGame',
     'get /student/login': 'StudentController.loginForm',
