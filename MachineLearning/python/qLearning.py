@@ -67,7 +67,7 @@ class Network:
     '''
     def calculateQValues(self,states):
         #Create a feed dictionary
-        feedDict = {self.x: states}
+        feedDict = {self.input: states}
         #Run session with qValues Network, and the feed dictionary, and return it
         qValues = self.session.run(self.network,feed_dict = feedDict)
         return qValues;
