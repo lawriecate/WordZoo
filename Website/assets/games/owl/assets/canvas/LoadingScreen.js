@@ -67,7 +67,6 @@ LoadingScreen.prototype.create = function ()
 		// groupWords = data[0];
 		// startingCoins = data[1];
 		context.state.start('play');
-		}
 	}
 		).fail(function() 
 	{

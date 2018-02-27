@@ -64,7 +64,6 @@ LoadingScreen.prototype.create = function ()
 		// Multiple inputs
 		// startingCoins = data[1];
 		context.state.start('play');
-		}
 	}
 		).fail(function() 
 	{
