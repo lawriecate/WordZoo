@@ -248,6 +248,7 @@ console.log(currentColoumn);
 	// If no time remaining, game finished
 	if(timeLeft <= 0)
 	{
+		console.log("Out of time");
 		this.recordData();
 	}
 
@@ -1093,6 +1094,7 @@ PlayScreen.prototype.checkLives = function()
 	if(livesLeft <= 0)
 	{
 		livesBox = this.add.sprite(0, 0, 'Lives', 3);
+		console.log("Out of lives");
 		this.recordData();
 	}
 	else if(livesLeft == 1)

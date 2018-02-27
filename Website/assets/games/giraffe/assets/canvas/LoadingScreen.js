@@ -71,6 +71,8 @@ LoadingScreen.prototype.create = function ()
 				// Record matching pair
 				matchingWords[i][1] = data
 
+				console.log(i+" "+data);
+
 				// Increment counter
 				counter++;
 
