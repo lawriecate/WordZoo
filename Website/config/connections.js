@@ -43,10 +43,18 @@ module.exports.connections = {
   liveDatabase: {
      adapter: 'sails-mysql',
      host: 'localhost',
-     user: 'YOUR_MYSQL_USER', //optional
-     password: 'YOUR_MYSQL_PASSWORD', //optional
-     database: 'YOUR_MYSQL_DB' //optional
+     user: 'wordzoo1', //optional
+     password: '5VuTjS^cG]=p.63p', //optional
+     database: 'wordzoo_live' //optional
    },
+
+   testDatabase: {
+      adapter: 'sails-mysql',
+      host: 'localhost',
+      user: 'wordzoo1_test2', //optional
+      password: '6U;5!ah8AX&S\wY#', //optional
+      database: 'wordzoo_test' //optional
+    },
 
   /***************************************************************************
   *                                                                          *
