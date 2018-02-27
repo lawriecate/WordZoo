@@ -21,6 +21,6 @@ module.exports = {
      connection: 'testDatabase'
    },
 
-   port: 9000,
+   port: 8080,
 
 };
