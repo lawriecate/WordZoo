@@ -188,7 +188,7 @@ console.log("PlayScreen create");
 
 
 	// Time
-	timeLeft = 100;
+	timeLeft = 3000;
 	timer = this.time.create(false);
 	timer.loop(Phaser.Timer.SECOND/backgroundScrollSpeed, this.updateTime, this);
 	timer.start();
