@@ -33,7 +33,7 @@
 	var item0, item1, item2;
 
 	//Define lane variables 
-	var itemLanePositions = [525, 675, 825];
+	var itemLanePositions = [575, 725, 875];
 	var playerLanePositions = [412, 562, 712];
 	var currentLane = 0;
 
