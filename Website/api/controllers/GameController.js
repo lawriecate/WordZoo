@@ -2063,7 +2063,6 @@ module.exports = {
 			      		if(words[i] != wordsIn[z])
 			      		{
 			        		returnWords[z] = words[i];
-			        		console.log("Controller "+wordsIn[z]+" vs "+words[i]);
 			      		}
 			    	}
 			  	}

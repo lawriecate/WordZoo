@@ -61,7 +61,7 @@ LoadingScreen.prototype.create = function ()
 
 
 		// Get matching pair
-		$.post('/student/getMatchingPair', {wordsIn:baseWords},function(data)
+		$.post('/student/getMatchingPair', {wordsIn:baseWords[0]},function(data)
 		{
 			// Record matching pair
 			var returnWords = data;
@@ -69,19 +69,19 @@ LoadingScreen.prototype.create = function ()
 
 
 			// Assign to thingy
-			for(var i=0; i<10; i++)
-			{
-				matchingWords[i][0] = baseWords[i];
-				matchingWords[i][1] = returnWords[i];
-			}
+			//for(var i=0; i<10; i++)
+			//{
+			//	matchingWords[i][0] = baseWords[i];
+			//	matchingWords[i][1] = returnWords[i];
+			//}
 
 
-			console.log("matchingWords");
-			console.log(matchingWords);
+			//console.log("matchingWords");
+			//console.log(matchingWords);
 
 
 			// Move to play state
-			context.state.start('play');
+			//context.state.start('play');
 		}
 			).fail(function()
 		{
