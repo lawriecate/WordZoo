@@ -26,6 +26,9 @@ module.exports = {
       points: {
         type: 'Integer'
       },
+      character: {
+        type: 'String'
+      },
       state: {
         model: 'State'
       },

@@ -5,6 +5,12 @@ var character = character|| {};
 // Boolean -> is level loaded
 var levelLoaded = false;
 
+$.get('/student/getInfo',function(user) {
+	username = user.name;
+	totalMoney = user.points;
+	data = user.character;
+});
+
 // Username
 var username = "Lalalalalalaal";
 
