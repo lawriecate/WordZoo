@@ -812,10 +812,10 @@ function playerGoodSpell()
     	   		projectile3.scale.set(0.0);
     	    		
     	    	//Manifest Larger
-    	   		game.add.tween(projectile0.scale).to({x:1, y:1},70,"Linear",true);
-    	   		game.add.tween(projectile1.scale).to({x:1, y:1},70,"Linear",true);
-    	   		game.add.tween(projectile2.scale).to({x:1, y:1},70,"Linear",true);
-    	   		game.add.tween(projectile3.scale).to({x:1, y:1},70,"Linear",true);
+    	   		game.add.tween(projectile0.scale).to({x:0.5, y:0.5},70,"Linear",true);
+    	   		game.add.tween(projectile1.scale).to({x:0.5, y:0.5},70,"Linear",true);
+    	   		game.add.tween(projectile2.scale).to({x:0.5, y:0.5},70,"Linear",true);
+    	   		game.add.tween(projectile3.scale).to({x:0.5, y:0.5},70,"Linear",true);
     	    		
         		//Spin in the Air and throw at player
    	    		var project0 = game.add.tween(projectile0).to({angle: 340 ,x: 1360, y: 413},1400,"Linear",true);
@@ -1124,10 +1124,10 @@ function opponentGoodSpell()
     	   		projectile3.scale.set(0.0);
     	    		
     	    	//Manifest Larger
-    	    	game.add.tween(projectile0.scale).to({x:1, y:1},70,"Linear",true);
-    	   		game.add.tween(projectile1.scale).to({x:1, y:1},70,"Linear",true);
-    	   		game.add.tween(projectile2.scale).to({x:1, y:1},70,"Linear",true);
-    	   		game.add.tween(projectile3.scale).to({x:1, y:1},70,"Linear",true);
+    	    	game.add.tween(projectile0.scale).to({x:0.5, y:0.5},70,"Linear",true);
+    	   		game.add.tween(projectile1.scale).to({x:0.5, y:0.5},70,"Linear",true);
+    	   		game.add.tween(projectile2.scale).to({x:0.5, y:0.5},70,"Linear",true);
+    	   		game.add.tween(projectile3.scale).to({x:0.5, y:0.5},70,"Linear",true);
     	    		
     	   		//Spin in the Air and throw at player
         		var project0 = game.add.tween(projectile0).to({angle: 340 ,x: 580, y: 428},1400,"Linear",true);
