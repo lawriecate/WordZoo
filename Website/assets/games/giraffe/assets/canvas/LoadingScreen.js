@@ -154,8 +154,10 @@ LoadingScreen.prototype.create = function ()
 
         // Loop through all baseWords
         shuffleBoth();
+        matchingWords = new Array();
         for(var i=0; i<baseWords.length; i++)
         {
+            matchingWords[i] = new Array();
         	matchingWords[i][0] = baseWords[i];
         	matchingWords[i][1] = getRhymingPair(baseWords[i]);
         }

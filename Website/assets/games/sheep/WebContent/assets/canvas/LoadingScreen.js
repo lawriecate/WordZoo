@@ -155,6 +155,7 @@ LoadingScreen.prototype.create = function ()
         groupWords = new Array();
         for(var i=0; i<baseWords.length; i++)
         {
+        	groupWords[i] = new Array();
             groupWords[i][0] = baseWords[i];
             groupWords[i][1] = getRhymingPair(baseWords[i]);
         }
