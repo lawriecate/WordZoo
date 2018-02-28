@@ -258,18 +258,23 @@ RulesScreen.prototype.setFirst = function ()
     var incorrect1 = matchingWords[1];
     var incorrect2 = matchingWords[2];
     winnerItemText.setText(matchingPair[0]);
-
+    
     // Set correct picture
-	item0 = this.game.add.sprite(120, 250, matchingPair[1]);
+	item0 = this.game.add.sprite(first[0], first[1], matchingPair[1]);
 
 	// Set incorrect pictures
-	item1 = this.game.add.sprite(555, 250, incorrect1[0]);
-	item2 = this.game.add.sprite(998, 250, incorrect2[0]);
+	item1 = this.game.add.sprite(second[0], second[1], incorrect1[0]);
+	item2 = this.game.add.sprite(third[0], third[1], incorrect2[0]);
 
 	// Scale items
-    item0.scale.setTo(3, 3);
-    item1.scale.setTo(3, 3);
-    item2.scale.setTo(3, 3);
+    item0.scale.setTo(0.8, 0.8);
+    item1.scale.setTo(0.8, 0.8);
+    item2.scale.setTo(0.8, 0.8);
+    
+	// Anchor items
+    item0.anchor.setTo(0.5, 0.5);
+    item1.anchor.setTo(0.5, 0.5);
+    item2.anchor.setTo(0.5, 0.5);
 };
 
 // set second text/picture values
@@ -287,16 +292,21 @@ RulesScreen.prototype.setSecond = function ()
     winnerItemText.setText(matchingPair[0]);
 
     // Set correct picture
-	item2 = this.game.add.sprite(998, 250, matchingPair[1]);
+	item2 = this.game.add.sprite(third[0], third[1], matchingPair[1]);
 
 	// Set incorrect pictures
-	item0 = this.game.add.sprite(120, 250, incorrect1[0]);
-	item1 = this.game.add.sprite(555, 250, incorrect2[0]);
+	item0 = this.game.add.sprite(first[0], first[1], incorrect1[0]);
+	item1 = this.game.add.sprite(second[0], second[1], incorrect2[0]);
 
 	// Scale items
-    item0.scale.setTo(3, 3);
-    item1.scale.setTo(3, 3);
-    item2.scale.setTo(3, 3);
+    item0.scale.setTo(0.8, 0.8);
+    item1.scale.setTo(0.8, 0.8);
+    item2.scale.setTo(0.8, 0.8);
+    
+	// Anchor items
+    item0.anchor.setTo(0.5, 0.5);
+    item1.anchor.setTo(0.5, 0.5);
+    item2.anchor.setTo(0.5, 0.5);
 };
 
 

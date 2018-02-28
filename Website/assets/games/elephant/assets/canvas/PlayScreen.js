@@ -79,12 +79,6 @@ PlayScreen.prototype.create = function ()
 	timeText.addColor('#FF9933', 0);
 
 
-    //If user closes window, record data
-    //window.onbeforeunload = function()
-    //{
-    //    this.recordData();
-    //};
-
     // Record screen clicks
     this.game.input.onDown.add(function(touchStart) {
     		this.recordScreenPress(touchStart.clientX, touchStart.clientY);
@@ -143,76 +137,84 @@ PlayScreen.prototype.reset = function (clickedLane)
 	// Set pics/text
 	switch(winningLane){
 		case 0: winningLane == 0;
-
+			
 			// Set correct
 			if(binary == 0)
 			{
 				winnerItemText.setText(matchingPair[0]);
 				winnerText = matchingPair[0];
-				item0 = this.game.add.sprite(120, 250, matchingPair[1]);
-				item0.scale.setTo(0.5,0.5);
+				item0 = this.game.add.sprite(first[0], first[1], matchingPair[1]);
 			}
 			else
 			{
 				winnerItemText.setText(matchingPair[1]);
 				winnerText = matchingPair[1];
-				item0 = this.game.add.sprite(120, 250, matchingPair[0]);
-				item0.scale.setTo(0.5,0.5);
-			}
+				item0 = this.game.add.sprite(first[0], first[1], matchingPair[0]);
+			}		
 
 			// Set incorrect
-			item1 = this.game.add.sprite(555, 250, RandomA[0]);
-			item2 = this.game.add.sprite(998, 250, RandomB[0]);
+			item1 = this.game.add.sprite(second[0], second[1], RandomA[0]);
+			item2 = this.game.add.sprite(third[0], third[1], RandomB[0]);
 			item1Text = RandomA[0];
 			item2Text = RandomB[0];
 			break;
 
 		case 1: winningLane == 1;
-
+		
 			// Set correct
 			if(binary == 0)
 			{
 				winnerItemText.setText(matchingPair[0]);
 				winnerText = matchingPair[0];
-				item1 = this.game.add.sprite(555, 250, matchingPair[1]);
+				item1 = this.game.add.sprite(second[0], second[1], matchingPair[1]);
 			}
 			else
 			{
 				winnerItemText.setText(matchingPair[1]);
 				winnerText = matchingPair[1];
-				item1 = this.game.add.sprite(555, 250, matchingPair[0]);
-			}
+				item1 = this.game.add.sprite(second[0], second[1], matchingPair[0]);
+			}		
 
 			// Set incorrect
-			item0 = this.game.add.sprite(120, 250, RandomA[0]);
-			item2 = this.game.add.sprite(998, 250, RandomB[0]);
+			item0 = this.game.add.sprite(first[0], first[1], RandomA[0]);
+			item2 = this.game.add.sprite(third[0], third[1], RandomB[0]);
 			item0Text = RandomA[0];
 			item2Text = RandomB[0];
 			break;
 
 		case 2: winningLane == 2;
-
+		
 			// Set correct
 			if(binary == 0)
 			{
 				winnerItemText.setText(matchingPair[0]);
 				winnerText = matchingPair[0];
-				item2 = this.game.add.sprite(998, 250, matchingPair[1]);
+				item2 = this.game.add.sprite(third[0], third[1], matchingPair[1]);
 			}
 			else
 			{
 				winnerItemText.setText(matchingPair[1]);
 				winnerText = matchingPair[1];
-				item2 = this.game.add.sprite(998, 250, matchingPair[0]);
-			}
+				item2 = this.game.add.sprite(third[0], third[1], matchingPair[0]);
+			}		
 
 			// Set incorrect
-			item0 = this.game.add.sprite(120, 250, RandomA[0]);
-			item1 = this.game.add.sprite(555, 250, RandomB[0]);
+			item0 = this.game.add.sprite(first[0], first[1], RandomA[0]);
+			item1 = this.game.add.sprite(second[0], second[1], RandomB[0]);
 			item0Text = RandomA[0];
 			item1Text = RandomB[0];
 			break;
 	}
+
+	// Scale items
+    item0.scale.setTo(0.8, 0.8);
+    item1.scale.setTo(0.8, 0.8);
+    item2.scale.setTo(0.8, 0.8);
+    
+	// Anchor items
+    item0.anchor.setTo(0.5, 0.5);
+    item1.anchor.setTo(0.5, 0.5);
+    item2.anchor.setTo(0.5, 0.5);
 
 
     // Set timer for time taken to answer
