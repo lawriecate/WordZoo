@@ -407,7 +407,7 @@ Level.prototype.create = function ()
 	{
 		assets[i].sprite.inputEnabled = true;
 		assets[i].sprite.events.onInputDown.add(selectSpell,{button: assets[i].sprite, selected: i});
-		assets[i].sprite.scale.setTo(0.5,0.5);
+		assets[i].sprite.scale.setTo(0.7,0.7);
 	}
 
 	//Intialise Array
@@ -459,7 +459,7 @@ function addLetter()
  */
 function resetObjectSize()
 {
-	game.add.tween(this.button.scale).to({x:1 , y:1},70,"Linear",true);
+	game.add.tween(this.button.scale).to({x:1, y:1},70,"Linear",true);
 }
 
 /**
@@ -467,7 +467,7 @@ function resetObjectSize()
  */
 function resetButtonSize()
 {
-	game.add.tween(this.button.scale).to({x:2 , y:2},70,"Linear",true);
+	game.add.tween(this.button.scale).to({x:0.7, y:0.7},70,"Linear",true);
 }
 
 
@@ -476,7 +476,7 @@ function resetButtonSize()
  */
 function selectInitialSpell(button,selected)
 {
-	var tween1 = game.add.tween(button.scale).to({x:4 , y:4},70,"Linear",true);
+	var tween1 = game.add.tween(button.scale).to({x:1.5, y:1.5},70,"Linear",true);
 	tween1.onComplete.add(resetButtonSize,{button: button});
 	//Change the word to this
 	selectedSpell = assets[selected];
@@ -502,7 +502,7 @@ function selectInitialSpell(button,selected)
 function selectSpell()
 {
 	//Animation for selecting button
-	var tween1 = game.add.tween(this.button.scale).to({x:4 , y:4},70,"Linear",true);
+	var tween1 = game.add.tween(this.button.scale).to({x:1.5, y:1.5},70,"Linear",true);
 	tween1.onComplete.add(resetButtonSize,{button: this.button});
 	
 	//Change the word to this

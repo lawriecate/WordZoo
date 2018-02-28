@@ -8,6 +8,7 @@ var levelLoaded = false;
 $.get('/student/profile',function(profile) {
 	username = profile.name;
 	totalMoney = profile.points;
+<<<<<<< HEAD
 	if(profile.character !== null) {
 		//Remove the [ ] characters 
 		temp = profile.character;
@@ -19,6 +20,11 @@ $.get('/student/profile',function(profile) {
 	} 
 	console.log(data);
 	
+=======
+	data = profile.character;
+
+	game.state.start("Level");
+>>>>>>> 2756ffe878138b7be475e30837ec11654c017c74
 });
 
 // Username
@@ -53,7 +59,7 @@ window.onload = function()
 
 	// Show loading screen
 	// *** NOT LEVEL ***
-	game.state.start("Level");
+	game.state.start("Loading");
 /*
 	$.get('http://localhost:1337/student/testdata', function(info)
 	{
