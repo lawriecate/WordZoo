@@ -61,10 +61,14 @@ module.exports = {
   },
   profile: function(req,res) {
     sails.log(req.pupil);
+    characterParsed= "";
+    if(req.pupil.character != "") {
+      characterParsed = JSON.parse(req.pupil.character);
+    }
     var profile = {
       name: req.pupil.name,
       points: req.pupil.points,
-      character: JSON.parse(req.pupil.character)
+      character: characterParsed
     };
     return res.json(profile);
   },
