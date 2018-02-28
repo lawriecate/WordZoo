@@ -220,8 +220,6 @@ console.log("PlayScreen create end");
 // display current time to screen (with --)
 PlayScreen.prototype.updateTime = function ()
 {
-console.log("timeLeft: "+timeLeft);
-
 	// if scrolling background, move background + giraffe
 	if(backgroundScroll == true)
 	{
