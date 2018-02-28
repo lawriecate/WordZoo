@@ -255,9 +255,14 @@ PlayScreen.prototype.spawnItems = function ()
 
 
 	// Set scales
-	item0.scale.setTo(1.5, 1.5);
-	item1.scale.setTo(1.5, 1.5);
-	item2.scale.setTo(1.5, 1.5);
+	item0.scale.setTo(0.5, 0.5);
+	item1.scale.setTo(0.5, 0.5);
+	item2.scale.setTo(0.5, 0.5);
+
+	// Set anchors
+	item0.anchor.setTo(0.5,0.5);
+	item1.anchor.setTo(0.5,0.5);
+	item2.anchor.setTo(0.5,0.5);
 
     //This ensures the player never goes behind the objects once they are spawned
     this.world.bringToTop(zebra);
@@ -271,7 +276,7 @@ PlayScreen.prototype.spawnItems = function ()
 // Update
 PlayScreen.prototype.update = function ()
 {	
-    if (item0.x <= 120) 
+    if (item0.x <= 200) 
     {
     	// if correct
     	if(correctLane == currentLane)

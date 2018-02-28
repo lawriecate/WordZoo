@@ -466,16 +466,24 @@ RulesScreen.prototype.setCorrect = function ()
 	// Set item0 (correctItem)
     correctItemText.text = correctName;
     item0 = this.game.add.sprite(1920, itemLanePositions[correctLane], correctName);
-	item0.scale.setTo(1.5, 1.5);
 
     // Set item1 (incorrectItem1)
     item1 = this.add.sprite(1920, itemLanePositions[(correctLane+1) % 3], incorrectItem1);
-	item1.scale.setTo(1.5, 1.5);
 
     // Set item2 (incorrectItem2)
     item2 = this.add.sprite(1920, itemLanePositions[(correctLane+2) % 3], incorrectItem2);
-	item2.scale.setTo(1.5, 1.5);
 	
+
+	// Set scales
+	item0.scale.setTo(0.5, 0.5);
+	item1.scale.setTo(0.5, 0.5);
+	item2.scale.setTo(0.5, 0.5);
+
+	// Set anchors
+	item0.anchor.setTo(0.5,0.5);
+	item1.anchor.setTo(0.5,0.5);
+	item2.anchor.setTo(0.5,0.5);
+
 
     //This ensures the player never goes behind the objects once they are spawned
     this.world.bringToTop(zebra);
@@ -495,16 +503,24 @@ RulesScreen.prototype.setIncorrect = function ()
 	// Set item0 (correctItem)
     correctItemText.text = correctName;
     item0 = this.game.add.sprite(1920, itemLanePositions[correctLane], correctName);
-	item0.scale.setTo(1.5, 1.5);
 
     // Set item1 (incorrectItem1)
     item1 = this.add.sprite(1920, itemLanePositions[(correctLane+1) % 3], incorrectItem1);
-	item1.scale.setTo(1.5, 1.5);
 
     // Set item2 (incorrectItem2)
     item2 = this.add.sprite(1920, itemLanePositions[(correctLane+2) % 3], incorrectItem2);
-	item2.scale.setTo(1.5, 1.5);
 	
+
+	// Set scales
+	item0.scale.setTo(0.5, 0.5);
+	item1.scale.setTo(0.5, 0.5);
+	item2.scale.setTo(0.5, 0.5);
+
+	// Set anchors
+	item0.anchor.setTo(0.5,0.5);
+	item1.anchor.setTo(0.5,0.5);
+	item2.anchor.setTo(0.5,0.5);
+
 
     //This ensures the player never goes behind the objects once they are spawned
     this.world.bringToTop(zebra);
@@ -524,15 +540,23 @@ RulesScreen.prototype.setMixed = function ()
 	// Set item0 (correctItem)
     correctItemText.text = correctName;
     item0 = this.game.add.sprite(1920, itemLanePositions[correctLane], correctName);
-	item0.scale.setTo(1.5, 1.5);
 
     // Set item1 (incorrectItem1)
     item1 = this.add.sprite(1920, itemLanePositions[(correctLane+1) % 3], incorrectItem1);
-	item1.scale.setTo(1.5, 1.5);
 
     // Set item2 (incorrectItem2)
     item2 = this.add.sprite(1920, itemLanePositions[(correctLane+2) % 3], incorrectItem2);
-	item2.scale.setTo(1.5, 1.5);
+
+
+	// Set scales
+	item0.scale.setTo(0.5, 0.5);
+	item1.scale.setTo(0.5, 0.5);
+	item2.scale.setTo(0.5, 0.5);
+
+	// Set anchors
+	item0.anchor.setTo(0.5,0.5);
+	item1.anchor.setTo(0.5,0.5);
+	item2.anchor.setTo(0.5,0.5);
 	
 
     //This ensures the player never goes behind the objects once they are spawned
@@ -605,7 +629,7 @@ RulesScreen.prototype.update = function ()
 	}
 
 
-    if (item0.x <= 120) 
+    if (item0.x <= 200) 
     {
     	// if correct
     	if(correctLane == currentLane)
