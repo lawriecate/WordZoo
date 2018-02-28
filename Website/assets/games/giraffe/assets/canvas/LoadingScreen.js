@@ -788,9 +788,9 @@ function getRhymingPair(word)
 }
 
 shuffleBoth();
-var output = getRhymingPair(baseWords[0]);
+getRhymingPair(baseWords[0]);
 
-console.log("output "+output);
+console.log("output "+final);
 
 
 
