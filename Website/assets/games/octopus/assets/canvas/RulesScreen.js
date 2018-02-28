@@ -200,6 +200,12 @@ RulesScreen.prototype.create = function ()
 	addFood(975+18,745+90,assets[9].word);
 	addFood(975+128,745+90,assets[9].word);
 
+	// Scale assets
+	for(var i=0; i<10; i++)
+	{
+		assets[i].scale.setTo(1,1);
+	}
+
 
 	// Time
 	timeLeft = 60;
