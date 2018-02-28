@@ -793,7 +793,12 @@ module.exports = {
 				pupil:req.session.pupilId
 			},function(err,session) {
 				// session created
+				oldPoints = req.pupil.points;
+				if(oldPoints === null) {oldPoints =0;}
+				newPoints = parseInt(oldPoints) + parseInt(req.param('score'));
+				Pupil.update({id:req.session.pupilId},{points:newPoints},function(err,pupil){
 
+				});
 				// update words
 
 				// update states
@@ -838,6 +843,7 @@ module.exports = {
 						State.create(stateRecord,function(err,state) {
 							
 						});
+						
     				});
     				sails.log(state);
 

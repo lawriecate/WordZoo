@@ -741,13 +741,13 @@ function updateData(item)
 		{
 			if(data[j] == 2)
 			{
-				updateDB();
-
 				data[j] = 1;
 				break;
 			}
 		}
 	}
+	console.log("Sup");
+	updateDB();
 }
 
 function updateEquipedItem(item)
@@ -761,6 +761,7 @@ function updateEquipedItem(item)
 			break;
 		}
 	}
+	updateDB();
 }
 
 function addHead()

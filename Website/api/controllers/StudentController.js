@@ -61,11 +61,15 @@ module.exports = {
   },
   profile: function(req,res) {
     sails.log(req.pupil);
+    characterParsed= "";
+    if(req.pupil.character != "") {
+      characterParsed = JSON.parse(req.pupil.character);
+    }
     var profile = {
       name: req.pupil.name,
       points: req.pupil.points,
-      character: req.pupil.character
-    }
+      character: characterParsed
+    };
     return res.json(profile);
   },
   saveProfile: function(req,res) {
@@ -73,7 +77,7 @@ module.exports = {
     character = req.param('newCharacter');
     sails.log(points);
     sails.log(character);
-    Pupil.update({id:req.pupil.id},{newPoints:points,character:JSON.stringify(character)}, function(err,pupil2) {
+    Pupil.update({id:req.pupil.id},{points:points,character:JSON.stringify(character)}, function(err,pupil2) {
       sails.log(pupil2);
       return res.ok();
     });
