@@ -11,9 +11,14 @@ module.exports = function fetchPupilHook(sails) {
         // Add a route that will match everything (using skipAssets to...skip assets!)
         '/*': {
           fn: function(req, res, next) {
+            var pupilId = req.session.pupilId;
+            if(!pupilId) {// Continue the request.
+              return next();}
 
-              if(req.session.pupilId != null) {// also check if a pupil session has been started
+              
+                //sails.log("Pupil session found");
                 Pupil.findOne({id: req.session.pupilId}).exec(function(err, pupil) {
+                //  sails.log(pupil);
                   if (err) { return res.serverError(err); }
                   if (!pupil) { return res.serverError(new Error('Session error')); }
 
@@ -23,10 +28,9 @@ module.exports = function fetchPupilHook(sails) {
                   return next();
 
                 });
-              }
+              
 
-              // Continue the request.
-              return next();
+              
 
 
 
