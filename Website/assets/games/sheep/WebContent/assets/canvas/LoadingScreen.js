@@ -152,6 +152,7 @@ LoadingScreen.prototype.create = function ()
 
         // Loop through all baseWords
         shuffleBoth();
+        groupWords = new Array();
         for(var i=0; i<baseWords.length; i++)
         {
             groupWords[i][0] = baseWords[i];
