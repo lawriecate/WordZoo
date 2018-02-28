@@ -58,10 +58,11 @@ LoadingScreen.prototype.create = function ()
 	{
 		var baseWords = data;
 		console.log("Base words: "+baseWords);
-
+		var temp = baseWords[0];
+		console.log("Temp "+temp);
 
 		// Get matching pair
-		$.post('/student/getMatchingPair', {wordsIn:baseWords[0]},function(data)
+		$.post('/student/getMatchingPair', {wordsIn:temp},function(data)
 		{
 			// Record matching pair
 			var returnWords = data;

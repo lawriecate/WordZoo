@@ -2063,6 +2063,7 @@ module.exports = {
 			      		if(words[i] != wordsIn[z])
 			      		{
 			        		return res.json(words[i]);//returnWords[z] = words[i];
+			        		sails.log(words[i]);
 			      		}
 			    	}
 			  	}
