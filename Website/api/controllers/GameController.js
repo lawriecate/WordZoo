@@ -815,7 +815,10 @@ module.exports = {
             // if no state generate
     				if(stateRecord.state == null) {
     					var state = generateState();
-    				}
+    				} else {
+						state = stateRecord.state;
+					}
+
             //        sails.log("G");
     				sails.log(state);
     				//unpack
@@ -831,10 +834,15 @@ module.exports = {
     				var i = 0;
 
 						// TODO save game state 10 times for each word
-
+					
     				_.each(wordPercents,function(percent) {
-    					pos = word2pos(words[i]);
-    					state[pos] = percent ;
+						state = state.map(function(value,index,arr) {
+							return value * 0.995;
+						});
+
+						pos = word2pos(words[i]);
+						
+    					state[pos] = percent;
 						i++;
 						
 						var stateRecord = {state:JSON.stringify(state),pupil:req.session.pupilId};
