@@ -64,7 +64,7 @@ module.exports = {
     var profile = {
       name: req.pupil.name,
       points: req.pupil.points,
-      character: req.pupil.character
+      character: JSON.parse(req.pupil.character)
     }
     return res.json(profile);
   },
@@ -73,7 +73,7 @@ module.exports = {
     character = req.param('newCharacter');
     sails.log(points);
     sails.log(character);
-    Pupil.update({id:req.pupil.id},{newPoints:points,character:JSON.stringify(character)}, function(err,pupil2) {
+    Pupil.update({id:req.pupil.id},{points:points,character:JSON.stringify(character)}, function(err,pupil2) {
       sails.log(pupil2);
       return res.ok();
     });

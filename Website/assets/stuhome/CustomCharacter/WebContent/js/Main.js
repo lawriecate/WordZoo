@@ -5,27 +5,7 @@ var character = character|| {};
 // Boolean -> is level loaded
 var levelLoaded = false;
 
-$.get('/student/profile',function(profile) {
-	username = profile.name;
-	totalMoney = profile.points;
-<<<<<<< HEAD
-	if(profile.character !== null) {
-		//Remove the [ ] characters 
-		temp = profile.character;
-		temp.replace('[','');
-		temp.replace(']','');
-		console.log("Testing: Removed [] " + temp);
-		temp = profile.character.split(",")
-		data = JSON.parse(temp);
-	} 
-	console.log(data);
-	
-=======
-	data = profile.character;
 
-	game.state.start("Level");
->>>>>>> 2756ffe878138b7be475e30837ec11654c017c74
-});
 
 // Username
 var username = "Lalalalalalaal";
@@ -56,6 +36,24 @@ window.onload = function()
 	game.state.add("Loading", LoadingScreen);
 	game.state.add("Level", Level);
 
+	$.get('/student/profile',function(profile) {
+		username = profile.name;
+		totalMoney = profile.points;
+		if(profile.character !== null) {
+			//Remove the [ ] characters 
+			//temp = profile.character;
+			//temp.replace('[','');
+			//temp.replace(']','');
+			//console.log("Testing: Removed [] " + temp);
+			//temp = profile.character.split(",")
+			data = profile.character;
+		} 
+		console.log(data);
+		
+		//data = profile.character;
+	
+		game.state.start("Level");
+	});
 
 	// Show loading screen
 	// *** NOT LEVEL ***
