@@ -1302,7 +1302,7 @@ module.exports = {
 
 	getMatchingPair: function(req,res)
 	{
-		wordIn = req.param('wordIn');
+		var wordsIn = req.param('wordsIn');
 		function wordToStateID(word)
 		{
 			switch(word)
@@ -2029,33 +2029,40 @@ module.exports = {
 
 
 
-			// MAIN
-			shuffleBoth();
-
-			// Get the rhyming group of a given word
-			var rhymingGroup = -1;
-			for(var i = 0; i < words.length; i++)
+			// For each value
+			var returnWords = new Array();
+			for(var z=0; z<wordsIn.length; z++)
 			{
-				if(wordIn == words[i])
-		    	{
-		      		rhymingGroup = i;
-		      		break;
-		    	}
-		  	}
+				// MAIN
+				shuffleBoth();
 
-		  	// Loop through rhyming groups list until we have a word with the same rhyming group
-		  	for(var i = 0; i < groups.length; i++)
-		  	{
-		    	if(groups[i] == rhymingGroup)
-		    	{
-		      		if(words[i] != wordIn)
-		      		{
-		        		return res.json(words[i]);
-		      		}
-		    	}
-		  	}
+				// Get the rhyming group of a given word
+				var rhymingGroup = -1;
+				for(var i = 0; i < words.length; i++)
+				{
+					if(wordsIn[z] == words[i])
+			    	{
+			      		rhymingGroup = i;
+			      		break;
+			    	}
+			  	}
 
-		  return res.json("Error");
+			  	// Loop through rhyming groups list until we have a word with the same rhyming group
+			  	for(var i = 0; i < groups.length; i++)
+			  	{
+			    	if(groups[i] == rhymingGroup)
+			    	{
+			      		if(words[i] != wordsIn[z])
+			      		{
+			        		returnWords[z] = words[i];
+			      		}
+			    	}
+			  	}
+			}
+
+
+			// Return words
+			return res.json(returnWords);
 		}
 	}
 };

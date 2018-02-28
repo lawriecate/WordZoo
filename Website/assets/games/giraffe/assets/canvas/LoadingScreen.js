@@ -1,4 +1,6 @@
 // Global variables
+var giraffe = giraffe|| {};
+
 var timeCounter;
 var timeoutPoint = 15;
 
@@ -51,43 +53,40 @@ LoadingScreen.prototype.create = function ()
 
 
 	// Get random words
-	var counter = 0;
 	var context = this;
 	$.get('/student/getWords', function(data)
 	{
-		words = data;
-		console.log(words);
+		var baseWords = data;
+		console.log("Base words: "+baseWords);
 
-		// Botch rhyming pairs
-		for(var i=0; i<words.length; i++)
+
+		// Get matching pair
+		$.post('/student/getMatchingPair', {wordsIn:baseWords},function(data)
 		{
-			// Record first word
-			matchingWords[i][0] = words[i];
-			var cword = words[i];
+			// Record matching pair
+			var returnWords = data;
+			console.log("Return words: "+returnWords);
 
-			// Get matching pair
-			$.post('/student/getMatchingPair', {wordIn:cword},function(data)
+
+			// Assign to thingy
+			for(var i=0; i<10; i++)
 			{
-				// Record matching pair
-				matchingWords[i][1] = data
-
-				console.log(i+" "+data);
-
-				// Increment counter
-				counter++;
-
-
-				// When all matchWord requests are completed
-				if(words.length == counter)
-				{
-					context.state.start('play');
-				}
+				matchingWords[i][0] = baseWords[i];
+				matchingWords[i][1] = returnWords[i];
 			}
-				).fail(function()
-			{
-				console.log('i failed');
-			});
+
+
+			console.log("matchingWords");
+			console.log(matchingWords);
+
+
+			// Move to play state
+			context.state.start('play');
 		}
+			).fail(function()
+		{
+			console.log('i failed');
+		});
 	}
 		).fail(function()
 	{
