@@ -288,6 +288,8 @@ PlayScreen.prototype.showButtons = function (isVisible)
 	topRight.visible = isVisible;
 	bottomLeft.visible = isVisible;
 	bottomRight.visible = isVisible;
+
+	imageExample.visible = isVisible;
 };
 
 
