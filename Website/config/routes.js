@@ -109,6 +109,7 @@ module.exports.routes = {
     'get /student':'GameController.home' ,
     'get /student/welcome':'StudentController.quiz' ,
     'post /student/welcome':'StudentController.finishQuiz' ,
+    'get /student/profile':'StudentController.profile',
     'get /student/play/:gameslug': 'GameController.play',
     'get /student/play/:gameslug/startdata': 'GameController.startGame',
     //'post /student/play/:gameslug/end': 'GameController.endGame',

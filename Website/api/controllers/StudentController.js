@@ -59,7 +59,12 @@ module.exports = {
       return res.redirect('/student');
     })
   },
-  points: function(req,res) {
-    return res.json(res.pupil.points);
+  profile: function(req,res) {
+    var profile = {
+      name: res.pupil.name,
+      points: res.pupil.points,
+      character: res.pupil.character
+    }
+    return res.json(profile);
   }
 };
