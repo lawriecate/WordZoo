@@ -840,7 +840,8 @@ module.exports = {
 						});
 						oldPoints = req.pupil.points;
 						if(oldPoints === null) {oldPoints =0;}
-						Pupil.update({id:req.session.pupilId},{points:(oldPoints+req.param('score'))},function(err,pupil){
+						newPoints = oldPoints + req.param('score');
+						Pupil.update({id:req.session.pupilId},{points:newPoints},function(err,pupil){
 
 						});
     				});
