@@ -36,6 +36,11 @@ var gameStartTime;
 var score;
 var scoreText = "";
 
+// item positioning
+var first = [220,350];
+var second = [665,350];
+var third = [1110,350];
+
 // lives
 var startingLives = 3;
 var livesLeft;
