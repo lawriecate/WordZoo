@@ -18,7 +18,7 @@ StartScreen.prototype.init = function ()
 
 StartScreen.prototype.preload = function ()
 {
-	this.load.pack('startScreen', '/games/elephant/assets/pack.json');
+	this.load.pack('startScreen', '/games/elephant/WebContent/assets/pack.json');
 };
 
 StartScreen.prototype.create = function ()

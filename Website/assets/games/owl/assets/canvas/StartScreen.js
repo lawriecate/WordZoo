@@ -18,7 +18,7 @@ StartScreen.prototype.init = function ()
 
 StartScreen.prototype.preload = function () 
 {	
-	this.load.pack('Start', '/games/owl/assets/pack.json');	
+	this.load.pack('Start', '/games/owl/WebContent/assets/pack.json');	
 };
 
 StartScreen.prototype.create = function () 

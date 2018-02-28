@@ -25,7 +25,7 @@ PlayScreen.prototype.init = function ()
 
 PlayScreen.prototype.preload = function () 
 {	
-	this.load.pack('PlayScreen', '/games/lion/assets/pack.json');
+	this.load.pack('PlayScreen', '/games/lion/WebContent/assets/pack.json');
 
 	// Clear + expand words list
 	wordHistory = new Array ();

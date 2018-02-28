@@ -3,31 +3,31 @@
     {
       "type": "image",
       "key": "background",
-      "url": "/games/elephant/assets/menuBackground.png",
+      "url": "/games/elephant/WebContent/assets/menuBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "/games/elephant/assets/playButton.png",
+      "url": "/games/elephant/WebContent/assets/playButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "/games/elephant/assets/rulesButton.png",
+      "url": "/games/elephant/WebContent/assets/rulesButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "BackButton",
-      "url": "/games/elephant/assets/backButton.png",
+      "url": "/games/elephant/WebContent/assets/backButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ButtonBackground",
-      "url": "/games/elephant/assets/buttonBackground.png",
+      "url": "/games/elephant/WebContent/assets/buttonBackground.png",
       "overwrite": false
     }
   ],
@@ -35,19 +35,19 @@
     {
       "type": "image",
       "key": "okButton",
-      "url": "/games/elephant/assets/okButton.png",
+      "url": "/games/elephant/WebContent/assets/okButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "highlightCircle",
-      "url": "/games/elephant/assets/highlightCircle.png",
+      "url": "/games/elephant/WebContent/assets/highlightCircle.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Red",
-      "url": "/games/elephant/assets/Red.png",
+      "url": "/games/elephant/WebContent/assets/Red.png",
       "frameWidth": 312,
       "frameHeight": 474,
       "frameMax": -1,
@@ -57,7 +57,7 @@
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "/games/elephant/assets/Lives.png",
+      "url": "/games/elephant/WebContent/assets/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": -1,
@@ -67,7 +67,7 @@
     {
       "type": "image",
       "key": "tutorialOverlay",
-      "url": "/games/elephant/assets/tutorialOverlay.png",
+      "url": "/games/elephant/WebContent/assets/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -75,25 +75,25 @@
     {
       "type": "image",
       "key": "FinishBackground",
-      "url": "/games/elephant/assets/finishBackground.png",
+      "url": "/games/elephant/WebContent/assets/finishBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayAgain",
-      "url": "/games/elephant/assets/playAgainButton.png",
+      "url": "/games/elephant/WebContent/assets/playAgainButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "/games/elephant/assets/homeButton.png",
+      "url": "/games/elephant/WebContent/assets/homeButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "GameOver",
-      "url": "/games/elephant/assets/gameOverLayOver.png",
+      "url": "/games/elephant/WebContent/assets/gameOverLayOver.png",
       "overwrite": false
     }
   ],
@@ -101,31 +101,31 @@
     {
       "type": "image",
       "key": "Background",
-      "url": "/games/elephant/assets/playBackground.png",
+      "url": "/games/elephant/WebContent/assets/playBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ScoreBackground",
-      "url": "/games/elephant/assets/score.png",
+      "url": "/games/elephant/WebContent/assets/score.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "easel",
-      "url": "/games/elephant/assets/easel.png",
+      "url": "/games/elephant/WebContent/assets/easel.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "chosenEasel",
-      "url": "/games/elephant/assets/chosenEasel.png",
+      "url": "/games/elephant/WebContent/assets/chosenEasel.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "/games/elephant/assets/Lives.png",
+      "url": "/games/elephant/WebContent/assets/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": -1,
@@ -137,13 +137,13 @@
     {
       "type": "image",
       "key": "background",
-      "url": "/games/elephant/assets/menuBackground.png",
+      "url": "/games/elephant/WebContent/assets/menuBackground.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "preloader",
-      "url": "/games/elephant/assets/loading.png",
+      "url": "/games/elephant/WebContent/assets/loading.png",
       "frameWidth": 250,
       "frameHeight": 250,
       "frameMax": -1,

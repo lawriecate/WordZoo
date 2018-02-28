@@ -62,7 +62,7 @@ RulesScreen.prototype.init = function ()
 
 RulesScreen.prototype.preload = function () 
 {	
-	this.load.pack('RulesScreen', '/games/lion/assets/pack.json');
+	this.load.pack('RulesScreen', '/games/lion/WebContent/assets/pack.json');
 
 	// Load images
 	this.load.image("cat",'/images/words/cat.png');

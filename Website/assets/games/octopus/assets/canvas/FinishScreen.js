@@ -22,7 +22,7 @@ FinishScreen.prototype.init = function ()
 
 FinishScreen.prototype.preload = function ()
 {
-	this.load.pack('FinishScreen', '/games/octopus/assets/pack.json');
+	this.load.pack('FinishScreen', '/games/octopus/WebContent/assets/pack.json');
 };
 
 FinishScreen.prototype.create = function ()

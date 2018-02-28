@@ -30,8 +30,8 @@ RulesScreen.prototype.init = function ()
 
 RulesScreen.prototype.preload = function ()
 {
-	this.load.pack('RulesScreen', '/games/elephant/assets/pack.json');
-	this.load.pack('PlayScreen', '/games/elephant/assets/pack.json');
+	this.load.pack('RulesScreen', '/games/elephant/WebContent/assets/pack.json');
+	this.load.pack('PlayScreen', '/games/elephant/WebContent/assets/pack.json');
 
 	// Load items
 	for(var i = 0; i < testWords.length; i++)

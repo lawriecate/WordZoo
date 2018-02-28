@@ -32,7 +32,7 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	 this.load.pack('StartScreen', '/games/octopus/assets/pack.json');
+	 this.load.pack('StartScreen', '/games/octopus/WebContent/assets/pack.json');
 };
 
 LoadingScreen.prototype.create = function ()

@@ -33,8 +33,8 @@ Level.prototype.init = function ()
 Level.prototype.preload = function ()
 {
 	// Load pack
-	this.load.pack('Main', '/games/octopus/assets/pack.json');
-	this.load.spritesheet('Lives' ,'/games/octopus/assets/Lives.png', 275, 80);
+	this.load.pack('Main', '/games/octopus/WebContent/assets/pack.json');
+	this.load.spritesheet('Lives' ,'/games/octopus/WebContent/assets/Lives.png', 275, 80);
 
 	// Load assets
 	for(var i = 0; i < words.length; i++)

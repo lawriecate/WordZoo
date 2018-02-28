@@ -70,7 +70,7 @@ RulesScreen.prototype.init = function ()
 RulesScreen.prototype.preload = function () 
 {	
 	// load pack
-	this.load.pack('PlayState', '/games/owl/assets/pack.json');
+	this.load.pack('PlayState', '/games/owl/WebContent/assets/pack.json');
 	assets = new Array();
 	
 	//Creates the asset array of blank objects
@@ -87,9 +87,9 @@ RulesScreen.prototype.preload = function ()
 	}
 	   
     //Frame Width, Frame Height, Frame Max, margin,spacing
-    this.load.spritesheet('deathExplosion','assets/deathExplosion.png',148.1,187,27);
-    this.load.image('highLightCircle','assets/highlightCircle.png');
-    this.load.spritesheet('explosion', 'assets/explosionFull.png', 256, 256, 32);	
+    this.load.spritesheet('deathExplosion','WebContent/assets/deathExplosion.png',148.1,187,27);
+    this.load.image('highLightCircle','WebContent/assets/highlightCircle.png');
+    this.load.spritesheet('explosion', 'WebContent/assets/explosionFull.png', 256, 256, 32);	
 };
 
 RulesScreen.prototype.create = function () 
@@ -241,7 +241,7 @@ RulesScreen.prototype.create = function ()
 
 
 	//Load Images
-	//game.load.image('Apple','assets/testAssets/Apple.png');
+	//game.load.image('Apple','WebContent/assets/testWebContent/assets/Apple.png');
 	//this.add.sprite(500,500,'Apple');
 	assets[0].sprite = this.add.sprite(180,246,assets[0].word);
 	assets[0].sprite.anchor.setTo(0.5,0.5);
