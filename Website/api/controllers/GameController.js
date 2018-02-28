@@ -838,6 +838,10 @@ module.exports = {
 						State.create(stateRecord,function(err,state) {
 							
 						});
+
+						Pupil.update({id:req.session.pupilId},{points:(req.pupil.points+req.param('score'))},function(err,pupil){
+
+						});
     				});
     				sails.log(state);
 
