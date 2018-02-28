@@ -2038,7 +2038,7 @@ module.exports = {
 
 
 			// For each value
-			var returnWords = new Array();
+			//var returnWords = new Array();
 			//for(var z=0; z<wordsIn.length; z++)
 			//{
 				// MAIN
@@ -2062,7 +2062,7 @@ module.exports = {
 			    	{
 			      		if(words[i] != wordsIn[z])
 			      		{
-			        		returnWords[z] = words[i];
+			        		return res.json(words[i]);//returnWords[z] = words[i];
 			      		}
 			    	}
 			  	}
@@ -2070,7 +2070,7 @@ module.exports = {
 
 
 			// Return words
-			return res.json(returnWords);
+			//return res.json(returnWords);
 		}
 	}
 };
