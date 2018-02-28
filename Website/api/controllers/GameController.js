@@ -1303,11 +1303,11 @@ module.exports = {
 		//console.log(randomWords());
 		return res.json(words);
 
-	},
+	}//,
 
 
 
-
+/*
 	getMatchingPair: function(req,res)
 	{
 		var wordsIn = req.param('wordsIn');
@@ -2073,5 +2073,5 @@ module.exports = {
 			// Return words
 			return res.json("fuck");
 		}
-	}
+	}*/
 };
