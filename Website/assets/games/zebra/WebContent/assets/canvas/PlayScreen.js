@@ -22,7 +22,7 @@ PlayScreen.prototype.init = function ()
 
 PlayScreen.prototype.preload = function () 
 {	
-	this.load.pack('PlayScreen', '/games/zebra/assets/pack.json');
+	this.load.pack('PlayScreen', '/games/zebra/WebContent/assets/pack.json');
 
 	// Load items
 	for(var i = 0; i < words.length; i++)

@@ -22,7 +22,7 @@ FinishScreen.prototype.init = function ()
 
 FinishScreen.prototype.preload = function () 
 {	
-	this.load.pack('FinishScreen', '/games/zebra/assets/pack.json');
+	this.load.pack('FinishScreen', '/games/zebra/WebContent/assets/pack.json');
 };
 
 FinishScreen.prototype.create = function () 

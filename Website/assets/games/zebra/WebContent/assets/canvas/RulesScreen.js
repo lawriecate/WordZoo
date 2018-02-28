@@ -34,7 +34,7 @@ RulesScreen.prototype.init = function ()
 
 RulesScreen.prototype.preload = function () 
 {	
-	this.load.pack('RulesScreen', '/games/zebra/assets/pack.json');
+	this.load.pack('RulesScreen', '/games/zebra/WebContent/assets/pack.json');
 
 	// Load items
 	this.load.image(bench ,'/images/words/bench.png');

@@ -29,7 +29,7 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	this.load.pack('startScreen', '/games/zebra/assets/pack.json');
+	this.load.pack('startScreen', '/games/zebra/WebContent/assets/pack.json');
 };
 
 LoadingScreen.prototype.create = function ()
