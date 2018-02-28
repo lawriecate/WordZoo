@@ -971,6 +971,8 @@ function changeAnimal2(item)
 	{
 		item.frame = animalIndex;
 	});
+
+	updateDB();
 }
 
 
