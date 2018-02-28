@@ -108,97 +108,97 @@ RulesScreen.prototype.create = function ()
 
 	//Decorative items
 	//x, y, asset
-	addFood(822,304,assets[0].word);
-	addFood(900,310,assets[0].word); //+88
-	addFood(976,318,assets[0].word); //+154
-	addFood(786,380,assets[0].word); //-36
-	addFood(866,363,assets[0].word); //+44
-	addFood(956,378,assets[0].word); //+134
-	addFood(817,390,assets[0].word); //-5
-	addFood(900,390,assets[0].word); //+78
+	addFoodTutorial(822,304,assets[0].word);
+	addFoodTutorial(900,310,assets[0].word); //+88
+	addFoodTutorial(976,318,assets[0].word); //+154
+	addFoodTutorial(786,380,assets[0].word); //-36
+	addFoodTutorial(866,363,assets[0].word); //+44
+	addFoodTutorial(956,378,assets[0].word); //+134
+	addFoodTutorial(817,390,assets[0].word); //-5
+	addFoodTutorial(900,390,assets[0].word); //+78
 
-	addFood(1140,304,assets[1].word);
-	addFood(1140+88,310,assets[1].word);
-	addFood(1140+154,318,assets[1].word);
-	addFood(1140-34,380,assets[1].word);
-	addFood(1140+44,363,assets[1].word);
-	addFood(1140+134,378,assets[1].word);
-	addFood(1140-5,390,assets[1].word);
-	addFood(1140+78,390,assets[1].word);
+	addFoodTutorial(1140,304,assets[1].word);
+	addFoodTutorial(1140+88,310,assets[1].word);
+	addFoodTutorial(1140+154,318,assets[1].word);
+	addFoodTutorial(1140-34,380,assets[1].word);
+	addFoodTutorial(1140+44,363,assets[1].word);
+	addFoodTutorial(1140+134,378,assets[1].word);
+	addFoodTutorial(1140-5,390,assets[1].word);
+	addFoodTutorial(1140+78,390,assets[1].word);
 
-	addFood(1480,304,assets[2].word);
-	addFood(1480+88,310,assets[2].word);
-	addFood(1480+154,318,assets[2].word);
-	addFood(1480-34,380,assets[2].word);
-	addFood(1480+44,363,assets[2].word);
-	addFood(1480+134,378,assets[2].word);
-	addFood(1480-5,390,assets[2].word);
-	addFood(1480+78,390,assets[2].word);
+	addFoodTutorial(1480,304,assets[2].word);
+	addFoodTutorial(1480+88,310,assets[2].word);
+	addFoodTutorial(1480+154,318,assets[2].word);
+	addFoodTutorial(1480-34,380,assets[2].word);
+	addFoodTutorial(1480+44,363,assets[2].word);
+	addFoodTutorial(1480+134,378,assets[2].word);
+	addFoodTutorial(1480-5,390,assets[2].word);
+	addFoodTutorial(1480+78,390,assets[2].word);
 
-	addFood(1810,304,assets[3].word);
-	addFood(1810+88,310,assets[3].word);
-	addFood(1810+154,318,assets[3].word);
-	addFood(1810-34,380,assets[3].word);
-	addFood(1810+44,363,assets[3].word);
-	addFood(1810+134,378,assets[3].word);
-	addFood(1810-5,390,assets[3].word);
-	addFood(1810+78,390,assets[3].word);
+	addFoodTutorial(1810,304,assets[3].word);
+	addFoodTutorial(1810+88,310,assets[3].word);
+	addFoodTutorial(1810+154,318,assets[3].word);
+	addFoodTutorial(1810-34,380,assets[3].word);
+	addFoodTutorial(1810+44,363,assets[3].word);
+	addFoodTutorial(1810+134,378,assets[3].word);
+	addFoodTutorial(1810-5,390,assets[3].word);
+	addFoodTutorial(1810+78,390,assets[3].word);
 
 	//2nd Row
-	addFood(722,540,assets[4].word);
-	addFood(722+78,540+6,assets[4].word);
-	addFood(722+164,540+8,assets[4].word);
-	addFood(722+144,540+60,assets[4].word);
-	addFood(722-22,540+50,assets[4].word);
-	addFood(722+64,540+62,assets[4].word);
-	addFood(722+18,540+90,assets[4].word);
-	addFood(722+128,540+90,assets[4].word);
+	addFoodTutorial(722,540,assets[4].word);
+	addFoodTutorial(722+78,540+6,assets[4].word);
+	addFoodTutorial(722+164,540+8,assets[4].word);
+	addFoodTutorial(722+144,540+60,assets[4].word);
+	addFoodTutorial(722-22,540+50,assets[4].word);
+	addFoodTutorial(722+64,540+62,assets[4].word);
+	addFoodTutorial(722+18,540+90,assets[4].word);
+	addFoodTutorial(722+128,540+90,assets[4].word);
 
-	addFood(1070,540,assets[5].word);
-	addFood(1070+78,540+6,assets[5].word);
-	addFood(1070+164,540+8,assets[5].word);
-	addFood(1070+144,540+60,assets[5].word);
-	addFood(1070-22,540+50,assets[5].word);
-	addFood(1070+64,540+62,assets[5].word);
-	addFood(1070+18,540+90,assets[5].word);
-	addFood(1070+128,540+90,assets[5].word);
+	addFoodTutorial(1070,540,assets[5].word);
+	addFoodTutorial(1070+78,540+6,assets[5].word);
+	addFoodTutorial(1070+164,540+8,assets[5].word);
+	addFoodTutorial(1070+144,540+60,assets[5].word);
+	addFoodTutorial(1070-22,540+50,assets[5].word);
+	addFoodTutorial(1070+64,540+62,assets[5].word);
+	addFoodTutorial(1070+18,540+90,assets[5].word);
+	addFoodTutorial(1070+128,540+90,assets[5].word);
 
-	addFood(1400,540,assets[6].word);
-	addFood(1400+78,540+6,assets[6].word);
-	addFood(1400+164,540+8,assets[6].word);
-	addFood(1400+144,540+60,assets[6].word);
-	addFood(1400-22,540+50,assets[6].word);
-	addFood(1400+64,540+62,assets[6].word);
-	addFood(1400+18,540+90,assets[6].word);
-	addFood(1400+128,540+90,assets[6].word);
+	addFoodTutorial(1400,540,assets[6].word);
+	addFoodTutorial(1400+78,540+6,assets[6].word);
+	addFoodTutorial(1400+164,540+8,assets[6].word);
+	addFoodTutorial(1400+144,540+60,assets[6].word);
+	addFoodTutorial(1400-22,540+50,assets[6].word);
+	addFoodTutorial(1400+64,540+62,assets[6].word);
+	addFoodTutorial(1400+18,540+90,assets[6].word);
+	addFoodTutorial(1400+128,540+90,assets[6].word);
 
-	addFood(1720,540,assets[7].word);
-	addFood(1720+78,540+6,assets[7].word);
-	addFood(1720+164,540+8,assets[7].word);
-	addFood(1720+144,540+60,assets[7].word);
-	addFood(1720-22,540+50,assets[7].word);
-	addFood(1720+64,540+62,assets[7].word);
-	addFood(1720+18,540+90,assets[7].word);
-	addFood(1720+128,540+90,assets[7].word);
+	addFoodTutorial(1720,540,assets[7].word);
+	addFoodTutorial(1720+78,540+6,assets[7].word);
+	addFoodTutorial(1720+164,540+8,assets[7].word);
+	addFoodTutorial(1720+144,540+60,assets[7].word);
+	addFoodTutorial(1720-22,540+50,assets[7].word);
+	addFoodTutorial(1720+64,540+62,assets[7].word);
+	addFoodTutorial(1720+18,540+90,assets[7].word);
+	addFoodTutorial(1720+128,540+90,assets[7].word);
 
 	//3rd Row
-	addFood(650,745,assets[8].word);
-	addFood(650+78,745+6,assets[8].word);
-	addFood(650+164,745+8,assets[8].word);
-	addFood(650+144,745+60,assets[8].word);
-	addFood(650-22,745+50,assets[8].word);
-	addFood(650+64,745+62,assets[8].word);
-	addFood(650+18,745+90,assets[8].word);
-	addFood(650+128,745+90,assets[8].word);
+	addFoodTutorial(650,745,assets[8].word);
+	addFoodTutorial(650+78,745+6,assets[8].word);
+	addFoodTutorial(650+164,745+8,assets[8].word);
+	addFoodTutorial(650+144,745+60,assets[8].word);
+	addFoodTutorial(650-22,745+50,assets[8].word);
+	addFoodTutorial(650+64,745+62,assets[8].word);
+	addFoodTutorial(650+18,745+90,assets[8].word);
+	addFoodTutorial(650+128,745+90,assets[8].word);
 
-	addFood(975,745,assets[9].word);
-	addFood(975+78,745+6,assets[9].word);
-	addFood(975+164,745+8,assets[9].word);
-	addFood(975+144,745+60,assets[9].word);
-	addFood(975-22,745+50,assets[9].word);
-	addFood(975+64,745+62,assets[9].word);
-	addFood(975+18,745+90,assets[9].word);
-	addFood(975+128,745+90,assets[9].word);
+	addFoodTutorial(975,745,assets[9].word);
+	addFoodTutorial(975+78,745+6,assets[9].word);
+	addFoodTutorial(975+164,745+8,assets[9].word);
+	addFoodTutorial(975+144,745+60,assets[9].word);
+	addFoodTutorial(975-22,745+50,assets[9].word);
+	addFoodTutorial(975+64,745+62,assets[9].word);
+	addFoodTutorial(975+18,745+90,assets[9].word);
+	addFoodTutorial(975+128,745+90,assets[9].word);
 
 	// Scale assets
 	for(var i=0; i<10; i++)
@@ -247,6 +247,14 @@ RulesScreen.prototype.create = function ()
 };
 
 
+
+function addFoodTutorial(x,y,asset)
+{
+	var temp = game.add.sprite(x,y,asset);
+
+	temp.anchor.setTo(0.5,0.5);
+	//temp.scale.set(0.5,0.5);
+}
 
 
 // updateTime + demo
@@ -298,7 +306,7 @@ RulesScreen.prototype.updateTime = function ()
 		var dragTween = this.game.add.tween(dragItem).to({x: '+650', y: '+450'}, 800, Phaser.Easing.Linear.None, false);
 
 		handTween.onComplete.add(function () { hand.animations.frame = 0; dragItem.visible = false;
-			addFood(dragItem.x, dragItem.y, assets[0].word); }, this);
+			addFoodTutorial(dragItem.x, dragItem.y, assets[0].word); }, this);
 
 		dragTween.start();
 		handTween.start();
@@ -438,7 +446,7 @@ RulesScreen.prototype.updateTime = function ()
 		var dragTween = this.game.add.tween(dragItem).to({x: '+80', y: '+280'}, 500, Phaser.Easing.Linear.None, false);
 
 		handTween.onComplete.add(function () { hand.animations.frame = 0; dragItem.visible = false;
-			addFood(dragItem.x, dragItem.y, assets[6].word); }, this);
+			addFoodTutorial(dragItem.x, dragItem.y, assets[6].word); }, this);
 
 		dragTween.start();
 		handTween.start();
