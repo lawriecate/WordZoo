@@ -4,7 +4,7 @@
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
-
+var crypto = require('crypto');
 module.exports = {
 
   attributes: {
@@ -28,6 +28,9 @@ module.exports = {
       type: 'string',
       required: false,
       defaultsTo: 'UK'
+    },
+    signupcode: {
+      type:'string'
     },
     classes: {
       collection: 'Class',
@@ -54,6 +57,11 @@ module.exports = {
 			country: inputs.country,
     }).exec(cb);
 
+  },
+
+  regenerateCode: function(school,cb) {
+    newToken = crypto.createHash('md5').update(school + Date.now()).randomBytes(20).digest('hex');
+    School.update({id:school},{signupcode:newToken}).exec(cb);
   },
 
 

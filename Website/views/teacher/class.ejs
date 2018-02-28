@@ -20,7 +20,7 @@
     <td><%= pupil.name %> </td>
     <td><%= pupil.username %> </td>
     <td><%= pupil.passcode %> </td>
-    <td><a href="/teach/start/<%=pupil.id%>"> Start Session &raquo;</a> <form method="post" action="/teach/class/<%=schoolClass.id%>/regenerate"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input type="submit" value="New Password"/></form></td>
+    <td><!--<a href="/teach/start/<%=pupil.id%>"> Start Session &raquo;</a>--> <form method="post" action="/teach/class/<%=schoolClass.id%>/regenerate"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input type="submit" value="New Password"/></form></td>
   </tr>
   <% }) %>
 </table>

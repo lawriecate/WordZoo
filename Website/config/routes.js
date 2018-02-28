@@ -48,7 +48,9 @@ module.exports.routes = {
 
     'get /login': { view: 'auth/login' },
     'get /signup': { view: 'auth/register' },
-    '/welcome': { view: 'auth/welcome' },
+    'get /welcome': { view: 'auth/welcome', locals: {
+      layout: 'layout_teacher'
+    } },
 
     // Endpoints
     'post /login': 'UserController.login',
@@ -73,6 +75,8 @@ module.exports.routes = {
     'get /admin/schools/:schoolid/classes/:classid': 'SchoolController.manageClass',
     'post /admin/schools/:schoolid/classes/:classid/addpupil': 'SchoolController.addPupil',
     'post /admin/schools/:id/classes': 'SchoolController.addClass',
+    'get /admin/schools/:id/newsulink': 'SchoolController.refreshSignup',
+
     'get /admin/schools/:id/edit': 'SchoolController.edit' ,
     'post /admin/schools/:id/edit': 'SchoolController.update' ,
     'post /admin/schools/:id/assignteacher': 'SchoolController.assignTeacher' ,

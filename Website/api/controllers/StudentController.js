@@ -58,5 +58,8 @@ module.exports = {
     Pupil.finishWelcome(res.pupil.id,function() {
       return res.redirect('/student');
     })
+  },
+  points: function(req,res) {
+    return res.json(res.pupil.points);
   }
 };

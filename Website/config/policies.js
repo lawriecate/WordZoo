@@ -39,6 +39,10 @@ module.exports.policies = {
     list: 'isAdmin'
   },
 
+  TeacherController: {
+    '*': 'isAuthenticated',
+  },
+
   GameController: {
     '*': 'isStudentAuthenticated',
     create: 'isAdmin',

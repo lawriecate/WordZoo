@@ -23,3 +23,6 @@ Teachers at this school <%= school.teachers.length %>:
   <li><%= teacher.name %></li>
   <% }) %>
 </ul>
+
+<a href="/admin/schools/<%= school.id %>/newsulink/">Get new signup link</a>
+<p>Signup link: https://wordzoo.co.uk/start/<%=school.signupcode%> </p>

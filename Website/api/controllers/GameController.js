@@ -825,31 +825,29 @@ module.exports = {
     				var words = req.session.game.words;
     				var i = 0;
 
+						// TODO save game state 10 times for each word
+
     				_.each(wordPercents,function(percent) {
     					pos = word2pos(words[i]);
-    					state[pos] = state[pos] * percent ;
-    					i++;
+    					state[pos] = percent ;
+						i++;
+						
+						var stateRecord = {state:JSON.stringify(state),pupil:req.session.pupilId};
+						sails.log("saving");
+						sails.log(stateRecord);
+						State.create(stateRecord,function(err,state) {
+							
+						});
     				});
     				sails.log(state);
 
     				// change to make a new state for each word
 
     				// save back
-            var stateRecord = {state:JSON.stringify(state),pupil:req.session.pupilId};
-            sails.log("saving");
-            sails.log(stateRecord);
-    				State.create(stateRecord,function(err,state) {
-
-    				});
+            
 
 						// generate session
-						Play.new({
-							pupil:req.session.pupilId,
-							game:req.param('game')
-						},function(err,records) {
-							sails.log("Game session logged");
-						});
-
+						
     				// null out session data for games
     				req.session.game = null;
           });

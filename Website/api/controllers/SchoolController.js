@@ -171,5 +171,16 @@ module.exports = {
 			//school.classes.populate('pupils');
 
 		});
+	},
+
+	refreshSignup:function(req,res) {
+		School.findOne({id:req.params.schoolid}).exec(function(err,school) {
+			School.regenerateCode(school.id,function(err,s) {
+				if (err) {
+					return res.serverError(err);
+				}
+				return res.redirect('/admin/schools/'+school.id+'/edit');
+			});
+		});
 	}
 };
