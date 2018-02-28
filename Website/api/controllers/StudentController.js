@@ -65,7 +65,7 @@ module.exports = {
       name: req.pupil.name,
       points: req.pupil.points,
       character: JSON.parse(req.pupil.character)
-    }
+    };
     return res.json(profile);
   },
   saveProfile: function(req,res) {
