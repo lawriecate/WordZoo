@@ -57,7 +57,7 @@ LoadingScreen.prototype.create = function ()
 	$.get('/student/getWords', function(data)
 	{
 		var baseWords = data;
-		console.log("baseWord[0]: "+baseWords[0]);
+		console.log("baseWord: "+baseWords);
 
 
 
@@ -792,7 +792,7 @@ function getRhymingPair(word)
 
 
 
-// Loop
+// Loop through all baseWords
 shuffleBoth();
 for(var i=0; i<baseWords.length; i++)
 {
@@ -801,17 +801,11 @@ for(var i=0; i<baseWords.length; i++)
 }
 
 
-
+// Log complete word index
 console.log(matchingWords);
 
-
-
-
-
-
-
-
-
+// Move to playing state
+context.state.start('play');
 
 
 
