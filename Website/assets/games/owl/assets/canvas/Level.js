@@ -1215,7 +1215,7 @@ Level.prototype.recordScreenPress = function(x, y)
 };
 
 // Record statistical data from game
-PlayScreen.prototype.recordData = function()
+Level.prototype.recordData = function()
 {
 	// Prep array
 	var output = new Array();
