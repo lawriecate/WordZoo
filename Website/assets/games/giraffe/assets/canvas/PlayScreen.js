@@ -36,6 +36,8 @@ PlayScreen.prototype.preload = function ()
 
 PlayScreen.prototype.create = function ()
 {
+console.log("PlayScreen create");
+
 	// Add background
 	background = this.add.tileSprite(0, 0, 1920, 1080, 'Background');
 	background.scale.setTo(1.51, 1.51);
@@ -206,6 +208,8 @@ PlayScreen.prototype.create = function ()
 	this.updateScore();
 	livesLeft = startingLives;
 
+console.log("PlayScreen create end");
+
 
 	// Fill words -> Start game
 	this.spawnWords();
@@ -216,7 +220,7 @@ PlayScreen.prototype.create = function ()
 // display current time to screen (with --)
 PlayScreen.prototype.updateTime = function ()
 {
-console.log(currentColoumn);
+console.log("timeLeft: "+timeLeft);
 
 	// if scrolling background, move background + giraffe
 	if(backgroundScroll == true)

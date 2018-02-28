@@ -59,6 +59,7 @@ LoadingScreen.prototype.create = function ()
 		console.log(words);
 
 		// Botch rhyming pairs
+		var waiting = true;
 		for(var i=0; i<words.length; i++)
 		{
 			// Record first word
@@ -82,11 +83,22 @@ LoadingScreen.prototype.create = function ()
 				{
 					context.state.start('play');
 				}
+
+				// unlock waiting
+				waiting = false;
 			}
 				).fail(function()
 			{
 				console.log('i failed');
 			});
+
+			while(waiting)
+			{
+				// busy wait
+			}
+
+			// reset waiting
+			waiting = true;
 		}
 	}
 		).fail(function()
