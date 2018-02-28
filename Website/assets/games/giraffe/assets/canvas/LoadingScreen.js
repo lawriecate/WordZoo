@@ -779,18 +779,17 @@ function getRhymingPair(word)
       if(words[i] != word)
       {
        	final = words[i];
-       	return;
+       	return final;
       }
     }
   }
 
-  return null;
+  return "error";
 }
 
 shuffleBoth();
-getRhymingPair(baseWords[0]);
-
-console.log("output "+final);
+console.log(getRhymingPair(baseWords[0]));
+console.log("output 2 "+final);
 
 
 
