@@ -53,57 +53,187 @@ LoadingScreen.prototype.create = function ()
 	// Get random words
 	var counter = 0;
 	var context = this;
+	var cword;
+
+	// Get main words
 	$.get('/student/getWords', function(data)
 	{
 		words = data;
 		console.log(words);
 
-		// Botch rhyming pairs
-		var waiting = true;
-		for(var i=0; i<words.length; i++)
-		{
-			// Record first word
-			matchingWords[i][0] = words[i];
-			var cword =words[i];
+
+			// *** 1st ***
+			matchingWords[0][0] = words[0];
+			cword = words[0];
 
 			// Get matching pair
 			$.get('/student/getMatchingPair', function(cword,data)
 			{
 				// Record matching pair
-				matchingWords[i][1] = data
-
-				console.log(i+" "+data);
-
-				// Increment counter
-				counter++;
+				matchingWords[0][1] = data
 
 
-				// When all matchWord requests are completed
-				if(words.length == counter)
+				// *** 2nd ***
+				matchingWords[1][0] = words[1];
+				cword = words[1];
+
+				// Get matching pair
+				$.get('/student/getMatchingPair', function(cword,data)
 				{
-					context.state.start('play');
-				}
+					// Record matching pair
+					matchingWords[1][1] = data
 
-				// unlock waiting
-				waiting = false;
+
+					// *** 3rd ***
+					matchingWords[2][0] = words[2];
+					cword = words[2];
+
+					// Get matching pair
+					$.get('/student/getMatchingPair', function(cword,data)
+					{
+						// Record matching pair
+						matchingWords[2][1] = data
+
+
+						// *** 4th ***
+						matchingWords[3][0] = words[3];
+						cword = words[3];
+
+						// Get matching pair
+						$.get('/student/getMatchingPair', function(cword,data)
+						{
+							// Record matching pair
+							matchingWords[3][1] = data
+
+
+							// *** 5th ***
+							matchingWords[4][0] = words[4];
+							cword = words[4];
+
+							// Get matching pair
+							$.get('/student/getMatchingPair', function(cword,data)
+							{
+								// Record matching pair
+								matchingWords[4][1] = data
+
+
+								// *** 6th ***
+								matchingWords[5][0] = words[5];
+								cword = words[5];
+
+								// Get matching pair
+								$.get('/student/getMatchingPair', function(cword,data)
+								{
+									// Record matching pair
+									matchingWords[5][1] = data
+
+
+									// *** 7th ***
+									matchingWords[6][0] = words[6];
+									cword = words[6];
+
+									// Get matching pair
+									$.get('/student/getMatchingPair', function(cword,data)
+									{
+										// Record matching pair
+										matchingWords[6][1] = data
+
+
+										// *** 8th ***
+										matchingWords[7][0] = words[7];
+										cword = words[7];
+
+										// Get matching pair
+										$.get('/student/getMatchingPair', function(cword,data)
+										{
+											// Record matching pair
+											matchingWords[7][1] = data
+
+
+											// *** 9th ***
+											matchingWords[8][0] = words[8];
+											cword = words[8];
+
+											// Get matching pair
+											$.get('/student/getMatchingPair', function(cword,data)
+											{
+												// Record matching pair
+												matchingWords[8][1] = data
+
+
+												// *** 10th ***
+												matchingWords[9][0] = words[9];
+												cword = words[9];
+
+												// Get matching pair
+												$.get('/student/getMatchingPair', function(cword,data)
+												{
+													// Record matching pair
+													matchingWords[9][1] = data
+
+
+													console.log("matchingWords");
+													console.log(matchingWords);
+
+
+													// All complete move to play state
+													context.state.start('play');
+
+												}
+													).fail(function()
+												{
+													console.log('i failed @ 10');
+												});
+											}
+												).fail(function()
+											{
+												console.log('i failed @ 9');
+											});
+										}
+											).fail(function()
+										{
+											console.log('i failed @ 8');
+										});
+									}
+										).fail(function()
+									{
+										console.log('i failed @ 7');
+									});
+								}
+									).fail(function()
+								{
+									console.log('i failed @ 6');
+								});
+							}
+								).fail(function()
+							{
+								console.log('i failed @ 5');
+							});
+						}
+							).fail(function()
+						{
+							console.log('i failed @ 4');
+						});
+					}
+						).fail(function()
+					{
+						console.log('i failed @ 3');
+					});
+				}
+					).fail(function()
+				{
+					console.log('i failed @ 2');
+				});
 			}
 				).fail(function()
 			{
-				console.log('i failed');
+				console.log('i failed @ 1');
 			});
-
-			while(waiting)
-			{
-				// busy wait
-			}
-
-			// reset waiting
-			waiting = true;
 		}
 	}
 		).fail(function()
 	{
-		console.log('i failed');
+		console.log('i failed @ main');
 	});
 };
 
