@@ -8,14 +8,24 @@ var levelLoaded = false;
 $.get('/student/profile',function(profile) {
 	username = profile.name;
 	totalMoney = profile.points;
-	data = profile.character;
+	if(profile.character !== null) {
+		//Remove the [ ] characters 
+		temp = profile.character;
+		temp.replace('[','');
+		temp.replace(']','');
+		console.log("Testing: Removed [] " + temp);
+		temp = profile.character.split(",")
+		data = JSON.parse(temp);
+	} 
+	console.log(data);
+	
 });
 
 // Username
 var username = "Lalalalalalaal";
 
 // Coins
-var totalMoney = 250;
+var totalMoney = 0;
 
 // Data
 var data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];

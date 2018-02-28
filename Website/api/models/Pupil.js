@@ -24,10 +24,12 @@ module.exports = {
         required: true
       },
       points: {
-        type: 'Integer'
+        type: 'Integer',
+        required: true,
+        defaultsTo: 0
       },
       character: {
-        type: 'String'
+        type: 'String',
       },
       state: {
         model: 'State'
@@ -59,7 +61,9 @@ module.exports = {
       shortid: shortid.generate(),
 			dob: inputs.address,
 			school: inputs.school,
-			passcode: passcode,
+      passcode: passcode,
+      character:'',
+      points:25
     };
     sails.log(params);
     Pupil.create(params).exec(cb);

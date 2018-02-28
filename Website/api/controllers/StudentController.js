@@ -60,11 +60,22 @@ module.exports = {
     })
   },
   profile: function(req,res) {
+    sails.log(req.pupil);
     var profile = {
-      name: res.pupil.name,
-      points: res.pupil.points,
-      character: res.pupil.character
+      name: req.pupil.name,
+      points: req.pupil.points,
+      character: req.pupil.character
     }
     return res.json(profile);
+  },
+  saveProfile: function(req,res) {
+    points = req.param('newPoints');
+    character = req.param('newCharacter');
+    sails.log(points);
+    sails.log(character);
+    Pupil.update({id:req.pupil.id},{newPoints:points,character:JSON.stringify(character)}, function(err,pupil2) {
+      sails.log(pupil2);
+      return res.ok();
+    });
   }
 };

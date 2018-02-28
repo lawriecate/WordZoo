@@ -1038,4 +1038,8 @@ function updateDB()
 	// Coins
 
 	// POST
+	$.post('/student/buy',{newPoints:totalMoney,newCharacter:data},function(data) {
+
+	}).fail(function() {
+	});
 }
