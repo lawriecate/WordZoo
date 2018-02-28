@@ -407,7 +407,7 @@ Level.prototype.create = function ()
 	{
 		assets[i].sprite.inputEnabled = true;
 		assets[i].sprite.events.onInputDown.add(selectSpell,{button: assets[i].sprite, selected: i});
-		//assets[i].sprite.scale.setTo(2,2);
+		assets[i].sprite.scale.setTo(0.5,0.5);
 	}
 
 	//Intialise Array
