@@ -2039,8 +2039,8 @@ module.exports = {
 
 			// For each value
 			var returnWords = new Array();
-			for(var z=0; z<wordsIn.length; z++)
-			{
+			//for(var z=0; z<wordsIn.length; z++)
+			//{
 				// MAIN
 				shuffleBoth();
 
@@ -2066,7 +2066,7 @@ module.exports = {
 			      		}
 			    	}
 			  	}
-			}
+			//}
 
 
 			// Return words
