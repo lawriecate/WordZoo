@@ -838,8 +838,9 @@ module.exports = {
 						State.create(stateRecord,function(err,state) {
 							
 						});
-
-						Pupil.update({id:req.session.pupilId},{points:(req.pupil.points+req.param('score'))},function(err,pupil){
+						oldPoints = req.pupil.points;
+						if(oldPoints === null) {oldPoints =0;}
+						Pupil.update({id:req.session.pupilId},{points:(oldPoints+req.param('score'))},function(err,pupil){
 
 						});
     				});
