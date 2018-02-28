@@ -778,8 +778,7 @@ function getRhymingPair(word)
     {
       if(words[i] != word)
       {
-       	final = words[i];
-       	return final;
+       	return words[i];
       }
     }
   }
@@ -787,9 +786,23 @@ function getRhymingPair(word)
   return "error";
 }
 
+
+
+
+
+
+
+// Loop
 shuffleBoth();
-console.log(getRhymingPair(baseWords[0]));
-console.log("output 2 "+final);
+for(var i=0; i<baseWords.length; i++)
+{
+	matchingWords[i][0] = baseWords[i];
+	matchingWords[i][1] = getRhymingPair(baseWords[i]);
+}
+
+
+
+console.log(matchingWords);
 
 
 
