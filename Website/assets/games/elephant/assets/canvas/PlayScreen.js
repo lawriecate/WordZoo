@@ -22,7 +22,7 @@ PlayScreen.prototype.init = function ()
 
 PlayScreen.prototype.preload = function ()
 {
-	this.load.pack('PlayScreen', '/games/elephant/WebContent/assets/pack.json');
+	this.load.pack('PlayScreen', '/games/elephant/assets/pack.json');
 
 	// Load items
 	for(var i = 0; i < matchingWords.length; i++)

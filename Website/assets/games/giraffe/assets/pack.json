@@ -3,31 +3,31 @@
     {
       "type": "image",
       "key": "background",
-      "url": "/games/giraffe/WebContent/assets/1 StartScreen/MainMenu.png",
+      "url": "/games/giraffe/assets/1 StartScreen/MainMenu.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "/games/giraffe/WebContent/assets/1 StartScreen/play.png",
+      "url": "/games/giraffe/assets/1 StartScreen/play.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "/games/giraffe/WebContent/assets/1 StartScreen/rules.png",
+      "url": "/games/giraffe/assets/1 StartScreen/rules.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "BackButton",
-      "url": "/games/giraffe/WebContent/assets/1 StartScreen/back.png",
+      "url": "/games/giraffe/assets/1 StartScreen/back.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "preloader",
-      "url": "/games/giraffe/WebContent/assets/1 StartScreen/preloader.png",
+      "url": "/games/giraffe/assets/1 StartScreen/preloader.png",
       "frameWidth": 250,
       "frameHeight": 250,
       "frameMax": -1,
@@ -37,7 +37,7 @@
     {
       "type": "image",
       "key": "ButtonBackground",
-      "url": "/games/giraffe/WebContent/assets/1 StartScreen/buttonBackground.png",
+      "url": "/games/giraffe/assets/1 StartScreen/buttonBackground.png",
       "overwrite": false
     }
   ],
@@ -45,31 +45,31 @@
     {
       "type": "image",
       "key": "okButton",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/ok.png",
+      "url": "/games/giraffe/assets/2 Rules/ok.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Background",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/Background.png",
+      "url": "/games/giraffe/assets/2 Rules/Background.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "circle",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/highlightCircle.png",
+      "url": "/games/giraffe/assets/2 Rules/highlightCircle.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "wordDisplay",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/wordDisplay.png",
+      "url": "/games/giraffe/assets/2 Rules/wordDisplay.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "GiraffeAnimation",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/GiraffeFailAnimation.png",
+      "url": "/games/giraffe/assets/2 Rules/GiraffeFailAnimation.png",
       "frameWidth": 375,
       "frameHeight": 190,
       "frameMax": -1,
@@ -79,7 +79,7 @@
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/Lives.png",
+      "url": "/games/giraffe/assets/2 Rules/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": -1,
@@ -89,7 +89,7 @@
     {
       "type": "spritesheet",
       "key": "Red",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/Red.png",
+      "url": "/games/giraffe/assets/2 Rules/Red.png",
       "frameWidth": 312,
       "frameHeight": 474,
       "frameMax": -1,
@@ -99,7 +99,7 @@
     {
       "type": "spritesheet",
       "key": "giraffeSprite",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/giraffeSprite.png",
+      "url": "/games/giraffe/assets/2 Rules/giraffeSprite.png",
       "frameWidth": 0,
       "frameHeight": 0,
       "frameMax": -1,
@@ -109,7 +109,7 @@
     {
       "type": "spritesheet",
       "key": "giraffeWalking",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/giraffeWalking.png",
+      "url": "/games/giraffe/assets/2 Rules/giraffeWalking.png",
       "frameWidth": 550,
       "frameHeight": 550,
       "frameMax": -1,
@@ -119,7 +119,7 @@
     {
       "type": "image",
       "key": "tutorialOverlay",
-      "url": "/games/giraffe/WebContent/assets/2 Rules/tutorialOverlay.png",
+      "url": "/games/giraffe/assets/2 Rules/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -127,25 +127,25 @@
     {
       "type": "image",
       "key": "FinishBackground",
-      "url": "/games/giraffe/WebContent/assets/4 EndScreen/endBackground.png",
+      "url": "/games/giraffe/assets/4 EndScreen/endBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayAgain",
-      "url": "/games/giraffe/WebContent/assets/4 EndScreen/playAgainButton.png",
+      "url": "/games/giraffe/assets/4 EndScreen/playAgainButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "/games/giraffe/WebContent/assets/4 EndScreen/homeButton.png",
+      "url": "/games/giraffe/assets/4 EndScreen/homeButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "GameOver",
-      "url": "/games/giraffe/WebContent/assets/4 EndScreen/gameOver.png",
+      "url": "/games/giraffe/assets/4 EndScreen/gameOver.png",
       "overwrite": false
     }
   ],
@@ -153,19 +153,19 @@
     {
       "type": "image",
       "key": "Background",
-      "url": "/games/giraffe/WebContent/assets/3 Play/Background.png",
+      "url": "/games/giraffe/assets/3 Play/Background.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ScoreBackground",
-      "url": "/games/giraffe/WebContent/assets/3 Play/score_background.png",
+      "url": "/games/giraffe/assets/3 Play/score_background.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "/games/giraffe/WebContent/assets/3 Play/Lives.png",
+      "url": "/games/giraffe/assets/3 Play/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": 4,
@@ -175,7 +175,7 @@
     {
       "type": "spritesheet",
       "key": "giraffeFalling",
-      "url": "/games/giraffe/WebContent/assets/3 Play/GiraffeFailAnimation.png",
+      "url": "/games/giraffe/assets/3 Play/GiraffeFailAnimation.png",
       "frameWidth": 375,
       "frameHeight": 190,
       "frameMax": -1,
@@ -185,7 +185,7 @@
     {
       "type": "spritesheet",
       "key": "giraffeSprite",
-      "url": "/games/giraffe/WebContent/assets/3 Play/giraffeSprite.png",
+      "url": "/games/giraffe/assets/3 Play/giraffeSprite.png",
       "frameWidth": 0,
       "frameHeight": 0,
       "frameMax": -1,
@@ -195,25 +195,25 @@
     {
       "type": "image",
       "key": "stone",
-      "url": "/games/giraffe/WebContent/assets/3 Play/stone.png",
+      "url": "/games/giraffe/assets/3 Play/stone.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "wordDisplay",
-      "url": "/games/giraffe/WebContent/assets/3 Play/wordDisplay.png",
+      "url": "/games/giraffe/assets/3 Play/wordDisplay.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "Empty",
-      "url": "/games/giraffe/WebContent/assets/3 Play/Empty.png",
+      "url": "/games/giraffe/assets/3 Play/Empty.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "giraffeWalking",
-      "url": "/games/giraffe/WebContent/assets/3 Play/giraffeWalking.png",
+      "url": "/games/giraffe/assets/3 Play/giraffeWalking.png",
       "frameWidth": 550,
       "frameHeight": 550,
       "frameMax": -1,

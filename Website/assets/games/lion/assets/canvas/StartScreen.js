@@ -18,7 +18,7 @@ StartScreen.prototype.init = function ()
 
 StartScreen.prototype.preload = function () 
 {	
-	this.load.pack('startScreen', '/games/lion/WebContent/assets/pack.json');
+	this.load.pack('startScreen', '/games/lion/assets/pack.json');
 };
 
 StartScreen.prototype.create = function () 

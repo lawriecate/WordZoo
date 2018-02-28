@@ -26,7 +26,7 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	this.load.pack('startScreen', '/games/sheep/WebContent/assets/pack.json');	
+	this.load.pack('startScreen', '/games/sheep/assets/pack.json');	
 };
 
 LoadingScreen.prototype.create = function ()

@@ -30,7 +30,7 @@ RulesScreen.prototype.init = function ()
 
 RulesScreen.prototype.preload = function ()
 {	
-	this.load.pack('RulesScreen', '/games/sheep/WebContent/assets/pack.json');
+	this.load.pack('RulesScreen', '/games/sheep/assets/pack.json');
 
 	// Set up pens array + fill with blanks
 	pens = new Array();

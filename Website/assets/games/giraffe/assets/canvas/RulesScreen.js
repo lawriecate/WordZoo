@@ -31,8 +31,8 @@ RulesScreen.prototype.init = function ()
 
 RulesScreen.prototype.preload = function ()
 {
-	this.load.pack('PlayScreen', '/games/giraffe/WebContent/assets/pack.json');
-	this.load.pack('RulesScreen', '/games/giraffe/WebContent/assets/pack.json');
+	this.load.pack('PlayScreen', '/games/giraffe/assets/pack.json');
+	this.load.pack('RulesScreen', '/games/giraffe/assets/pack.json');
 };
 
 RulesScreen.prototype.create = function ()

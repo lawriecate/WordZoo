@@ -23,7 +23,7 @@ PlayScreen.prototype.init = function ()
 
 PlayScreen.prototype.preload = function ()
 {
-	this.load.pack('PlayScreen', '/games/giraffe/WebContent/assets/pack.json');
+	this.load.pack('PlayScreen', '/games/giraffe/assets/pack.json');
 
 	// Clear + expand words list
 	clickHistory = new Array ();

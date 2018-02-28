@@ -3,92 +3,92 @@
     {
       "type": "image",
       "key": "background",
-      "url": "/games/Owl/WebContent/assets/background.png",
+      "url": "assets/background.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "scroll2",
-      "url": "/games/Owl/WebContent/assets/scroll2.png",
+      "url": "assets/scroll2.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "scroll",
-      "url": "/games/Owl/WebContent/assets/scroll.png",
+      "url": "assets/scroll.png",
       "overwrite": false
     },
     {
       "type": "atlas",
       "key": "KeyBoard",
-      "textureURL": "/games/Owl/WebContent/assets/KeyBoard.png",
-      "atlasURL": "/games/Owl/WebContent/assets/KeyBoard.json",
+      "textureURL": "assets/KeyBoard.png",
+      "atlasURL": "assets/KeyBoard.json",
       "format": "TEXTURE_ATLAS_JSON_HASH"
     },
     {
       "type": "image",
       "key": "OpponentHealth",
-      "url": "/games/Owl/WebContent/assets/OpponentHealth.png",
+      "url": "assets/OpponentHealth.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "goodOwlArm",
-      "url": "/games/Owl/WebContent/assets/goodOwlArm.png",
+      "url": "assets/goodOwlArm.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "badOwlArm",
-      "url": "/games/Owl/WebContent/assets/badOwlArm.png",
+      "url": "assets/badOwlArm.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "goodOwlBody",
-      "url": "/games/Owl/WebContent/assets/goodOwlBody.png",
+      "url": "assets/goodOwlBody.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "badOwlBody",
-      "url": "/games/Owl/WebContent/assets/badOwlBody.png",
+      "url": "assets/badOwlBody.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "chosenWord",
-      "url": "/games/Owl/WebContent/assets/chosenWord.png",
+      "url": "assets/chosenWord.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "YouHealth",
-      "url": "/games/Owl/WebContent/assets/YouHealth.png",
+      "url": "assets/YouHealth.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "KeyBoardBackground",
-      "url": "/games/Owl/WebContent/assets/keyboardBackground.png",
+      "url": "assets/keyboardBackground.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "highLightCircle",
-      "url": "/games/Owl/WebContent/assets/highlightCircle.png",
+      "url": "assets/highlightCircle.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "okButton",
-      "url": "/games/Owl/WebContent/assets/ok.png",
+      "url": "assets/ok.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Red",
-      "url": "/games/Owl/WebContent/assets/Red.png",
+      "url": "assets/Red.png",
       "frameWidth": 312,
       "frameHeight": 474,
       "frameMax": -1,
@@ -98,7 +98,7 @@
     {
       "type": "spritesheet",
       "key": "preloader",
-      "url": "/games/Owl/WebContent/assets/preloader.png",
+      "url": "assets/preloader.png",
       "frameWidth": 250,
       "frameHeight": 250,
       "frameMax": -1,
@@ -108,7 +108,7 @@
     {
       "type": "image",
       "key": "tutorialOverlay",
-      "url": "/games/Owl/WebContent/assets/tutorialOverlay.png",
+      "url": "assets/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -116,69 +116,69 @@
     {
       "type": "image",
       "key": "FinishBackground",
-      "url": "/games/Owl/WebContent/assets/endBackGround.png",
+      "url": "assets/endBackGround.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayAgain",
-      "url": "/games/Owl/WebContent/assets/playAgainButton.png",
+      "url": "assets/playAgainButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "/games/Owl/WebContent/assets/homeButton.png",
+      "url": "assets/homeButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ScoreBackground",
-      "url": "/games/Owl/WebContent/assets/score_background.png",
+      "url": "assets/score_background.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "GameOver",
-      "url": "/games/Owl/WebContent/assets/gameOver.png",
+      "url": "assets/gameOver.png",
       "overwrite": false
     }
   ],
   "Rules": [{
     "type": "image",
     "key": "okButton",
-    "url": "/games/Owl/WebContent/assets/ok.png",
+    "url": "assets/ok.png",
     "overwrite": false
   }],
   "Start": [
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "/games/Owl/WebContent/assets/playButton.png",
+      "url": "assets/playButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "/games/Owl/WebContent/assets/rulesButton.png",
+      "url": "assets/rulesButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "mainBackground",
-      "url": "/games/Owl/WebContent/assets/MainMenu.png",
+      "url": "assets/MainMenu.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "BackButton",
-      "url": "/games/Owl/WebContent/assets/backButton.png",
+      "url": "assets/backButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ButtonBackground",
-      "url": "/games/Owl/WebContent/assets/buttonBackground.png",
+      "url": "assets/buttonBackground.png",
       "overwrite": false
     }
   ],

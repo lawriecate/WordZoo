@@ -3,25 +3,25 @@
     {
       "type": "image",
       "key": "background",
-      "url": "/games/lion/WebContent/assets/1 StartScreen/MainMenu.png",
+      "url": "assets/1 StartScreen/MainMenu.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "/games/lion/WebContent/assets/1 StartScreen/playButton.png",
+      "url": "assets/1 StartScreen/playButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "/games/lion/WebContent/assets/1 StartScreen/rulesButton.png",
+      "url": "assets/1 StartScreen/rulesButton.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "preloader",
-      "url": "/games/lion/WebContent/assets/1 StartScreen/preloader.png",
+      "url": "assets/1 StartScreen/preloader.png",
       "frameWidth": 250,
       "frameHeight": 250,
       "frameMax": -1,
@@ -31,13 +31,13 @@
     {
       "type": "image",
       "key": "BackButton",
-      "url": "/games/lion/WebContent/assets/1 StartScreen/backButton.png",
+      "url": "assets/1 StartScreen/backButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ButtonBackground",
-      "url": "/games/lion/WebContent/assets/1 StartScreen/buttonBackground.png",
+      "url": "assets/1 StartScreen/buttonBackground.png",
       "overwrite": false
     }
   ],
@@ -45,25 +45,25 @@
     {
       "type": "image",
       "key": "okButton",
-      "url": "/games/lion/WebContent/assets/2 Rules/ok.png",
+      "url": "assets/2 Rules/ok.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "goalkeeper_center",
-      "url": "/games/lion/WebContent/assets/2 Rules/goalkeeper_center.png",
+      "url": "assets/2 Rules/goalkeeper_center.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "highlightCircle",
-      "url": "/games/lion/WebContent/assets/2 Rules/highlightCircle.png",
+      "url": "assets/2 Rules/highlightCircle.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "/games/lion/WebContent/assets/2 Rules/Lives.png",
+      "url": "assets/2 Rules/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": -1,
@@ -73,7 +73,7 @@
     {
       "type": "spritesheet",
       "key": "Hand",
-      "url": "/games/lion/WebContent/assets/2 Rules/Red.png",
+      "url": "assets/2 Rules/Red.png",
       "frameWidth": 313,
       "frameHeight": 474,
       "frameMax": -1,
@@ -83,7 +83,7 @@
     {
       "type": "spritesheet",
       "key": "bottom_right_dive",
-      "url": "/games/lion/WebContent/assets/2 Rules/bottom_right_dive.png",
+      "url": "assets/2 Rules/bottom_right_dive.png",
       "frameWidth": 480,
       "frameHeight": 300,
       "frameMax": -1,
@@ -93,13 +93,13 @@
     {
       "type": "image",
       "key": "Background",
-      "url": "/games/lion/WebContent/assets/2 Rules/football_Background.png",
+      "url": "assets/2 Rules/football_Background.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "soccer_ball",
-      "url": "/games/lion/WebContent/assets/2 Rules/soccer_ball.png",
+      "url": "assets/2 Rules/soccer_ball.png",
       "frameWidth": 110,
       "frameHeight": 100,
       "frameMax": -1,
@@ -109,7 +109,7 @@
     {
       "type": "spritesheet",
       "key": "top_left_dive",
-      "url": "/games/lion/WebContent/assets/2 Rules/top_left_dive.png",
+      "url": "assets/2 Rules/top_left_dive.png",
       "frameWidth": 480,
       "frameHeight": 300,
       "frameMax": -1,
@@ -119,13 +119,13 @@
     {
       "type": "image",
       "key": "ScoreBackground",
-      "url": "/games/lion/WebContent/assets/2 Rules/score_background.png",
+      "url": "assets/2 Rules/score_background.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "tutorialOverlay",
-      "url": "/games/lion/WebContent/assets/2 Rules/tutorialOverlay.png",
+      "url": "assets/2 Rules/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -133,25 +133,25 @@
     {
       "type": "image",
       "key": "FinishBackground",
-      "url": "/games/lion/WebContent/assets/4 EndScreen/endBackGround.png",
+      "url": "assets/4 EndScreen/endBackGround.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayAgain",
-      "url": "/games/lion/WebContent/assets/4 EndScreen/playAgain.png",
+      "url": "assets/4 EndScreen/playAgain.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "/games/lion/WebContent/assets/4 EndScreen/moreGames.png",
+      "url": "assets/4 EndScreen/moreGames.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "GameOver",
-      "url": "/games/lion/WebContent/assets/4 EndScreen/gameOver.png",
+      "url": "assets/4 EndScreen/gameOver.png",
       "overwrite": false
     }
   ],
@@ -159,19 +159,19 @@
     {
       "type": "image",
       "key": "Background",
-      "url": "/games/lion/WebContent/assets/3 Play/football_Background.png",
+      "url": "assets/3 Play/football_Background.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ScoreBackground",
-      "url": "/games/lion/WebContent/assets/3 Play/score_background.png",
+      "url": "assets/3 Play/score_background.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Lives",
-      "url": "/games/lion/WebContent/assets/3 Play/Lives.png",
+      "url": "assets/3 Play/Lives.png",
       "frameWidth": 275,
       "frameHeight": 80,
       "frameMax": 4,
@@ -181,7 +181,7 @@
     {
       "type": "spritesheet",
       "key": "bottom_left_dive",
-      "url": "/games/lion/WebContent/assets/3 Play/bottom_left_dive.png",
+      "url": "assets/3 Play/bottom_left_dive.png",
       "frameWidth": 480,
       "frameHeight": 300,
       "frameMax": 3,
@@ -191,7 +191,7 @@
     {
       "type": "spritesheet",
       "key": "bottom_right_dive",
-      "url": "/games/lion/WebContent/assets/3 Play/bottom_right_dive.png",
+      "url": "assets/3 Play/bottom_right_dive.png",
       "frameWidth": 480,
       "frameHeight": 300,
       "frameMax": -1,
@@ -201,13 +201,13 @@
     {
       "type": "image",
       "key": "goalkeeper_center",
-      "url": "/games/lion/WebContent/assets/3 Play/goalkeeper_center.png",
+      "url": "assets/3 Play/goalkeeper_center.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "top_left_dive",
-      "url": "/games/lion/WebContent/assets/3 Play/top_left_dive.png",
+      "url": "assets/3 Play/top_left_dive.png",
       "frameWidth": 480,
       "frameHeight": 300,
       "frameMax": -1,
@@ -217,7 +217,7 @@
     {
       "type": "spritesheet",
       "key": "top_right_dive",
-      "url": "/games/lion/WebContent/assets/3 Play/top_right_dive.png",
+      "url": "assets/3 Play/top_right_dive.png",
       "frameWidth": 480,
       "frameHeight": 300,
       "frameMax": -1,
@@ -227,7 +227,7 @@
     {
       "type": "spritesheet",
       "key": "soccer_ball",
-      "url": "/games/lion/WebContent/assets/3 Play/soccer_ball.png",
+      "url": "assets/3 Play/soccer_ball.png",
       "frameWidth": 110,
       "frameHeight": 100,
       "frameMax": -1,

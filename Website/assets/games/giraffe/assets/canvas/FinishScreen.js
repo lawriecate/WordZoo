@@ -22,7 +22,7 @@ FinishScreen.prototype.init = function ()
 
 FinishScreen.prototype.preload = function ()
 {
-	this.load.pack('FinishScreen', '/games/giraffe/WebContent/assets/pack.json');
+	this.load.pack('FinishScreen', '/games/giraffe/assets/pack.json');
 };
 
 FinishScreen.prototype.create = function ()

@@ -18,7 +18,7 @@ StartScreen.prototype.init = function ()
 
 StartScreen.prototype.preload = function ()
 {
-	this.load.pack('StartScreen', '/games/octopus/WebContent/assets/pack.json');
+	this.load.pack('StartScreen', '/games/octopus/assets/pack.json');
 };
 
 StartScreen.prototype.create = function ()

@@ -18,7 +18,7 @@ StartScreen.prototype.init = function ()
 
 StartScreen.prototype.preload = function ()
 {
-	this.load.pack('startScreen', '/games/giraffe/WebContent/assets/pack.json');
+	this.load.pack('startScreen', '/games/giraffe/assets/pack.json');
 };
 
 StartScreen.prototype.create = function ()

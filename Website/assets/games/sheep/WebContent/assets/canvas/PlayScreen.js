@@ -23,7 +23,7 @@ PlayScreen.prototype.init = function ()
 
 PlayScreen.prototype.preload = function ()
 {
-	this.load.pack('PlayScreen', '/games/sheep/WebContent/assets/pack.json');
+	this.load.pack('PlayScreen', '/games/sheep/assets/pack.json');
 
 	// Set up pens array + fill with blanks
 	pens = new Array();

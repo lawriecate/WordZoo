@@ -34,12 +34,12 @@ RulesScreen.prototype.init = function ()
 RulesScreen.prototype.preload = function ()
 {
 	// Load pack
-	this.load.pack('Main', '/games/octopus/WebContent/assets/pack.json');
+	this.load.pack('Main', '/games/octopus/assets/pack.json');
 
 	// Load assets
 	for(var i = 0; i < testWords.length; i++)
 	{
-		this.load.image(testWords[i] ,'/games/octopus/WebContent/assets/testWebContent/assets/'+testWords[i]+'.png');
+		this.load.image(testWords[i] ,'/games/octopus/assets/testAssets/'+testWords[i]+'.png');
 	}
 
 

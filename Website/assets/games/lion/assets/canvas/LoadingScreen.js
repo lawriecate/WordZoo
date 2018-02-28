@@ -29,7 +29,7 @@ LoadingScreen.prototype.init = function ()
 
 LoadingScreen.prototype.preload = function ()
 {
-	this.load.pack('startScreen', '/games/lion/WebContent/assets/pack.json');
+	this.load.pack('startScreen', '/games/lion/assets/pack.json');
 };
 
 LoadingScreen.prototype.create = function ()

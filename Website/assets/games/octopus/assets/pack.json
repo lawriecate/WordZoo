@@ -3,37 +3,37 @@
     {
       "type": "image",
       "key": "background",
-      "url": "/games/octopus/WebContent/assets/background.png",
+      "url": "/games/octopus/assets/background.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "pizza",
-      "url": "/games/octopus/WebContent/assets/pizza.png",
+      "url": "/games/octopus/assets/pizza.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "selectItem",
-      "url": "/games/octopus/WebContent/assets/selectItem.png",
+      "url": "/games/octopus/assets/selectItem.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "strikeThrough",
-      "url": "/games/octopus/WebContent/assets/strikeThrough.png",
+      "url": "/games/octopus/assets/strikeThrough.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "highlightCircle",
-      "url": "/games/octopus/WebContent/assets/highlightCircle.png",
+      "url": "/games/octopus/assets/highlightCircle.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "Red",
-      "url": "/games/octopus/WebContent/assets/Red.png",
+      "url": "/games/octopus/assets/Red.png",
       "frameWidth": 312,
       "frameHeight": 474,
       "frameMax": -1,
@@ -43,13 +43,13 @@
     {
       "type": "image",
       "key": "ok",
-      "url": "/games/octopus/WebContent/assets/ok.png",
+      "url": "/games/octopus/assets/ok.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "tutorialOverlay",
-      "url": "/games/octopus/WebContent/assets/tutorialOverlay.png",
+      "url": "/games/octopus/assets/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -57,25 +57,25 @@
     {
       "type": "image",
       "key": "background",
-      "url": "/games/octopus/WebContent/assets/MainMenu.png",
+      "url": "/games/octopus/assets/MainMenu.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayButton",
-      "url": "/games/octopus/WebContent/assets/playButton.png",
+      "url": "/games/octopus/assets/playButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "RulesButton",
-      "url": "/games/octopus/WebContent/assets/rulesButton.png",
+      "url": "/games/octopus/assets/rulesButton.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "preloader",
-      "url": "/games/octopus/WebContent/assets/preloader.png",
+      "url": "/games/octopus/assets/preloader.png",
       "frameWidth": 250,
       "frameHeight": 250,
       "frameMax": -1,
@@ -85,13 +85,13 @@
     {
       "type": "image",
       "key": "BackButton",
-      "url": "/games/octopus/WebContent/assets/backButton.png",
+      "url": "/games/octopus/assets/backButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "ButtonBackground",
-      "url": "/games/octopus/WebContent/assets/buttonBackground.png",
+      "url": "/games/octopus/assets/buttonBackground.png",
       "overwrite": false
     }
   ],
@@ -99,13 +99,13 @@
     {
       "type": "image",
       "key": "ok",
-      "url": "/games/octopus/WebContent/assets/ok.png",
+      "url": "/games/octopus/assets/ok.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "tutorialOverlay",
-      "url": "/games/octopus/WebContent/assets/tutorialOverlay.png",
+      "url": "/games/octopus/assets/tutorialOverlay.png",
       "overwrite": false
     }
   ],
@@ -113,25 +113,25 @@
     {
       "type": "image",
       "key": "FinishBackground",
-      "url": "/games/octopus/WebContent/assets/endBackGround.png",
+      "url": "/games/octopus/assets/endBackGround.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "MoreGames",
-      "url": "/games/octopus/WebContent/assets/homeButton.png",
+      "url": "/games/octopus/assets/homeButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "PlayAgain",
-      "url": "/games/octopus/WebContent/assets/playAgainButton.png",
+      "url": "/games/octopus/assets/playAgainButton.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "GameOver",
-      "url": "/games/octopus/WebContent/assets/gameOver.png",
+      "url": "/games/octopus/assets/gameOver.png",
       "overwrite": false
     }
   ],
