@@ -2,15 +2,6 @@
 var character = character|| {};
 
 
-/*
-	Loading into LoadingScreen
-
-	Send {username, string, coins} out on every action
-*/
-
-
-
-
 
 
 /**
@@ -657,8 +648,8 @@ function renderCharacter(data)
 
 	if(data[40] == 2)
 	{
+		spriteSheets[40].alpha = 1.0;
 		_locks.children[40].visible = false;
-		spriteSheets[i].alpha = 1.0;
 	}
 
 	// Cases of Which Animal
