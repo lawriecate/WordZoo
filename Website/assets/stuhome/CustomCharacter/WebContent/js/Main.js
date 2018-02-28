@@ -9,6 +9,8 @@ $.get('/student/profile',function(profile) {
 	username = profile.name;
 	totalMoney = profile.points;
 	data = profile.character;
+
+	game.state.start("Level");
 });
 
 // Username
@@ -43,7 +45,7 @@ window.onload = function()
 
 	// Show loading screen
 	// *** NOT LEVEL ***
-	game.state.start("Level");
+	game.state.start("Loading");
 /*
 	$.get('http://localhost:1337/student/testdata', function(info)
 	{
