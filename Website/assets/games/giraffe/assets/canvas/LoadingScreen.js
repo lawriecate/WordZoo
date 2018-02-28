@@ -63,10 +63,10 @@ LoadingScreen.prototype.create = function ()
 		{
 			// Record first word
 			matchingWords[i][0] = words[i];
-			var cword =words[i];
+			var cword = words[i];
 
 			// Get matching pair
-			$.get('/student/getMatchingPair', function(cword,data)
+			$.post('/student/getMatchingPair', {wordIn:cword},function(data)
 			{
 				// Record matching pair
 				matchingWords[i][1] = data
