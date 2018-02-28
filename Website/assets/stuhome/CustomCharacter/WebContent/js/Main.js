@@ -39,7 +39,7 @@ window.onload = function()
 	$.get('/student/profile',function(profile) {
 		username = profile.name;
 		totalMoney = profile.points;
-		if(!profile.character {
+		if(!profile.character) {
 			// null
 		} else {
 			//Remove the [ ] characters 
