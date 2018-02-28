@@ -61,7 +61,7 @@ LoadingScreen.prototype.create = function ()
 
 
 		// Get matching pair
-		$.post('/student/getMatchingPair', {wordsIn:baseWords[0]},function(data)
+		$.post('/student/getMatchingPair', {wordsIn:baseWords},function(data)
 		{
 			// Record matching pair
 			var returnWords = data;
