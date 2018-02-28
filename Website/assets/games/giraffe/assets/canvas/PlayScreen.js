@@ -256,7 +256,7 @@ console.log(currentColoumn);
 	timeText.setText("Time: "+(Math.floor(timeLeft/backgroundScrollSpeed)), true);
 
 	// recrease time remaining
-	--timeLeft;
+	timeLeft--;
 
 
 	// check lives remaining

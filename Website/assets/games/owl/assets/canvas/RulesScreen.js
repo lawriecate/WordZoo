@@ -5,7 +5,7 @@ var counter;
 
 
 // Tutorial words (hard coded to match fixed assets)
-var words = ["Apple", "Bear", "Car", "Bird", "Boat", "Book", "Cheese", "Cone", "Dog", "Hat"];
+var testWords = ["Apple", "Bear", "Car", "Bird", "Boat", "Book", "Cheese", "Cone", "Dog", "Hat"];
 
 
 
@@ -80,10 +80,10 @@ RulesScreen.prototype.preload = function ()
 	}
 
 	// Load items
-	for(var i = 0; i < words.length; i++)
+	for(var i = 0; i < testWords.length; i++)
 	{
-		this.load.image(words[i] ,'/images/words/'+words[i]+'.png');
-		assets[i].word = words[i];
+		this.load.image(testWords[i] ,'/images/words/'+testWords[i]+'.png');
+		assets[i].word = testWords[i];
 	}
 	   
     //Frame Width, Frame Height, Frame Max, margin,spacing
