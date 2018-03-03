@@ -327,7 +327,7 @@ function word2pos(word) {
 		 return 158;
 		case "throne":
 		 return 159;
-		case "gum":
+		case "son":
 		 return 160;
 		case "drain":
 		 return 161;
@@ -979,7 +979,7 @@ module.exports = {
 		    "wine",
 		    "pine",
 		    "nine",
-		    "gum",
+		    "son",
 		    "nun",
 		    "sun",
 		    "bushes",

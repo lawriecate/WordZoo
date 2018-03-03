@@ -77,7 +77,7 @@ LoadingScreen.prototype.create = function ()
         var words =
         ["back", "bake", "meat", "beaches", "ben", "big", "pope", "brown", "mine", "bun", "sack", "black", "crack", "brake", "cake",
         "lake", "rake", "feet", "sweet", "wheat", "peaches", "men", "hen", "ten", "pig", "rope", "soap", "town", "clown", "crown",
-        "wine", "pine", "nine", "gun", "nun", "sun", "bushes", "cages", "cloak", "cold", "cream", "cub", "day", "dish", "dome",
+        "wine", "pine", "nine", "son", "nun", "sun", "bushes", "cages", "cloak", "cold", "cream", "cub", "day", "dish", "dome",
         "donkey", "brushes", "pages", "oak", "yolk", "smoke", "gold", "bald", "steam", "pub", "tub", "club", "tray", "play", "fish",
         "home", "gnome", "monkey", "turkey", "dot", "dump", "dust", "hose", "farm", "fin", "flour", "foil", "liquid", "green", "hot",
         "pot", "jump", "rust", "nose", "clothes", "arm", "bin", "pin", "tin", "tower", "flower", "shower", "soil", "oil", "squid",
