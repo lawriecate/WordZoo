@@ -255,9 +255,9 @@ RulesScreen.prototype.updateTime = function ()
 RulesScreen.prototype.setFirst = function ()
 {
 	// Get a matching pair
-    var matchingPair = matchingWords[0];
-    var incorrect1 = matchingWords[1];
-    var incorrect2 = matchingWords[2];
+    var matchingPair = testWords[0];
+    var incorrect1 = testWords[1];
+    var incorrect2 = testWords[2];
     winnerItemText.setText(matchingPair[0]);
     
     // Set correct picture
@@ -287,9 +287,9 @@ RulesScreen.prototype.setSecond = function ()
 	item2.kill();
 
 	// Get a matching pair
-    var matchingPair = matchingWords[1];
-    var incorrect1 = matchingWords[0];
-    var incorrect2 = matchingWords[2];
+    var matchingPair = testWords[1];
+    var incorrect1 = testWords[0];
+    var incorrect2 = testWords[2];
     winnerItemText.setText(matchingPair[0]);
 
     // Set correct picture
