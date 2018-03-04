@@ -37,12 +37,12 @@ RulesScreen.prototype.preload = function ()
 	this.load.pack('RulesScreen', '/games/zebra/WebContent/assets/pack.json');
 
 	// Load items
-	this.load.image(bench ,'/images/words/bench.png');
-	this.load.image(brain ,'/images/words/brain.png');
-	this.load.image(cannon ,'/images/words/cannon.png');
-	this.load.image(cannon ,'/images/words/desk.png');
-	this.load.image(cannon ,'/images/words/flag.png');
-	this.load.image(mouse ,'/images/words/mouse.png');	
+	this.load.image(bench ,'/games/zebra/WebContent/assets/Items/Bench.png');
+	this.load.image(brain ,'/games/zebra/WebContent/assets/Items/Brain.png');
+	this.load.image(cannon ,'/games/zebra/WebContent/assets/Items/Cannon.png');
+	this.load.image(cannon ,'/games/zebra/WebContent/assets/Items/Desk.png');
+	this.load.image(cannon ,'/games/zebra/WebContent/assets/Items/Flag.png');
+	this.load.image(mouse ,'/games/zebra/WebContent/assets/Items/Mouse.png');	
 };
 
 RulesScreen.prototype.create = function () 
