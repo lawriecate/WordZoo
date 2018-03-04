@@ -5,7 +5,7 @@ var counter;
 
 
 // Tutorial words (hard coded to match fixed assets)
-var testWords = ["Apple", "Bear", "Car", "Bird", "Boat", "Book", "Cheese", "Cone", "Dog", "Hat"];
+var testWords = ["apple", "bear", "car", "bird", "boat", "book", "cheese", "cone", "dog", "hat"];
 
 
 
