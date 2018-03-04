@@ -37,8 +37,7 @@ RulesScreen.prototype.preload = function ()
 	for(var i = 0; i < testWords.length; i++)
 	{
 		var temp = testWords[i];
-		this.load.image(temp[i],'/images/words/'+temp[i]+'.png');
-		console.log('/images/words/'+temp[i]+'.png');
+		this.load.image(temp[0],'/images/words/'+temp[0]+'.png');
 	}
 };
 
