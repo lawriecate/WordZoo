@@ -1275,12 +1275,16 @@ module.exports = {
 		    var numberOfWords = 0;
 
 		    //Loop until we have 10 unique words
-		    while(numberOfWords != 10){
-		      var randomWord = Math.floor(Math.random() * (words.length - 1));
-		      //If the word is not already in our list
-		      if(doesNotContainWord(generatedList, words[randomWord]))
-		        generatedList.push(words[randomWord]);
-		        numberOfWords++;
+		    while(numberOfWords != 10)
+		    {
+		    	var randomWord = Math.floor(Math.random() * (words.length - 1));
+		    	//If the word is not already in our list
+		    	
+		    	if(doesNotContainWord(generatedList, words[randomWord]))
+		    	{
+		    		generatedList.push(words[randomWord]);
+		    		numberOfWords++;
+		    	}
 		    }
 
 		    return generatedList;
