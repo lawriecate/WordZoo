@@ -314,7 +314,7 @@ RulesScreen.prototype.updateTime = function ()
 	// 1 circle Apple
 	if(counter == 1)
 	{
-		text.text = "_ _ _ _ _";
+		text.text = "_ _ _";
 		highLightCircle.visible = true;
 	}
 	// 2 hand to Car + move circle
@@ -405,7 +405,7 @@ RulesScreen.prototype.updateTime = function ()
 	// 10 attack spell
 	else if(counter == 10)
 	{
-		selectedSpell = "Car";
+		selectedSpell = "car";
 		this.playerGoodSpellRules();
 	}
 	// 15 circle enemy health
