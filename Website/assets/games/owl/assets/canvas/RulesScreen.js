@@ -87,9 +87,9 @@ RulesScreen.prototype.preload = function ()
 	}
 	   
     //Frame Width, Frame Height, Frame Max, margin,spacing
-    this.load.spritesheet('deathExplosion','assets/deathExplosion.png',148.1,187,27);
-    this.load.image('highLightCircle','assets/highlightCircle.png');
-    this.load.spritesheet('explosion', 'assets/explosionFull.png', 256, 256, 32);	
+    this.load.spritesheet('deathExplosion','/games/owl/assets/deathExplosion.png',148.1,187,27);
+    this.load.image('highLightCircle','/games/owl/assets/highlightCircle.png');
+    this.load.spritesheet('explosion', '/games/owl/assets/explosionFull.png', 256, 256, 32);
 };
 
 RulesScreen.prototype.create = function () 
