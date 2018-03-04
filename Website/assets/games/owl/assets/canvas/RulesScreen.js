@@ -5,7 +5,7 @@ var counter;
 
 
 // Tutorial words (hard coded to match fixed assets)
-var testWords = ["apple", "bear", "car", "bird", "boat", "book", "cheese", "cone", "dog", "hat"];
+var testWords = ["ant", "bear", "car", "bird", "boat", "book", "chess", "cone", "dog", "hat"];
 
 
 
@@ -264,10 +264,10 @@ RulesScreen.prototype.create = function ()
 	assets[9].sprite = this.add.sprite(1730,196+160+160+160+160+50,assets[9].word);
 	assets[9].sprite.anchor.setTo(0.5,0.5);	
 	
-	// Scale pictures
+	// Scale assets
 	for(var i = 0; i < 10; i++)
 	{
-		assets[i].sprite.scale.setTo(2,2);
+		assets[i].sprite.scale.setTo(0.7,0.7);
 	}
 
 
