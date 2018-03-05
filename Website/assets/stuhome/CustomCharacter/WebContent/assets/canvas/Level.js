@@ -376,8 +376,7 @@ Level.prototype.create = function ()
 
 		item1 = this.add.sprite(722, 2260, 'crown1', null, _buy);
 		item1.inputEnabled = true;
-		item1.events.onInputDown.add(addHead,{item: _crown});
-																								// HERE
+		item1.events.onInputDown.add(addCrown);
 
 		item1 = this.add.sprite(560, 2113, 'elephant', null, _buy);
 		item1.inputEnabled = true;
