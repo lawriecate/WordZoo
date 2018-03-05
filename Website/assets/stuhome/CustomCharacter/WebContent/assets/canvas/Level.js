@@ -778,8 +778,9 @@ function addHead()
 	});
 
 	if(this.crown){
-		console.log("Hello")
+		console.log("Hello");
 		data[40] = 2;
+		updateDB();
 	}else{
 		updateEquipedItem(this.item);
 	}
