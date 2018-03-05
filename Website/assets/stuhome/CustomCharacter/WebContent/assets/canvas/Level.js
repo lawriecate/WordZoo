@@ -376,7 +376,7 @@ Level.prototype.create = function ()
 
 		item1 = this.add.sprite(722, 2260, 'crown1', null, _buy);
 		item1.inputEnabled = true;
-		item1.events.onInputDown.add(addHead,{item: _crown, crown: true});
+		item1.events.onInputDown.add(addHead,{item: _crown});
 
 		item1 = this.add.sprite(560, 2113, 'elephant', null, _buy);
 		item1.inputEnabled = true;
@@ -766,6 +766,7 @@ function updateEquipedItem(item)
 		}
 	}
 
+
 	updateDB();
 }
 
@@ -777,13 +778,7 @@ function addHead()
 		updateData(item);
 	});
 
-	if(this.crown){
-		console.log("Hello");
-		data[40] = 2;
-		updateDB();
-	}else{
-		updateEquipedItem(this.item);
-	}
+	updateEquipedItem(this.item);
 
 	this.item.frame = animalIndex;
 	this.item.alpha = 1.0;
