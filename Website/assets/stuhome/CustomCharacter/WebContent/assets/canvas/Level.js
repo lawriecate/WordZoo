@@ -780,6 +780,7 @@ function addCrown()
 	this._crown.frame = animalIndex;
 	this._crown.alpha = 1.0;
 
+	data[40] = 2;
 	updateDB();
 }
 
