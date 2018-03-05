@@ -312,6 +312,7 @@ Level.prototype.create = function ()
 	var _crown = this.add.sprite(0, 0, 'crown', 0, _head);
 	_crown.scale.setTo(1.2, 1.2);
 	_crown.alpha = 0.0;
+	spriteSheets[35] = _crown;
 
 	var _clownWig = this.add.sprite(0,0,'clownWig',0,_head);
 	_clownWig.scale.setTo(1.2,1.2);
@@ -765,9 +766,6 @@ function updateEquipedItem(item)
 			break;
 		}
 	}
-
-	console.log("Crown case:" + item);
-
 
 	updateDB();
 }
