@@ -68,16 +68,17 @@ module.exports = {
       return a;
     }
     // giraffe = 36, owl=37,octo=38,zebra,39,panda=41,sheep=42,elephant=43,lion=44,
+    //elephant = 36,lion=37,octo=38,owl=39,panda=41,giraffe=42,zebra=43,sheep=44
     // 
     animalPositions = {
-      0:36,
-      1:37,
+      0:42,
+      1:39,
       2:38,
-      3:39,
+      3:43,
       4:41,
-      5:42,
-      6:43,
-      7:44
+      5:44,
+      6:36,
+      7:37
     }
     characterProfile = generateProfile();
     var animalIndex = animalPositions[animal];
