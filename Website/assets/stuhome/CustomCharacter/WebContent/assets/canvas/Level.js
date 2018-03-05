@@ -778,6 +778,7 @@ function addHead()
 	});
 
 	if(this.crown){
+		console.log("Hello")
 		data[40] = 2;
 	}else{
 		updateEquipedItem(this.item);
