@@ -31,6 +31,9 @@ module.exports = {
       character: {
         type: 'String',
       },
+      quiz_result: {
+        type: 'String',
+      },
       state: {
         model: 'State'
       },
