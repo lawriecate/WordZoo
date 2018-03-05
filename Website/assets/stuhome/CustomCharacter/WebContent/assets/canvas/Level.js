@@ -44,6 +44,8 @@ var itemCost = 25;
 var moneyText;
 var usernameText;
 
+var _crown;
+
 // SpriteSheets
 var spriteSheets = new Array();
 
@@ -309,7 +311,7 @@ Level.prototype.create = function ()
 	_topHat.alpha = 0.0;
 	spriteSheets[31] = _topHat;
 
-	var _crown = this.add.sprite(0, 0, 'crown', 0, _head);
+	_crown = this.add.sprite(0, 0, 'crown', 0, _head);
 	_crown.scale.setTo(1.2, 1.2);
 	_crown.alpha = 0.0;
 
@@ -649,7 +651,7 @@ function renderCharacter(data)
 	// Check crown
 	if(data[40] == 2)
 	{
-		spriteSheets[40].alpha = 1.0;
+		_crown.alpha = 1.0;
 		_locks.children[40].visible = false;
 	}
 	else if (data[40] == 1)
