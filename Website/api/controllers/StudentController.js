@@ -56,7 +56,38 @@ module.exports = {
   },
   finishQuiz: function(req,res) {
     result = JSON.stringify(req.param('quiz_result'));
-    Pupil.update({id:req.pupil.id},{quiz_result:result, completedWelcome:true},function(err,pupil) {
+    animal = req.param('animal');
+
+    function generateProfile() {
+      len = 45;
+      value = 0;
+      if (len == 0) return [];
+      var a = [value];
+      while (a.length * 2 <= len) a = a.concat(a);
+      if (a.length < len) a = a.concat(a.slice(0, len - a.length));
+      return a;
+    }
+    // giraffe = 36, owl=37,octo=38,zebra,39,panda=41,sheep=42,elephant=43,lion=44,
+    // 
+    animalPositions = {
+      0:36,
+      1:37,
+      2:38,
+      3:39,
+      4:41,
+      5:42,
+      6:43,
+      7:44
+    }
+    characterProfile = generateProfile();
+    var animalIndex = animalPositions[animal];
+    sails.log(animal);
+    sails.log(animalIndex);
+
+    characterProfile[animalIndex] = 2;
+
+    sails.log(characterProfile);
+    Pupil.update({id:req.pupil.id},{quiz_result:result, completedWelcome:true,character:JSON.stringify(characterProfile)},function(err,pupil) {
       return res.ok();
     })
   },

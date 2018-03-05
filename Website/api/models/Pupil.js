@@ -29,10 +29,10 @@ module.exports = {
         defaultsTo: 0
       },
       character: {
-        type: 'String',
+        type: 'Text',
       },
       quiz_result: {
-        type: 'String',
+        type: 'Text',
       },
       state: {
         model: 'State'
