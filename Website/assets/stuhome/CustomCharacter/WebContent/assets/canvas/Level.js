@@ -51,7 +51,7 @@ var spriteSheets = new Array();
 
 Level.prototype.preload = function ()
 {
-	this.load.pack('main', '/stuhome/CustomCharacter/WebContent/assets/pack.json');
+	this.load.pack('main', '/stuhome/CustomCharacter/WebContent/assets/pack.json');	
 };
 
 Level.prototype.create = function ()
@@ -646,14 +646,9 @@ function renderCharacter(data)
 		}
 	}
 
-	//The Crown - What
-	if(data[40] == 1){
-		_locks.children[40].visible = false;
-	}
-
 	if(data[40] == 2)
 	{
-		spriteSheets[36].alpha = 1.0;
+		spriteSheets[40].alpha = 1.0;
 		_locks.children[40].visible = false;
 	}
 
@@ -668,7 +663,7 @@ function renderCharacter(data)
 	}
 	else if(data[38] == 2)
 	{
-		changeAnimal2(2);
+		changeAnimal(2);
 	}
 	else if(data[39] == 2)
 	{
@@ -1030,7 +1025,7 @@ function removeShoes()
 // Update DB records for this user
 function updateDB()
 {
-	console.log('updateDB '+data[38]+" vs "+data[40]);
+	console.log('updateDB '+data[39]+" vs "+data[41]);
 
 	// Username
 	// Array
