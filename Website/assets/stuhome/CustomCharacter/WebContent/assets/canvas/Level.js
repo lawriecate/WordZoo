@@ -312,7 +312,6 @@ Level.prototype.create = function ()
 	var _crown = this.add.sprite(0, 0, 'crown', 0, _head);
 	_crown.scale.setTo(1.2, 1.2);
 	_crown.alpha = 0.0;
-	spriteSheets[36] = _crown;
 
 	var _clownWig = this.add.sprite(0,0,'clownWig',0,_head);
 	_clownWig.scale.setTo(1.2,1.2);
@@ -378,6 +377,7 @@ Level.prototype.create = function ()
 		item1 = this.add.sprite(722, 2260, 'crown1', null, _buy);
 		item1.inputEnabled = true;
 		item1.events.onInputDown.add(addHead,{item: _crown});
+																								// HERE
 
 		item1 = this.add.sprite(560, 2113, 'elephant', null, _buy);
 		item1.inputEnabled = true;
@@ -768,6 +768,21 @@ function updateEquipedItem(item)
 	updateDB();
 }
 
+// Special function for crown because.....
+function addCrown()
+{
+	_head.forEach(function(item)
+	{
+		item.alpha = 0.0;
+		updateData(item);
+	});
+
+	this._crown.frame = animalIndex;
+	this._crown.alpha = 1.0;
+
+	updateDB();
+}
+
 function addHead()
 {
 	_head.forEach(function(item)
@@ -780,7 +795,6 @@ function addHead()
 
 	this.item.frame = animalIndex;
 	this.item.alpha = 1.0;
-
 }
 
 function addNose()
