@@ -793,6 +793,7 @@ function addHead()
 		updateData(item);
 	});
 
+	_crown.alpha = 0.0;
 	updateEquipedItem(this.item);
 
 	this.item.frame = animalIndex;
