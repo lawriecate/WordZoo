@@ -312,7 +312,6 @@ Level.prototype.create = function ()
 	var _crown = this.add.sprite(0, 0, 'crown', 0, _head);
 	_crown.scale.setTo(1.2, 1.2);
 	_crown.alpha = 0.0;
-	spriteSheets[36] = _crown;
 
 	var _clownWig = this.add.sprite(0,0,'clownWig',0,_head);
 	_clownWig.scale.setTo(1.2,1.2);
@@ -377,7 +376,7 @@ Level.prototype.create = function ()
 
 		item1 = this.add.sprite(722, 2260, 'crown1', null, _buy);
 		item1.inputEnabled = true;
-		item1.events.onInputDown.add(addHead,{item: _crown});
+		item1.events.onInputDown.add(addHead,{item: _crown, crown: true});
 
 		item1 = this.add.sprite(560, 2113, 'elephant', null, _buy);
 		item1.inputEnabled = true;
@@ -623,6 +622,10 @@ function getLockID(lock)
  */
 function renderCharacter(data)
 {
+	if(data[40] == 2){
+		console.log("Crown did load correctly");
+	}
+
 	// Loop through data
 	for(var i = 0; i < 36; i++)
 	{
@@ -647,14 +650,9 @@ function renderCharacter(data)
 		}
 	}
 
-	//The Crown
-	if(data[40] == 1){
-		_locks.children[40].visible = false;
-	}
-
 	if(data[40] == 2)
 	{
-		spriteSheets[36].alpha = 1.0;
+		spriteSheets[40].alpha = 1.0;
 		_locks.children[40].visible = false;
 	}
 
@@ -669,7 +667,7 @@ function renderCharacter(data)
 	}
 	else if(data[38] == 2)
 	{
-		changeAnimal(2);
+		changeAnimal2(2);
 	}
 	else if(data[39] == 2)
 	{
@@ -767,6 +765,7 @@ function updateEquipedItem(item)
 			break;
 		}
 	}
+
 	updateDB();
 }
 
@@ -778,7 +777,12 @@ function addHead()
 		updateData(item);
 	});
 
-	updateEquipedItem(this.item);
+	if(this.crown){
+		console.log("Hello")
+		data[40] = 2;
+	}else{
+		updateEquipedItem(this.item);
+	}
 
 	this.item.frame = animalIndex;
 	this.item.alpha = 1.0;
