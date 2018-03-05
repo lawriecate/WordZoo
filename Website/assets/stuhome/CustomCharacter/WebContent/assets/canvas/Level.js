@@ -996,6 +996,17 @@ function removeHat()
 		updateData(item);
 	});
 
+ 	// Crown
+	if(data[40] == 0)
+	{
+		data[40] = 0;
+	} 
+	else 
+	{
+		data[40] = 1;
+	}
+	_crown.alpha = 0.0;
+
 	// Update DB
 	updateDB();
 }
