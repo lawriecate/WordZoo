@@ -669,7 +669,7 @@ function renderCharacter(data)
 	}
 	else if(data[38] == 2)
 	{
-		changeAnimal(2);
+		changeAnimal2(2);
 	}
 	else if(data[39] == 2)
 	{
