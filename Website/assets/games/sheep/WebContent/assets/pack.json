@@ -436,8 +436,8 @@
       "type": "spritesheet",
       "key": "sheepPen",
       "url": "/games/sheep/WebContent/assets/3 Play/sheepPen.png",
-      "frameWidth": 570,
-      "frameHeight": 320,
+      "frameWidth": 270,
+      "frameHeight": 151,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -454,7 +454,7 @@
     }
   ],
   "meta": {
-    "generated": "1518719633005",
+    "generated": "1520290323831",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

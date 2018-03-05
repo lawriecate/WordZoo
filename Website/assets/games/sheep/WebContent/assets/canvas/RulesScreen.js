@@ -64,18 +64,22 @@ RulesScreen.prototype.create = function ()
 
 	// Add sheep to pens
 	pens[0].sheep = this.add.sprite(68, 210, 'sheepPen', 12);
+	pens[1].sheep.scale.setTo(2.11,2.11);
 	pens[0].front = this.add.sprite(374, 387, 'penFront');
 	pens[0].front.anchor.setTo(0.5, 0.5);
 
 	pens[1].sheep = this.add.sprite(1273, 198, 'sheepPen', 12);
+	pens[1].sheep.scale.setTo(2.11,2.11);
 	pens[1].front = this.add.sprite(1581, 381, 'penFront');
 	pens[1].front.anchor.setTo(0.5, 0.5);
 
 	pens[2].sheep = this.add.sprite(75, 697, 'sheepPen', 12);
+	pens[2].sheep.scale.setTo(2.11,2.11);
 	pens[2].front = this.add.sprite(383, 871, 'penFront');
 	pens[2].front.anchor.setTo(0.5, 0.5);
 
 	pens[3].sheep = this.add.sprite(1266, 709, 'sheepPen', 12);
+	pens[3].sheep.scale.setTo(2.11,2.11);
 	pens[3].front = this.add.sprite(1592, 868, 'penFront');
 	pens[3].front.anchor.setTo(0.5, 0.5);
 
