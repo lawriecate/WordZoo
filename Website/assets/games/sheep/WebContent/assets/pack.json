@@ -120,8 +120,8 @@
       "type": "spritesheet",
       "key": "sheepPen",
       "url": "/games/sheep/WebContent/assets/2 Rules/sheepPen.png",
-      "frameWidth": 570,
-      "frameHeight": 320,
+      "frameWidth": 269,
+      "frameHeight": 151,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
@@ -188,228 +188,6 @@
     },
     {
       "type": "image",
-      "key": "Bench",
-      "url": "/games/sheep/WebContent/assets/3 Play/Bench.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Brain",
-      "url": "/games/sheep/WebContent/assets/3 Play/Brain.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Bread",
-      "url": "/games/sheep/WebContent/assets/3 Play/Bread.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Broccoli",
-      "url": "/games/sheep/WebContent/assets/3 Play/Broccoli.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Cage",
-      "url": "/games/sheep/WebContent/assets/3 Play/Cage.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Cannon",
-      "url": "/games/sheep/WebContent/assets/3 Play/Cannon.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Castle",
-      "url": "/games/sheep/WebContent/assets/3 Play/Castle.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Chair",
-      "url": "/games/sheep/WebContent/assets/3 Play/Chair.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Clock",
-      "url": "/games/sheep/WebContent/assets/3 Play/Clock.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Crayon",
-      "url": "/games/sheep/WebContent/assets/3 Play/Crayon.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Desk",
-      "url": "/games/sheep/WebContent/assets/3 Play/Desk.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Donkey",
-      "url": "/games/sheep/WebContent/assets/3 Play/Donkey.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Feather",
-      "url": "/games/sheep/WebContent/assets/3 Play/Feather.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Fireman",
-      "url": "/games/sheep/WebContent/assets/3 Play/Fireman.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Flag",
-      "url": "/games/sheep/WebContent/assets/3 Play/Flag.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Football",
-      "url": "/games/sheep/WebContent/assets/3 Play/Football.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Grape",
-      "url": "/games/sheep/WebContent/assets/3 Play/Grape.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Guitar",
-      "url": "/games/sheep/WebContent/assets/3 Play/Guitar.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Heart",
-      "url": "/games/sheep/WebContent/assets/3 Play/Heart.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Island",
-      "url": "/games/sheep/WebContent/assets/3 Play/Island.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Jumper",
-      "url": "/games/sheep/WebContent/assets/3 Play/Jumper.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Mouse",
-      "url": "/games/sheep/WebContent/assets/3 Play/Mouse.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Notebook",
-      "url": "/games/sheep/WebContent/assets/3 Play/Notebook.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Owl",
-      "url": "/games/sheep/WebContent/assets/3 Play/Owl.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Pear",
-      "url": "/games/sheep/WebContent/assets/3 Play/Pear.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Police",
-      "url": "/games/sheep/WebContent/assets/3 Play/Police.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Rabbit",
-      "url": "/games/sheep/WebContent/assets/3 Play/Rabbit.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Rake",
-      "url": "/games/sheep/WebContent/assets/3 Play/Rake.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Soap",
-      "url": "/games/sheep/WebContent/assets/3 Play/Soap.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Squirrel",
-      "url": "/games/sheep/WebContent/assets/3 Play/Squirrel.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Stick",
-      "url": "/games/sheep/WebContent/assets/3 Play/Stick.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Table",
-      "url": "/games/sheep/WebContent/assets/3 Play/Table.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Tiger",
-      "url": "/games/sheep/WebContent/assets/3 Play/Tiger.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Toad",
-      "url": "/games/sheep/WebContent/assets/3 Play/Toad.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Tray",
-      "url": "/games/sheep/WebContent/assets/3 Play/Tray.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Vase",
-      "url": "/games/sheep/WebContent/assets/3 Play/Vase.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
-      "key": "Wheel",
-      "url": "/games/sheep/WebContent/assets/3 Play/Wheel.png",
-      "overwrite": false
-    },
-    {
-      "type": "image",
       "key": "gui",
       "url": "/games/sheep/WebContent/assets/3 Play/gui.png",
       "overwrite": false
@@ -436,7 +214,7 @@
       "type": "spritesheet",
       "key": "sheepPen",
       "url": "/games/sheep/WebContent/assets/3 Play/sheepPen.png",
-      "frameWidth": 270,
+      "frameWidth": 269,
       "frameHeight": 151,
       "frameMax": -1,
       "margin": 0,
@@ -454,7 +232,7 @@
     }
   ],
   "meta": {
-    "generated": "1520290323831",
+    "generated": "1520291166844",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
