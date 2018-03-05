@@ -646,7 +646,7 @@ function renderCharacter(data)
 		}
 	}
 
-	//The Crown
+	//The Crown - What
 	if(data[40] == 1){
 		_locks.children[40].visible = false;
 	}
