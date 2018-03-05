@@ -327,7 +327,7 @@ function word2pos(word) {
 		 return 158;
 		case "throne":
 		 return 159;
-		case "gum":
+		case "son":
 		 return 160;
 		case "drain":
 		 return 161;
@@ -979,7 +979,7 @@ module.exports = {
 		    "wine",
 		    "pine",
 		    "nine",
-		    "gum",
+		    "son",
 		    "nun",
 		    "sun",
 		    "bushes",
@@ -1275,12 +1275,16 @@ module.exports = {
 		    var numberOfWords = 0;
 
 		    //Loop until we have 10 unique words
-		    while(numberOfWords != 10){
-		      var randomWord = Math.floor(Math.random() * (words.length - 1));
-		      //If the word is not already in our list
-		      if(doesNotContainWord(generatedList, words[randomWord]))
-		        generatedList.push(words[randomWord]);
-		        numberOfWords++;
+		    while(numberOfWords != 10)
+		    {
+		    	var randomWord = Math.floor(Math.random() * (words.length - 1));
+		    	//If the word is not already in our list
+		    	
+		    	if(doesNotContainWord(generatedList, words[randomWord]))
+		    	{
+		    		generatedList.push(words[randomWord]);
+		    		numberOfWords++;
+		    	}
 		    }
 
 		    return generatedList;

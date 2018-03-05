@@ -3,10 +3,11 @@ var elephant = elephant|| {};
 
 
 //word bank
-var testWords = [['Apple','Apple'],['Bear','Bear'],['Bird','Bird'],['Boat','Boat'],['Book','Book'],
-					['Car','Car'],['Cheese','Cheese'],['Cone','Cone'],['Dog','Dog'],['Hat','Hat']];
-var matchingWords = [['Apple','Apple'],['Bear','Bear'],['Bird','Bird'],['Boat','Boat'],['Book','Book'],
-					['Car','Car'],['Cheese','Cheese'],['Cone','Cone'],['Dog','Dog'],['Hat','Hat']];
+var testWords = 	[["ant","ant"],["bear","bear"],["bird","bird"],["boat","boat"],["book","book"],
+					["car","car"],["chess","chess"],["cone","cone"],["dog","dog"],["hat","hat"]];
+var matchingWords = [["ant","ant"],["bear","bear"],["bird","bird"],["boat","boat"],["book","book"],
+					["car","car"],["chess","chess"],["cone","cone"],["dog","dog"],["hat","hat"]];
+
 
 
 // define items

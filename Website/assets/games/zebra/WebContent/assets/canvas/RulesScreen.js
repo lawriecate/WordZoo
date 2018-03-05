@@ -37,12 +37,12 @@ RulesScreen.prototype.preload = function ()
 	this.load.pack('RulesScreen', '/games/zebra/WebContent/assets/pack.json');
 
 	// Load items
-	this.load.image(bench ,'/images/words/bench.png');
-	this.load.image(brain ,'/images/words/brain.png');
-	this.load.image(cannon ,'/images/words/cannon.png');
-	this.load.image(cannon ,'/images/words/desk.png');
-	this.load.image(cannon ,'/images/words/flag.png');
-	this.load.image(mouse ,'/images/words/mouse.png');	
+	this.load.image("bench" ,'/images/words/bench.png');
+	this.load.image("brain" ,'/images/words/brain.png');
+	this.load.image("car" ,'/images/words/car.png');
+	this.load.image("dice" ,'/images/words/dice.png');
+	this.load.image("flag" ,'/images/words/flag.png');
+	this.load.image("mouse" ,'/images/words/mouse.png');	
 };
 
 RulesScreen.prototype.create = function () 
@@ -459,7 +459,7 @@ RulesScreen.prototype.setCorrect = function ()
 	correctLane = 1;
 
 	// random indexs for words
-	correctName = 'cannon';
+	correctName = 'car';
 	var incorrectItem1 = 'brain';
 	var incorrectItem2 = 'bench';
 
@@ -498,7 +498,7 @@ RulesScreen.prototype.setIncorrect = function ()
 	// random indexs for words
 	correctName = 'mouse';
 	var incorrectItem1 = 'flag';
-	var incorrectItem2 = 'desk';
+	var incorrectItem2 = 'dice';
 
 	// Set item0 (correctItem)
     correctItemText.text = correctName;

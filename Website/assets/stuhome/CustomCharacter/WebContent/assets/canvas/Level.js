@@ -51,7 +51,7 @@ var spriteSheets = new Array();
 
 Level.prototype.preload = function ()
 {
-	this.load.pack('main', '/stuhome/CustomCharacter/WebContent/assets/pack.json');	
+	this.load.pack('main', '/stuhome/CustomCharacter/WebContent/assets/pack.json');
 };
 
 Level.prototype.create = function ()
@@ -312,6 +312,7 @@ Level.prototype.create = function ()
 	var _crown = this.add.sprite(0, 0, 'crown', 0, _head);
 	_crown.scale.setTo(1.2, 1.2);
 	_crown.alpha = 0.0;
+	spriteSheets[36] = _crown;
 
 	var _clownWig = this.add.sprite(0,0,'clownWig',0,_head);
 	_clownWig.scale.setTo(1.2,1.2);
@@ -646,9 +647,14 @@ function renderCharacter(data)
 		}
 	}
 
+	//The Crown
+	if(data[40] == 1){
+		_locks.children[40].visible = false;
+	}
+
 	if(data[40] == 2)
 	{
-		spriteSheets[40].alpha = 1.0;
+		spriteSheets[36].alpha = 1.0;
 		_locks.children[40].visible = false;
 	}
 
@@ -1025,7 +1031,7 @@ function removeShoes()
 // Update DB records for this user
 function updateDB()
 {
-	console.log('updateDB '+data[39]+" vs "+data[41]);
+	console.log('updateDB '+data[38]+" vs "+data[40]);
 
 	// Username
 	// Array

@@ -5,7 +5,7 @@ var counter;
 
 
 // Tutorial words (hard coded to match fixed assets)
-var testWords = ["Apple", "Bear", "Car", "Bird", "Boat", "Book", "Cheese", "Cone", "Dog", "Hat"];
+var testWords = ["ant", "bear", "car", "bird", "boat", "book", "chess", "cone", "dog", "hat"];
 
 
 
@@ -87,9 +87,9 @@ RulesScreen.prototype.preload = function ()
 	}
 	   
     //Frame Width, Frame Height, Frame Max, margin,spacing
-    this.load.spritesheet('deathExplosion','assets/deathExplosion.png',148.1,187,27);
-    this.load.image('highLightCircle','assets/highlightCircle.png');
-    this.load.spritesheet('explosion', 'assets/explosionFull.png', 256, 256, 32);	
+    this.load.spritesheet('deathExplosion','/games/owl/assets/deathExplosion.png',148.1,187,27);
+    this.load.image('highLightCircle','/games/owl/assets/highlightCircle.png');
+    this.load.spritesheet('explosion', '/games/owl/assets/explosionFull.png', 256, 256, 32);
 };
 
 RulesScreen.prototype.create = function () 
@@ -264,10 +264,10 @@ RulesScreen.prototype.create = function ()
 	assets[9].sprite = this.add.sprite(1730,196+160+160+160+160+50,assets[9].word);
 	assets[9].sprite.anchor.setTo(0.5,0.5);	
 	
-	// Scale pictures
+	// Scale assets
 	for(var i = 0; i < 10; i++)
 	{
-		assets[i].sprite.scale.setTo(2,2);
+		assets[i].sprite.scale.setTo(0.7,0.7);
 	}
 
 
@@ -314,7 +314,7 @@ RulesScreen.prototype.updateTime = function ()
 	// 1 circle Apple
 	if(counter == 1)
 	{
-		text.text = "_ _ _ _ _";
+		text.text = "_ _ _";
 		highLightCircle.visible = true;
 	}
 	// 2 hand to Car + move circle
@@ -405,7 +405,7 @@ RulesScreen.prototype.updateTime = function ()
 	// 10 attack spell
 	else if(counter == 10)
 	{
-		selectedSpell = "Car";
+		selectedSpell = "car";
 		this.playerGoodSpellRules();
 	}
 	// 15 circle enemy health
@@ -585,10 +585,10 @@ RulesScreen.prototype.playerGoodSpellRules = function ()
     	   		projectile3.scale.set(0.0);
 
     	    	//Manifest Larger
-    	   		game.add.tween(projectile0.scale).to({x:1, y:1},70,"Linear",true);
-    	   		game.add.tween(projectile1.scale).to({x:1, y:1},70,"Linear",true);
-    	   		game.add.tween(projectile2.scale).to({x:1, y:1},70,"Linear",true);
-    	   		game.add.tween(projectile3.scale).to({x:1, y:1},70,"Linear",true);
+    	   		game.add.tween(projectile0.scale).to({x:0.5, y:0.5},70,"Linear",true);
+    	   		game.add.tween(projectile1.scale).to({x:0.5, y:0.5},70,"Linear",true);
+    	   		game.add.tween(projectile2.scale).to({x:0.5, y:0.5},70,"Linear",true);
+    	   		game.add.tween(projectile3.scale).to({x:0.5, y:0.5},70,"Linear",true);
 
         		//Spin in the Air and throw at player
    	    		var project0 = game.add.tween(projectile0).to({angle: 340 ,x: 1360, y: 413},1400,"Linear",true);
