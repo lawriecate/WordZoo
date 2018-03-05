@@ -38,16 +38,16 @@ StartScreen.prototype.create = function ()
     _titleText.addColor('#FF9933', 0);  
 
 	// Add back button
-	var _buttonBackground = this.add.sprite(0, 733, 'ButtonBackground', null);
+	//var _buttonBackground = this.add.sprite(0, 733, 'ButtonBackground', null);
 
 	// Add back button
-	var _backButton = this.add.button(22, 912, 'BackButton', this.onClickBack, this, null, null, null, null);
+	//var _backButton = this.add.button(22, 912, 'BackButton', this.onClickBack, this, null, null, null, null);
 
 	// Add play button
 	var _playButton = this.add.button(616, 780, 'PlayButton', this.onClickPlay, this, null, null, null, null);
 	
 	// Add rules button
-	var _homeButton = this.add.button(1332, 912, 'HomeButton', this.onClickHome, this, null, null, null, null);
+	//var _homeButton = this.add.button(1332, 912, 'HomeButton', this.onClickHome, this, null, null, null, null);
 };
 
 

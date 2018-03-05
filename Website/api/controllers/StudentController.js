@@ -52,12 +52,11 @@ module.exports = {
   },
 
   quiz: function(req,res) {
-    return res.view('student/welcome.ejs', {'title':'Welcome to WordZoo',games:games,  layout: 'student/game_layout'});
+    return res.view('student/welcome.ejs', {'title':'Welcome to WordZoo',  layout: 'student/game_layout'});
   },
   finishQuiz: function(req,res) {
     result = JSON.stringify(req.param('quiz_result'));
-    Pupil.update({id:res.pupil.id},{quiz_result:result},function(err,pupil) {
-      
+    Pupil.update({id:req.pupil.id},{quiz_result:result, completedWelcome:true},function(err,pupil) {
       return res.ok();
     })
   },

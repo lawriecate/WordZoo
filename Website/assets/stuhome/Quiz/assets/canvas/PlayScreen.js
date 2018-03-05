@@ -316,7 +316,7 @@ PlayScreen.prototype.endGame = function()
 	console.log("History "+wordHistory);
 	console.log("Animal "+selectedAnimal);
 
-	$.post('student/welcome',{quiz_result:wordHistory,animal:selectedAnimal},function(data) {
+	$.post('/student/welcome',{quiz_result:wordHistory,animal:selectedAnimal},function(data) {
 		console.log("Quiz end");
 		window.document.location = "/student";
 	});
