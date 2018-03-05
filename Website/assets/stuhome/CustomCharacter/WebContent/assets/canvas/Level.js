@@ -746,8 +746,6 @@ function updateData(item)
 			}
 		}
 	}
-	console.log("Sup");
-	//updateDB();
 }
 
 function updateEquipedItem(item)
@@ -974,6 +972,8 @@ function removeHat()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB
 	updateDB();
 }
 
@@ -984,6 +984,8 @@ function removeGlasses()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB
 	updateDB();
 }
 
@@ -994,6 +996,8 @@ function removeNeck()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB	
 	updateDB();
 }
 
@@ -1004,6 +1008,8 @@ function removeNose()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB	
 	updateDB();
 }
 
@@ -1014,6 +1020,8 @@ function removeShirt()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB	
 	updateDB();
 }
 
@@ -1024,6 +1032,8 @@ function removeShoes()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB	
 	updateDB();
 }
 
@@ -1031,11 +1041,8 @@ function removeShoes()
 // Update DB records for this user
 function updateDB()
 {
-	console.log('updateDB '+data[38]+" vs "+data[40]);
+	console.log('updateDB -> Crown:'+data[40]);
 
-	// Username
-	// Array
-	// Coins
 
 	// POST
 	$.post('/student/buy',{newPoints:totalMoney,newCharacter:data},function(data) 
