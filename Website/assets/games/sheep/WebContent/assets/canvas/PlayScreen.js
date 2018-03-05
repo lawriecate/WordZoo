@@ -636,7 +636,7 @@ PlayScreen.prototype.recordData = function()
 	}
 
 	// Send out
-	$.post('end',{game:'sheep', words:output, clicks:clickHistory, score:score}, function(data)
+	$.post('end',{game:'sheep', words:output, clicks:clickHistory, score:score*2}, function(data)
 	{
   		// Log returned data
   		console.log("RETURNED" + data);
