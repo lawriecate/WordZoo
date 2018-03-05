@@ -10,7 +10,7 @@ def sampleRealStates():
 '''
 Leaky relu function for the discriminator
 '''
-def lrelu(x, leak = 0.02):
+def lrelu(x, leak = 0.2):
     return tf.maximum(leak * x, x)
 
 '''
@@ -31,7 +31,6 @@ def generator(noise , reuse = False):
         #Normalsie the values between 0 and 1
         net = tf.nn.tanh(net)
         return net
-
 
 '''
 Takes in an 18x18 state, and returns a single value for the prob. that it is real
@@ -57,6 +56,31 @@ def discriminator(state, reuse = False, training = True):
         net = tf.nn.sigmoid(net)
         return net;
 
+'''This is just something that will need to be added to the main model'''
+def loadAndRunSimulator():
+    model = '/gan.py'
+    saver = tf.train.Saver()
+    with tf.Session() as sess:
+        print("GAN loaded")
+        modelPath = tf.train.get_checkpoint_state(model)
+        saver.restore(sess, modelPath.model_checkpoint_path)
+
+        #With some state
+        output = sess.run(Dfake, feed_dict{state: queryState})
+
+        return output
+
+'''
+This loads the realStates we gathered from testing. Loads the CSV and saves the dataframe globally
+'''
+def loadRealStates():
+
+'''
+Randomly samples the loaded states and returns batchSize number of states for the GAN to train on
+'''
+def sampleRealStates(batchSize):
+
+
 ##################################################
 # BUILD THE GAN MODEL
 ##################################################
@@ -81,13 +105,13 @@ gLoss = -tf.reduce_mean(tf.log(Dfake))
 tvars = tf.trainable_variables()
 dVars = [var for var in tvars if var.name.startswith('Discriminator')]
 gVars = [var for var in tvars if var.name.startswith('Generator')]
-#Optimizers
+#Optimizers - Uses the loss functions and applies them to the graph
 Dgrads = Dtrainer.compute_gradients(dLoss, var_list = dVars)
 Ggrads= Gtrainer.compute_gradients(dLoss, var_list = gVars)
 #Gradient applys
 '''Maybe add this into the loop'''
-updateDisc = Dtrainer.apply_gradients(Dgrads)
-updateGen = Gtrainer.apply_gradients(Ggrads)
+#updateDisc = Dtrainer.apply_gradients(Dgrads)
+#updateGen = Gtrainer.apply_gradients(Ggrads)
 ##################################################
 # TRAINING
 ##################################################
@@ -95,6 +119,7 @@ batchSize = 1000
 itterations = 50000
 initialiser = tf.global_variables_initializer()
 saver = tf.train.Saver()
+modelPath = '../models'
 #Load the real states
 loadRealStates()
 
@@ -107,10 +132,20 @@ with tf.Session() as sess:
         #Random batch of real states
         xs = sampleRealStates(batchSize)
         #Update Discriminator
-
+        _, discLoss = sess.run([Dtrainer.apply_gradients(Dgrads)], feed_dict = {noise: zs, state: xs})
         #Update Generator
+        _, genLoss = sess.run([Gtrainer.apply_gradients(Ggrads)], feed_dict = {noise: zs})
+        if (i % 20) == 0:
+            print ("Disc: " + str(discLoss) + " Gen: " + str(genLoss))
 
+            #Run Sample Test on the Discriminator
+            print("Running Quality Test")
+            '''
+            This will be my own test.
+            Give it a bunch of Real states, and make sure they come back with a true accuracy.
+            Run some obviously fake, and make sure they are super lower.
+            '''
 
-        #Save Model
-
-        #Test how good it is, Let's have a test and see how good the discriminator is
+            #Save Model
+            print("Saving Model " + str(i))
+            saver.save(sess, modelPath + "ganModel-" + str(i) + ".cptk")

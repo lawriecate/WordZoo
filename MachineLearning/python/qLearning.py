@@ -271,8 +271,6 @@ class Gym:
         #Centre Point of the Array - where the userType is stored
         self.centrePoint = np.floor(self.stateShape[0]/2)
         #Create the decay array
-        self.decay = np.full(self.stateShape,0.96)
-        self.decay[self.centrePoint][self.centrePoint] = 1
 
     def executeAction(self,previousState,action):
         #Executes the given action on a state
@@ -291,9 +289,9 @@ class Gym:
         Value is the value to update that index
         '''
         tempState = state.flatten()
+        tempState = np.multiply(tempState,0.995)
         tempState[action] = value
         tempState.reShape(self.stateShape)
-
         return tempState
 
     def calculateReward(self,oldState,newState):
