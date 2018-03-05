@@ -51,7 +51,7 @@ var spriteSheets = new Array();
 
 Level.prototype.preload = function ()
 {
-	this.load.pack('main', '/stuhome/CustomCharacter/WebContent/assets/pack.json');	
+	this.load.pack('main', '/stuhome/CustomCharacter/WebContent/assets/pack.json');
 };
 
 Level.prototype.create = function ()
@@ -1025,7 +1025,7 @@ function removeShoes()
 // Update DB records for this user
 function updateDB()
 {
-	console.log('updateDB '+data[39]+" vs "+data[41]);
+	console.log('updateDB '+data[38]+" vs "+data[40]);
 
 	// Username
 	// Array
