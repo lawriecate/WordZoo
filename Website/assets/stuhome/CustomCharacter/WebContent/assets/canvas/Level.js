@@ -312,6 +312,7 @@ Level.prototype.create = function ()
 	var _crown = this.add.sprite(0, 0, 'crown', 0, _head);
 	_crown.scale.setTo(1.2, 1.2);
 	_crown.alpha = 0.0;
+	spriteSheets[36] = _crown;
 
 	var _clownWig = this.add.sprite(0,0,'clownWig',0,_head);
 	_clownWig.scale.setTo(1.2,1.2);
@@ -653,7 +654,7 @@ function renderCharacter(data)
 
 	if(data[40] == 2)
 	{
-		spriteSheets[40].alpha = 1.0;
+		spriteSheets[36].alpha = 1.0;
 		_locks.children[40].visible = false;
 	}
 
