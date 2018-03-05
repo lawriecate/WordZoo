@@ -174,7 +174,11 @@ module.exports = {
 	},
 
 	refreshSignup:function(req,res) {
-		School.findOne({id:req.params.schoolid}).exec(function(err,school) {
+		School.findOne({id:req.params.id}).exec(function(err,school) {
+			if (err) {
+				return res.serverError(err);
+			}
+
 			School.regenerateCode(school.id,function(err,s) {
 				if (err) {
 					return res.serverError(err);

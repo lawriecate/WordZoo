@@ -60,7 +60,7 @@ module.exports = {
   },
 
   regenerateCode: function(school,cb) {
-    newToken = crypto.createHash('md5').update(school + Date.now()).randomBytes(20).digest('hex');
+    newToken =  crypto.randomBytes(20).toString('hex');
     School.update({id:school},{signupcode:newToken}).exec(cb);
   },
 
