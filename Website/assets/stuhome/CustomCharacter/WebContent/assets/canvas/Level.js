@@ -44,6 +44,8 @@ var itemCost = 25;
 var moneyText;
 var usernameText;
 
+var _crown;
+
 // SpriteSheets
 var spriteSheets = new Array();
 
@@ -51,7 +53,7 @@ var spriteSheets = new Array();
 
 Level.prototype.preload = function ()
 {
-	this.load.pack('main', '/stuhome/CustomCharacter/WebContent/assets/pack.json');
+	this.load.pack('main', '/stuhome/CustomCharacter/WebContent/assets/pack.json');	
 };
 
 Level.prototype.create = function ()
@@ -309,7 +311,7 @@ Level.prototype.create = function ()
 	_topHat.alpha = 0.0;
 	spriteSheets[31] = _topHat;
 
-	var _crown = this.add.sprite(0, 0, 'crown', 0, _head);
+	_crown = this.add.sprite(0, 0, 'crown', 0, _head);
 	_crown.scale.setTo(1.2, 1.2);
 	_crown.alpha = 0.0;
 
@@ -376,7 +378,7 @@ Level.prototype.create = function ()
 
 		item1 = this.add.sprite(722, 2260, 'crown1', null, _buy);
 		item1.inputEnabled = true;
-		item1.events.onInputDown.add(addHead,{item: _crown, crown: true});
+		item1.events.onInputDown.add(addCrown, {_crown: _crown});
 
 		item1 = this.add.sprite(560, 2113, 'elephant', null, _buy);
 		item1.inputEnabled = true;
@@ -622,10 +624,6 @@ function getLockID(lock)
  */
 function renderCharacter(data)
 {
-	if(data[40] == 2){
-		console.log("Crown did load correctly");
-	}
-
 	// Loop through data
 	for(var i = 0; i < 36; i++)
 	{
@@ -650,9 +648,14 @@ function renderCharacter(data)
 		}
 	}
 
+	// Check crown
 	if(data[40] == 2)
 	{
-		spriteSheets[40].alpha = 1.0;
+		_crown.alpha = 1.0;
+		_locks.children[40].visible = false;
+	}
+	else if (data[40] == 1)
+	{
 		_locks.children[40].visible = false;
 	}
 
@@ -750,8 +753,6 @@ function updateData(item)
 			}
 		}
 	}
-	console.log("Sup");
-	updateDB();
 }
 
 function updateEquipedItem(item)
@@ -765,7 +766,22 @@ function updateEquipedItem(item)
 			break;
 		}
 	}
+	updateDB();
+}
 
+// Special function for crown because.....
+function addCrown()
+{
+	_head.forEach(function(item)
+	{
+		item.alpha = 0.0;
+		updateData(item);
+	});
+
+	this._crown.frame = animalIndex;
+	this._crown.alpha = 1.0;
+
+	data[40] = 2;
 	updateDB();
 }
 
@@ -777,16 +793,21 @@ function addHead()
 		updateData(item);
 	});
 
-	if(this.crown){
-		console.log("Hello")
-		data[40] = 2;
-	}else{
-		updateEquipedItem(this.item);
+ 	// Crown
+	if(data[40] == 0)
+	{
+		data[40] = 0;
+	} 
+	else 
+	{
+		data[40] = 1;
 	}
+	_crown.alpha = 0.0;
+
+	updateEquipedItem(this.item);
 
 	this.item.frame = animalIndex;
 	this.item.alpha = 1.0;
-
 }
 
 function addNose()
@@ -984,6 +1005,20 @@ function removeHat()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+ 	// Crown
+	if(data[40] == 0)
+	{
+		data[40] = 0;
+	} 
+	else 
+	{
+		data[40] = 1;
+	}
+	_crown.alpha = 0.0;
+
+	// Update DB
+	updateDB();
 }
 
 function removeGlasses()
@@ -993,6 +1028,9 @@ function removeGlasses()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB
+	updateDB();
 }
 
 function removeNeck()
@@ -1002,6 +1040,9 @@ function removeNeck()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB	
+	updateDB();
 }
 
 function removeNose()
@@ -1011,6 +1052,9 @@ function removeNose()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB	
+	updateDB();
 }
 
 function removeShirt()
@@ -1020,6 +1064,9 @@ function removeShirt()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB	
+	updateDB();
 }
 
 function removeShoes()
@@ -1029,21 +1076,25 @@ function removeShoes()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+
+	// Update DB	
+	updateDB();
 }
 
 
 // Update DB records for this user
 function updateDB()
 {
-	console.log('updateDB '+data[38]+" vs "+data[40]);
+	console.log('updateDB -> Crown:'+data[40]);
 
-	// Username
-	// Array
-	// Coins
 
 	// POST
-	$.post('/student/buy',{newPoints:totalMoney,newCharacter:data},function(data) {
+	$.post('/student/buy',{newPoints:totalMoney,newCharacter:data},function(data) 
+	{
+		// Semething
+	}
+	).fail(function() 
 
-	}).fail(function() {
+	{
 	});
 }
