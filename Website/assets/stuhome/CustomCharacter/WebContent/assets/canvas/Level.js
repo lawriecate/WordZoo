@@ -663,7 +663,7 @@ function renderCharacter(data)
 	}
 	else if(data[38] == 2)
 	{
-		changeAnimal(2);
+		changeAnimal2(2);
 	}
 	else if(data[39] == 2)
 	{
@@ -747,7 +747,7 @@ function updateData(item)
 		}
 	}
 	console.log("Sup");
-	updateDB();
+	//updateDB();
 }
 
 function updateEquipedItem(item)
@@ -974,6 +974,7 @@ function removeHat()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+	updateDB();
 }
 
 function removeGlasses()
@@ -983,6 +984,7 @@ function removeGlasses()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+	updateDB();
 }
 
 function removeNeck()
@@ -992,6 +994,7 @@ function removeNeck()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+	updateDB();
 }
 
 function removeNose()
@@ -1001,6 +1004,7 @@ function removeNose()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+	updateDB();
 }
 
 function removeShirt()
@@ -1010,6 +1014,7 @@ function removeShirt()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+	updateDB();
 }
 
 function removeShoes()
@@ -1019,21 +1024,26 @@ function removeShoes()
 		item.alpha = 0.0;
 		updateData(item);
 	});
+	updateDB();
 }
 
 
 // Update DB records for this user
 function updateDB()
 {
-	console.log('updateDB '+data[39]+" vs "+data[41]);
+	console.log('updateDB '+data[38]+" vs "+data[40]);
 
 	// Username
 	// Array
 	// Coins
 
 	// POST
-	$.post('/student/buy',{newPoints:totalMoney,newCharacter:data},function(data) {
+	$.post('/student/buy',{newPoints:totalMoney,newCharacter:data},function(data) 
+	{
+		// Semething
+	}
+	).fail(function() 
 
-	}).fail(function() {
+	{
 	});
 }
