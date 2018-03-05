@@ -765,6 +765,10 @@ function updateEquipedItem(item)
 			break;
 		}
 	}
+
+	console.log("Crown case:" + item);
+
+
 	updateDB();
 }
 
