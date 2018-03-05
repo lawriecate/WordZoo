@@ -622,6 +622,10 @@ function getLockID(lock)
  */
 function renderCharacter(data)
 {
+	if(data[40] == 2){
+		console.log("Crown did load correctly");
+	}
+
 	// Loop through data
 	for(var i = 0; i < 36; i++)
 	{
