@@ -646,6 +646,11 @@ function renderCharacter(data)
 		}
 	}
 
+	//The Crown
+	if(data[40] == 1){
+		_locks.children[40].visible = false;
+	}
+
 	if(data[40] == 2)
 	{
 		spriteSheets[40].alpha = 1.0;
