@@ -41,6 +41,7 @@ module.exports = function fetchUserHook(sails) {
                     return next();
                   }
                 });*/
+                return next();
               }
               else {
 
