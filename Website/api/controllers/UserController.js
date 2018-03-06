@@ -53,7 +53,8 @@ module.exports = {
     User.signup({
       name: req.param('name'),
       email: req.param('email'),
-      password: req.param('password')
+      password: req.param('password'),
+      confirmPassword: req.param('password2')
     }, function (err, user) {
       // res.negotiate() will determine if this is a validation error
       // or some kind of unexpected server error, then call `res.badRequest()`
@@ -65,6 +66,7 @@ module.exports = {
       // Subsequent requests from this user agent will have `req.session.me` set.
       req.session.me = user.id;
       req.session.isLoggedIn = true;
+    
       // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
       // send a 200 response letting the user agent know the signup was successful.
       if (req.wantsJSON) {
@@ -74,6 +76,10 @@ module.exports = {
       // Otherwise if this is an HTML-wanting browser, redirect to /welcome.
       return res.redirect('/welcome');
     });
+  },
+
+  welcome: function(req,res) {
+    return res.view('auth/welcome', {title: 'Welcome to WordZoo',layout:'layout2'});
   },
 
   list: function(req,res) {

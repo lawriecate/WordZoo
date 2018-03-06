@@ -43,6 +43,8 @@ module.exports = {
    */
 
   signup: function (inputs, cb) {
+    
+
     // Create a user
     var is_admin=false;
     if(inputs.email == 'admin@email.com') {is_admin = true;}
@@ -53,7 +55,8 @@ module.exports = {
         email: inputs.email,
         // TODO: But encrypt the password first
         password:bcryptedPassword,
-        admin: is_admin
+        admin: is_admin,
+        matchingPasswords:inputs.password==inputs.confirmPassword,
       })
       .exec(cb);
     });
@@ -106,5 +109,16 @@ module.exports = {
 
 
 
+  },
+
+  beforeCreate: function (values, next) {
+  
+    if(!values.matchingPasswords) {
+      
+      return next({
+        err : ["Passwords do not match"]
+      });
+    }
+    return next();
   }
 };
