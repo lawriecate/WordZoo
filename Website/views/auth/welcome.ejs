@@ -1,9 +1,20 @@
+<div class="uk-section uk-light uk-background-cover " style="background: linear-gradient(to bottom, #7bccf7 0%,#31b3f9 100%);min-height:1400px;">
+    <div class="uk-container">
+      <h1><img class="uk-logo uk-align-center" alt="WordZoo logo" width="800" src="/images/WordZoo_logo.png" />
+      </h1>
+
+    </div>
+    <div class="uk-container uk-container-small">
+
 <h1>Welcome to WordZoo</h1>
 <p>Thanks for signing up to WordZoo. </p>
-<% if(req.session.user.teaches_at[0].id==null) { %>
-  <p>You are not currently a member of a school group - please ask your WordZoo coordinator or get in touch with support so you can set this up then you can manage your classes. </p>
+<% if(typeof req.user.teaches_at[0] == 'undefined') { %>
+  <p>You are not currently a member of a school group - please ask your WordZoo coordinator to add your account or get in touch with support by sending an email: </p>
+  <a href="mailto:contact@wordzoo.co.uk?subject=Request%20access%20for%20school%20group&amp;body=Hi,Please%20grant%20<%=req.user.email%>%20access%20to%20the%20school:%20[Insert%20school%20name]" class="uk-button uk-button-primary">Send Email</a>
 <% } else { %>
-  <p>Please follow a short tutorial to explain the basics of how to use WordZoo</p>
-  <p>At any time using WordZoo you can provide feedback by ... </p>
-  <a href="/">Back to home page</a>
+  <a href="/teach" class="uk-button uk-button-primary">Go to the homepage</a>
 <% } %>
+
+</div>
+
+</div>

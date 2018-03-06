@@ -48,14 +48,11 @@ module.exports.routes = {
 
     'get /login': { view: 'auth/login' },
     'get /signup': { view: 'auth/register' },
-    'get /welcome': { view: 'auth/welcome', locals: {
-      layout: 'layout_teacher'
-    } },
-
-    // Endpoints
+    'get /welcome': 'UserController.welcome',
     'post /login': 'UserController.login',
     'post /signup': 'UserController.signup',
     '/logout': 'UserController.logout',
+    
 
     'get /admin': { view: 'admin/home',
     locals: {
