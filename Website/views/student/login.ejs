@@ -1,6 +1,12 @@
 <div class="uk-section " style="">
     
     <div class="uk-container uk-container-small " style="">
+    <% if (req.session.flash && req.session.flash.error) { %>
+    <div class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p><%=req.flash('error')%></p>
+    </div>
+    <% } %>
 
       <form  action="/student/login" method="post" class="uk-form-stacked">
         <div class="uk-margin">

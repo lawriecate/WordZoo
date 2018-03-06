@@ -40,7 +40,7 @@ module.exports = {
     }
     
     // Otherwise if this is an HTML-wanting browser, do a redirect.
-    return res.redirect('https://play.wordzoo.co.uk');
+    return res.redirect('/');
   },
 
 

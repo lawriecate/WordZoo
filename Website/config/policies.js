@@ -32,6 +32,7 @@ module.exports.policies = {
   UserController: {
     '*': 'isAuthenticated',
     login: true,
+    logout: true,
     signup: true,
     edit: 'isAdmin',
     update: 'isAdmin',

@@ -28,6 +28,7 @@ module.exports = {
           return res.badRequest('Invalid username/passcode combination.');
         }
         // Otherwise if this is an HTML-wanting browser, redirect to /login.
+        req.flash('error', 'Sorry that passcode is not correct - please ask your teacher for help!');
         return res.redirect(invalidRedirect);
       }
 

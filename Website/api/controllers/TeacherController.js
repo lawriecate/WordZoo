@@ -129,9 +129,6 @@ module.exports = {
 						} else {
 							pupilData = JSON.parse(pupil.character);
 						}
-						
-						sails.log(pupil);
-						sails.log(pupilData);
 						pupilData.push(pupil.name);
 						data.pupils.push(pupilData);
 					});
