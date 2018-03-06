@@ -30,7 +30,7 @@ module.exports = function fetchUserHook(sails) {
 
               if(req.user.isTeacher) {
                 
-                School.findOne({id:user.teaches_at[0]}).populate('classes').exec(function(err,school) {
+               /* School.findOne({id:user.teaches_at[0]}).populate('classes').exec(function(err,school) {
                   if (err) { 
                     sails.log('erro getting school');
                   } 
@@ -40,7 +40,7 @@ module.exports = function fetchUserHook(sails) {
                     sails.log(school);
                     return next();
                   }
-                });
+                });*/
               }
               else {
 
