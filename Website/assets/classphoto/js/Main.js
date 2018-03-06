@@ -104,7 +104,25 @@ window.onload = function()
 			game.state.add('play', PlayScreen);
 
 			// Show loading screen
-			game.state.start('play');																// ******* CHANGED FOR TESTING *******
+			game.state.start('loading');
+
+			
+			jQuery.ajax({
+				url: 'classdata',
+				success: function (data) {
+					//if (result.isOk == false) alert(result.message);
+					inputData = data.pupils;
+					className = data.className;
+				
+
+					// Show play screen
+					game.state.start('play');
+		
+					},
+					async: true
+				});
+			
+			// ******* CHANGED FOR TESTING *******
 /*
 	$.get('http://localhost:1337/student/testdata', function(data)
 	{

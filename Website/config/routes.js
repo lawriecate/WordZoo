@@ -106,7 +106,9 @@ module.exports.routes = {
     'get /teach/class/:classid/classdata': 'TeacherController.getClassPhotoData',
     'post /teach/class/:classid/newpupil': 'TeacherController.addPupil',
     'post /teach/class/:classid/regenerate': 'TeacherController.regenKey',
-    'get /teach/start/:pupilid': 'TeacherController.startSession',
+    'post /teach/class/:classid/deletePupil': 'TeacherController.deletePupil',
+   // 'get /teach/start/:pupilid': 'TeacherController.startSession',
+    'get /teach/review/:pupilid': 'TeacherController.reviewPupil',
 
     'get /student':'GameController.home' ,
     'get /student/welcome':'StudentController.quiz' ,

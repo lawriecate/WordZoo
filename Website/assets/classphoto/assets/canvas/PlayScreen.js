@@ -121,18 +121,11 @@ PlayScreen.prototype.preload = function ()
 
 PlayScreen.prototype.create = function () 
 {	
-	jQuery.ajax({
-		url: 'classdata',
-		success: function (data) {
-			//if (result.isOk == false) alert(result.message);
-			inputData = data.pupils;
-			className = data.className;
-			console.log(data);
-
+	
 				// load background -> make all invisible
 				for(var i=0; i<backgroundNames.length; i++)
 				{
-					backgrounds[i] = PlayScreen.add.sprite(0, 0, backgroundNames[i]);
+					backgrounds[i] = this.add.sprite(0, 0, backgroundNames[i]);
 					if(backgrounds[i].width < 1920)
 					{
 						backgrounds[i].scale.setTo(1.5, 1.5);
@@ -220,11 +213,7 @@ PlayScreen.prototype.create = function ()
 				// Names are hidden to start
 				isVisible = false;
 				this.generateOrder();
-				
-			},
-			async: true
-		});
-
+			
 
 	
 };
@@ -346,6 +335,11 @@ PlayScreen.prototype.generateOrder = function()
 		var prevAnimalIndex = classData[shortestArrayIndex][classData[shortestArrayIndex].length - 1][3];
 
 		// Get offset of the animals
+		console.log(inputData[i % inputData.length]+' ? '+this.getCharacterIndex(i % inputData.length));
+
+
+
+
 		var offset = sizeTable[prevAnimalIndex][nextAnimalIndex];
 
 
@@ -446,6 +440,10 @@ PlayScreen.prototype.getCharacterIndex = function(index)
 	// Sheep
 	else if(temp[44] == 2)
 		return 5;
+
+	// Default case
+	else
+		return 0;
 };
 
 
@@ -490,6 +488,9 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data, modifier)
 	// Sheep
 	else if(data[44] == 2)
 		animalIndex = 5;
+
+	else 
+		animalIndex = 0;
 	
 
 

@@ -28,9 +28,26 @@ module.exports = function fetchUserHook(sails) {
               req.user.isAdmin = user.admin;
               req.user.isTeacher = (user.teaches_at[0] != null);
 
+              if(req.user.isTeacher) {
+                
+                School.findOne({id:user.teaches_at[0]}).populate('classes').exec(function(err,school) {
+                  if (err) { 
+                    sails.log('erro getting school');
+                  } 
+                  else {
+                    req.school = school;
+                    sails.log(req.school);
+                    sails.log(school);
+                    return next();
+                  }
+                });
+              }
+              else {
 
               // Continue the request.
               return next();
+
+              }
 
             });
 

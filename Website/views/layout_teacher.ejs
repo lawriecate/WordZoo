@@ -44,7 +44,21 @@
 
 
                 <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="/teach">Home</a></li>
+                    <li class="uk-active"><a href="/teach">Home</a>
+                       <% if(req.school) { %>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                
+                                <% _.each(req.school.classes, function (schoolClass) { %>
+                                <li ><a href="/teach/class/<%=schoolClass.id%>/"><%=schoolClass.name%></a></li>
+                               
+                                <% }) %>
+                            </ul>
+                        </div>
+                        <% } %>
+                    </li>
+                    
+                
                     <!--<li>
                         <a href="#">My Classes</a>
                         <div class="uk-navbar-dropdown">
@@ -128,6 +142,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/1jquery.js"></script>
+    <script src="/js/dependencies/home.js"></script>
     <script src="/js/dependencies/uikit-icons.min.js"></script>
     <script src="/js/dependencies/uikit.min.js"></script>
     <!--SCRIPTS END-->

@@ -126,8 +126,10 @@ module.exports = {
 						pupilData = [];
 						if(pupil.character=="") {
 							pupil.character = generateProfile();
+						} else {
+							pupilData = JSON.parse(pupil.character);
 						}
-						pupilData = pupil.character;
+						
 						sails.log(pupil);
 						sails.log(pupilData);
 						pupilData.push(pupil.name);
@@ -174,6 +176,13 @@ module.exports = {
 				});
 
 		},
+		deletePupil:function(req,res) {
+
+			Pupil.destroy({id:req.param('pupilid')}).exec(function(err) {
+				return res.redirect('/teach/class/'+req.params.classid);
+			});
+
+		},
 		startSession: function(req,res) {
 			pupil = Pupil.findOne({id:req.params.pupilid}).exec(function(err,pupil) {
 				req.session.pupilIsLoggedIn = true
@@ -184,5 +193,12 @@ module.exports = {
 		viewSchool: function(req,res) {
 		},
 		loginPupil: function(req,res) {
-		}
+		},
+		reviewPupil: function(req,res) {
+			Pupil.findOne({id:req.params.pupilid}).populate('in_class').exec(function(err,pupil) {
+				return res.view('teacher/reviewPupil.ejs', {'title':'Review Pupil',pupil:pupil,  layout: 'layout_teacher'});
+			});
+			
+   
+		},
 };
