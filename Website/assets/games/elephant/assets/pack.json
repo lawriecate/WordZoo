@@ -144,7 +144,7 @@
       "type": "spritesheet",
       "key": "preloader",
       "url": "/games/elephant/assets/loading.png",
-      "frameWidth": 121,
+      "frameWidth": 120,
       "frameHeight": 121,
       "frameMax": -1,
       "margin": 0,
