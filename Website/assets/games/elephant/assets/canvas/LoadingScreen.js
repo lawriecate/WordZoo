@@ -36,6 +36,7 @@ LoadingScreen.prototype.create = function ()
 	// preloader + animation
 	var _preloader = this.game.add.sprite(965,880,'preloader',0);
 	_preloader.anchor.setTo(0.5, 0.5);
+	_preloader.scale.setTo(1.91,1.91);
 
 	// preloader animation
  	var _preloaderAni = _preloader.animations.add('preloader',

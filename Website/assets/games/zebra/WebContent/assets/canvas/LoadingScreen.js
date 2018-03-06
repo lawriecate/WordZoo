@@ -34,10 +34,11 @@ LoadingScreen.prototype.preload = function ()
 
 LoadingScreen.prototype.create = function ()
 {
-	var _background = this.add.sprite(0, 0, 'MainMenu');
+	var _background = this.add.sprite(0, 0, 'background');
 
 	// preloader + animation
 	var _preloader = this.game.add.sprite(965,880,'preloader',0);
+	_preloader.scale.setTo(1.91,1.91);
 	_preloader.anchor.setTo(0.5, 0.5);
 
 	// preloader animation

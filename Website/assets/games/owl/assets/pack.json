@@ -99,8 +99,8 @@
       "type": "spritesheet",
       "key": "preloader",
       "url": "/games/owl/assets/preloader.png",
-      "frameWidth": 250,
-      "frameHeight": 250,
+      "frameWidth": 121,
+      "frameHeight": 121,
       "frameMax": -1,
       "margin": 0,
       "spacing": 0

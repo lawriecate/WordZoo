@@ -40,6 +40,7 @@ LoadingScreen.prototype.create = function ()
 
 	// preloader + animation
 	var _preloader = this.game.add.sprite(965,880,'preloader',0);
+	_preloader.scale.setTo(1.91,1.91);
 	_preloader.anchor.setTo(0.5, 0.5);
 
 	// preloader animation
@@ -59,13 +60,12 @@ LoadingScreen.prototype.create = function ()
 	var context = this;
 	$.get('/student/getWords', function(data)
 	{
+		// Save input words
 		words = data;
 		console.log(words);
 
-			
-		// Multiple inputs
-		// groupWords = data[0];
-		// startingCoins = data[1];
+
+		// Move to play state
 		context.state.start('play');
 	}
 		).fail(function() 
