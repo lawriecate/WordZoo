@@ -26,8 +26,16 @@
 <div id="modal-new-class" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <h2 class="uk-modal-title">New Class</h2>
-        <form method="post" action="/teach/newclass">
-          <input type="text" name="name" placeholder="Class Name"/>
+        
+        <form class="uk-form-stacked" method="post" action="/teach/newclass">
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-stacked-text">What do you want to call this class?</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="form-stacked-text" type="text" placeholder="e.g. Mr. Doe's Year 1" name="name">
+            </div>
+        </div>
+          
+          
 
         <p class="uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>

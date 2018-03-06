@@ -1,29 +1,60 @@
 <div class="uk-section uk-background-cover uk-light " style="background:url('https://blog.wordzoo.co.uk/wp-content/uploads/revslider/splash-creative-light-01-animated/Slider-CL01-Background.png'); min-height:1400px;">
     <div class="uk-container">
 
-<h1><%= schoolClass.name %></h1>
-<h2><%= schoolClass.pupils.length %> pupils </h2>
-<form method="post" action="/teach/class/<%=schoolClass.id%>/newpupil">
-  <input type="text" name="name" placeholder=" Name" value="" />
-  <input type="text" name="dob" placeholder="01/01/2014" value="" />
-  <input type="submit" value="Save" />
-</form>
-<table class="uk-table">
-  <tr>
-    <td>Name</td>
-    <td>Login</td>
-    <td>Passcode</td>
-    <td>Actions</td>
-  </tr>
+<h1><%= schoolClass.name %> <span class="uk-text-small"><%= schoolClass.pupils.length %> pupils in this class</span></h1>
+
+<h3>All pupils:</h3>
+<a href="#" id="btnPrintClass" class="uk-button uk-button-primary">Print List</a>
+<a href="photo" id="btnPrintClass" class="uk-button uk-button-primary">View Class Characters</a>
+<a href="#modal-new-pupil" uk-toggle class="uk-button uk-button-primary">New Pupil</a>
+<table class="uk-table uk-table-striped">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Login</td>
+      <td>Passcode</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
   <% _.each(schoolClass.pupils, function (pupil) { %>
   <tr>
     <td><%= pupil.name %> </td>
     <td><%= pupil.username %> </td>
     <td><%= pupil.passcode %> </td>
-    <td><!--<a href="/teach/start/<%=pupil.id%>"> Start Session &raquo;</a>--> <form method="post" action="/teach/class/<%=schoolClass.id%>/regenerate"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input type="submit" value="New Password"/></form></td>
+    <td><a href="/teach/review/<%=pupil.id%>" class="uk-button uk-button-default uk-button-small"> Review Progress</a> <form method="post" action="/teach/class/<%=schoolClass.id%>/regenerate" class="uk-inline"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input class="uk-button uk-button-small uk-button-default" type="submit" value="New Passcode"/></form> <form method="post" action="/teach/class/<%=schoolClass.id%>/deletePupil" class="uk-inline"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input class="uk-button uk-button-small uk-button-danger" type="submit" value="Delete Pupil"/></form></td>
   </tr>
   <% }) %>
+  </tbody>
 </table>
 
 </div>
+</div>
+
+<div id="modal-new-pupil" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+      <h2 class="uk-modal-title">Add a new pupil</h2>
+     
+
+       
+      <form class="uk-form-stacked" method="post" action="/teach/class/<%=schoolClass.id%>/newpupil">
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-stacked-text">What is their name?</label>
+          <div class="uk-form-controls">
+              <input class="uk-input" id="form-stacked-text" type="text" placeholder="e.g. Bob" name="name">
+          </div>
+      </div>
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">What is their date of birth? (optional)</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-stacked-text" type="text" placeholder="e.g. 01/02/2014" name="dob">
+        </div>
+      </div>
+       
+      <p class="uk-text-right">
+          <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+          <input type="submit" class="uk-button uk-button-primary" >
+      </p>
+        </form>
+  </div>
 </div>
