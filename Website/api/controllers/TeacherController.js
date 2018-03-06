@@ -98,7 +98,48 @@ module.exports = {
 			});
 		},
 		getClassPhotoData: function(req,res) {
+			schools = School.findOne({id:req.user.teaches_at[0].id}).populate('classes').exec(function(err,school) {
+				if (err) {
+					return res.serverError(err);
+				}
+				schoolClass = Class.findOne({id:req.params.classid}).populate('pupils').exec(function(err,schoolClass) {
+					 if (err) {
+						 return res.serverError(err);
+					 }
 
+					var data ={
+						className: schoolClass.name,
+						pupils: []
+					};
+
+					function generateProfile() {
+						len = 45;
+						value = 0;
+						if (len == 0) return [];
+						var a = [value];
+						while (a.length * 2 <= len) a = a.concat(a);
+						if (a.length < len) a = a.concat(a.slice(0, len - a.length));
+						return a;
+					}
+
+					_.each(schoolClass.pupils, function (pupil) { 
+						pupilData = [];
+						if(pupil.character=="") {
+							pupil.character = generateProfile();
+						}
+						pupilData = pupil.character;
+						sails.log(pupil);
+						sails.log(pupilData);
+						pupilData.push(pupil.name);
+						data.pupils.push(pupilData);
+					});
+
+   
+				   // sails.log(schoolClass);
+					 return res.json(data);
+   
+				 });
+			});
 		},
 		addPupil: function(req,res) {
 			schools = School.findOne({id:req.user.teaches_at[0].id}).populate('classes').exec(function(err,school) {

@@ -97,7 +97,7 @@ var bigStyle = {font: "bold 120px Arial", fill: "#fff", boundsAlignH: "center", 
 window.onload = function()
 {
 	// Create game
-	var game = new Phaser.Game(1920, 1080, Phaser.AUTO);
+	var game = new Phaser.Game(1920, 1080, Phaser.AUTO, 'photo');
 
 			// Add states
 			game.state.add('loading', LoadingScreen);

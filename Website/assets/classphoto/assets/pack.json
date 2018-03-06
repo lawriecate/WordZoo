@@ -3,7 +3,7 @@
     {
       "type": "spritesheet",
       "key": "animals",
-      "url": "assets/animals.png",
+      "url": "/classphoto/assets/animals.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -13,7 +13,7 @@
     {
       "type": "spritesheet",
       "key": "blackBoots",
-      "url": "assets/blackBoots.png",
+      "url": "/classphoto/assets/blackBoots.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -23,7 +23,7 @@
     {
       "type": "spritesheet",
       "key": "blackShoes",
-      "url": "assets/blackShoes.png",
+      "url": "/classphoto/assets/blackShoes.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -33,7 +33,7 @@
     {
       "type": "spritesheet",
       "key": "blackTie",
-      "url": "assets/blackTie.png",
+      "url": "/classphoto/assets/blackTie.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -43,7 +43,7 @@
     {
       "type": "spritesheet",
       "key": "blueShirt",
-      "url": "assets/blueShirt.png",
+      "url": "/classphoto/assets/blueShirt.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -53,7 +53,7 @@
     {
       "type": "spritesheet",
       "key": "blueShoes",
-      "url": "assets/blueShoes.png",
+      "url": "/classphoto/assets/blueShoes.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -63,7 +63,7 @@
     {
       "type": "spritesheet",
       "key": "blueSunglasses",
-      "url": "assets/blueSunglasses.png",
+      "url": "/classphoto/assets/blueSunglasses.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -73,7 +73,7 @@
     {
       "type": "spritesheet",
       "key": "bowTie",
-      "url": "assets/bowTie.png",
+      "url": "/classphoto/assets/bowTie.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -83,7 +83,7 @@
     {
       "type": "spritesheet",
       "key": "bowlerHat",
-      "url": "assets/bowlerHat.png",
+      "url": "/classphoto/assets/bowlerHat.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -93,7 +93,7 @@
     {
       "type": "spritesheet",
       "key": "brownBoots",
-      "url": "assets/brownBoots.png",
+      "url": "/classphoto/assets/brownBoots.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -103,7 +103,7 @@
     {
       "type": "spritesheet",
       "key": "clownNose",
-      "url": "assets/clownNose.png",
+      "url": "/classphoto/assets/clownNose.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -113,7 +113,7 @@
     {
       "type": "spritesheet",
       "key": "clownWig",
-      "url": "assets/clownWig.png",
+      "url": "/classphoto/assets/clownWig.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -123,7 +123,7 @@
     {
       "type": "spritesheet",
       "key": "cowboyHat",
-      "url": "assets/cowboyHat.png",
+      "url": "/classphoto/assets/cowboyHat.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -133,7 +133,7 @@
     {
       "type": "spritesheet",
       "key": "crown",
-      "url": "assets/crown.png",
+      "url": "/classphoto/assets/crown.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -143,7 +143,7 @@
     {
       "type": "spritesheet",
       "key": "greenShirt",
-      "url": "assets/greenShirt.png",
+      "url": "/classphoto/assets/greenShirt.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -153,7 +153,7 @@
     {
       "type": "spritesheet",
       "key": "greenShoes",
-      "url": "assets/greenShoes.png",
+      "url": "/classphoto/assets/greenShoes.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -163,7 +163,7 @@
     {
       "type": "spritesheet",
       "key": "gryTie",
-      "url": "assets/gryTie.png",
+      "url": "/classphoto/assets/gryTie.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -173,7 +173,7 @@
     {
       "type": "spritesheet",
       "key": "hardHat",
-      "url": "assets/hardHat.png",
+      "url": "/classphoto/assets/hardHat.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -183,7 +183,7 @@
     {
       "type": "spritesheet",
       "key": "highHeels",
-      "url": "assets/highHeels.png",
+      "url": "/classphoto/assets/highHeels.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -193,7 +193,7 @@
     {
       "type": "spritesheet",
       "key": "hpGlasses",
-      "url": "assets/hpGlasses.png",
+      "url": "/classphoto/assets/hpGlasses.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -203,7 +203,7 @@
     {
       "type": "spritesheet",
       "key": "hufTie",
-      "url": "assets/hufTie.png",
+      "url": "/classphoto/assets/hufTie.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -213,7 +213,7 @@
     {
       "type": "spritesheet",
       "key": "monocole",
-      "url": "assets/monocole.png",
+      "url": "/classphoto/assets/monocole.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -223,7 +223,7 @@
     {
       "type": "spritesheet",
       "key": "moustache",
-      "url": "assets/moustache.png",
+      "url": "/classphoto/assets/moustache.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -233,7 +233,7 @@
     {
       "type": "spritesheet",
       "key": "necklace",
-      "url": "assets/necklace.png",
+      "url": "/classphoto/assets/necklace.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -243,7 +243,7 @@
     {
       "type": "spritesheet",
       "key": "orangeShirt",
-      "url": "assets/orangeShirt.png",
+      "url": "/classphoto/assets/orangeShirt.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -253,7 +253,7 @@
     {
       "type": "spritesheet",
       "key": "pinkBoots",
-      "url": "assets/pinkBoots.png",
+      "url": "/classphoto/assets/pinkBoots.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -263,7 +263,7 @@
     {
       "type": "spritesheet",
       "key": "pinkGlasses",
-      "url": "assets/pinkGlasses.png",
+      "url": "/classphoto/assets/pinkGlasses.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -273,7 +273,7 @@
     {
       "type": "spritesheet",
       "key": "pinkShirt",
-      "url": "assets/pinkShirt.png",
+      "url": "/classphoto/assets/pinkShirt.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -283,7 +283,7 @@
     {
       "type": "spritesheet",
       "key": "pinkShoes",
-      "url": "assets/pinkShoes.png",
+      "url": "/classphoto/assets/pinkShoes.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -293,7 +293,7 @@
     {
       "type": "spritesheet",
       "key": "purpleShirt",
-      "url": "assets/purpleShirt.png",
+      "url": "/classphoto/assets/purpleShirt.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -303,7 +303,7 @@
     {
       "type": "spritesheet",
       "key": "ravTie",
-      "url": "assets/ravTie.png",
+      "url": "/classphoto/assets/ravTie.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -313,7 +313,7 @@
     {
       "type": "spritesheet",
       "key": "redGlasses",
-      "url": "assets/redGlasses.png",
+      "url": "/classphoto/assets/redGlasses.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -323,7 +323,7 @@
     {
       "type": "spritesheet",
       "key": "redShirt",
-      "url": "assets/redShirt.png",
+      "url": "/classphoto/assets/redShirt.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -333,7 +333,7 @@
     {
       "type": "spritesheet",
       "key": "slyTie",
-      "url": "assets/slyTie.png",
+      "url": "/classphoto/assets/slyTie.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -343,7 +343,7 @@
     {
       "type": "spritesheet",
       "key": "topHat",
-      "url": "assets/topHat.png",
+      "url": "/classphoto/assets/topHat.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -353,7 +353,7 @@
     {
       "type": "spritesheet",
       "key": "whiteShirt",
-      "url": "assets/whiteShirt.png",
+      "url": "/classphoto/assets/whiteShirt.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -363,7 +363,7 @@
     {
       "type": "spritesheet",
       "key": "yellowBoots",
-      "url": "assets/yellowBoots.png",
+      "url": "/classphoto/assets/yellowBoots.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -373,7 +373,7 @@
     {
       "type": "spritesheet",
       "key": "yellowShirt",
-      "url": "assets/yellowShirt.png",
+      "url": "/classphoto/assets/yellowShirt.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -383,7 +383,7 @@
     {
       "type": "spritesheet",
       "key": "blackSunglasses",
-      "url": "assets/blackSunglasses.png",
+      "url": "/classphoto/assets/blackSunglasses.png",
       "frameWidth": 437,
       "frameHeight": 475,
       "frameMax": -1,
@@ -393,73 +393,73 @@
     {
       "type": "image",
       "key": "score",
-      "url": "assets/score.png",
+      "url": "/classphoto/assets/score.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "artClassroom",
-      "url": "assets/artClassroom.png",
+      "url": "/classphoto/assets/artClassroom.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "brickWall",
-      "url": "assets/brickWall.png",
+      "url": "/classphoto/assets/brickWall.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "cookingRoom",
-      "url": "assets/cookingRoom.png",
+      "url": "/classphoto/assets/cookingRoom.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "footballBalls",
-      "url": "assets/footballBalls.png",
+      "url": "/classphoto/assets/footballBalls.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "footballEmpty",
-      "url": "assets/footballEmpty.png",
+      "url": "/classphoto/assets/footballEmpty.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "grassHill",
-      "url": "assets/grassHill.png",
+      "url": "/classphoto/assets/grassHill.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "pinkClassroom",
-      "url": "assets/pinkClassroom.png",
+      "url": "/classphoto/assets/pinkClassroom.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "riverStones",
-      "url": "assets/riverStones.png",
+      "url": "/classphoto/assets/riverStones.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "runningPath",
-      "url": "assets/runningPath.png",
+      "url": "/classphoto/assets/runningPath.png",
       "overwrite": false
     },
     {
       "type": "image",
       "key": "steppingStones",
-      "url": "assets/steppingStones.png",
+      "url": "/classphoto/assets/steppingStones.png",
       "overwrite": false
     },
     {
       "type": "spritesheet",
       "key": "circle",
-      "url": "assets/preloader.png",
+      "url": "/classphoto/assets/preloader.png",
       "frameWidth": 250,
       "frameHeight": 250,
       "frameMax": -1,
@@ -469,7 +469,7 @@
     {
       "type": "image",
       "key": "wordZoo",
-      "url": "assets/wordZoo.png",
+      "url": "/classphoto/assets/wordZoo.png",
       "overwrite": false
     }
   ],

@@ -30,6 +30,7 @@ module.exports = {
       },
       character: {
         type: 'Text',
+        defaultsTo: ''
       },
       quiz_result: {
         type: 'Text',

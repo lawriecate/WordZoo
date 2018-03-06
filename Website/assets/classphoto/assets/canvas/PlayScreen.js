@@ -54,12 +54,38 @@ PlayScreen.prototype.preload = function ()
 {	
 	this.load.pack('main', '/classphoto/assets/pack.json');
 
-	inputData = new Array();
-	classData = new Array();
+	//inputData = new Array();
+	//classData = new Array();
+/*
+	$.get('classdata', function(data)
+	{
+		console.log("GET" + data);
+		//inputData = data[0];
+		//className = data[1];
+		inputData = data.pupils;
+		className = data.className;
+		// Start
+	this.generateOrder();
+	}).fail(function() 
+	{
+		console.log('i failed');
+	});
+
+*/
+	jQuery.ajax({
+		url: '/classphoto/assets/pack.json',
+		success: function (data) {
+			//if (result.isOk == false) alert(result.message);
+			inputData = data.pupils;
+			className = data.className;
+			console.log(data);
+		},
+		async: false
+	});
 
 
 	// ** FOR TESTING **
-	inputData[0] = data;
+	/*inputData[0] = data;
 	inputData[1] = data2;
 	inputData[2] = data3;
 	inputData[3] = data4;
@@ -98,7 +124,7 @@ PlayScreen.prototype.preload = function ()
 	inputData[36] = data45;
 	inputData[37] = data46;
 	inputData[38] = data47;
-	inputData[39] = data48;
+	inputData[39] = data48;*/
 };
 
 
@@ -195,9 +221,8 @@ PlayScreen.prototype.create = function ()
 
     // Names are hidden to start
     isVisible = false;
-
-	// Start
 	this.generateOrder();
+	
 };
 
 

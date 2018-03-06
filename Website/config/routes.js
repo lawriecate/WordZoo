@@ -103,7 +103,7 @@ module.exports.routes = {
     'post /teach/newclass': 'TeacherController.newClass',
     'get /teach/class/:classid': 'TeacherController.viewClass',
     'get /teach/class/:classid/photo': 'TeacherController.viewClassPhoto',
-    'get /teach/class/:classid/photo/json': 'TeacherController.getClassPhotoData',
+    'get /teach/class/:classid/classdata': 'TeacherController.getClassPhotoData',
     'post /teach/class/:classid/newpupil': 'TeacherController.addPupil',
     'post /teach/class/:classid/regenerate': 'TeacherController.regenKey',
     'get /teach/start/:pupilid': 'TeacherController.startSession',
