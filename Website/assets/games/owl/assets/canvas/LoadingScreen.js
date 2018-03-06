@@ -60,13 +60,12 @@ LoadingScreen.prototype.create = function ()
 	var context = this;
 	$.get('/student/getWords', function(data)
 	{
+		// Save input words
 		words = data;
 		console.log(words);
 
-			
-		// Multiple inputs
-		// groupWords = data[0];
-		// startingCoins = data[1];
+
+		// Move to play state
 		context.state.start('play');
 	}
 		).fail(function() 
