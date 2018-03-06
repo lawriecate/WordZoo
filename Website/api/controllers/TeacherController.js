@@ -81,6 +81,25 @@ module.exports = {
 
 			});
 		},
+		viewClassPhoto: function(req,res) {
+			schools = School.findOne({id:req.user.teaches_at[0].id}).populate('classes').exec(function(err,school) {
+				if (err) {
+					return res.serverError(err);
+				}
+				schoolClass = Class.findOne({id:req.params.classid}).populate('pupils').exec(function(err,schoolClass) {
+					 if (err) {
+						 return res.serverError(err);
+					 }
+   
+				   // sails.log(schoolClass);
+					 return res.view('teacher/classPhoto.ejs', {'title':schoolClass.name, school: school,schoolClass:schoolClass,  layout: 'layout_teacher'});
+   
+				 });
+			});
+		},
+		getClassPhotoData: function(req,res) {
+
+		},
 		addPupil: function(req,res) {
 			schools = School.findOne({id:req.user.teaches_at[0].id}).populate('classes').exec(function(err,school) {
 			 if (err) {
