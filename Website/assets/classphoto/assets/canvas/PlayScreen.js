@@ -72,17 +72,7 @@ PlayScreen.prototype.preload = function ()
 	});
 
 */
-	jQuery.ajax({
-		url: '/classphoto/assets/pack.json',
-		success: function (data) {
-			//if (result.isOk == false) alert(result.message);
-			inputData = data.pupils;
-			className = data.className;
-			console.log(data);
-		},
-		async: false
-	});
-
+	
 
 	// ** FOR TESTING **
 	/*inputData[0] = data;
@@ -131,97 +121,111 @@ PlayScreen.prototype.preload = function ()
 
 PlayScreen.prototype.create = function () 
 {	
-	// load background -> make all invisible
-	for(var i=0; i<backgroundNames.length; i++)
-	{
-		backgrounds[i] = this.add.sprite(0, 0, backgroundNames[i]);
-		if(backgrounds[i].width < 1920)
-		{
-			backgrounds[i].scale.setTo(1.5, 1.5);
-		}
+	jQuery.ajax({
+		url: 'classdata',
+		success: function (data) {
+			//if (result.isOk == false) alert(result.message);
+			inputData = data.pupils;
+			className = data.className;
+			console.log(data);
 
-		backgrounds[i].visible = false;
-	}
+				// load background -> make all invisible
+				for(var i=0; i<backgroundNames.length; i++)
+				{
+					backgrounds[i] = PlayScreen.add.sprite(0, 0, backgroundNames[i]);
+					if(backgrounds[i].width < 1920)
+					{
+						backgrounds[i].scale.setTo(1.5, 1.5);
+					}
 
-	// make first background visible
-	backgroundIndex = 0;
-	backgrounds[0].visible = true;
+					backgrounds[i].visible = false;
+				}
 
-
-	// Title text
-	var titleText = this.add.text(960, 80, className, bigStyle);
-	titleText.stroke = '#FF9933';
-	titleText.strokeThickness = 15;	
-	titleText.anchor.setTo(0.5, 0.5);
-	titleText.addColor('#FFCE07', 0);	
-
-
-	// Show names button
-	nameButton = this.add.button(0, 925, 'score', this.onClickNames, this, null, null, null, null);
-	nameButton.scale.setTo(1.3, 2);
-
-		// Back button text
-		nameButtonText = this.add.text(240, 1005, "  Show \n Names", smallStyle);
-		nameButtonText.anchor.setTo(0.5, 0.5);
-		nameButtonText.addColor('#FF9933', 0);	
+				// make first background visible
+				backgroundIndex = 0;
+				backgrounds[0].visible = true;
 
 
-	// Add Change Background button
-	changeButton = this.add.button(480, 925, 'score', this.onClickChangeBack, this, null, null, null, null);
-	changeButton.scale.setTo(1.3, 2);
-
-		// Change Background button text
-		changeButtonText = this.add.text(720, 1005, "    Change \n Background", smallStyle);
-		changeButtonText.anchor.setTo(0.5, 0.5);
-		changeButtonText.addColor('#FF9933', 0);	
+				// Title text
+				var titleText = this.add.text(960, 80, className, bigStyle);
+				titleText.stroke = '#FF9933';
+				titleText.strokeThickness = 15;	
+				titleText.anchor.setTo(0.5, 0.5);
+				titleText.addColor('#FFCE07', 0);	
 
 
-	// Add Shuffle button
-	shuffleButton = this.add.button(965, 925, 'score', this.onClickShuffle, this, null, null, null, null);
-	shuffleButton.scale.setTo(1.3, 2);
+				// Show names button
+				nameButton = this.add.button(0, 925, 'score', this.onClickNames, this, null, null, null, null);
+				nameButton.scale.setTo(1.3, 2);
 
-		// Shuffle Characters button text
-		shuffleButtonText = this.add.text(1190, 1005, "    Shuffle \n Characters", smallStyle);
-		shuffleButtonText.anchor.setTo(0.5, 0.5);
-		shuffleButtonText.addColor('#FF9933', 0);
-
-	// Add Photo button
-	photoButton = this.add.sprite(1445, 925, 'score');
-	photoButton.scale.setTo(1.3, 2);
-
-		// Take Photo button text
-		photoButtonText = this.add.text(1680, 1005, "   To Take a Photo \n Right Click -> Save", smallStyle);
-		photoButtonText.anchor.setTo(0.5, 0.5);
-		photoButtonText.addColor('#FF9933', 0);
+					// Back button text
+					nameButtonText = this.add.text(240, 1005, "  Show \n Names", smallStyle);
+					nameButtonText.anchor.setTo(0.5, 0.5);
+					nameButtonText.addColor('#FF9933', 0);	
 
 
-	// Add Photo button
-	wordZooImage = this.add.sprite(920, 950, 'wordZoo');
-	wordZooImage.anchor.setTo(0.5, 0.5);
-	wordZooImage.visible = false;
+				// Add Change Background button
+				changeButton = this.add.button(480, 925, 'score', this.onClickChangeBack, this, null, null, null, null);
+				changeButton.scale.setTo(1.3, 2);
+
+					// Change Background button text
+					changeButtonText = this.add.text(720, 1005, "    Change \n Background", smallStyle);
+					changeButtonText.anchor.setTo(0.5, 0.5);
+					changeButtonText.addColor('#FF9933', 0);	
 
 
-	// On Right Click -> hide buttons
-    this.game.input.activePointer.rightButton.onDown.add(function(touchStart) { 
-    	this.toggleButtons(false);
-    }, this);
-    // On Left Click -> show buttons
-    this.game.input.activePointer.leftButton.onDown.add(function(touchStart) { 
-    	this.toggleButtons(true);
-    }, this);
+				// Add Shuffle button
+				shuffleButton = this.add.button(965, 925, 'score', this.onClickShuffle, this, null, null, null, null);
+				shuffleButton.scale.setTo(1.3, 2);
 
-	
-    // if no characters in class, show text + return;
-    if(inputData.length <= 0)
-    {
-    	var text = this.game.add.text(960, 180, "No characters to display", bigStyle);  
-    	text.anchor.setTo(0.5, 0.5);
-    	text.addColor('#FF9933', 0); 
-    }
+					// Shuffle Characters button text
+					shuffleButtonText = this.add.text(1190, 1005, "    Shuffle \n Characters", smallStyle);
+					shuffleButtonText.anchor.setTo(0.5, 0.5);
+					shuffleButtonText.addColor('#FF9933', 0);
 
-    // Names are hidden to start
-    isVisible = false;
-	this.generateOrder();
+				// Add Photo button
+				photoButton = this.add.sprite(1445, 925, 'score');
+				photoButton.scale.setTo(1.3, 2);
+
+					// Take Photo button text
+					photoButtonText = this.add.text(1680, 1005, "   To Take a Photo \n Right Click -> Save", smallStyle);
+					photoButtonText.anchor.setTo(0.5, 0.5);
+					photoButtonText.addColor('#FF9933', 0);
+
+
+				// Add Photo button
+				wordZooImage = this.add.sprite(920, 950, 'wordZoo');
+				wordZooImage.anchor.setTo(0.5, 0.5);
+				wordZooImage.visible = false;
+
+
+				// On Right Click -> hide buttons
+				this.game.input.activePointer.rightButton.onDown.add(function(touchStart) { 
+					this.toggleButtons(false);
+				}, this);
+				// On Left Click -> show buttons
+				this.game.input.activePointer.leftButton.onDown.add(function(touchStart) { 
+					this.toggleButtons(true);
+				}, this);
+
+				
+				// if no characters in class, show text + return;
+				if(inputData.length <= 0)
+				{
+					var text = this.game.add.text(960, 180, "No characters to display", bigStyle);  
+					text.anchor.setTo(0.5, 0.5);
+					text.addColor('#FF9933', 0); 
+				}
+
+				// Names are hidden to start
+				isVisible = false;
+				this.generateOrder();
+				
+			},
+			async: true
+		});
+
+
 	
 };
 
