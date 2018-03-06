@@ -98,7 +98,7 @@ RulesScreen.prototype.create = function ()
 
 	// Add giraffe walking sprites
 	giraffeWalk = this.game.add.sprite(0, playerLanePositionsY[0], 'giraffeWalking', 1);
-	giraffeWalk.scale.setTo(0.5, 0.5);
+	giraffeWalk.scale.setTo(0.785, 0.785);
 
 	// Add giraffe walking sprite
 	giraffe = this.game.add.sprite(playerLanePositionsX[0] - 144, playerLanePositionsY[0], 'giraffeFalling', 0);
