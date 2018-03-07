@@ -804,68 +804,62 @@ module.exports = {
 				// update states
 				// get old state
 				var state = State.find({
-          where:{"pupil":req.session.pupilId},
-           sort: 'createdAt DESC',
-            limit: 1
-          }).exec(function(err,stateRecord) {
-            //sails.log(err);
-          //  sails.log("Q");
-            //sails.log(state);
+          			where:{"pupil":req.session.pupilId},
+           			sort: 'createdAt DESC',
+            		limit: 1
+         		}).exec(function(err,stateRecord) {
+            		//sails.log(err);
+          			//sails.log("Q");
+            		//sails.log(state);
 
-            // if no state generate
+            		// if no state generate
     				if(stateRecord.state == null) {
     					var state = generateState();
     				} else {
 						state = stateRecord.state;
 					}
-
-            //        sails.log("G");
+            			
+            		//sails.log("G");
     				sails.log(state);
     				//unpack
-
 
     				//apply new values
     				//var words = req.session.game.words;
     				// apply decay value to state
     				//var decayValue = 0.9;
 
-
     				var words = req.session.game.words;
     				var i = 0;
 
-						// TODO save game state 10 times for each word
+					// TODO save game state 10 times for each word
 					
     				_.each(wordPercents,function(percent) {
 						state = state.map(function(value,index,arr) {
 							return value * 0.995;
 						});
 
-						pos = word2pos(words[i]);
-						
-    					state[pos] = percent;
-						i++;
-						
+						pos = word2pos(words[i++]);
+							
+	    				state[pos] = percent;
+							
 						var stateRecord = {state:JSON.stringify(state),pupil:req.session.pupilId};
 						sails.log("saving");
 						sails.log(stateRecord);
 						State.create(stateRecord,function(err,state) {
-							
-						});
-						
+								
+						});		
     				});
+    				
     				sails.log(state);
 
-    				// change to make a new state for each word
-
-    				// save back
+    				//change to make a new state for each word
+    				//save back
             
-
-						// generate session
+					// generate session
 						
     				// null out session data for games
-    				req.session.game = null;
-          });
-
+   					req.session.game = null;
+          		});
 			});
 		});
 
@@ -881,7 +875,7 @@ module.exports = {
 			}
 		});*/
 		return res.ok();
-    return res.json({'status':'saved'});
+    	return res.json({'status':'saved'});
 	},
 
 	sheepgame: function( req,res) {
