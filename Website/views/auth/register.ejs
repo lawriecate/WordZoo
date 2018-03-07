@@ -1,5 +1,5 @@
-<div class="uk-section uk-light uk-background-cover " style="background:url('/images/bg1.jpg'); min-height:1400px;">
-    <div class="uk-container">
+<div class="uk-section uk-light uk-background-cover " style="background: linear-gradient(to bottom, #7bccf7 0%,#31b3f9 100%);min-height:1400px;">
+        <div class="uk-container">
       <h1><img class="uk-logo uk-align-center" alt="WordZoo logo" width="800" src="/images/WordZoo_logo.png" />
       </h1>
 
@@ -11,6 +11,9 @@
           <a class="uk-alert-close" uk-close></a>
           <p><%=req.flash('error')%></p>
       </div>
+      <% } %>
+      <% if (req.session.signupSchool) { %>
+        You are joining <%= req.session.signupSchool.name %>
       <% } %>
       <p class="uk-text-center"><a class="uk-button" href="/">&laquo; Return to homepage</a></p>
 

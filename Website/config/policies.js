@@ -30,14 +30,16 @@ module.exports.policies = {
   '*': true,
 
   UserController: {
-    '*': 'isAuthenticated',
+   
     login: true,
     logout: true,
     signup: true,
+    signupForm:true,
     edit: 'isAdmin',
     update: 'isAdmin',
     assignSchool: 'isAdmin',
-    list: 'isAdmin'
+    list: 'isAdmin',
+    '*': 'isAuthenticated',
   },
 
   TeacherController: {

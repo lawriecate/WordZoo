@@ -43,6 +43,19 @@ module.exports = {
     return res.redirect('/');
   },
 
+  signupForm: function(req,res) {
+    sails.log('jjsjsj');
+    if(req.param('s') !== "") {
+      School.findOne({'signupcode':req.param('s')},function(err,school) {
+        req.session.signupSchool = school;
+        sails.log('Signing up to:');
+        sails.log(school);
+        return res.view('auth/register.ejs',{title:'Sign Up For WordZoo'});
+      });
+    } else {
+        return res.view('auth/register.ejs',{title:'Sign Up For WordZoo'});
+    }
+  },
 
   /**
    * `UserController.signup()`
@@ -66,15 +79,40 @@ module.exports = {
       // Subsequent requests from this user agent will have `req.session.me` set.
       req.session.me = user.id;
       req.session.isLoggedIn = true;
-    
-      // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
-      // send a 200 response letting the user agent know the signup was successful.
-      if (req.wantsJSON) {
-        return res.ok('Signup successful!');
-      }
 
-      // Otherwise if this is an HTML-wanting browser, redirect to /welcome.
-      return res.redirect('/welcome');
+      if(req.session.signupSchool) {
+        School.findOne({id:req.session.signupSchool.id}).exec(function(err,school) {
+          if (err) {
+            return res.serverError(err);
+          }
+          sails.log(school.name);
+            User.findOne({id:user.id}).exec(function(err,user) {
+              if (err) {
+                return res.serverError(err);
+              }
+              //user.teaches_at
+              school.teachers.add(user.id);
+             
+              school.save(function(err) {
+                if (err) {
+                  return res.serverError(err);
+                }
+                return res.redirect('/welcome');
+            });
+    
+          });
+        });
+      } else {
+    
+        // If this is not an HTML-wanting browser, e.g. AJAX/sockets/cURL/etc.,
+        // send a 200 response letting the user agent know the signup was successful.
+        if (req.wantsJSON) {
+          return res.ok('Signup successful!');
+        }
+
+        // Otherwise if this is an HTML-wanting browser, redirect to /welcome.
+        return res.redirect('/welcome');
+      }
     });
   },
 
