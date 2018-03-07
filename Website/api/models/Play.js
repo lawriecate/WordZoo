@@ -17,6 +17,10 @@ module.exports = {
     },
     session_id: {
       type:'string'
+    },
+    responses: {
+      collection: 'Response',
+      via:'play'
     }
   },
 

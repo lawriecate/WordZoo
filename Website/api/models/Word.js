@@ -15,11 +15,11 @@ module.exports = {
     },
     num_vowels: {
       type: 'integer',
-      required: true
+      required: false
     },
     num_syllables: {
       type: 'integer',
-      required: true
+      required: false
     }
   }
 };

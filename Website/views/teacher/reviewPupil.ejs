@@ -4,6 +4,22 @@
         <h1>Record for <%= pupil.name %> <% if(pupil.dob) { %><span class="uk-text-small"><%= pupil.dob %></span><% } %></h1>
         <h3>Pupil in <a href="/teach/class/<%= pupil.in_class[0].id %>/"><%= pupil.in_class[0].name %></a></h3>
         <h3>Login passcode: <%= pupil.passcode %></h3>
-
+        <h3>Recent Games: </h3>
+        <ul>
+        <% _.each(sessions, function (session) { %>
+           
+            <li><%= session.game.name %>
+                 <ul>
+                    <% 
+                    sails.log(session.responses);
+                    _.each(session.responses, function (response) {
+                      
+                        %>
+                        <li><%=response.word.word %> <%=(response.correct*100)%>% success</li>
+                    <% }) %>
+                 </ul>
+            </li>
+        <% }) %>
+        </ul>
     </div>
 </div>

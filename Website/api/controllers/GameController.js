@@ -786,20 +786,55 @@ module.exports = {
 	},
 
 	endGame: function(req,res) {
+		//Play.destroy({}).exec();
+		//Response.destroy({}).exec();
 		var wordPercents = req.param('words');
-		var game = Game.findOne({slug:req.params.gameslug}).exec(function(err,game) {
+		var gameRecord;
+		var game = Game.findOne({slug:req.param('game')}).exec(function(err,gameRecord) {
+			sails.log(gameRecord);
+			if (err) {
+				return res.serverError(err);
+			}
 			session = Play.new({
-				game: req.param('game'),
+				game: gameRecord.id,
 				pupil:req.session.pupilId
 			},function(err,session) {
 				// session created
+
+				// update points
 				oldPoints = req.pupil.points;
 				if(oldPoints === null) {oldPoints =0;}
 				newPoints = parseInt(oldPoints) + parseInt(req.param('score'));
 				Pupil.update({id:req.session.pupilId},{points:newPoints},function(err,pupil){
 
 				});
+
+
 				// update words
+				var words = req.session.game.words;
+				var i = 0;
+				_.each(wordPercents,function(wordPercent) {
+					
+					Word.findOrCreate({word:words[i]},{word:words[i]},function(err,wordRecord) {
+						if (err) {
+							return res.serverError(err);
+						}
+						response = {play: session.id,word: wordRecord.id,wordPercent};
+						sails.log(response);
+						sails.log(gameRecord);
+						Response.create({correct:wordPercent,word:wordRecord.id,play:session.id,game:gameRecord.id,pupil:req.session.pupilId},function(err,response) {
+							sails.log("Created");
+							sails.log(response);
+						});
+					});
+					
+					/*Response.create({
+
+					}).exec(function(err,wordRepsonse) {
+						
+					});*/
+					i++;
+				});
 
 				// update states
 				// get old state
@@ -838,7 +873,7 @@ module.exports = {
 							return value * 0.995;
 						});
 
-						pos = word2pos(words[i++]);
+						pos = word2pos(words[i]);
 							
 	    				state[pos] = percent;
 							
@@ -846,14 +881,15 @@ module.exports = {
 						sails.log("saving");
 						sails.log(stateRecord);
 						State.create(stateRecord,function(err,state) {
-								
+						i++;
 						});		
     				});
     				
     				sails.log(state);
 
     				//change to make a new state for each word
-    				//save back
+					//save back
+					
             
 					// generate session
 						

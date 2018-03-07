@@ -18,7 +18,7 @@ module.exports = {
       model: 'Word'
     },
     correct: {
-      type: 'boolean'
+      type: 'float'
     },
     timeToResponse: {
       type: 'integer'
