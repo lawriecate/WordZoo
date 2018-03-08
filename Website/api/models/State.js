@@ -12,7 +12,7 @@ module.exports = {
       'model': 'Pupil'
     },
     state: {
-      'type': 'String'
+      'type': 'Text'
     }
   },
 
