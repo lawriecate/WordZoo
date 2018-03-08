@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing Teachercontrollers
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var nestedPop = require('nested-pop');
 module.exports = {
 		home: function(req,res) {
 			schools = School.findOne({id:req.user.teaches_at[0].id}).populate('classes').exec(function(err,school) {
@@ -166,6 +166,35 @@ module.exports = {
  			});
 		 });
 		},
+		/*
+		addPupils: function(req,res) {
+			schools = School.findOne({id:req.user.teaches_at[0].id}).populate('classes').exec(function(err,school) {
+			 if (err) {
+				 return res.serverError(err);
+			 }
+			 params = {name:req.param('name'), dob:req.param('dob'),school:school.id};
+
+			
+ 			Pupil.make(params, function(err,pupil) {
+ 				if (err) {
+ 					return res.serverError(err);
+ 				}
+ 				Class.findOne({id:req.params.classid}).exec(function(err,schoolClass) {
+ 					if (err) {
+ 						return res.serverError(err);
+ 					}
+ 					schoolClass.pupils.add(pupil.id);
+ 					schoolClass.save(function(err) {
+ 							if (err) {
+ 								return res.serverError(err);
+ 							}
+ 							return res.redirect('/teach/class/'+schoolClass.id);
+ 					});
+ 				});
+
+ 			});
+		 });
+		},*/
 		regenKey:function(req,res) {
 
 				Pupil.regenerate(req.param('pupilid'),{},function() {
@@ -193,7 +222,24 @@ module.exports = {
 		},
 		reviewPupil: function(req,res) {
 			Pupil.findOne({id:req.params.pupilid}).populate('in_class').exec(function(err,pupil) {
-				return res.view('teacher/reviewPupil.ejs', {'title':'Review Pupil',pupil:pupil,  layout: 'layout_teacher'});
+				Play.find({pupil:pupil.id}).limit(5).sort('created_at DESC').populate('game').populate('responses').then(function(sessions) {
+ 
+					return nestedPop(sessions, {
+						responses: [
+							'word'
+						]
+					}).then(function(sessions) {
+						return res.view('teacher/reviewPupil.ejs', {'title':'Review Pupil',pupil:pupil,  layout: 'layout_teacher', sessions: sessions});
+					}).catch(function(err) {
+						throw err;
+					});
+					
+				});
+				
+				/*.exec(function(err,sessions) {
+					sails.log(sessions);
+					return res.view('teacher/reviewPupil.ejs', {'title':'Review Pupil',pupil:pupil,  layout: 'layout_teacher', sessions: sessions});
+				});*/
 			});
 			
    
