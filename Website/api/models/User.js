@@ -96,6 +96,8 @@ module.exports = {
     })
     .populate('teaches_at')
     .exec(function(err,user) {
+      if(err) { cb(err,null); }
+      if(!user) {cb(err,null);}
       bcrypt.compare(inputs.password, user.password, function(err, doesMatch){
       //  sails.log(doesMatch)
       //  sails.log(inputs.password + " vs " + user.password)
