@@ -20,12 +20,16 @@ def generator(noise , reuse = False):
     with tf.variable_scope('Generator', reuse=reuse):
         #Layer1
         net = tf.layers.conv2d_transpose(noise, 1024, [4,4], strides = (1,1), padding = 'SAME')
+        net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
         #Layer 2
         net = tf.layers.conv2d_transpose(net, 512, [4,4], strides = (1,1), padding = 'SAME')
+        net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
         #Layer 3
         net = tf.layers.conv2d_transpose(net, 256, [4,4], strides = (1,1), padding = 'SAME')
+        net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
         #Output Layer
         net = tf.layers.conv2d_transpose(net, 128, [4,4], strides = (1,1), padding = 'SAME')
+        net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
         #Normalise so the values are between 0 and 1
         net = tf.layers.conv2d_transpose(net, 1, [4,4], strides = (18,18), padding = 'SAME')
         #Normalsie the values between 0 and 1
@@ -66,7 +70,7 @@ def loadAndRunSimulator():
         saver.restore(sess, modelPath.model_checkpoint_path)
 
         #With some state
-        output = sess.run(Dfake, feed_dict{state: queryState})
+        output = sess.run(Dfake, feed_dict= {state: queryState})
 
         return output
 
@@ -74,12 +78,12 @@ def loadAndRunSimulator():
 This loads the realStates we gathered from testing. Loads the CSV and saves the dataframe globally
 '''
 def loadRealStates():
-
+    return
 '''
 Randomly samples the loaded states and returns batchSize number of states for the GAN to train on
 '''
 def sampleRealStates(batchSize):
-
+    return
 
 ##################################################
 # BUILD THE GAN MODEL
