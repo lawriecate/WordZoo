@@ -22,7 +22,7 @@
     <td><%= pupil.name %> </td>
     <td><%= pupil.username %> </td>
     <td><%= pupil.passcode %> </td>
-    <td><a href="/teach/review/<%=pupil.id%>" class="uk-button uk-button-default uk-button-small"> Review Progress</a> <form method="post" action="/teach/class/<%=schoolClass.id%>/regenerate" class="uk-inline"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input class="uk-button uk-button-small uk-button-default" type="submit" value="New Passcode"/></form> <form method="post" action="/teach/class/<%=schoolClass.id%>/deletePupil" class="uk-inline"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input class="uk-button uk-button-small uk-button-danger" type="submit" value="Delete Pupil"/></form></td>
+    <td><a href="/teach/review/<%=pupil.id%>/" class="uk-button uk-button-default uk-button-small"> Review Progress</a> <form method="post" action="/teach/class/<%=schoolClass.id%>/regenerate" class="uk-inline"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input class="uk-button uk-button-small uk-button-default" type="submit" value="New Passcode"/></form> <form method="post" action="/teach/class/<%=schoolClass.id%>/deletePupil" class="uk-inline"><input type="hidden" name="pupilid" value="<%=pupil.id%>"/><input class="uk-button uk-button-small uk-button-danger" type="submit" value="Delete Pupil"/></form></td>
   </tr>
   <% }) %>
   </tbody>

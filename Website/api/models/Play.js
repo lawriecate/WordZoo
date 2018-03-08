@@ -18,6 +18,13 @@ module.exports = {
     session_id: {
       type:'string'
     },
+    clicks: {
+      type:'Text'
+    },
+    points: {
+      type:'integer',
+      required: true,
+    },
     responses: {
       collection: 'Response',
       via:'play'
@@ -31,6 +38,8 @@ module.exports = {
       pupil: inputs.pupil,
       game: inputs.game,
       shortid:shortid.generate(),
+      points: inputs.points,
+      clicks: inputs.clicks
     })
     .exec(cb);
   }

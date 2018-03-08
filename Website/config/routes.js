@@ -104,6 +104,7 @@ module.exports.routes = {
     'post /teach/class/:classid/deletePupil': 'TeacherController.deletePupil',
    // 'get /teach/start/:pupilid': 'TeacherController.startSession',
     'get /teach/review/:pupilid': 'TeacherController.reviewPupil',
+    'get /teach/review/:pupilid/graphdata': 'TeacherController.reviewPupilGraphData',
 
     'get /student':'GameController.home' ,
     'get /student/welcome':'StudentController.quiz' ,

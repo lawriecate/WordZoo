@@ -24,7 +24,7 @@ module.exports = {
         required: true
       },
       points: {
-        type: 'Integer',
+        type: 'integer',
         required: true,
         defaultsTo: 0
       },

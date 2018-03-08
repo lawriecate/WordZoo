@@ -1,25 +1,62 @@
-<div class="uk-section uk-background-cover uk-light " style="background:url('https://blog.wordzoo.co.uk/wp-content/uploads/revslider/splash-creative-light-01-animated/Slider-CL01-Background.png'); min-height:800px;">
+<div class="uk-section uk-background-cover uk-light " style="background:url('https://blog.wordzoo.co.uk/wp-content/uploads/revslider/splash-creative-light-01-animated/Slider-CL01-Background.png'); background-size:100% 100%; min-height:800px;">
     <div class="uk-container">
+        <div uk-grid>
+                <div class="uk-width-1-2@m uk-width-1-1">
+                    <h1><%= pupil.name %> <% if(pupil.dob) { %><span class="uk-text-small"><%= pupil.dob %></span><% } %></h1>
+                    <h3>Pupil in <a href="/teach/class/<%= pupil.in_class[0].id %>/"><%= pupil.in_class[0].name %></a></h3>
+                    <h3>Login passcode: <%= pupil.passcode %></h3>
+                </div>
+                <div class="uk-width-1-2@m uk-width-1-1">
+                    Scores this week    
+                    <div style="height:300px" ><canvas id="pupilPointsGraph"></canvas></div>
+                </div>
+                
+        </div>
 
-        <h1>Record for <%= pupil.name %> <% if(pupil.dob) { %><span class="uk-text-small"><%= pupil.dob %></span><% } %></h1>
-        <h3>Pupil in <a href="/teach/class/<%= pupil.in_class[0].id %>/"><%= pupil.in_class[0].name %></a></h3>
-        <h3>Login passcode: <%= pupil.passcode %></h3>
-        <h3>Recent Games: </h3>
+
+        <div uk-grid>
+            <div class="uk-width-1-2@m uk-width-1-1">
+                    Recent words <%= pupil.name %> had success recognising:
+                    <ul>
+            
+                   <% _.each(highResponses,function(highResponse) { %>
+                       <li> <%= highResponse.word.word %> (<%= (highResponse.correct*100) %>% recognition)</li>
+            
+                   <% }) %>
+                </ul>
+            </div>
+            <div class="uk-width-1-2@m uk-width-1-1">
+                    Recent words <%= pupil.name %> had difficulty recognising:
+                    <ul>
+            
+                   <% _.each(lowResponses,function(lowResponse) { %>
+                       <li> <%= lowResponse.word.word %> (<%= (lowResponse.correct*100) %>% recognition)</li>
+            
+                   <% }) %>
+                </ul>
+                </div>
+        </div>
+       
+
+   
+        <!--<h3>Recent Games: </h3>
+      
         <ul>
-        <% _.each(sessions, function (session) { %>
-           
-            <li><%= session.game.name %>
+        <% /*_.each(sessions, function (play) { %>
+            <% sails.log(play) %>
+            <li><%= play.game.name %>
+                <%= play.points %>
                  <ul>
                     <% 
-                    sails.log(session.responses);
-                    _.each(session.responses, function (response) {
+                    
+                    _.each(play.responses, function (response) {
                       
                         %>
                         <li><%=response.word.word %> <%=(response.correct*100)%>% success</li>
                     <% }) %>
                  </ul>
             </li>
-        <% }) %>
-        </ul>
+        <% }) */ %>
+        </ul>-->
     </div>
 </div>

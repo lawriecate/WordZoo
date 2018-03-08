@@ -5,6 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 var nestedPop = require('nested-pop');
+var moment = require('moment');
 module.exports = {
 		home: function(req,res) {
 			schools = School.findOne({id:req.user.teaches_at[0].id}).populate('classes').exec(function(err,school) {
@@ -222,7 +223,7 @@ module.exports = {
 		},
 		reviewPupil: function(req,res) {
 			Pupil.findOne({id:req.params.pupilid}).populate('in_class').exec(function(err,pupil) {
-				Play.find({pupil:pupil.id}).limit(5).sort('created_at DESC').populate('game').populate('responses').then(function(sessions) {
+				/*Play.find({pupil:pupil.id}).limit(5).sort('createdAt DESC').populate('game').populate('responses').then(function(sessions) {
  
 					return nestedPop(sessions, {
 						responses: [
@@ -234,6 +235,12 @@ module.exports = {
 						throw err;
 					});
 					
+				});*/
+
+				Response.find({where:{pupil:pupil.id}}).sort('correct ASC createdAt DESC').limit(10).populate('word').exec(function(err,lowResponses) {
+					Response.find({where:{pupil:pupil.id}}).sort('correct DESC createdAt DESC').limit(10).populate('word').exec(function(err,highResponses) {
+					return res.view('teacher/reviewPupil.ejs', {'title':'Review Pupil',pupil:pupil,  layout: 'layout_teacher', lowResponses: lowResponses,highResponses:highResponses});
+					});
 				});
 				
 				/*.exec(function(err,sessions) {
@@ -243,5 +250,44 @@ module.exports = {
 			});
 			
    
+		},
+
+		reviewPupilGraphData: function(req,res) {
+			Pupil.findOne({id:req.params.pupilid}).exec(function(err,pupil) {
+				// last X days of total points
+				var results = {
+					labels: [],
+					data: []
+				};
+
+				function getDay(i) {
+					var day = moment().subtract(i, 'days');
+					var startOfDay = day.set({hour:0,minute:0,second:0,millisecond:0}).format("YYYY-MM-DD HH:mm:ss");
+					var endOfDay = day.set({hour:23,minute:59,second:59,millisecond:999}).format("YYYY-MM-DD HH:mm:ss");
+					sails.log(startOfDay + " " + endOfDay);
+					results.labels.push(day.format("YYYY-MM-DD"));
+					Play.find({where: {pupil:pupil.id,createdAt:{'>=': new Date(startOfDay),'<=': new Date(endOfDay)}} , sum: ['points']}).exec(function(err,plays) {
+						// /pupil:pupil.id
+						if(err){res.serverError(err);}
+						results.data.push(plays[0].points);
+						sails.log(plays);
+						if(i==0) {
+							return res.json(results);
+						} else {
+							getDay(i-1)
+						}
+					});
+				}
+				
+				getDay(6);
+
+				
+				
+				
+				/*.exec(function(err,sessions) {
+					sails.log(sessions);
+					return res.view('teacher/reviewPupil.ejs', {'title':'Review Pupil',pupil:pupil,  layout: 'layout_teacher', sessions: sessions});
+				});*/
+			});
 		},
 };

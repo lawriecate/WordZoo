@@ -26,10 +26,25 @@ module.exports = {
     var result = {};
     Game.find().exec(function(err,games) {
         result.labels = games.map(function(a) { return a.name; });
-        Play.find({groupBy:'game', count: true}).exec(function(err,plays) {
-            result.graphData = plays;
-            return res.json(result);
+        var graphData = [];
+        _.each(games, function (game,i) {
+            //sails.log(game);
+            Play.count({game:game.id}).exec(function(err,count) {
+                //sails.log(count);
+                if (err) {
+                    return res.serverError(err);
+                }
+                graphData.push(count);
+               
+                if(i == (games.length-1)) {
+                    result.graphData = graphData;
+                    return res.json(result);
+                }
+            });
+            
+            
         });
+      
     });
     
   },
