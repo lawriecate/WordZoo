@@ -46,8 +46,10 @@ module.exports = {
     
 
     // Create a user
-    var is_admin=false;
-    if(inputs.email == 'admin@email.com') {is_admin = true;}
+    if(!inputs.is_admin) {
+      inputs.is_admin=false;
+    }
+    //if(inputs.email == 'admin@email.com') {is_admin = true;}
 
     bcrypt.hash( inputs.password, 5, function( err, bcryptedPassword) {
       User.create({
@@ -55,7 +57,7 @@ module.exports = {
         email: inputs.email,
         // TODO: But encrypt the password first
         password:bcryptedPassword,
-        admin: is_admin,
+        admin: inputs.is_admin,
         matchingPasswords:inputs.password==inputs.confirmPassword,
       })
       .exec(cb);

@@ -89,7 +89,7 @@ module.exports.routes = {
     'post /admin/games/:gameid': 'GameController.updateGame' ,
 
     'get /admin/data': { view: 'admin/data' },
-
+    'get /admin/install': 'AdminController.install',
 
 
     'get /teach': 'TeacherController.home',

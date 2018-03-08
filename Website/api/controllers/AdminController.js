@@ -6,6 +6,36 @@
  */
 
 module.exports = {
+    install: function(req,res) {
+
+        function randomPassword(length) {
+            var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+            var pass = "";
+            for (var x = 0; x < length; x++) {
+                var i = Math.floor(Math.random() * chars.length);
+                pass += chars.charAt(i);
+            }
+            return pass;
+        }
+
+        User.count().exec(function(err,userCount) {
+            if(userCount==0) {
+                generatedPassword = randomPassword(24);
+                adminUser = {
+                    email: 'admin@wordzoo.co.uk',
+                    name: 'Adminstrator',
+                    password: generatedPassword,
+                    confirmPassword: generatedPassword,
+                    is_admin: true
+                }
+                User.signup(adminUser,function(err,user) {
+                    return res.view('admin/install.ejs',{title: 'WordZoo Installed',adminUser: adminUser});
+                });
+            } else {
+                return res.send(403); 
+           }
+        });
+    },
 	dashboard: function(req,res) {
         stats = {};
 			School.count().exec(function(err,schools) {
