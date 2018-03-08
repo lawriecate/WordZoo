@@ -54,10 +54,8 @@ module.exports.routes = {
     '/logout': 'UserController.logout',
     
 
-    'get /admin': { view: 'admin/home',
-    locals: {
-      layout: 'layout_admin'
-    } },
+    'get /admin': 'AdminController.dashboard',
+    'get /admin/getDashData': 'AdminController.graphData',
     'get /admin/schools': 'SchoolController.list' ,
     'get /admin/schools/new': { view: 'admin/school_new',
     locals: {

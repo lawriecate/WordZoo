@@ -1,11 +1,47 @@
 <h1>Modify User</h1>
-<form method="post" >
-  <input type="text" name="name" placeholder="Name" value="<%= user.name ? user.name : ''  %>" />
-  <input type="text" name="email" placeholder="Email" value="<%= user.email ? user.email : ''  %>" />
-  <input type="text" name="password" placeholder="New Password" value="<%= user.password ? user.password : ''  %>" />
-  <label> Administrator: <input type="checkbox" value="true" name="admin" <% if(user.admin) { %>checked="checked"<% } %>/> </label>
-  <input type="submit" value="Save" />
+
+
+<form class="uk-form-stacked" method="post">
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="name">Name</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="name" type="text" placeholder="Name" name="name" value="<%= user.name ? user.name : ''  %>" >
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="email">Email</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="email" type="text" name="email" placeholder="Email" value="<%= user.email ? user.email : ''  %>" >
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="password">Change Password</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="password" type="text" name="password" placeholder="New Password" >
+        </div>
+    </div>
+
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-select">Make Administrator</label>
+        <div class="uk-form-controls">
+            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                <label><input class="uk-checkbox" type="checkbox" name="admin" value="true" <% if(user.admin) { %>checked="checked"<% } %>> Administrator</label>
+              
+            </div>
+    
+        </div>
+    </div>
+
+    <div class="uk-margin">
+      <input type="submit" value="Save" class="uk-button uk-button-primary" />
+      </div>
+    
 </form>
+
 <h2>Assign To School</h2>
 <p>Assigned to:
   <ul>

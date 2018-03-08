@@ -56,6 +56,10 @@ module.exports.policies = {
 
   SchoolController: {
     '*': 'isAdmin'
+  },
+
+  AdminController: {
+    '*': 'isAdmin'
   }
 
   /***************************************************************************

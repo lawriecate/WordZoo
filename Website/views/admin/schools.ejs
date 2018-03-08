@@ -1,11 +1,30 @@
 <h1>Manage Schools</h1>
-<a href="/admin/schools/new">New School</a>
+<a href="/admin/schools/new" class="uk-button uk-button-primary uk-button-large">New School</a>
 <% if(schools.length == 0) { %>
   No schools registered
 <% } else { %>
-<ul>
-  <% _.each(schools, function (schools) { %>
-    <li><%= schools.name %> <a href="/admin/schools/<%= schools.id %>/edit/">Manage</a></li>
-    <% }) %>
-</ul>
+
+
+<table class="uk-table  uk-table-small uk-table-divider">
+    <thead>
+        <tr>
+            <th>Name</th>
+           
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% _.each(schools, function (school) { %>
+          <tr>
+              <td><%= school.name %> </td>
+             
+              <td><a href="/admin/schools/<%= school.id %>/edit/"class="uk-button uk-button-small uk-button-primary">Edit</a></td>
+              
+          </tr>
+          <% }) %>
+        
+       
+    </tbody>
+</table>
+
 <% } %>

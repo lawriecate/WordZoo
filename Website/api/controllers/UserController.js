@@ -121,7 +121,7 @@ module.exports = {
   },
 
   list: function(req,res) {
-    users = User.find().exec(function(err,users) {
+    users = User.find().populate('teaches_at').exec(function(err,users) {
       return res.view('admin/users.ejs', {'title':'Manage Users', users: users,  layout: 'layout_admin'});
     });
 

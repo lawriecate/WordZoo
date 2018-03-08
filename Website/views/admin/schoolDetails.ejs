@@ -1,28 +1,85 @@
 <h1>Modify School</h1>
-<form method="post" >
-  <input type="text" name="name" placeholder=" Name" value="<%= school.name ? school.name : ''  %>" />
-  <input type="text" name="phone" placeholder=" Telephone" value="<%= school.phone ? school.phone : ''  %>" />
-  <textarea  name="address" placeholder="School Name" ><%= school.address ? school.address : ''  %></textarea>
-  <input type="text" name="postcode" placeholder=" Postcode" value="<%= school.postcode ? school.postcode : ''  %>" />
-  <input type="text" name="country" placeholder="UK" value="<%= school.country ? school.country : ''  %>" />
-  <input type="submit" value="Save" />
-</form>
-<h2><a href="/admin/schools/<%= school.id %>/classes/">Manage Classes</a></h2>
-<h2>Assign Teachers</h2>
-<form method="post" action="/admin/schools/<%= school.id %>/assignteacher/">
-  <select name="teacher_id">
-    <% _.each(users, function (user) { %>
-    <option value="<%= user.id %>"><%= user.name %></option>
-    <% }) %>
-  </select>
-    <input type="submit" value="Assign As Teacher" />
-</form>
-Teachers at this school <%= school.teachers.length %>:
-<ul>
-  <% _.each(school.teachers, function (teacher) { %>
-  <li><%= teacher.name %></li>
-  <% }) %>
+
+<ul uk-tab>
+    <li><a href="#">Information</a></li>
+    <li><a href="#">Classes</a></li>
+    <li><a href="#">Teachers</a></li>
+    <li><a href="#">Sign Up Link</a></li>
 </ul>
 
-<a href="/admin/schools/<%= school.id %>/newsulink/">Get new signup link</a>
-<p>Signup link: https://wordzoo.co.uk/signup?s=<%=school.signupcode%> </p>
+<ul class="uk-switcher uk-margin">
+    <li>
+    
+<form class="uk-form-stacked" method="post">
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="name">Name</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="name" type="text" placeholder="Name" name="name" value="<%= school.name ? school.name : ''  %>" >
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="phone">Phone</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="phone" type="text" name="phone" placeholder="Phone" value="<%= school.phone ? school.phone : ''  %>" >
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="address">Address</label>
+        <div class="uk-form-controls">
+            <textarea class="uk-input"  name="address" placeholder="School Name" ><%= school.address ? school.address : ''  %></textarea>
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="postcode">Postcode</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="postcode" type="text" name="postcode" placeholder="Postcode" value="<%= school.postcode ? school.postcode : ''  %>" >
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="country">Country</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="country" type="text" name="country" placeholder="Country" value="<%= school.country ? school.country : ''  %>" >
+        </div>
+    </div>
+
+    <div class="uk-margin">
+      <input type="submit" value="Save" class="uk-button uk-button-primary" />
+      </div>
+    
+</form>
+    
+    
+    </li>
+    <li><h2><a href="/admin/schools/<%= school.id %>/classes/">Manage Classes</a></h2></li>
+    <li>
+        <h2>Assign Teachers</h2>
+        <form method="post" action="/admin/schools/<%= school.id %>/assignteacher/">
+          <select name="teacher_id">
+            <% _.each(users, function (user) { %>
+            <option value="<%= user.id %>"><%= user.name %></option>
+            <% }) %>
+          </select>
+            <input type="submit" value="Assign As Teacher" />
+        </form>
+        There are <%= school.teachers.length %> assigned to this school:
+        <ul class="uk-list uk-list-striped">
+          <% _.each(school.teachers, function (teacher) { %>
+          <li><%= teacher.name %></li>
+          <% }) %>
+        </ul>
+        </li>
+    <li>
+        <a href="/admin/schools/<%= school.id %>/newsulink/">Get new signup link</a>
+        <p>Signup link: <a href="https://play.wordzoo.co.uk/signup?s=<%=school.signupcode%>" target="_blank">https://play.wordzoo.co.uk/signup?s=<%=school.signupcode%></a> </p>
+        
+    </li>
+</ul>
+
+
+
+
