@@ -271,7 +271,7 @@ PlayScreen.prototype.generateOrder = function()
 
 		// Get offset of the animals
 		console.log(inputData[i % inputData.length]+' ? '+this.getCharacterIndex(i % inputData.length));
-		var offset = sizeTable[prevAnimalIndex][nextAnimalIndex] / 2;
+		var offset = sizeTable[prevAnimalIndex][nextAnimalIndex];//										 / 2; *** POSSIBLE OFFSET FIX ***
 
 
 		// Record next character
