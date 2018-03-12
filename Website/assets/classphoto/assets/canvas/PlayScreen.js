@@ -53,68 +53,6 @@ PlayScreen.prototype.init = function ()
 PlayScreen.prototype.preload = function () 
 {	
 	this.load.pack('main', '/classphoto/assets/pack.json');
-
-	//inputData = new Array();
-	//classData = new Array();
-/*
-	$.get('classdata', function(data)
-	{
-		console.log("GET" + data);
-		//inputData = data[0];
-		//className = data[1];
-		inputData = data.pupils;
-		className = data.className;
-		// Start
-	this.generateOrder();
-	}).fail(function() 
-	{
-		console.log('i failed');
-	});
-
-*/
-	
-
-	// ** FOR TESTING **
-	/*inputData[0] = data;
-	inputData[1] = data2;
-	inputData[2] = data3;
-	inputData[3] = data4;
-	inputData[4] = data5;
-	inputData[5] = data6;
-	inputData[6] = data7;
-	inputData[7] = data8;
-	inputData[8] = data11;
-	inputData[9] = data12;
-	inputData[10] = data13;
-	inputData[11] = data14;
-	inputData[12] = data15;
-	inputData[13] = data16;
-	inputData[14] = data17;
-	inputData[15] = data18;
-	inputData[16] = data21;
-	inputData[17] = data22;
-	inputData[18] = data23;
-	inputData[19] = data24;
-	inputData[20] = data25;
-	inputData[21] = data26;
-	inputData[22] = data27;
-	inputData[23] = data28;
-	inputData[24] = data31;
-	inputData[25] = data32;
-	inputData[26] = data33;
-	inputData[27] = data34;
-	inputData[28] = data35;
-	inputData[29] = data36;
-	inputData[30] = data37;
-	inputData[31] = data38;
-	inputData[32] = data41;
-	inputData[33] = data42;
-	inputData[34] = data43;
-	inputData[35] = data44;
-	inputData[36] = data45;
-	inputData[37] = data46;
-	inputData[38] = data47;
-	inputData[39] = data48;*/
 };
 
 
@@ -122,100 +60,97 @@ PlayScreen.prototype.preload = function ()
 PlayScreen.prototype.create = function () 
 {	
 	
-				// load background -> make all invisible
-				for(var i=0; i<backgroundNames.length; i++)
-				{
-					backgrounds[i] = this.add.sprite(0, 0, backgroundNames[i]);
-					if(backgrounds[i].width < 1920)
-					{
-						backgrounds[i].scale.setTo(1.5, 1.5);
-					}
+	// load background -> make all invisible
+	for(var i=0; i<backgroundNames.length; i++)
+	{
+		backgrounds[i] = this.add.sprite(0, 0, backgroundNames[i]);
+		if(backgrounds[i].width < 1920)
+		{
+			backgrounds[i].scale.setTo(1.5, 1.5);
+		}
 
-					backgrounds[i].visible = false;
-				}
+		backgrounds[i].visible = false;
+	}
 
-				// make first background visible
-				backgroundIndex = 0;
-				backgrounds[0].visible = true;
-
-
-				// Title text
-				var titleText = this.add.text(960, 80, className, bigStyle);
-				titleText.stroke = '#FF9933';
-				titleText.strokeThickness = 15;	
-				titleText.anchor.setTo(0.5, 0.5);
-				titleText.addColor('#FFCE07', 0);	
+	// make first background visible
+	backgroundIndex = 0;
+	backgrounds[0].visible = true;
 
 
-				// Show names button
-				nameButton = this.add.button(0, 925, 'score', this.onClickNames, this, null, null, null, null);
-				nameButton.scale.setTo(1.3, 2);
-
-					// Back button text
-					nameButtonText = this.add.text(240, 1005, "  Show \n Names", smallStyle);
-					nameButtonText.anchor.setTo(0.5, 0.5);
-					nameButtonText.addColor('#FF9933', 0);	
+	// Title text
+	var titleText = this.add.text(960, 80, className, bigStyle);
+	titleText.stroke = '#FF9933';
+	titleText.strokeThickness = 15;	
+	titleText.anchor.setTo(0.5, 0.5);
+	titleText.addColor('#FFCE07', 0);	
 
 
-				// Add Change Background button
-				changeButton = this.add.button(480, 925, 'score', this.onClickChangeBack, this, null, null, null, null);
-				changeButton.scale.setTo(1.3, 2);
+	// Show names button
+	nameButton = this.add.button(0, 925, 'score', this.onClickNames, this, null, null, null, null);
+	nameButton.scale.setTo(1.3, 2);
 
-					// Change Background button text
-					changeButtonText = this.add.text(720, 1005, "    Change \n Background", smallStyle);
-					changeButtonText.anchor.setTo(0.5, 0.5);
-					changeButtonText.addColor('#FF9933', 0);	
-
-
-				// Add Shuffle button
-				shuffleButton = this.add.button(965, 925, 'score', this.onClickShuffle, this, null, null, null, null);
-				shuffleButton.scale.setTo(1.3, 2);
-
-					// Shuffle Characters button text
-					shuffleButtonText = this.add.text(1190, 1005, "    Shuffle \n Characters", smallStyle);
-					shuffleButtonText.anchor.setTo(0.5, 0.5);
-					shuffleButtonText.addColor('#FF9933', 0);
-
-				// Add Photo button
-				photoButton = this.add.sprite(1445, 925, 'score');
-				photoButton.scale.setTo(1.3, 2);
-
-					// Take Photo button text
-					photoButtonText = this.add.text(1680, 1005, "   To Take a Photo \n Right Click -> Save", smallStyle);
-					photoButtonText.anchor.setTo(0.5, 0.5);
-					photoButtonText.addColor('#FF9933', 0);
+	// Back button text
+	nameButtonText = this.add.text(240, 1005, "  Show \n Names", smallStyle);
+	nameButtonText.anchor.setTo(0.5, 0.5);
+	nameButtonText.addColor('#FF9933', 0);	
 
 
-				// Add Photo button
-				wordZooImage = this.add.sprite(920, 950, 'wordZoo');
-				wordZooImage.anchor.setTo(0.5, 0.5);
-				wordZooImage.visible = false;
+	// Add Change Background button
+	changeButton = this.add.button(480, 925, 'score', this.onClickChangeBack, this, null, null, null, null);
+	changeButton.scale.setTo(1.3, 2);
+
+	// Change Background button text
+	changeButtonText = this.add.text(720, 1005, "    Change \n Background", smallStyle);
+	changeButtonText.anchor.setTo(0.5, 0.5);
+	changeButtonText.addColor('#FF9933', 0);	
 
 
-				// On Right Click -> hide buttons
-				this.game.input.activePointer.rightButton.onDown.add(function(touchStart) { 
-					this.toggleButtons(false);
-				}, this);
-				// On Left Click -> show buttons
-				this.game.input.activePointer.leftButton.onDown.add(function(touchStart) { 
-					this.toggleButtons(true);
-				}, this);
+	// Add Shuffle button
+	shuffleButton = this.add.button(965, 925, 'score', this.onClickShuffle, this, null, null, null, null);
+	shuffleButton.scale.setTo(1.3, 2);
+
+	// Shuffle Characters button text
+	shuffleButtonText = this.add.text(1190, 1005, "    Shuffle \n Characters", smallStyle);
+	shuffleButtonText.anchor.setTo(0.5, 0.5);
+	shuffleButtonText.addColor('#FF9933', 0);
+
+	// Add Photo button
+	photoButton = this.add.sprite(1445, 925, 'score');
+	photoButton.scale.setTo(1.3, 2);
+
+	// Take Photo button text
+	photoButtonText = this.add.text(1680, 1005, "   To Take a Photo \n Right Click -> Save", smallStyle);
+	photoButtonText.anchor.setTo(0.5, 0.5);
+	photoButtonText.addColor('#FF9933', 0);
+
+
+	// Add Photo button
+	wordZooImage = this.add.sprite(920, 950, 'wordZoo');
+	wordZooImage.anchor.setTo(0.5, 0.5);
+	wordZooImage.visible = false;
+
+
+	// On Right Click -> hide buttons
+	this.game.input.activePointer.rightButton.onDown.add(function(touchStart) { 
+		this.toggleButtons(false);
+	}, this);
+	// On Left Click -> show buttons
+	this.game.input.activePointer.leftButton.onDown.add(function(touchStart) { 
+		this.toggleButtons(true);
+	}, this);
 
 				
-				// if no characters in class, show text + return;
-				if(inputData.length <= 0)
-				{
-					var text = this.game.add.text(960, 180, "No characters to display", bigStyle);  
-					text.anchor.setTo(0.5, 0.5);
-					text.addColor('#FF9933', 0); 
-				}
+	// if no characters in class, show text + return;
+	if(inputData.length <= 0)
+	{
+		var text = this.game.add.text(960, 180, "No characters to display", bigStyle);  
+		text.anchor.setTo(0.5, 0.5);
+		text.addColor('#FF9933', 0); 
+	}
 
-				// Names are hidden to start
-				isVisible = false;
-				this.generateOrder();
-			
-
-	
+	// Names are hidden to start
+	isVisible = false;
+	this.generateOrder();
 };
 
 
@@ -336,11 +271,7 @@ PlayScreen.prototype.generateOrder = function()
 
 		// Get offset of the animals
 		console.log(inputData[i % inputData.length]+' ? '+this.getCharacterIndex(i % inputData.length));
-
-
-
-
-		var offset = sizeTable[prevAnimalIndex][nextAnimalIndex];
+		var offset = sizeTable[prevAnimalIndex][nextAnimalIndex] / 2;
 
 
 		// Record next character
