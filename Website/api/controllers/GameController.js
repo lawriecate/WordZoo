@@ -808,7 +808,7 @@ module.exports = {
 				// session created
 				sails.log('session saved:');
 				sails.log('click data');
-				sailsl.log(session.clicks);
+				sails.log(session.clicks);
 			
 				// update points
 				oldPoints = req.pupil.points;
