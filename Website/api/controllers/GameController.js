@@ -886,14 +886,14 @@ module.exports = {
 
 						var stateRecord = { state: JSON.stringify(state), pupil: req.session.pupilId };
 						//sails.log("saving");
-						sails.log(stateRecord);
+					//	sails.log(stateRecord);
 						State.create(stateRecord, function (err, state) {
 
 						});
 						i++;
 					});
 
-					sails.log(state);
+					//sails.log(state);
 
 					//change to make a new state for each word
 					//save back
