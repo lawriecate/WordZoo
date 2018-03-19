@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-
+var crypto = require('crypto');
 var zmq = require('zmq');
 function word2pos(word) {
 	switch (word) {
@@ -802,11 +802,12 @@ module.exports = {
 				game: gameRecord.id,
 				pupil: req.session.pupilId,
 				points: score,
-				clicks: JSON.stringify(req.param('clicks'))
+				clicks: JSON.stringify(req.param('clicks')),
+				session_id: crypto.randomBytes(8).toString('hex'),
 			}, function (err, session) {
 				// session created
-				sails.log('session:');
-				sails.log(session);
+				sails.log('session saved:');
+			
 				// update points
 				oldPoints = req.pupil.points;
 				if (oldPoints === null) { oldPoints = 0; }
@@ -841,6 +842,7 @@ module.exports = {
 					});*/
 					i++;
 				});
+				sails.log((i+1) + 'states  saved:');
 
 				// update states
 				// get old state
