@@ -735,6 +735,7 @@ PlayScreen.prototype.setSingleCharacter = function(x, y, _, data, modifier)
 	temp.push(_hufTie);
 	temp.push(_necklace);
 	temp.push(_ravTie);
+	temp.push(_slyTie);
 
 	temp.push(_blueSunglasses);
 	temp.push(_monocole);
