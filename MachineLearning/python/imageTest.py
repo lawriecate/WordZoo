@@ -3,20 +3,27 @@ import numpy as np
 from random import *
 import time
 
-width = 200
-height = 200
+width = 18
+height = 18
 
 data = np.zeros((width,height,3), dtype=np.uint8)
 
 start = time.time()
+counter = 0
 
 for x in range(width):
     for y in range (height):
-        r = randint(1,255)
-        data[x,y] = [r]
+
+        if (counter % 2) == 0:
+            data[x,y] = 255
+        else:
+            data[x,y] = 0
+
+        counter = counter + 1
+
 
 img = Image.fromarray(data,'RGB')
-img.save('my.png')
+img.save('state.png')
 
 end = time.time()
 

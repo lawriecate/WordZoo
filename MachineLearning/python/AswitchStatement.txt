@@ -14,7 +14,7 @@ case "hall":
  return 6;
 case "clean":
  return 7;
-case "gun":
+case "son":
  return 8;
 case "farm":
  return 9;

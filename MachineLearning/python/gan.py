@@ -1,5 +1,7 @@
 import numpy as np
 import tensorflow as tf
+import pandas as pd
+import random
 
 def loadRealStates():
     return None
@@ -31,7 +33,7 @@ def generator(noise , reuse = False):
         net = tf.layers.conv2d_transpose(net, 128, [4,4], strides = (1,1), padding = 'SAME')
         net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
         #Normalise so the values are between 0 and 1
-        net = tf.layers.conv2d_transpose(net, 1, [4,4], strides = (18,18), padding = 'SAME')
+        net = tf.layers.conv2d_transpose(net, 1, [18,18], strides = (1,1), padding = 'SAME')
         #Normalsie the values between 0 and 1
         net = tf.nn.tanh(net)
         return net
@@ -78,12 +80,21 @@ def loadAndRunSimulator():
 This loads the realStates we gathered from testing. Loads the CSV and saves the dataframe globally
 '''
 def loadRealStates():
-    return
+    states = pd.read_csv('realStates.csv', sep = ',', header = None)
+    states = states.values
+
+    formattedStates = []
+
+    for ele in range(len(states) - 1):
+        formattedStates.append(states[ele].reshape(18,18,1))
+
+    return formattedStates
 '''
 Randomly samples the loaded states and returns batchSize number of states for the GAN to train on
 '''
-def sampleRealStates(batchSize):
-    return
+def sampleRealStates(batchSize,states):
+    new_array = random.sample(states,batchSize)
+    return new_array
 
 ##################################################
 # BUILD THE GAN MODEL
@@ -111,35 +122,39 @@ dVars = [var for var in tvars if var.name.startswith('Discriminator')]
 gVars = [var for var in tvars if var.name.startswith('Generator')]
 #Optimizers - Uses the loss functions and applies them to the graph
 Dgrads = Dtrainer.compute_gradients(dLoss, var_list = dVars)
-Ggrads= Gtrainer.compute_gradients(dLoss, var_list = gVars)
-#Gradient applys
-'''Maybe add this into the loop'''
-#updateDisc = Dtrainer.apply_gradients(Dgrads)
-#updateGen = Gtrainer.apply_gradients(Ggrads)
+Ggrads= Gtrainer.compute_gradients(gLoss, var_list = gVars)
+
+#These need to be here
+#We need to have these defined as part of the graph before init, otherwise the optimise fails to see it, and we get a missing beta1 error
+dApplyGrad = Dtrainer.apply_gradients(Dgrads)
+gApplyGrad = Gtrainer.apply_gradients(Ggrads)
+
 ##################################################
 # TRAINING
 ##################################################
-batchSize = 1000
-itterations = 50000
-initialiser = tf.global_variables_initializer()
+batchSize = 150
+itterations = 500000
+init = tf.global_variables_initializer()
 saver = tf.train.Saver()
-modelPath = '../models'
 #Load the real states
-loadRealStates()
+print("Loading Real States")
+states = loadRealStates()
+print("Finished Loading Real States")
 
 #Main training loop
 with tf.Session() as sess:
-    sess.run(initialiser)
+    sess.run(init)
     for k in range(itterations):
+        print("Running Model: Itteration" + str(k))
         #Random sample of noise
-        zs = np.random.uniform(-1.0,1.0, size = [batchSize,noiseLength]).astype(np.float32)
+        zs = np.random.uniform(-1.0,1.0, size = [batchSize,1,1,noiseLength]).astype(np.float32)
         #Random batch of real states
-        xs = sampleRealStates(batchSize)
+        xs = sampleRealStates(batchSize,states)
         #Update Discriminator
-        _, discLoss = sess.run([Dtrainer.apply_gradients(Dgrads)], feed_dict = {noise: zs, state: xs})
+        _ , discLoss = sess.run([dApplyGrad,dLoss], feed_dict = {noise: zs, state: xs})
         #Update Generator
-        _, genLoss = sess.run([Gtrainer.apply_gradients(Ggrads)], feed_dict = {noise: zs})
-        if (i % 20) == 0:
+        _ , genLoss = sess.run([gApplyGrad,gLoss], feed_dict = {noise: zs})
+        if (k % 50) == 0:
             print ("Disc: " + str(discLoss) + " Gen: " + str(genLoss))
 
             #Run Sample Test on the Discriminator
@@ -151,5 +166,5 @@ with tf.Session() as sess:
             '''
 
             #Save Model
-            print("Saving Model " + str(i))
-            saver.save(sess, modelPath + "ganModel-" + str(i) + ".cptk")
+            print("Saving Model " + str(k))
+            saver.save(sess, "../models/ganModel-" + str(k) + ".cptk")
