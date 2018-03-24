@@ -8,7 +8,7 @@
  *
  */
 module.exports = function(req, res, next) {
-
+  sails.log(req.user);
   // If `req.session.me` exists, that means the user is logged in.
   if (req.session.me) {
     if(req.user.isAdmin) {

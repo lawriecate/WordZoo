@@ -89,8 +89,10 @@ module.exports.routes = {
     'post /admin/games/:gameid': 'GameController.updateGame' ,
 
     'get /admin/data': 'ResearchController.home' ,
-    'get /admin/data/export/states.csv': 'ResearchController.exportStates' ,
-    'get /admin/data/export/plays.csv': 'ResearchController.exportPlays' ,
+    'get /admin/data/export/states/json': 'ResearchController.exportStates' ,
+    'get /admin/data/export/plays/json': 'ResearchController.exportPlays' ,
+    'get /admin/data/export/states/csv': 'ResearchController.exportStatesCsv' ,
+    'get /admin/data/export/plays/csv': 'ResearchController.exportPlaysCsv' ,
 
     'get /admin/install': 'AdminController.install',
 

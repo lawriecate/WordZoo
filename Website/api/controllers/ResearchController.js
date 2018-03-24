@@ -12,6 +12,19 @@ module.exports = {
         return res.view('admin/data.ejs', {'title':'Data Tools',  layout: 'layout_admin'});
     },
     exportStates: function(req,res) {
+        State.find().exec(function(err,records) {
+            res.json(records);
+        });
+        
+    },
+    exportPlays: function(req,res) {
+        Play.find().exec(function(err,records) {
+            res.json(records);
+        });
+        
+    },
+
+   exportStatesCsv: function(req,res) {
         State.query("select id, pupil, state from State", function(err, list){ 
             if (err) console.log(err);
             // Send a CSV response          
@@ -20,14 +33,14 @@ module.exports = {
               data: list
             };
 
-            var csvContent = json2csv.convert(list);    
-            res.set('Content-Type', 'text/csv');
-            res.send(new Buffer(csvContent));
-         
+            //var csvContent = json2csv.convert(list);    
+            //res.set('Content-Type', 'text/csv');
+            //res.send(new Buffer(csvContent));
+            
 
         }); 
     },
-    exportPlays: function(req,res) {
+    exportPlaysCsv: function(req,res) {
         Play.query("select id, session_id, pupil, game, clicks from State", function(err, list){ 
             if (err) console.log(err);
             // Send a CSV response          
