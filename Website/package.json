@@ -24,6 +24,7 @@
     "json2csv": "^4.0.2",
     "moment": "^2.21.0",
     "nested-pop": "^0.1.4",
+    "nice-json2csv": "^0.2.2",
     "rc": "1.0.1",
     "sails": "~0.12.14",
     "sails-disk": "~0.10.9",

@@ -4,7 +4,7 @@
  * @description :: Server-side logic for providing research dashboard
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-var json2csv = require('json2csv');
+var json2csv =  require('nice-json2csv');
 var moment = require('moment');
 
 module.exports = {
@@ -20,12 +20,10 @@ module.exports = {
               data: list
             };
 
-            json2csv(config, function(err, csv) {
-              if (err) console.log(err);
-              var filename = "states-" + moment().format("YYYY-MM-DD") + ".csv";
-              res.attachment(filename);
-              res.end(csv, 'UTF-8');
-            });
+            var csvContent = json2csv.convert(list);    
+            res.set('Content-Type', 'text/csv');
+            res.send(new Buffer(csvContent));
+         
 
         }); 
     },
@@ -38,12 +36,9 @@ module.exports = {
               data: list
             };
 
-            json2csv(config, function(err, csv) {
-              if (err) console.log(err);
-              var filename = "plays-" + moment().format("YYYY-MM-DD") + ".csv";
-              res.attachment(filename);
-              res.end(csv, 'UTF-8');
-            });
+            var csvContent = json2csv.convert(list);    
+            res.set('Content-Type', 'text/csv');
+            res.send(new Buffer(csvContent));
 
         }); 
     }
