@@ -61,6 +61,10 @@ module.exports.policies = {
   AdminController: {
     '*': 'isAdmin',
     install: true
+  },
+
+  ResearchController: {
+    '*': 'isAdmin'
   }
 
   /***************************************************************************
