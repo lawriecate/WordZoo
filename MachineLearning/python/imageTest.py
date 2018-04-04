@@ -6,7 +6,10 @@ import time
 width = 18
 height = 18
 
-data = np.zeros((width,height,3), dtype=np.uint8)
+#data = np.zeros((width,height,3), dtype=np.uint8)
+
+
+
 
 start = time.time()
 counter = 0
@@ -23,7 +26,7 @@ for x in range(width):
 
 
 img = Image.fromarray(data,'RGB')
-img.save('state.png')
+img.save('realState.png')
 
 end = time.time()
 

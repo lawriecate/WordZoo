@@ -3,12 +3,6 @@ import tensorflow as tf
 import pandas as pd
 import random
 
-def loadRealStates():
-    return None
-
-def sampleRealStates():
-    return None
-
 '''
 Leaky relu function for the discriminator
 '''
@@ -47,19 +41,18 @@ def discriminator(state, reuse = False, training = True):
         net = tf.layers.conv2d(state, 128, [4,4], strides = (2,2), padding = 'SAME')
         net = lrelu(tf.layers.batch_normalization(net, training = training))
         #Layer 2
-        net = tf.layers.conv2d(state, 256, [4,4], strides = (2,2), padding = 'SAME')
+        net = tf.layers.conv2d(net, 256, [4,4], strides = (2,2), padding = 'SAME')
         net = lrelu(tf.layers.batch_normalization(net, training = training))
         #Layer 3
-        net = tf.layers.conv2d(state, 512, [4,4], strides = (2,2), padding = 'SAME')
+        net = tf.layers.conv2d(net, 512, [4,4], strides = (2,2), padding = 'SAME')
         net = lrelu(tf.layers.batch_normalization(net, training = training))
         #Layer 4
-        net = tf.layers.conv2d(state, 1024, [4,4], strides = (2,2), padding = 'SAME')
+        net = tf.layers.conv2d(net, 1024, [4,4], strides = (4,4), padding = 'SAME')
         net = lrelu(tf.layers.batch_normalization(net, training = training))
         #Output Layer
-        #net = tf.layers.conv2d(net, 1, [4,4], strides = (1,1), padding = 'VALID')
-        net = tf.layers.dense(net, 1, activation = tf.nn.sigmoid)
+        net = tf.layers.dense(tf.contrib.layers.flatten(net), 1, activation = tf.nn.sigmoid)
         #Normalise output between 0 and 1
-        net = tf.nn.sigmoid(net)
+        #net = tf.nn.sigmoid(net)
         return net;
 
 '''This is just something that will need to be added to the main model'''
@@ -86,7 +79,7 @@ def loadRealStates():
     formattedStates = []
 
     for ele in range(len(states) - 1):
-        formattedStates.append(states[ele].reshape(18,18,1))
+        formattedStates.append(states[ele].reshape(1,18,18,1))
 
     return formattedStates
 '''
@@ -132,7 +125,7 @@ gApplyGrad = Gtrainer.apply_gradients(Ggrads)
 ##################################################
 # TRAINING
 ##################################################
-batchSize = 150
+batchSize = 300
 itterations = 500000
 init = tf.global_variables_initializer()
 saver = tf.train.Saver()
@@ -145,7 +138,7 @@ print("Finished Loading Real States")
 with tf.Session() as sess:
     sess.run(init)
     for k in range(itterations):
-        print("Running Model: Itteration" + str(k))
+        print("Running Model: Itteration " + str(k))
         #Random sample of noise
         zs = np.random.uniform(-1.0,1.0, size = [batchSize,1,1,noiseLength]).astype(np.float32)
         #Random batch of real states
@@ -164,6 +157,40 @@ with tf.Session() as sess:
             Give it a bunch of Real states, and make sure they come back with a true accuracy.
             Run some obviously fake, and make sure they are super lower.
             '''
+
+            f = open('modelQuality.txt',"a")
+            f.write("<><><><><><><><><><><><><><><><><><><><><><><><>\n")
+            f.write(str(k) + ": timestep Model Quality \n")
+            f.write("Disc: " + str(discLoss) + " Gen: " + str(genLoss) + "\n")
+
+            #Sample some real states randomly
+            randomStates = sampleRealStates(20,states)
+            test = np.full((1,18,18,1),0)
+            test1 = np.full((1,18,18,1),1)
+            test2 = np.full((1,18,18,1),0)
+            test2[0,4,4,0] = 1
+
+            sample = sess.run(Dreal,feed_dict = {state: randomStates})
+            sample2 = sess.run(Dreal,feed_dict = {state: test})
+            sample3 = sess.run(Dreal,feed_dict = {state: test1})
+            sample4 = sess.run(Dreal,feed_dict = {state: test2})
+
+            f.write("Random states:")
+            temp = str(sample)
+            temp = temp.replace('\n','')
+            f.write(temp + "\n")
+            f.write("All 0s: " + str(sample2) + "\n")
+            f.write("All 1s: " + str(sample3)+ "\n")
+            f.write("Single 1: " + str(sample4)+ "\n")
+
+            f.write("Random Numbers + \n")
+            for i in range(6):
+                randomStuff = np.random.rand(1,18,18,1)
+                x = sess.run(Dreal,feed_dict = {state: randomStuff})
+                f.write(str(x) + " , ")
+            f.write("\n")
+            f.close
+
 
             #Save Model
             print("Saving Model " + str(k))
