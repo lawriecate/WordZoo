@@ -27,7 +27,7 @@ def generator(noise , reuse = False):
         net = tf.layers.conv2d_transpose(net, 128, [4,4], strides = (1,1), padding = 'SAME')
         net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
         #Normalise so the values are between 0 and 1
-        net = tf.layers.conv2d_transpose(net, 1, [18,18], strides = (1,1), padding = 'SAME')
+        net = tf.layers.conv2d_transpose(net, 1, [18,18], strides = (18,18), padding = 'SAME')
         #Normalsie the values between 0 and 1
         net = tf.nn.tanh(net)
         return net
@@ -55,31 +55,17 @@ def discriminator(state, reuse = False, training = True):
         #net = tf.nn.sigmoid(net)
         return net;
 
-'''This is just something that will need to be added to the main model'''
-def loadAndRunSimulator():
-    model = '/gan.py'
-    saver = tf.train.Saver()
-    with tf.Session() as sess:
-        print("GAN loaded")
-        modelPath = tf.train.get_checkpoint_state(model)
-        saver.restore(sess, modelPath.model_checkpoint_path)
-
-        #With some state
-        output = sess.run(Dfake, feed_dict= {state: queryState})
-
-        return output
-
 '''
 This loads the realStates we gathered from testing. Loads the CSV and saves the dataframe globally
 '''
 def loadRealStates():
-    states = pd.read_csv('realStates.csv', sep = ',', header = None)
+    states = pd.read_csv('fixedStates.csv', sep = ',', header = None)
     states = states.values
 
     formattedStates = []
 
     for ele in range(len(states) - 1):
-        formattedStates.append(states[ele].reshape(1,18,18,1))
+        formattedStates.append(states[ele].reshape(18,18,1))
 
     return formattedStates
 '''
@@ -115,7 +101,7 @@ dVars = [var for var in tvars if var.name.startswith('Discriminator')]
 gVars = [var for var in tvars if var.name.startswith('Generator')]
 #Optimizers - Uses the loss functions and applies them to the graph
 Dgrads = Dtrainer.compute_gradients(dLoss, var_list = dVars)
-Ggrads= Gtrainer.compute_gradients(gLoss, var_list = gVars)
+Ggrads = Gtrainer.compute_gradients(gLoss, var_list = gVars)
 
 #These need to be here
 #We need to have these defined as part of the graph before init, otherwise the optimise fails to see it, and we get a missing beta1 error
@@ -125,7 +111,7 @@ gApplyGrad = Gtrainer.apply_gradients(Ggrads)
 ##################################################
 # TRAINING
 ##################################################
-batchSize = 300
+batchSize = 1
 itterations = 500000
 init = tf.global_variables_initializer()
 saver = tf.train.Saver()
@@ -147,6 +133,8 @@ with tf.Session() as sess:
         _ , discLoss = sess.run([dApplyGrad,dLoss], feed_dict = {noise: zs, state: xs})
         #Update Generator
         _ , genLoss = sess.run([gApplyGrad,gLoss], feed_dict = {noise: zs})
+
+        print(sess.run(G,feed_dict = {noise: zs}).shape)
         if (k % 50) == 0:
             print ("Disc: " + str(discLoss) + " Gen: " + str(genLoss))
 
@@ -157,7 +145,7 @@ with tf.Session() as sess:
             Give it a bunch of Real states, and make sure they come back with a true accuracy.
             Run some obviously fake, and make sure they are super lower.
             '''
-
+            '''
             f = open('modelQuality.txt',"a")
             f.write("<><><><><><><><><><><><><><><><><><><><><><><><>\n")
             f.write(str(k) + ": timestep Model Quality \n")
@@ -195,3 +183,4 @@ with tf.Session() as sess:
             #Save Model
             print("Saving Model " + str(k))
             saver.save(sess, "../models/ganModel-" + str(k) + ".cptk")
+            '''

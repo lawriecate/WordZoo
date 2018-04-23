@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-states = pd.read_csv('state.csv', sep = ',', header = None)
+states = pd.read_csv('fixedStates.csv', sep = ',', header = None)
 states = states.values
 
 formattedStates = []

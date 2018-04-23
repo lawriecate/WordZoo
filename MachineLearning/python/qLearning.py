@@ -15,11 +15,11 @@ class Network:
         #Convulation Layers
         self.input = tf.placeholder(shape = [None,18,18,1], dtype = tf.float32)
 
-        network = tf.layers.conv2d(self.input, 16, [3,3], strides = (2,2), padding = 'SAME', kernel_initializer = init, activation = tf.nn.relu)
-        network = tf.layers.conv2d(network, 32, [3,3], strides = (2,2), padding = 'SAME', kernel_initializer = init, activation = tf.nn.relu)
-        network = tf.layers.conv2d(network, 64, [3,3], strides = (1,1), padding = 'SAME', kernel_initializer = init, activation = tf.nn.relu)
+        network = tf.layers.conv2d(self.input,filters=16,kernel_size=3,strides=2,padding='SAME',kernel_initializer=init,activation=tf.nn.relu)
+        network = tf.layers.conv2d(network,filters=32,kernel_size=3,strides=2,padding='SAME',kernel_initializer=init,activation=tf.nn.relu)
+        network = tf.layers.conv2d(network,filters=64,kernel_size=3,strides=1,padding='SAME',kernel_initializer=init,activation=tf.nn.relu)
         #Fully connected layer
-        network = tf.layers.dense(tf.contrib.layers.flatten(network),units=256,kernel_initializer=init, activation=tf.nn.relu)
+        network = tf.layers.dense(tf.contrib.layers.flatten(network), name='fullyConnected', units=256,kernel_initializer=init, activation=tf.nn.relu)
         #Output Layer
         network = tf.layers.dense(inputs=network, name='actions',units=numberOfWords,kernel_initializer=init, activation=tf.nn.relu)
 
@@ -99,14 +99,16 @@ class Agent:
         #Initialise action-value function Q with random Weights
         functionQ = Network(numberOfWords=323)
         #The "Gym" - Where we create states, and query what effect certain actions will have
-        #gym = Gym()
+        gym = Gym()
+
+        '''
 
         self.generateEpsilonValue(episodes = episodes)
         #Number of States looked at
         counter = 0
 
         '''
-        Training Variables
+        #Training Variables
         '''
         self.learning_rate_control = LinearControlSignal(start_value=1e-3, end_value=1e-5, num_itterations=5e6)
         self.loss_limit_control = LinearControlSignal(start_value=0.1,end_value=0.015,num_itterations=5e6)
@@ -122,7 +124,7 @@ class Agent:
             #Time step into the future
             for t in range (timeSteps):
                 #Calculate Q values for the State
-                qValues = functionQ.calculateQValues(states= state)[0]
+                qValues = functionQ.calculateQValues(states=[state])[0]
                 epsilon = epslionValue(iteration=i)
                 #With prob epislon
                 if (np.random.random() < epsilon):
@@ -158,6 +160,7 @@ class Agent:
 
                     #Save the model
                     functionQ.saveModel(statesProcessed = counter)
+                    '''
 
     def generateEpsilonValue(self,episodes):
         self.epsilon = LinearControlSignal(num_itterations=episodes, start_value=1, end_value=0.01)
@@ -253,27 +256,28 @@ class Gym:
 
         #Load Word Reward costs
         self.values = np.array([9.35,10.55,1.3,9.3,0.1,13.8,6.3,8.85,7.15,13.45,13.6,3.6,14.1,11.35,3.3,4.8,8.8,5.25,5.6,1.6,12.95,13.3,12.75,15.05,5.2,3.45,11.2,16.15,7.1,6.1,1.35,13.9,14.15,11.0,6.5,14.75,4.1,15.35,7.35,2.45,13.1,3.65,15.2,9.7,7.75,1.45,2.9,12.3,7.05,10.3,4.35,10.95,3.0,10.1,1.1,1.7,12.25,15.5,14.95,4.65,13.2,15.1,1.05,6.6,15.85,1.75,14.55,13.7,14.0,8.4,0.85,8.95,9.75,12.35,0.25,6.8,4.85,4.95,4.3,5.5,4.2,9.85,5.15,2.15,4.6,1.15,6.7,15.95,3.15,13.55,15.3,10.05,5.75,11.4,12.7,7.45,0.05,15.8,0.7,6.45,11.6,5.3,10.6,3.35,6.9,12.15,2.1,8.2,6.4,2.3,12.85,15.55,11.7,0.5,14.2,7.3,11.3,11.8,15.65,4.5,14.3,12.55,15.6,10.2,10.25,0.9,0.4,13.25,2.6,1.65,1.9,2.4,8.45,4.05,6.55,8.9,3.8,7.9,3.25,10.9,15.0,14.05,6.05,4.4,14.7,6.2,7.0,3.9,5.55,11.5,10.45,10.35,13.5,16.05,12.2,12.6,11.95,1.8,5.45,2.7,15.15,15.9,0.3,13.95,11.55,11.65,7.95,2.35,3.85,13.65,0.75,0.0,11.85,11.15,2.2,2.5,14.8,10.65,11.45,14.45,9.4,11.9,8.0,4.15,10.5,1.95,11.25,5.35,2.0,7.65,3.75,5.65,12.8,13.15,4.75,9.8,5.4,5.9,11.05,4.55,9.65,8.35,0.65,8.7,3.7,1.85,10.7,12.05,3.1,1.4,12.65,4.7,6.95,8.1,7.5,10.0,2.85,12.45,16.1,12.0,3.95,7.4,3.05,7.55,4.45,9.05,6.65,2.65,10.15,9.25,3.55,14.6,6.25,2.95,7.2,8.25,0.8,2.75,9.15,5.7,15.4,16.0,0.2,10.85,8.6,3.2,1.0,14.5,8.3,12.9,2.55,9.55,15.45,1.2,9.95,3.5,7.25,7.85,15.75,13.0,13.05,9.6,6.0,9.9,15.25,6.35,7.7,6.15,14.85,10.8,8.05,0.6,13.4,14.9,13.85,10.75,14.25,9.5,9.1,4.25,9.0,14.65,12.5,0.15,2.25,4.0,7.8,0.95,8.65,15.7,4.9,13.35,8.5,5.05,10.4,0.45,2.05,9.2,11.75,6.85,5.8,5.85,8.75,2.8,8.55,8.15,5.1,1.25,14.35,5.95,9.45,5.0,1.5,14.4,12.1,11.1,0.55,6.75,3.4,1.55,7.6,12.4,0.35,13.75])
-        self.values.reshape(self.stateShape)
+        self.values.reshape(18,18,1)
         
         def generator(noise , reuse = False):
             with tf.variable_scope('Generator', reuse=reuse):
                 #Layer1
-                net = tf.layers.conv2d_transpose(noise, 1024, [4,4], strides = (2,2), padding = 'SAME')
-                net = tf.layers.batch_normalization(inputs = net, training = False, epsilon = 1e-5)
+                net = tf.layers.conv2d_transpose(noise, 1024, [4,4], strides = (1,1), padding = 'SAME')
+                net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
                 #Layer 2
-                net = tf.layers.conv2d_transpose(net, 512, [4,4], strides = (2,2), padding = 'SAME')
-                net = tf.layers.batch_normalization(inputs = net, training = False, epsilon = 1e-5)
+                net = tf.layers.conv2d_transpose(net, 512, [4,4], strides = (1,1), padding = 'SAME')
+                net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
                 #Layer 3
-                net = tf.layers.conv2d_transpose(net, 256, [4,4], strides = (2,2), padding = 'SAME')
-                net = tf.layers.batch_normalization(inputs = net, training = False, epsilon = 1e-5)
+                net = tf.layers.conv2d_transpose(net, 256, [4,4], strides = (1,1), padding = 'SAME')
+                net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
                 #Output Layer
-                net = tf.layers.conv2d_transpose(net, 128, [4,4], strides = (2,2), padding = 'SAME')
-                net = tf.layers.batch_normalization(inputs = net, training = False, epsilon = 1e-5)
+                net = tf.layers.conv2d_transpose(net, 128, [4,4], strides = (1,1), padding = 'SAME')
+                net = tf.layers.batch_normalization(inputs = net, training = True, epsilon = 1e-5)
                 #Normalise so the values are between 0 and 1
-                net = tf.layers.conv2d_transpose(net, 1, [18,18], strides = (1,1), padding = 'SAME')
+                net = tf.layers.conv2d_transpose(net, 1, [18,18], strides = (18,18), padding = 'SAME')
                 #Normalsie the values between 0 and 1
                 net = tf.nn.tanh(net)
                 return net
+
         '''
         Takes in an 18x18 state, and returns a single value for the prob. that it is real
         '''
@@ -281,16 +285,16 @@ class Gym:
             with tf.variable_scope('Discriminator', reuse=reuse):
                 #Layer 1
                 net = tf.layers.conv2d(state, 128, [4,4], strides = (2,2), padding = 'SAME')
-                net = tf.nn.leaky_relu(tf.layers.batch_normalization(net, training = training))
+                net = lrelu(tf.layers.batch_normalization(net, training = training))
                 #Layer 2
                 net = tf.layers.conv2d(net, 256, [4,4], strides = (2,2), padding = 'SAME')
-                net = tf.nn.leaky_relu(tf.layers.batch_normalization(net, training = training))
+                net = lrelu(tf.layers.batch_normalization(net, training = training))
                 #Layer 3
                 net = tf.layers.conv2d(net, 512, [4,4], strides = (2,2), padding = 'SAME')
-                net = tf.nn.leaky_relu(tf.layers.batch_normalization(net, training = training))
+                net = lrelu(tf.layers.batch_normalization(net, training = training))
                 #Layer 4
                 net = tf.layers.conv2d(net, 1024, [4,4], strides = (4,4), padding = 'SAME')
-                net = tf.nn.leaky_relu(tf.layers.batch_normalization(net, training = training))
+                net = lrelu(tf.layers.batch_normalization(net, training = training))
                 #Output Layer
                 net = tf.layers.dense(tf.contrib.layers.flatten(net), 1, activation = tf.nn.sigmoid)
                 #Normalise output between 0 and 1
@@ -308,34 +312,39 @@ class Gym:
         beta1 = 0.5
         #Place holder inputs
         noise = tf.placeholder(shape = [None,1, 1, noiseLength], dtype = tf.float32)
-        self.state = tf.placeholder(shape = [None,18,18,1], dtype = tf.float32)
+        state = tf.placeholder(shape = [None,18,18,1], dtype = tf.float32)
         #Define the sub Networks
         G = generator(noise)
-        self.Dreal = discriminator(self.state, reuse = False)
+        Dreal = discriminator(state, reuse = False)
         Dfake = discriminator(G,reuse = True)
         #Optimizers
         Dtrainer = tf.train.AdamOptimizer(learning_rate = learningRate, beta1 = beta1)
         Gtrainer = tf.train.AdamOptimizer(learning_rate = learningRate, beta1 = beta1)
         #Loss functions from the paper
         # Note, In order to minimize, we maximise the negative value, hence the minus in front of the functions
-        dLoss = -tf.reduce_mean(tf.log(self.Dreal) + tf.log(1-Dfake))
+        dLoss = -tf.reduce_mean(tf.log(Dreal) + tf.log(1-Dfake))
         gLoss = -tf.reduce_mean(tf.log(Dfake))
         #Variables of the Graph
         tvars = tf.trainable_variables()
         dVars = [var for var in tvars if var.name.startswith('Discriminator')]
         gVars = [var for var in tvars if var.name.startswith('Generator')]
+        #Optimizers - Uses the loss functions and applies them to the graph
+        Dgrads = Dtrainer.compute_gradients(dLoss, var_list = dVars)
+        Ggrads = Gtrainer.compute_gradients(gLoss, var_list = gVars)
 
-
+        #These need to be here
+        #We need to have these defined as part of the graph before init, otherwise the optimise fails to see it, and we get a missing beta1 error
+        dApplyGrad = Dtrainer.apply_gradients(Dgrads)
+        gApplyGrad = Gtrainer.apply_gradients(Ggrads)
+        
         #Load the Discriminator
-        #init = tf.global_variables_initializer()
+        init = tf.global_variables_initializer()
         saver = tf.train.Saver()
         self.sess = tf.Session()
+        self.sess.run(init)
         ckpt = tf.train.get_checkpoint_state("./models")
         saver.restore(self.sess,ckpt.model_checkpoint_path)
 
-        #Create the decay array
-        return
-    
 
     def executeAction(self,previousState,action):
         #Executes the given action on a state
@@ -343,7 +352,7 @@ class Gym:
         proposedState = self.updateState(state = previousState, action = action, value = 1)
         #Calculate the prob. this is real - Limits it down to a value
         prob = self.sess.run(self.Dreal,feed_dict = {self.state : proposedState})
-        trueState = self.updateState(state = proposedState, action = action, value = prob)
+        trueState = self.updateState(state = previousState, action = action, value = prob)
 
         return trueState
 
