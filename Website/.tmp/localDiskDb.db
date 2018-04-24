@@ -1,0 +1,282 @@
+{
+  "data": {
+    "class": [],
+    "game": [],
+    "policy": [],
+    "pupil": [],
+    "school": [
+      {
+        "name": "Test School",
+        "phone": "",
+        "address": "\r\n  ",
+        "postcode": "",
+        "country": "UK",
+        "createdAt": "2018-02-14T14:20:07.413Z",
+        "updatedAt": "2018-02-14T14:20:15.001Z",
+        "id": 1
+      }
+    ],
+    "user": [
+      {
+        "name": "Admin",
+        "email": "admin@email.com",
+        "password": "password",
+        "admin": true,
+        "createdAt": "2018-02-14T14:17:54.829Z",
+        "updatedAt": "2018-02-14T14:17:54.829Z",
+        "id": 1
+      }
+    ],
+    "words": [],
+    "class_pupils__pupil_in_class": [],
+    "school_teachers__user_teaches_at": [
+      {
+        "user_teaches_at": 1,
+        "school_teachers": 1,
+        "id": 1
+      }
+    ]
+  },
+  "schema": {
+    "class": {
+      "name": {
+        "type": "string"
+      },
+      "school": {
+        "type": "integer",
+        "model": "school",
+        "foreignKey": true,
+        "alias": "school"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "game": {
+      "name": {
+        "type": "string"
+      },
+      "source": {
+        "type": "string"
+      },
+      "live": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "slug": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "policy": {
+      "getUser": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "pupil": {
+      "name": {
+        "type": "string"
+      },
+      "username": {
+        "type": "string"
+      },
+      "dob": {
+        "type": "date"
+      },
+      "school": {
+        "type": "integer",
+        "model": "school",
+        "foreignKey": true,
+        "alias": "school"
+      },
+      "passcode": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "school": {
+      "name": {
+        "type": "string"
+      },
+      "phone": {
+        "type": "string"
+      },
+      "address": {
+        "type": "string"
+      },
+      "postcode": {
+        "type": "string"
+      },
+      "country": {
+        "type": "string",
+        "defaultsTo": "UK"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "email": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "admin": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "words": {
+      "word": {
+        "type": "string"
+      },
+      "num_vowels": {
+        "type": "integer"
+      },
+      "num_syllables": {
+        "type": "integer"
+      },
+      "age": {
+        "type": "integer"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "class_pupils__pupil_in_class": {
+      "id": {
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true,
+        "type": "integer"
+      },
+      "class_pupils": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "class",
+        "on": "id",
+        "via": "pupil_in_class"
+      },
+      "pupil_in_class": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "pupil",
+        "on": "id",
+        "via": "class_pupils"
+      }
+    },
+    "school_teachers__user_teaches_at": {
+      "id": {
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true,
+        "type": "integer"
+      },
+      "school_teachers": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "school",
+        "on": "id",
+        "via": "user_teaches_at"
+      },
+      "user_teaches_at": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "user",
+        "on": "id",
+        "via": "school_teachers"
+      }
+    }
+  },
+  "counters": {
+    "class": {},
+    "game": {},
+    "policy": {},
+    "pupil": {},
+    "school": {
+      "id": 1
+    },
+    "user": {
+      "id": 1
+    },
+    "words": {},
+    "class_pupils__pupil_in_class": {},
+    "school_teachers__user_teaches_at": {
+      "id": 1
+    }
+  }
+}
